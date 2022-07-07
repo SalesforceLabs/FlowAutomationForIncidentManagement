@@ -1,1 +1,1 @@
-# AutomatedIncidentManagement
+# Automated Incident Management (AIM)
