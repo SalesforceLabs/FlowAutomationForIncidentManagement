@@ -1,0 +1,25 @@
+minimum_cumulusci_version: '3.60.0'
+project:
+    name: AIM
+    package:
+        name: AIM
+        api_version: '55.0'
+    git:
+        default_branch: 'main'
+    source_format: sfdx
+
+tasks:
+    robot:
+        options:
+            suites: robot/AIM/tests
+            options:
+                outputdir: robot/AIM/results
+
+    robot_testdoc:
+        options:
+            path: robot/AIM/tests
+            output: robot/AIM/doc/AIM_tests.html
+
+    run_tests:
+        options:
+            required_org_code_coverage_percent: 80
