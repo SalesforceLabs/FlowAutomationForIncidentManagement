@@ -1,4 +1,9 @@
 {
+
+  "scripts": {
+    "prettier": "prettier --check \"force-app/**/*.{page,trigger,cls,html}\"",
+    "prettier:fix": "prettier --write \"force-app/**/*.{page,trigger,cls,html}\""
+  },
   "devDependencies": {
     "prettier": "2.7.1",
     "prettier-plugin-apex": "1.10.0"
