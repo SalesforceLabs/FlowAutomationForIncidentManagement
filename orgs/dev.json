@@ -1,6 +1,15 @@
 {
   "orgName": "AIM - Dev Org",
   "edition": "Developer",
+  "features": [
+    "API",
+    "Communities",
+    "EnableSetPasswordInApi",
+    "Chatbot",
+    "ServiceCloud",
+    "ServiceUser",
+    "Sites"
+  ],
   "settings": {
     "lightningExperienceSettings": {
       "enableS1DesktopEnabled": true
@@ -20,5 +29,6 @@
     "languageSettings": {
       "enableTranslationWorkbench": true
     }
+    
   }
 }
