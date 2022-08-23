@@ -1,0 +1,27 @@
+name: Validate Work Item in GUS
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+    branches:
+      - main
+      - Develop
+      - Feature-branch
+   
+   # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+  
+jobs:
+  validate_work_item_in_gus:
+    runs-on: Lab1449GHARunner
+    name: validate_work_item_in_gus
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - name: Validate Work Item in GUS
+        uses: VaccineCloud/ValidateWorkItemAction@main
+        id: validate_work_item
+        env:
+          USERNAME: ${{ secrets.LAB1449_BOT_USERNAME }}
+          PASSWORD: ${{ secrets.LAB1449_BOT_PWD }}
+        with:
+          pullRequestTitle: ${{ github.event.pull_request.title }
