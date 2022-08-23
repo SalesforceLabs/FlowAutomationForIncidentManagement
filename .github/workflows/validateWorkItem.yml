@@ -13,7 +13,7 @@ on:
   
 jobs:
   validate_work_item_in_gus:
-    runs-on: Lab1449GHARunner
+    runs-on: vaccinecloud-ubuntu
     name: validate_work_item_in_gus
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
