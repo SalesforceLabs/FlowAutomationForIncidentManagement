@@ -24,4 +24,4 @@ jobs:
           USERNAME: ${{ secrets.LAB1449_BOT_USERNAME }}
           PASSWORD: ${{ secrets.LAB1449_BOT_PWD }}
         with:
-          pullRequestTitle: ${{ github.event.pull_request.title }
+          pullRequestTitle: ${{ github.event.pull_request.title }}
