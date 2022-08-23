@@ -1,6 +1,7 @@
 {
   "orgName": "AIM - Dev Org",
   "edition": "Developer",
+  "instance":"gs0",
   "features": [
     "API",
     "Communities",
