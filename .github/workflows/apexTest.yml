@@ -19,7 +19,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: install sfdx
-        run: npm install sfdx-cli@7.155.1 --location=global
+        run: npm install sfdx-cli@7.162.0 --location=global
 
       - name: install cci
         run: pipx install https://github.com/SFDO-Tooling/CumulusCI/archive/refs/tags/v3.62.0.tar.gz
