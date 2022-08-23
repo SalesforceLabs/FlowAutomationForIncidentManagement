@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <assignments>
+        <description>Get the ContactId and AccountId of the case and add it to the output List</description>
+        <name>Add_the_ContactId_and_AccountId_of_the_case_to_the_Output_List</name>
+        <label>Add the ContactId and AccountId of the case to the Output List</label>
+        <locationX>264</locationX>
+        <locationY>398</locationY>
+        <assignmentItems>
+            <assignToReference>ContactIdList</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_Over_Case_Related_Issue_Records.Case.ContactId</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>AccountIdList</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_Over_Case_Related_Issue_Records.Case.AccountId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_Over_Case_Related_Issue_Records</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Add_the_contactId_and_AccountId_to_the_Output_List</name>
+        <label>Add the contactId and AccountId to the Output List</label>
+        <locationX>264</locationX>
+        <locationY>854</locationY>
+        <assignmentItems>
+            <assignToReference>ContactIdList</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_over_Incident_Related_Items_Records.Asset.ContactId</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>AccountIdList</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_over_Incident_Related_Items_Records.Asset.AccountId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_over_Incident_Related_Items_Records</targetReference>
+        </connector>
+    </assignments>
+    <description>Input: IncidentId (Type Id)
+
+Output: ContactIds (Type List&lt;Id&gt;)
+Output: AccountIds (Type List&lt;Id&gt;)
+
+An Autolaunched Flow Template that can be used by the Incident Orchestration that will take as input an IncidentID, and output a collection of ContactId and AccountId  for the affected customers.</description>
+    <environments>Default</environments>
+    <interviewLabel>Template Flow for {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Template Flow for Deriving Collection of impacted Contacts/Accounts for incident</label>
+    <loops>
+        <description>Iterate over all the Case Related Issue Records obtained from the previous step</description>
+        <name>Loop_Over_Case_Related_Issue_Records</name>
+        <label>Loop Over Case Related Issue Records</label>
+        <locationX>176</locationX>
+        <locationY>278</locationY>
+        <collectionReference>Get_Case_Related_Issue_Records</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Add_the_ContactId_and_AccountId_of_the_case_to_the_Output_List</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Get_All_Incident_Related_Items_Records</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <description>Iterate over all Incident Related Items obtained from the previous step</description>
+        <name>Loop_over_Incident_Related_Items_Records</name>
+        <label>Loop over Incident Related Items Records</label>
+        <locationX>176</locationX>
+        <locationY>734</locationY>
+        <collectionReference>Get_All_Incident_Related_Items_Records</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Add_the_contactId_and_AccountId_to_the_Output_List</targetReference>
+        </nextValueConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Retrieve all Incident Related Items records using &apos;Get Records&apos; flow element</description>
+        <name>Get_All_Incident_Related_Items_Records</name>
+        <label>Get All Incident Related Items Records</label>
+        <locationX>176</locationX>
+        <locationY>614</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Loop_over_Incident_Related_Items_Records</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>IncidentId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>IncidentId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>IncidentRelatedItem</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Retrieving all the Case Related Issue records using &apos;Get Records&apos; flow element</description>
+        <name>Get_Case_Related_Issue_Records</name>
+        <label>Get All Case Related Issue Records</label>
+        <locationX>176</locationX>
+        <locationY>158</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Loop_Over_Case_Related_Issue_Records</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>RelatedIssueId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>IncidentId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>CaseRelatedIssue</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Case_Related_Issue_Records</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>AccountIdList</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>ContactIdList</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>IncidentId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>
