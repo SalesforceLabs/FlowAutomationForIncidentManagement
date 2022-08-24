@@ -56,6 +56,7 @@ Output: AccountIds (Type List&lt;Id&gt;)
 An Autolaunched Flow Template that can be used by the Incident Orchestration that will take as input an IncidentID, and output a collection of ContactId and AccountId  for the affected customers.</description>
     <environments>Default</environments>
     <interviewLabel>Template Flow for {!$Flow.CurrentDateTime}</interviewLabel>
+    <isTemplate>true</isTemplate>
     <label>Template Flow for Deriving Collection of impacted Contacts/Accounts for incident</label>
     <loops>
         <description>Iterate over all the Case Related Issue Records obtained from the previous step</description>
@@ -147,6 +148,7 @@ An Autolaunched Flow Template that can be used by the Incident Orchestration tha
         <object>CaseRelatedIssue</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
+    <runInMode>DefaultMode</runInMode>
     <start>
         <locationX>50</locationX>
         <locationY>0</locationY>
