@@ -35,7 +35,7 @@ jobs:
         run: cci org info dev
 
       - name: push changes
-        run: cci task run dx_push --org dev
+        run: cci flow run dev_org --org dev
 
       - name: run apex test
         run: cci task run run_tests --org dev
