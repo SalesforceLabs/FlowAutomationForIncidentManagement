@@ -2,9 +2,9 @@
  *  @description Test Class for RetrieveImpactedAccountsAndContacts Flow
  */
 @isTest
-public class RetrieveImpactedAccountsAndContactsTest {
+private class RetrieveImpactedAccountsAndContactsTest {
   @testSetup
-  public static void populateData() {
+  static void populateData() {
     List<Account> accounts = new List<Account>();
     List<Contact> allContacts = new List<contact>();
     List<Contact> contacts = new List<Contact>();
@@ -269,7 +269,7 @@ public class RetrieveImpactedAccountsAndContactsTest {
    *  @description  case 1 - Incident with only cases
    */
   @isTest
-  public static void getImpactedAccountsAndContactsTest_1() {
+  static void getImpactedAccountsAndContactsTest_1() {
     List<Incident> incidents = [
       SELECT Id
       FROM Incident
@@ -286,7 +286,7 @@ public class RetrieveImpactedAccountsAndContactsTest {
    */
 
   @isTest
-  public static void getImpactedAccountsAndContactsTest_2() {
+  static void getImpactedAccountsAndContactsTest_2() {
     List<Incident> incidents = [
       SELECT Id
       FROM Incident
@@ -304,7 +304,7 @@ public class RetrieveImpactedAccountsAndContactsTest {
    */
 
   @isTest
-  public static void getImpactedAccountsAndContactsTest_3() {
+  static void getImpactedAccountsAndContactsTest_3() {
     List<Incident> incidents = [
       SELECT Id
       FROM Incident
@@ -321,7 +321,7 @@ public class RetrieveImpactedAccountsAndContactsTest {
    */
 
   @isTest
-  public static void getImpactedAccountsAndContactsTest_4() {
+  static void getImpactedAccountsAndContactsTest_4() {
     List<Incident> incidents = [
       SELECT Id
       FROM Incident
@@ -338,7 +338,7 @@ public class RetrieveImpactedAccountsAndContactsTest {
    */
 
   @isTest
-  public static void getImpactedAccountsAndContactsTest_5() {
+  static void getImpactedAccountsAndContactsTest_5() {
     List<Incident> incidents = [
       SELECT Id
       FROM Incident
@@ -355,7 +355,7 @@ public class RetrieveImpactedAccountsAndContactsTest {
    */
 
   @isTest
-  public static void getImpactedAccountsAndContactsTest_6() {
+  static void getImpactedAccountsAndContactsTest_6() {
     List<Incident> incidents = [
       SELECT Id
       FROM Incident
@@ -373,7 +373,7 @@ public class RetrieveImpactedAccountsAndContactsTest {
    */
 
   @isTest
-  public static void getImpactedAccountsAndContactsTest_7() {
+  static void getImpactedAccountsAndContactsTest_7() {
     List<Incident> incidents = [
       SELECT Id
       FROM Incident
@@ -388,7 +388,7 @@ public class RetrieveImpactedAccountsAndContactsTest {
   /*
    *  @description  method to execute the Flow
    */
-  private static List<List<Id>> executeAutolaunchedFlow(Id incidentId) {
+  static List<List<Id>> executeAutolaunchedFlow(Id incidentId) {
     Map<String, Object> params = new Map<String, Object>();
     List<List<Id>> outputList = new List<List<Id>>();
 
@@ -402,12 +402,12 @@ public class RetrieveImpactedAccountsAndContactsTest {
     List<Id> contactIds = (List<Id>) flowRunner.getVariableValue(
       'ContactIdList'
     );
-    List<Id> AccountIds = (List<Id>) flowRunner.getVariableValue(
+    List<Id> accountIds = (List<Id>) flowRunner.getVariableValue(
       'AccountIdList'
     );
 
     outputList.add(contactIds);
-    outputList.add(AccountIds);
+    outputList.add(accountIds);
 
     return outputList;
   }
