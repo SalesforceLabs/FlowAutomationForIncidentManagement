@@ -6,26 +6,20 @@ public class RetrieveImpactedAccountsAndContactsTest {
   @testSetup
   public static void populateData() {
     List<Account> accounts = new List<Account>();
-
     List<Contact> allContacts = new List<contact>();
     List<Contact> contacts = new List<Contact>();
     List<Contact> contactsWithAccount = new List<Contact>();
-
     List<Case> allCases = new List<Case>();
     List<Case> casesWithAccount = new List<Case>();
     List<Case> casesWithContact = new List<Case>();
     List<Case> casesWithSameContact = new List<Case>();
     List<Case> caseswithContactAndAccount = new List<Case>();
     List<Case> caseswithNoContactAndNoAccount = new List<Case>();
-
     List<Asset> allAssets = new List<Asset>();
     List<Asset> assetsWithAccount = new List<Asset>();
     List<Asset> assetswithContactAndAccount = new List<Asset>();
-
     List<Incident> incidents = new List<Incident>();
-
     List<IncidentRelatedItem> incidentRelatedItems = new List<IncidentRelatedItem>();
-
     List<CaseRelatedIssue> caseRelatedIssues = new List<CaseRelatedIssue>();
 
     for (Integer counter = 0; counter < 20; counter++) {
@@ -271,7 +265,9 @@ public class RetrieveImpactedAccountsAndContactsTest {
     insert incidentRelatedItems;
   }
 
-  // case 1 - Incident with only cases
+  /**
+   *  @description  case 1 - Incident with only cases
+   */
   @isTest
   public static void getImpactedAccountsAndContactsTest_1() {
     List<Incident> incidents = [
@@ -285,7 +281,10 @@ public class RetrieveImpactedAccountsAndContactsTest {
     System.assertEquals(2, outputList.get(1).size());
   }
 
-  // case 2 - Incident with only assets
+  /**
+   *  @description  case 2 - Incident with only assets
+   */
+
   @isTest
   public static void getImpactedAccountsAndContactsTest_2() {
     List<Incident> incidents = [
@@ -300,7 +299,10 @@ public class RetrieveImpactedAccountsAndContactsTest {
     System.assertEquals(4, outputList.get(1).size());
   }
 
-  // case 3 Incident with both cases and assets
+  /**
+   *  @description  case 3 - Incident with both cases and assets
+   */
+
   @isTest
   public static void getImpactedAccountsAndContactsTest_3() {
     List<Incident> incidents = [
@@ -314,7 +316,10 @@ public class RetrieveImpactedAccountsAndContactsTest {
     System.assertEquals(4, outputList.get(1).size());
   }
 
-  // case 4 Incident with no cases and no assets
+  /**
+   *  @description  case 4 - Incident with no cases and no assets
+   */
+
   @isTest
   public static void getImpactedAccountsAndContactsTest_4() {
     List<Incident> incidents = [
@@ -328,7 +333,10 @@ public class RetrieveImpactedAccountsAndContactsTest {
     System.assertEquals(null, outputList.get(1));
   }
 
-  // case 5 incident with  relatedcases that has no contact or account
+  /**
+   *  @description  case 5 - incident with  relatedcases that has no contact or account
+   */
+
   @isTest
   public static void getImpactedAccountsAndContactsTest_5() {
     List<Incident> incidents = [
@@ -342,7 +350,10 @@ public class RetrieveImpactedAccountsAndContactsTest {
     System.assertEquals(null, outputList.get(1));
   }
 
-  //  case 6 incident with relatedAsset that has only account
+  /**
+   *  @description  case 6 -incident with relatedAsset that has only account
+   */
+
   @isTest
   public static void getImpactedAccountsAndContactsTest_6() {
     List<Incident> incidents = [
@@ -357,7 +368,10 @@ public class RetrieveImpactedAccountsAndContactsTest {
     System.assertEquals(1, outputList.get(1).size());
   }
 
-  // case 7 incident with duplicate contacts
+  /**
+   *  @description  case 7 incident with duplicate contacts
+   */
+
   @isTest
   public static void getImpactedAccountsAndContactsTest_7() {
     List<Incident> incidents = [
@@ -371,6 +385,9 @@ public class RetrieveImpactedAccountsAndContactsTest {
     System.assertEquals(2, outputList.get(0).size()); // duplicate contacts Assertion
   }
 
+  /*
+   *  @description  method to execute the Flow
+   */
   private static List<List<Id>> executeAutolaunchedFlow(Id incidentId) {
     Map<String, Object> params = new Map<String, Object>();
     List<List<Id>> outputList = new List<List<Id>>();
