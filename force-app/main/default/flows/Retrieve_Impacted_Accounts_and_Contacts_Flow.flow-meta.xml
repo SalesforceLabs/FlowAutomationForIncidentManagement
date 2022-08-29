@@ -2,8 +2,43 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>56.0</apiVersion>
     <assignments>
-        <name>Add_contactId_to_the_output_list</name>
-        <label>Add contactId to the output list</label>
+        <description>Get the AccountId of the Asset and add it to the AccountIdList</description>
+        <name>Add_the_AccountId_of_the_Asset_to_the_AccountIdList</name>
+        <label>Add the AccountId of the Asset to the AccountIdList</label>
+        <locationX>440</locationX>
+        <locationY>1526</locationY>
+        <assignmentItems>
+            <assignToReference>AccountIdList</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_over_Incident_Related_Items_Records.Asset.AccountId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Check_if_ContactId_is_present_for_Asset</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Get the AccountId of the Case and add it to the AccountIdList</description>
+        <name>Add_the_AccountId_of_the_Case_to_the_AccountIdList</name>
+        <label>Add the AccountId of the Case to the AccountIdList</label>
+        <locationX>440</locationX>
+        <locationY>518</locationY>
+        <assignmentItems>
+            <assignToReference>AccountIdList</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_Over_Case_Related_Issue_Records.Case.AccountId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Check_if_ContactId_is_present_for_Case</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Get the ContactId of the Asset and add it to the ContactIdList</description>
+        <name>Add_the_ContactId_of_the_Asset_to_the_ContactIdList</name>
+        <label>Add the ContactId of the Asset to the ContactIdList</label>
         <locationX>440</locationX>
         <locationY>1862</locationY>
         <assignmentItems>
@@ -18,25 +53,9 @@
         </connector>
     </assignments>
     <assignments>
-        <description>Get the AccountId of the case and add it to the output List</description>
-        <name>Add_the_AccountId_of_the_case_to_the_Output_List</name>
-        <label>Add the AccountId of the case to the Output List</label>
-        <locationX>440</locationX>
-        <locationY>518</locationY>
-        <assignmentItems>
-            <assignToReference>AccountIdList</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>Loop_Over_Case_Related_Issue_Records.Case.AccountId</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Check_if_ContactId_is_present_for_case</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
+        <description>Get the ContactId of the case and add it to the ContactIdList</description>
         <name>Add_the_contactId_to_the_ContactIdList</name>
-        <label>Add the contactId to the ContactIdList</label>
+        <label>Add the ContactId of the case to the ContactIdList</label>
         <locationX>440</locationX>
         <locationY>854</locationY>
         <assignmentItems>
@@ -50,29 +69,14 @@
             <targetReference>Loop_Over_Case_Related_Issue_Records</targetReference>
         </connector>
     </assignments>
-    <assignments>
-        <name>Add_theAccountId_to_the_Output_List</name>
-        <label>Add theAccountId to the Output List</label>
-        <locationX>440</locationX>
-        <locationY>1526</locationY>
-        <assignmentItems>
-            <assignToReference>AccountIdList</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>Loop_over_Incident_Related_Items_Records.Asset.AccountId</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Check_if_ContactId_is_present_for_Asset</targetReference>
-        </connector>
-    </assignments>
     <decisions>
+        <description>Check if AccountId is present for Asset</description>
         <name>Check_if_AccountId_is_present_for_Asset</name>
         <label>Check if AccountId is present for Asset</label>
         <locationX>352</locationX>
         <locationY>1406</locationY>
         <defaultConnector>
-            <targetReference>Add_theAccountId_to_the_Output_List</targetReference>
+            <targetReference>Add_the_AccountId_of_the_Asset_to_the_AccountIdList</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>AccountId is present</defaultConnectorLabel>
         <rules>
@@ -92,16 +96,17 @@
         </rules>
     </decisions>
     <decisions>
+        <description>Check if AccountID is present for the Case</description>
         <name>Check_if_AccountID_is_present_for_Case</name>
         <label>Check if AccountID is present for Case</label>
         <locationX>352</locationX>
         <locationY>398</locationY>
         <defaultConnector>
-            <targetReference>Add_the_AccountId_of_the_case_to_the_Output_List</targetReference>
+            <targetReference>Add_the_AccountId_of_the_Case_to_the_AccountIdList</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>AccountId is present</defaultConnectorLabel>
         <rules>
-            <name>AccountId_is_not_present</name>
+            <name>AccountId_is_not_present_for_Case</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>Loop_Over_Case_Related_Issue_Records.Case.AccountId</leftValueReference>
@@ -111,20 +116,21 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Check_if_ContactId_is_present_for_case</targetReference>
+                <targetReference>Check_if_ContactId_is_present_for_Case</targetReference>
             </connector>
-            <label>AccountId is  not present</label>
+            <label>AccountId is not present for Case</label>
         </rules>
     </decisions>
     <decisions>
+        <description>Check if ContactId is present for Asset</description>
         <name>Check_if_ContactId_is_present_for_Asset</name>
         <label>Check if ContactId is present for Asset</label>
         <locationX>352</locationX>
         <locationY>1742</locationY>
         <defaultConnector>
-            <targetReference>Add_contactId_to_the_output_list</targetReference>
+            <targetReference>Add_the_ContactId_of_the_Asset_to_the_ContactIdList</targetReference>
         </defaultConnector>
-        <defaultConnectorLabel>contactId is present</defaultConnectorLabel>
+        <defaultConnectorLabel>ContactId is present</defaultConnectorLabel>
         <rules>
             <name>ContactId_is_not_present_for_Asset</name>
             <conditionLogic>and</conditionLogic>
@@ -142,16 +148,17 @@
         </rules>
     </decisions>
     <decisions>
-        <name>Check_if_ContactId_is_present_for_case</name>
-        <label>Check if ContactId is present for case</label>
+        <description>Check if ContactId is present for Case</description>
+        <name>Check_if_ContactId_is_present_for_Case</name>
+        <label>Check if ContactId is present for Case</label>
         <locationX>352</locationX>
         <locationY>734</locationY>
         <defaultConnector>
             <targetReference>Add_the_contactId_to_the_ContactIdList</targetReference>
         </defaultConnector>
-        <defaultConnectorLabel>contactId is present</defaultConnectorLabel>
+        <defaultConnectorLabel>ContactId is present</defaultConnectorLabel>
         <rules>
-            <name>ContactId_is_not_present</name>
+            <name>ContactId_is_not_present_for_Case</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>Loop_Over_Case_Related_Issue_Records.Case.ContactId</leftValueReference>
@@ -163,7 +170,7 @@
             <connector>
                 <targetReference>Loop_Over_Case_Related_Issue_Records</targetReference>
             </connector>
-            <label>ContactId is  not present</label>
+            <label>ContactId is not present for Case</label>
         </rules>
     </decisions>
     <description>Retrieve Impacted Accounts and Contacts Flow</description>

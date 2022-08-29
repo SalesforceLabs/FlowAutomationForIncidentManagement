@@ -1,24 +1,31 @@
-/**
+/*
  *  @description Test Class for RetrieveImpactedAccountsAndContacts Flow
- *  @author      Srinath Sethumadhavan, Sbe Saffron.
- *  @date        08/26/2022
  */
 @isTest
 public class RetrieveImpactedAccountsAndContactsTest {
   @testSetup
   public static void populateData() {
     List<Account> accounts = new List<Account>();
+
+    List<Contact> allContacts = new List<contact>();
     List<Contact> contacts = new List<Contact>();
     List<Contact> contactsWithAccount = new List<Contact>();
+
+    List<Case> allCases = new List<Case>();
     List<Case> casesWithAccount = new List<Case>();
     List<Case> casesWithContact = new List<Case>();
     List<Case> casesWithSameContact = new List<Case>();
     List<Case> caseswithContactAndAccount = new List<Case>();
     List<Case> caseswithNoContactAndNoAccount = new List<Case>();
+
+    List<Asset> allAssets = new List<Asset>();
     List<Asset> assetsWithAccount = new List<Asset>();
     List<Asset> assetswithContactAndAccount = new List<Asset>();
+
     List<Incident> incidents = new List<Incident>();
+
     List<IncidentRelatedItem> incidentRelatedItems = new List<IncidentRelatedItem>();
+
     List<CaseRelatedIssue> caseRelatedIssues = new List<CaseRelatedIssue>();
 
     for (Integer counter = 0; counter < 20; counter++) {
@@ -31,7 +38,7 @@ public class RetrieveImpactedAccountsAndContactsTest {
       Contact contact = new Contact(LastName = 'Test Contact ' + counter);
       contacts.add(contact);
     }
-    insert contacts;
+    allContacts.addAll(contacts);
 
     for (Integer counter = 10; counter < 20; counter++) {
       Contact contact = new Contact(
@@ -40,7 +47,9 @@ public class RetrieveImpactedAccountsAndContactsTest {
       );
       contactsWithAccount.add(contact);
     }
-    insert contactsWithAccount;
+    allContacts.addAll(contactsWithAccount);
+
+    insert allContacts;
 
     // cases with both account and contact
     for (Integer counter = 0; counter < 5; counter++) {
@@ -53,6 +62,8 @@ public class RetrieveImpactedAccountsAndContactsTest {
       caseswithContactAndAccount.add(caseRecord);
     }
 
+    allCases.addAll(caseswithContactAndAccount);
+
     //cases with only contact
     for (Integer counter = 0; counter < 5; counter++) {
       Case caseRecord = new Case(
@@ -63,6 +74,7 @@ public class RetrieveImpactedAccountsAndContactsTest {
       casesWithContact.add(caseRecord);
     }
 
+    allCases.addAll(casesWithContact);
     //cases with only account
     for (Integer counter = 0; counter < 5; counter++) {
       Case caseRecord = new Case(
@@ -73,6 +85,8 @@ public class RetrieveImpactedAccountsAndContactsTest {
       casesWithAccount.add(caseRecord);
     }
 
+    allCases.addAll(casesWithAccount);
+
     //cases with no account and no contact
     for (Integer counter = 0; counter < 5; counter++) {
       Case caseRecord = new Case(
@@ -82,10 +96,9 @@ public class RetrieveImpactedAccountsAndContactsTest {
       caseswithNoContactAndNoAccount.add(caseRecord);
     }
 
-    insert casesWithAccount;
-    insert casesWithContact;
-    insert caseswithContactAndAccount;
-    insert caseswithNoContactAndNoAccount;
+    allCases.addAll(caseswithNoContactAndNoAccount);
+
+    insert allCases;
 
     //  asset with only account
     for (Integer counter = 0; counter < 5; counter++) {
@@ -98,6 +111,8 @@ public class RetrieveImpactedAccountsAndContactsTest {
       );
       assetsWithAccount.add(asset);
     }
+
+    allAssets.addAll(assetsWithAccount);
 
     //assets with both contacts and account
     for (Integer counter = 0; counter < 5; counter++) {
@@ -112,8 +127,9 @@ public class RetrieveImpactedAccountsAndContactsTest {
       assetswithContactAndAccount.add(asset);
     }
 
-    insert assetsWithAccount;
-    insert assetswithContactAndAccount;
+    allAssets.addAll(assetswithContactAndAccount);
+
+    insert allAssets;
 
     //insert incidents
     for (Integer counter = 0; counter < 7; counter++) {
@@ -255,128 +271,127 @@ public class RetrieveImpactedAccountsAndContactsTest {
     insert incidentRelatedItems;
   }
 
+  // case 1 - Incident with only cases
   @isTest
-  public static void getImpactedAccountsAndContactsTest() {
-    List<Incident> incidents;
+  public static void getImpactedAccountsAndContactsTest_1() {
+    List<Incident> incidents = [
+      SELECT Id
+      FROM Incident
+      WHERE Subject = 'Test Incident 0'
+    ];
+
+    List<List<Id>> outputList = executeAutolaunchedFlow(incidents.get(0).Id);
+    System.assertEquals(2, outputList.get(0).size());
+    System.assertEquals(2, outputList.get(1).size());
+  }
+
+  // case 2 - Incident with only assets
+  @isTest
+  public static void getImpactedAccountsAndContactsTest_2() {
+    List<Incident> incidents = [
+      SELECT Id
+      FROM Incident
+      WHERE Subject = 'Test Incident 1'
+    ];
+
+    List<List<Id>> outputList = executeAutolaunchedFlow(incidents.get(0).Id);
+
+    System.assertEquals(2, outputList.get(0).size());
+    System.assertEquals(4, outputList.get(1).size());
+  }
+
+  // case 3 Incident with both cases and assets
+  @isTest
+  public static void getImpactedAccountsAndContactsTest_3() {
+    List<Incident> incidents = [
+      SELECT Id
+      FROM Incident
+      WHERE Subject = 'Test Incident 2'
+    ];
+    List<List<Id>> outputList = executeAutolaunchedFlow(incidents.get(0).Id);
+
+    System.assertEquals(3, outputList.get(0).size());
+    System.assertEquals(4, outputList.get(1).size());
+  }
+
+  // case 4 Incident with no cases and no assets
+  @isTest
+  public static void getImpactedAccountsAndContactsTest_4() {
+    List<Incident> incidents = [
+      SELECT Id
+      FROM Incident
+      WHERE Subject = 'Test Incident 3'
+    ];
+
+    List<List<Id>> outputList = executeAutolaunchedFlow(incidents.get(0).Id);
+    System.assertEquals(null, outputList.get(0));
+    System.assertEquals(null, outputList.get(1));
+  }
+
+  // case 5 incident with  relatedcases that has no contact or account
+  @isTest
+  public static void getImpactedAccountsAndContactsTest_5() {
+    List<Incident> incidents = [
+      SELECT Id
+      FROM Incident
+      WHERE Subject = 'Test Incident 4'
+    ];
+
+    List<List<Id>> outputList = executeAutolaunchedFlow(incidents.get(0).Id);
+    System.assertEquals(null, outputList.get(0));
+    System.assertEquals(null, outputList.get(1));
+  }
+
+  //  case 6 incident with relatedAsset that has only account
+  @isTest
+  public static void getImpactedAccountsAndContactsTest_6() {
+    List<Incident> incidents = [
+      SELECT Id
+      FROM Incident
+      WHERE Subject = 'Test Incident 5'
+    ];
+
+    List<List<Id>> outputList = executeAutolaunchedFlow(incidents.get(0).Id);
+
+    System.assertEquals(null, outputList.get(0));
+    System.assertEquals(1, outputList.get(1).size());
+  }
+
+  // case 7 incident with duplicate contacts
+  @isTest
+  public static void getImpactedAccountsAndContactsTest_7() {
+    List<Incident> incidents = [
+      SELECT Id
+      FROM Incident
+      WHERE Subject = 'Test Incident 6'
+    ];
+
+    List<List<Id>> outputList = executeAutolaunchedFlow(incidents.get(0).Id);
+
+    System.assertEquals(2, outputList.get(0).size()); // duplicate contacts Assertion
+  }
+
+  private static List<List<Id>> executeAutolaunchedFlow(Id incidentId) {
     Map<String, Object> params = new Map<String, Object>();
-    Flow.Interview.Retrieve_Impacted_Accounts_and_Contacts_Flow flowRunner;
-    List<Id> contactIds;
-    List<Id> AccountIds;
+    List<List<Id>> outputList = new List<List<Id>>();
 
-    // case 1 - Incident with only cases
-
-    incidents = [SELECT Id FROM Incident WHERE Subject = 'Test Incident 0'];
-
-    params.put('IncidentId', incidents.get(0).Id);
-    flowRunner = new Flow.Interview.Retrieve_Impacted_Accounts_and_Contacts_Flow(
+    params.put('IncidentId', incidentId);
+    Flow.Interview.Retrieve_Impacted_Accounts_and_Contacts_Flow flowRunner = new Flow.Interview.Retrieve_Impacted_Accounts_and_Contacts_Flow(
       params
     );
 
     flowRunner.start();
 
-    contactIds = (List<Id>) flowRunner.getVariableValue('ContactIdList');
-    AccountIds = (List<Id>) flowRunner.getVariableValue('AccountIdList');
-
-    System.assertEquals(2, contactIds.size());
-    System.assertEquals(2, AccountIds.size());
-
-    // case 2 - Incident with only assets
-
-    incidents = [SELECT Id FROM Incident WHERE Subject = 'Test Incident 1'];
-    params.put('IncidentId', incidents.get(0).Id);
-    flowRunner = new Flow.Interview.Retrieve_Impacted_Accounts_and_Contacts_Flow(
-      params
+    List<Id> contactIds = (List<Id>) flowRunner.getVariableValue(
+      'ContactIdList'
+    );
+    List<Id> AccountIds = (List<Id>) flowRunner.getVariableValue(
+      'AccountIdList'
     );
 
-    flowRunner.start();
+    outputList.add(contactIds);
+    outputList.add(AccountIds);
 
-    contactIds = (List<Id>) flowRunner.getVariableValue('ContactIdList');
-    AccountIds = (List<Id>) flowRunner.getVariableValue('AccountIdList');
-
-    System.assertEquals(2, contactIds.size());
-    System.assertEquals(4, AccountIds.size());
-
-    // case 3 Incident with both cases and assets
-
-    incidents = [SELECT Id FROM Incident WHERE Subject = 'Test Incident 2'];
-
-    params.put('IncidentId', incidents.get(0).Id);
-    flowRunner = new Flow.Interview.Retrieve_Impacted_Accounts_and_Contacts_Flow(
-      params
-    );
-
-    flowRunner.start();
-
-    contactIds = (List<Id>) flowRunner.getVariableValue('ContactIdList');
-    AccountIds = (List<Id>) flowRunner.getVariableValue('AccountIdList');
-
-    System.assertEquals(3, contactIds.size());
-    System.assertEquals(4, AccountIds.size());
-
-    // case 4 Incident with no cases and no assets
-
-    incidents = [SELECT Id FROM Incident WHERE Subject = 'Test Incident 3'];
-
-    params.put('IncidentId', incidents.get(0).Id);
-    flowRunner = new Flow.Interview.Retrieve_Impacted_Accounts_and_Contacts_Flow(
-      params
-    );
-
-    flowRunner.start();
-
-    contactIds = (List<Id>) flowRunner.getVariableValue('ContactIdList');
-    AccountIds = (List<Id>) flowRunner.getVariableValue('AccountIdList');
-
-    System.assertEquals(null, contactIds);
-    System.assertEquals(null, AccountIds);
-
-    // case 5 incident with  relatedcases that has no contact or account
-
-    incidents = [SELECT Id FROM Incident WHERE Subject = 'Test Incident 4'];
-
-    params.put('IncidentId', incidents.get(0).Id);
-    flowRunner = new Flow.Interview.Retrieve_Impacted_Accounts_and_Contacts_Flow(
-      params
-    );
-
-    flowRunner.start();
-
-    contactIds = (List<Id>) flowRunner.getVariableValue('ContactIdList');
-    AccountIds = (List<Id>) flowRunner.getVariableValue('AccountIdList');
-
-    System.assertEquals(null, contactIds);
-    System.assertEquals(null, AccountIds);
-
-    //  case 6 incident with relatedAsset that has only account
-
-    incidents = [SELECT Id FROM Incident WHERE Subject = 'Test Incident 5'];
-
-    params.put('IncidentId', incidents.get(0).Id);
-    flowRunner = new Flow.Interview.Retrieve_Impacted_Accounts_and_Contacts_Flow(
-      params
-    );
-
-    flowRunner.start();
-
-    contactIds = (List<Id>) flowRunner.getVariableValue('ContactIdList');
-    AccountIds = (List<Id>) flowRunner.getVariableValue('AccountIdList');
-
-    System.assertEquals(null, contactIds);
-    System.assertEquals(1, AccountIds.size());
-
-    // case 7 incident with duplicate contacts
-
-    incidents = [SELECT Id FROM Incident WHERE Subject = 'Test Incident 6'];
-
-    params.put('IncidentId', incidents.get(0).Id);
-    flowRunner = new Flow.Interview.Retrieve_Impacted_Accounts_and_Contacts_Flow(
-      params
-    );
-
-    flowRunner.start();
-
-    contactIds = (List<Id>) flowRunner.getVariableValue('ContactIdList');
-
-    System.assertEquals(2, contactIds.size()); // duplicate contacts Assertion
+    return outputList;
   }
 }
