@@ -37,7 +37,7 @@ private class RetrieveImpactedAccountsAndContactsTest {
     for (Integer counter = 10; counter < 20; counter++) {
       Contact contact = new Contact(
         LastName = 'Test Contact ' + counter,
-        AccountId = accounts.get(Math.MOD(counter, 10) + 10).Id
+        AccountId = accounts.get(Math.mod(counter, 10) + 10).Id
       );
       contactsWithAccount.add(contact);
     }
