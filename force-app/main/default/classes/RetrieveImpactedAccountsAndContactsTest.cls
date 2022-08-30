@@ -37,7 +37,7 @@ private class RetrieveImpactedAccountsAndContactsTest {
     for (Integer counter = 10; counter < 20; counter++) {
       Contact contact = new Contact(
         LastName = 'Test Contact ' + counter,
-        AccountId = accounts.get(Math.mod(counter, 10)).Id
+        AccountId = accounts.get(Math.MOD(counter, 10) + 10).Id
       );
       contactsWithAccount.add(contact);
     }
@@ -233,13 +233,14 @@ private class RetrieveImpactedAccountsAndContactsTest {
     );
     incidentRelatedItems.add(incidentRelatedItem_5);
 
-    // incident with duplicate contacts
+    // incident with duplicate contacts and accounts - 5 records added
 
-    for (Integer counter = 0; counter < 2; counter++) {
+    for (Integer counter = 0; counter < 5; counter++) {
       Case caseRecord = new Case(
         Subject = 'Test Case ' + counter,
         Status = 'New',
-        ContactId = contacts.get(0).Id
+        ContactId = contacts.get(0).Id,
+        AccountId = accounts.get(0).Id
       );
       casesWithSameContact.add(caseRecord);
     }
@@ -276,7 +277,9 @@ private class RetrieveImpactedAccountsAndContactsTest {
       WHERE Subject = 'Test Incident 0'
     ];
 
-    List<List<Id>> outputList = executeAutolaunchedFlow(incidents.get(0).Id);
+    List<List<sObject>> outputList = executeAutolaunchedFlow(
+      incidents.get(0).Id
+    );
     System.assertEquals(2, outputList.get(0).size());
     System.assertEquals(2, outputList.get(1).size());
   }
@@ -293,7 +296,9 @@ private class RetrieveImpactedAccountsAndContactsTest {
       WHERE Subject = 'Test Incident 1'
     ];
 
-    List<List<Id>> outputList = executeAutolaunchedFlow(incidents.get(0).Id);
+    List<List<sObject>> outputList = executeAutolaunchedFlow(
+      incidents.get(0).Id
+    );
 
     System.assertEquals(2, outputList.get(0).size());
     System.assertEquals(4, outputList.get(1).size());
@@ -310,7 +315,9 @@ private class RetrieveImpactedAccountsAndContactsTest {
       FROM Incident
       WHERE Subject = 'Test Incident 2'
     ];
-    List<List<Id>> outputList = executeAutolaunchedFlow(incidents.get(0).Id);
+    List<List<sObject>> outputList = executeAutolaunchedFlow(
+      incidents.get(0).Id
+    );
 
     System.assertEquals(3, outputList.get(0).size());
     System.assertEquals(4, outputList.get(1).size());
@@ -328,9 +335,11 @@ private class RetrieveImpactedAccountsAndContactsTest {
       WHERE Subject = 'Test Incident 3'
     ];
 
-    List<List<Id>> outputList = executeAutolaunchedFlow(incidents.get(0).Id);
-    System.assertEquals(null, outputList.get(0));
-    System.assertEquals(null, outputList.get(1));
+    List<List<sObject>> outputList = executeAutolaunchedFlow(
+      incidents.get(0).Id
+    );
+    System.assertEquals(0, outputList.get(0).size());
+    System.assertEquals(0, outputList.get(1).size());
   }
 
   /**
@@ -345,9 +354,11 @@ private class RetrieveImpactedAccountsAndContactsTest {
       WHERE Subject = 'Test Incident 4'
     ];
 
-    List<List<Id>> outputList = executeAutolaunchedFlow(incidents.get(0).Id);
-    System.assertEquals(null, outputList.get(0));
-    System.assertEquals(null, outputList.get(1));
+    List<List<sObject>> outputList = executeAutolaunchedFlow(
+      incidents.get(0).Id
+    );
+    System.assertEquals(0, outputList.get(0).size());
+    System.assertEquals(0, outputList.get(1).size());
   }
 
   /**
@@ -362,14 +373,16 @@ private class RetrieveImpactedAccountsAndContactsTest {
       WHERE Subject = 'Test Incident 5'
     ];
 
-    List<List<Id>> outputList = executeAutolaunchedFlow(incidents.get(0).Id);
+    List<List<sObject>> outputList = executeAutolaunchedFlow(
+      incidents.get(0).Id
+    );
 
-    System.assertEquals(null, outputList.get(0));
+    System.assertEquals(0, outputList.get(0).size());
     System.assertEquals(1, outputList.get(1).size());
   }
 
   /**
-   *  @description  case 7 incident with duplicate contacts
+   *  @description  case 7 incident with duplicate contacts and duplicate accounts
    */
 
   @isTest
@@ -380,17 +393,20 @@ private class RetrieveImpactedAccountsAndContactsTest {
       WHERE Subject = 'Test Incident 6'
     ];
 
-    List<List<Id>> outputList = executeAutolaunchedFlow(incidents.get(0).Id);
+    List<List<sObject>> outputList = executeAutolaunchedFlow(
+      incidents.get(0).Id
+    );
 
-    System.assertEquals(2, outputList.get(0).size()); // duplicate contacts Assertion
+    System.assertEquals(1, outputList.get(0).size()); // duplicate contacts Assertion
+    System.assertEquals(1, outputList.get(1).size()); // duplicate accounts Assertion
   }
 
   /*
    *  @description  method to execute the Flow
    */
-  static List<List<Id>> executeAutolaunchedFlow(Id incidentId) {
+  static List<List<sObject>> executeAutolaunchedFlow(Id incidentId) {
     Map<String, Object> params = new Map<String, Object>();
-    List<List<Id>> outputList = new List<List<Id>>();
+    List<List<sObject>> outputList = new List<List<sObject>>();
 
     params.put('IncidentId', incidentId);
     Flow.Interview.Retrieve_Impacted_Accounts_and_Contacts_Flow flowRunner = new Flow.Interview.Retrieve_Impacted_Accounts_and_Contacts_Flow(
@@ -399,15 +415,15 @@ private class RetrieveImpactedAccountsAndContactsTest {
 
     flowRunner.start();
 
-    List<Id> contactIds = (List<Id>) flowRunner.getVariableValue(
-      'ContactIdList'
+    List<Contact> contactRecords = (List<Contact>) flowRunner.getVariableValue(
+      'ContactList'
     );
-    List<Id> accountIds = (List<Id>) flowRunner.getVariableValue(
-      'AccountIdList'
+    List<Account> accountRecords = (List<Account>) flowRunner.getVariableValue(
+      'AccountList'
     );
 
-    outputList.add(contactIds);
-    outputList.add(accountIds);
+    outputList.add(contactRecords);
+    outputList.add(accountRecords);
 
     return outputList;
   }

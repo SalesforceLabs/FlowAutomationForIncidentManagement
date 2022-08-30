@@ -69,6 +69,35 @@
             <targetReference>Loop_Over_Case_Related_Issue_Records</targetReference>
         </connector>
     </assignments>
+    <assignments>
+        <name>Assign_Accounts_to_the_AccountList</name>
+        <label>Assign Accounts to the AccountList</label>
+        <locationX>176</locationX>
+        <locationY>2294</locationY>
+        <assignmentItems>
+            <assignToReference>AccountList</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Account_Records</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Get_Contact_Records</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_Contacts_to_the_ContactList</name>
+        <label>Assign Contacts to the ContactList</label>
+        <locationX>176</locationX>
+        <locationY>2534</locationY>
+        <assignmentItems>
+            <assignToReference>ContactList</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Contact_Records</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
     <decisions>
         <description>Check if AccountId is present for Asset</description>
         <name>Check_if_AccountId_is_present_for_Asset</name>
@@ -204,6 +233,9 @@
         <nextValueConnector>
             <targetReference>Check_if_AccountId_is_present_for_Asset</targetReference>
         </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Get_Account_Records</targetReference>
+        </noMoreValuesConnector>
     </loops>
     <processMetadataValues>
         <name>BuilderType</name>
@@ -224,6 +256,28 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Get Account Records</description>
+        <name>Get_Account_Records</name>
+        <label>Get Account Records</label>
+        <locationX>176</locationX>
+        <locationY>2174</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Assign_Accounts_to_the_AccountList</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>In</operator>
+            <value>
+                <elementReference>AccountIdList</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Account</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
     <recordLookups>
         <description>Retrieve all Incident Related Items records using &apos;Get Records&apos; flow element</description>
         <name>Get_All_Incident_Related_Items_Records</name>
@@ -268,6 +322,27 @@
         <object>CaseRelatedIssue</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
+    <recordLookups>
+        <name>Get_Contact_Records</name>
+        <label>Get Contact Records</label>
+        <locationX>176</locationX>
+        <locationY>2414</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Assign_Contacts_to_the_ContactList</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>In</operator>
+            <value>
+                <elementReference>ContactIdList</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Contact</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
     <runInMode>DefaultMode</runInMode>
     <start>
         <locationX>50</locationX>
@@ -282,14 +357,30 @@
         <dataType>String</dataType>
         <isCollection>true</isCollection>
         <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>AccountList</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
         <isOutput>true</isOutput>
+        <objectType>Account</objectType>
     </variables>
     <variables>
         <name>ContactIdList</name>
         <dataType>String</dataType>
         <isCollection>true</isCollection>
         <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>ContactList</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
         <isOutput>true</isOutput>
+        <objectType>Contact</objectType>
     </variables>
     <variables>
         <name>IncidentId</name>
