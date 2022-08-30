@@ -338,8 +338,8 @@ private class RetrieveImpactedAccountsAndContactsTest {
     List<List<sObject>> outputList = executeAutolaunchedFlow(
       incidents.get(0).Id
     );
-    System.assertEquals(0, outputList.get(0).size());
-    System.assertEquals(0, outputList.get(1).size());
+    System.assertEquals(null, outputList.get(0));
+    System.assertEquals(null, outputList.get(1));
   }
 
   /**
@@ -357,8 +357,8 @@ private class RetrieveImpactedAccountsAndContactsTest {
     List<List<sObject>> outputList = executeAutolaunchedFlow(
       incidents.get(0).Id
     );
-    System.assertEquals(0, outputList.get(0).size());
-    System.assertEquals(0, outputList.get(1).size());
+    System.assertEquals(null, outputList.get(0));
+    System.assertEquals(null, outputList.get(1));
   }
 
   /**
@@ -377,7 +377,7 @@ private class RetrieveImpactedAccountsAndContactsTest {
       incidents.get(0).Id
     );
 
-    System.assertEquals(0, outputList.get(0).size());
+    System.assertEquals(null, outputList.get(0));
     System.assertEquals(1, outputList.get(1).size());
   }
 
@@ -403,6 +403,8 @@ private class RetrieveImpactedAccountsAndContactsTest {
 
   /*
    *  @description  method to execute the Flow
+   *  @param incidentId (Id): Id of the Incident
+   *  @return List<List<sObject>>: List of List<Contact> and List<Account>
    */
   static List<List<sObject>> executeAutolaunchedFlow(Id incidentId) {
     Map<String, Object> params = new Map<String, Object>();
