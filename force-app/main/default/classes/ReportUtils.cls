@@ -1,9 +1,9 @@
 /**
- @description Test class for ReportDataRetriever Class
+ @description Class containing the logic to extract the RecordIds from Report
  */
 public class ReportUtils {
   /**
-   * @description  method to get the record Ids from Report
+   * @description  method to get the RecordIds from Report
    * @param reportId (Id): Id of the Report
    * @return Set<Id>: Set containing Ids of the records present in the Report
    */
