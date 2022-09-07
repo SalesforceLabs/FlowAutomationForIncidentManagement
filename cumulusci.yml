@@ -19,6 +19,13 @@ tasks:
         options:
             path: robot/AIM/tests
             output: robot/AIM/doc/AIM_tests.html
+    
+    populate_data:
+        description: populate project related data in the org
+        class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
+        options:
+            path: scripts/populateData.cls
+            apex: populateData();
 
     run_tests:
         options:
