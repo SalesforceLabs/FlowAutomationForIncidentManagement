@@ -11,10 +11,10 @@ public class ReportDataRetrieverTest {
   static void getRecordIdsFromReport_1() {
     Case caseRecord = new Case();
     insert caseRecord;
-    List<String> developerNameList = new List<String>();
-    developerNameList.add('New_Cases_Report_nxP'); // cases report
+    List<String> developerNames = new List<String>();
+    developerNames.add('New_Cases_Report_nxP'); // cases report
     List<List<Id>> idList = ReportDataRetriever.retrieveRecordCollection(
-      developerNameList
+      developerNames
     );
     //System.AssertEquals(1, idList.get(0).size());
   }
@@ -24,10 +24,10 @@ public class ReportDataRetrieverTest {
    */
   @isTest(SeeAllData='true')
   static void getRecordIdsFromReport_2() {
-    List<String> developerNameList = new List<String>();
-    developerNameList.add('xNew_Cases_Report_nxPx');
+    List<String> developerNames = new List<String>();
+    developerNames.add('Test_Report');
     List<List<Id>> idList = ReportDataRetriever.retrieveRecordCollection(
-      developerNameList
+      developerNames
     );
     System.AssertEquals(null, idList);
   }
@@ -44,10 +44,10 @@ public class ReportDataRetrieverTest {
       AccountId = accountRecord.Id
     );
     insert assetRecord;
-    List<String> developerNameList = new List<String>();
-    developerNameList.add('New_Assets_Report_0Y1'); // asset report
+    List<String> developerNames = new List<String>();
+    developerNames.add('New_Assets_Report_0Y1'); // asset report
     List<List<Id>> idList = ReportDataRetriever.retrieveRecordCollection(
-      developerNameList
+      developerNames
     );
     //System.AssertEquals(1, idList.get(0).size());
   }

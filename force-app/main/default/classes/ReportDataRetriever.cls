@@ -8,12 +8,12 @@ public class ReportDataRetriever {
   ) {
     List<List<Id>> idList = new List<List<Id>>();
 
-    String devName = developerNames.get(0);
+    String developerName = developerNames.get(0);
 
     List<Report> reportList = [
       SELECT Id, DeveloperName
       FROM Report
-      WHERE DeveloperName = :devName
+      WHERE DeveloperName = :developerName
       LIMIT 1
     ];
 
