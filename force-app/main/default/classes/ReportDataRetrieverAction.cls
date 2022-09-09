@@ -17,7 +17,6 @@ public with sharing class ReportDataRetrieverAction {
     List<List<Id>> recordIds = new List<List<Id>>();
 
     if (developerNames != null && !developerNames.isEmpty()) {
-
       String developerName = developerNames.get(0);
 
       List<Report> reports = [
@@ -30,11 +29,9 @@ public with sharing class ReportDataRetrieverAction {
         Set<Id> uniqueRecordIds = ReportDataExtractionHandler.getRecordIds(
           reports.get(0).Id
         );
-    
-          recordIds.add(new List<Id>(uniqueRecordIds));
-      
-        }
-      
+
+        recordIds.add(new List<Id>(uniqueRecordIds));
+      }
     }
 
     return recordIds;

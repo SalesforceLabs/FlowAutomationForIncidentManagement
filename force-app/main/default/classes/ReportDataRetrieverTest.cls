@@ -32,7 +32,7 @@ public class ReportDataRetrieverTest {
     List<List<Id>> idList = ReportDataRetrieverAction.retrieveRecordIdsFromReport(
       developerNames
     );
-  //  System.AssertEquals(null, idList);
+    //  System.AssertEquals(null, idList);
   }
 
   /**
@@ -54,6 +54,6 @@ public class ReportDataRetrieverTest {
     List<List<Id>> idList = ReportDataRetrieverAction.retrieveRecordIdsFromReport(
       developerNames
     );
-   // System.AssertEquals(null, idList);
+    // System.AssertEquals(null, idList);
   }
 }
