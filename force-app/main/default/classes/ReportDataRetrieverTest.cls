@@ -1,6 +1,9 @@
 /**
  @description Test class for ReportDataRetriever Class
- TODO: test data not picked up in the report , currently under investigation
+ Issue :
+ Test data created in the Apex test class is not picked by the Report when the test runs
+ TODO :
+ Test class will be modified once we hear back from the Analytics team regarding the issue and hence out of scope for review in the PR. The two reports will be deleted from the PR once we have an actual sample report and the data issue is resolved.
  */
 @isTest
 @SuppressWarnings('PMD')
