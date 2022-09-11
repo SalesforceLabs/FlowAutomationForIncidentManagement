@@ -21,8 +21,6 @@ public with sharing class ReportDataExtractionHandler {
     } else {
       return getDataFromUngroupedReport(results);
     }
-
-    return new Set<Id>();
   }
 
   /**
