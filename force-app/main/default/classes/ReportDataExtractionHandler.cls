@@ -18,7 +18,7 @@ public with sharing class ReportDataExtractionHandler {
     // size is not zero means it is a grouped report
     if (size != 0) {
       return getDataFromGroupedReport(results);
-    } else if (size == 0) {
+    } else {
       return getDataFromUngroupedReport(results);
     }
 
