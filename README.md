@@ -15,7 +15,7 @@ For complete setup steps, please go through [this doc](https://salesforce.quip.c
 * Run `sfdx force:auth:web:login --setdefaultdevhubusername --setalias Lab1449DevHub` to connect to your dev hub(use your Lab1449 devhub username to log in). This will link your Lab1449 devhub. Run `cci service connect devhub Lab1449DevHub` and give `Lab1449DevHub` as an alias to connect with CCI.
 * Create a scratch dev org `cci org info dev`
 * Set it as default `cci org default dev`
-* Push the existing code to your dev org `cci task run dx_push` (Will create a flow to automatically do this in the future)
+* Push the existing metadata to your dev org `cci flow run dev_org --org dev`
 * Open dev org `cci org browser dev`
 * Retrieve changes in your org cci task run retrieve_changes --org dev to your local repository.
 * run pmd `./pmdRunner.sh`
