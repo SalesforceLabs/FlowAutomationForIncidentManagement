@@ -74,7 +74,8 @@ public with sharing class ReportDataExtractionHandler {
 
     for (integer i = 0; i < dimensions.getGroupings().size(); i++) {
       Reports.GroupingValue groupingValue = dimensions.getGroupings()[i];
-      uniqueRecordIds.add((Id) groupingValue.getValue());
+
+      uniqueRecordIds.add((Id) groupingValue.getLabel());
     }
 
     return uniqueRecordIds;
