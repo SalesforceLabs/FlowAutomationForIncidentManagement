@@ -25,35 +25,28 @@ public with sharing class ReportDataExtractionHandler {
 
   /**
    * @description   Get data from Ungrouped Tabular Report
-   * Report not grouped on any field and Id is present in the first column
-   * System will throw exception if it is not able to convert the data to Id and the caller need to handle the exception
+   * Report not grouped on any field and primary field is present in the first column
    * @param results (Reports.reportResults): Result of Report
    * @return Set<Id>: Set containing Ids of the records present in the Report
+   * @throws AIMReportRetrievalException Exception : Exception thrown if the first column of the report is not primary field.
+   * getValue() method is used since the value of the primary field is Id in the Report results
    */
+
   private static Set<Id> getDataFromUngroupedReport(
     Reports.reportResults results
   ) {
     Set<Id> uniqueRecordIds = new Set<Id>();
-    List<String> header = new List<String>();
 
-    // Access column Names of the Report
-    for (String columnName : results.getReportMetadata().getDetailColumns()) {
-      String label = results.getReportExtendedMetadata()
-        .getDetailColumnInfo()
-        .get(columnName)
-        .getLabel();
-      header.add(label);
-    }
+    Reports.ReportFactWithDetails factWithDetails = (Reports.ReportFactWithDetails) results.getFactMap()
+      .get('T!T');
 
-    if (header.get(0).contains(' ID')) {
-      // Id is present in first column
-
-      Reports.ReportFactWithDetails factWithDetails = (Reports.ReportFactWithDetails) results.getFactMap()
-        .get('T!T');
-
-      for (Reports.ReportDetailRow row : factWithDetails.getRows()) {
-        Id value = (Id) row.getDataCells().get(0).getLabel();
-        uniqueRecordIds.add(value);
+    for (Reports.ReportDetailRow row : factWithDetails.getRows()) {
+      if ((row.getDataCells().get(0).getValue() instanceof Id)) {
+        uniqueRecordIds.add((Id) row.getDataCells().get(0).getValue());
+      } else {
+        throw new AIMReportRetrievalException(
+          'Primary field is not present in the first column of the Report'
+        );
       }
     }
     return uniqueRecordIds;
@@ -61,9 +54,11 @@ public with sharing class ReportDataExtractionHandler {
 
   /**
    * @description  Get data from Tabular Report grouped on Id
-   * System will throw exception if it is not able to convert the data to Id and the caller need to handle the exception
    * @param results (Reports.reportResults): Result of Report
-   * @return Set<Id>: Set containing Ids of the records present in the Report
+   * @return Set<Id>: Set containing Ids on which the Report is grouped
+   * @throws AIMReportRetrievalException Exception : Exception thrown if the first column of the report is not Id.
+   * getLabel() method is used since the label and value for the Id field is same.
+   * Fields which are of not Id type will not have label and value as same in Report results
    */
   private static Set<Id> getDataFromGroupedReport(
     Reports.reportResults results
@@ -75,7 +70,13 @@ public with sharing class ReportDataExtractionHandler {
     for (integer i = 0; i < dimensions.getGroupings().size(); i++) {
       Reports.GroupingValue groupingValue = dimensions.getGroupings()[i];
 
-      uniqueRecordIds.add((Id) groupingValue.getLabel());
+      if (groupingValue.getLabel() instanceof Id) {
+        uniqueRecordIds.add((Id) groupingValue.getLabel());
+      } else {
+        throw new AIMReportRetrievalException(
+          'Invalid Grouping : Report need to be grouped only on Id'
+        );
+      }
     }
 
     return uniqueRecordIds;

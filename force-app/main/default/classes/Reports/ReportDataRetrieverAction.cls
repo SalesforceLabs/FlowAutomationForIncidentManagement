@@ -16,22 +16,31 @@ public with sharing class ReportDataRetrieverAction {
   ) {
     List<List<Id>> recordIds = new List<List<Id>>();
 
-    if (developerNames != null && !developerNames.isEmpty()) {
-      String developerName = developerNames.get(0);
+    if (
+      developerNames == null ||
+      developerNames.isEmpty() ||
+      developerNames.get(0) == null ||
+      String.isEmpty(developerNames.get(0))
+    ) {
+      throw new AIMInvalidInputException(
+        'Developer name of the Report cannot be null or empty'
+      );
+    }
 
-      List<Report> reports = [
-        SELECT Id
-        FROM Report
-        WHERE DeveloperName = :developerName
-        LIMIT 1
-      ];
-      if (!reports.isEmpty()) {
-        Set<Id> uniqueRecordIds = ReportDataExtractionHandler.getRecordIds(
-          reports.get(0).Id
-        );
+    String developerName = developerNames.get(0);
 
-        recordIds.add(new List<Id>(uniqueRecordIds));
-      }
+    List<Report> reports = [
+      SELECT Id
+      FROM Report
+      WHERE DeveloperName = :developerName
+      LIMIT 1
+    ];
+    if (!reports.isEmpty()) {
+      Set<Id> uniqueRecordIds = ReportDataExtractionHandler.getRecordIds(
+        reports.get(0).Id
+      );
+
+      recordIds.add(new List<Id>(uniqueRecordIds));
     }
 
     return recordIds;
