@@ -6,6 +6,7 @@ public with sharing class ReportDataRetrieverAction {
    * @description  Retrieve RecordIds from Report
    * @param developerNames (List<String>):List containing the DeveloperName of the Report
    * @return List<List<Id>>: List of List containing the Id of the records present in the Report
+   * @throws  AIMInvalidInputException : Exception thrown if the developer name is null or empty.
    */
   @InvocableMethod(
     label='Retrieve RecordIds from Report'
