@@ -11,6 +11,7 @@ public with sharing class ReportDataRetrieverAction {
   @InvocableMethod(
     label='Retrieve RecordIds from Report'
     description='Returns the Id of the records present in the Report'
+    category='AIM'
   )
   public static List<List<Id>> retrieveRecordIdsFromReport(
     List<String> developerNames
@@ -23,7 +24,7 @@ public with sharing class ReportDataRetrieverAction {
       developerNames.get(0) == null ||
       String.isEmpty(developerNames.get(0))
     ) {
-      throw new AIMInvalidInputException(
+      throw new AIMBaseException.AIMInvalidInputException(
         'Developer name of the Report cannot be null or empty'
       );
     }

@@ -41,10 +41,10 @@ public with sharing class ReportDataExtractionHandler {
       .get('T!T');
 
     for (Reports.ReportDetailRow row : factWithDetails.getRows()) {
-      if ((row.getDataCells().get(0).getValue() instanceof Id)) {
+      if (row.getDataCells().get(0).getValue() instanceof Id) {
         uniqueRecordIds.add((Id) row.getDataCells().get(0).getValue());
       } else {
-        throw new AIMReportRetrievalException(
+        throw new AIMBaseException.AIMReportRetrievalException(
           'Primary field is not present in the first column of the Report'
         );
       }
@@ -73,7 +73,7 @@ public with sharing class ReportDataExtractionHandler {
       if (groupingValue.getLabel() instanceof Id) {
         uniqueRecordIds.add((Id) groupingValue.getLabel());
       } else {
-        throw new AIMReportRetrievalException(
+        throw new AIMBaseException.AIMReportRetrievalException(
           'Invalid Grouping : Report need to be grouped only on Id'
         );
       }
