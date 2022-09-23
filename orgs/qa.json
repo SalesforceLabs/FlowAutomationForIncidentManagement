@@ -1,6 +1,6 @@
 {
-  "orgName": "AIM - Dev Org",
-  "edition": "Developer",
+  "orgName": "AIM - QA Org",
+  "edition": "Enterprise",
   "instance":"gs0",
   "features": [
     "API",
@@ -9,10 +9,7 @@
     "Chatbot",
     "ServiceCloud",
     "ServiceUser",
-    "Sites",
-    "Knowledge",
-    "Entitlements",
-    "LiveMessage"
+    "Sites"
   ],
   "settings": {
     "lightningExperienceSettings": {
@@ -32,15 +29,7 @@
     },
     "languageSettings": {
       "enableTranslationWorkbench": true
-    },
-    "botSettings": {
-      "enableBots": true
-    },
-    "knowledgeSettings": {
-      "enableKnowledge": true
-    },
-    "communitiesSettings": {
-      "enableNetworksEnabled": true
     }
+    
   }
 }
