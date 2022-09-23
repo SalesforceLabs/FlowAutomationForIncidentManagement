@@ -339,39 +339,6 @@
             <fieldText>&lt;p&gt;&lt;span style=&quot;font-size: 22px;&quot;&gt;Select a flow to Schedule&lt;/span&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
-        <fields>
-            <name>dgflow</name>
-            <dataTypeMappings>
-                <typeName>T</typeName>
-                <typeValue>FlowDefinitionView</typeValue>
-            </dataTypeMappings>
-            <extensionName>c:aim_Datatable</extensionName>
-            <fieldType>ComponentInstance</fieldType>
-            <inputParameters>
-                <name>tableData</name>
-                <value>
-                    <elementReference>Get_All_Active_Flows</elementReference>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>fieldList</name>
-                <value>
-                    <stringValue>Label,Description,NamespacePrefix,VersionNumber</stringValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>maxSelection</name>
-                <value>
-                    <numberValue>1.0</numberValue>
-                </value>
-            </inputParameters>
-            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
-            <isRequired>true</isRequired>
-            <outputParameters>
-                <assignToReference>SelectedFlow</assignToReference>
-                <name>firstSelected</name>
-            </outputParameters>
-        </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
     </screens>

@@ -1306,36 +1306,6 @@
             <fieldType>DisplayText</fieldType>
         </fields>
         <fields>
-            <name>DisplayDupeIncidents</name>
-            <dataTypeMappings>
-                <typeName>T</typeName>
-                <typeValue>Incident</typeValue>
-            </dataTypeMappings>
-            <extensionName>c:aim_Datatable</extensionName>
-            <fieldType>ComponentInstance</fieldType>
-            <inputParameters>
-                <name>tableData</name>
-                <value>
-                    <elementReference>MergeIncidents</elementReference>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>fieldList</name>
-                <value>
-                    <stringValue>Subject,Category,Status,CreatedDate</stringValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>maxSelection</name>
-                <value>
-                    <numberValue>0.0</numberValue>
-                </value>
-            </inputParameters>
-            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
-            <isRequired>true</isRequired>
-            <storeOutputAutomatically>true</storeOutputAutomatically>
-        </fields>
-        <fields>
             <name>merge_action</name>
             <choiceReferences>AddMerge</choiceReferences>
             <choiceReferences>manualmergeadd</choiceReferences>
@@ -1382,39 +1352,6 @@
             <name>removeIncidentsText</name>
             <fieldText>&lt;p&gt;Deselect any incidents to remove from the collection&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
-        </fields>
-        <fields>
-            <name>removeIncidentsDT</name>
-            <dataTypeMappings>
-                <typeName>T</typeName>
-                <typeValue>Incident</typeValue>
-            </dataTypeMappings>
-            <extensionName>c:aim_Datatable</extensionName>
-            <fieldType>ComponentInstance</fieldType>
-            <inputParameters>
-                <name>tableData</name>
-                <value>
-                    <elementReference>MergeIncidents</elementReference>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>fieldList</name>
-                <value>
-                    <stringValue>Subject,Category,Status,CreatedDate</stringValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>selectedRows</name>
-                <value>
-                    <elementReference>MergeIncidents</elementReference>
-                </value>
-            </inputParameters>
-            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
-            <isRequired>true</isRequired>
-            <outputParameters>
-                <assignToReference>MergeIncidents</assignToReference>
-                <name>selectedRows</name>
-            </outputParameters>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
