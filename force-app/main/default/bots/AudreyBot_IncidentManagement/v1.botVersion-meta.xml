@@ -88,6 +88,7 @@
             <type>Navigation</type>
         </botSteps>
         <developerName>Welcome</developerName>
+        <isPlaceholderDialog>false</isPlaceholderDialog>
         <label>Welcome</label>
         <showInFooterMenu>false</showInFooterMenu>
     </botDialogs>
@@ -114,6 +115,7 @@
             <type>Navigation</type>
         </botSteps>
         <developerName>Main_Menu</developerName>
+        <isPlaceholderDialog>false</isPlaceholderDialog>
         <label>Main Menu</label>
         <showInFooterMenu>false</showInFooterMenu>
     </botDialogs>
@@ -131,6 +133,7 @@
             <type>Wait</type>
         </botSteps>
         <developerName>End_Chat</developerName>
+        <isPlaceholderDialog>false</isPlaceholderDialog>
         <label>End Chat</label>
         <showInFooterMenu>false</showInFooterMenu>
     </botDialogs>
@@ -148,6 +151,7 @@
             <type>Wait</type>
         </botSteps>
         <developerName>Confused</developerName>
+        <isPlaceholderDialog>false</isPlaceholderDialog>
         <label>Confused</label>
         <showInFooterMenu>false</showInFooterMenu>
     </botDialogs>
@@ -165,6 +169,7 @@
             <type>Wait</type>
         </botSteps>
         <developerName>No_Agent_Available</developerName>
+        <isPlaceholderDialog>false</isPlaceholderDialog>
         <label>No Agent</label>
         <showInFooterMenu>false</showInFooterMenu>
     </botDialogs>
@@ -188,6 +193,7 @@
             <type>Navigation</type>
         </botSteps>
         <developerName>Rich_Content_Error_Handling</developerName>
+        <isPlaceholderDialog>false</isPlaceholderDialog>
         <label>Error Handler</label>
         <showInFooterMenu>false</showInFooterMenu>
     </botDialogs>
@@ -244,6 +250,7 @@
             <type>Wait</type>
         </botSteps>
         <developerName>Incident_Active</developerName>
+        <isPlaceholderDialog>false</isPlaceholderDialog>
         <label>Incident Active</label>
         <showInFooterMenu>false</showInFooterMenu>
     </botDialogs>
@@ -261,6 +268,7 @@
             <type>Wait</type>
         </botSteps>
         <developerName>No_Incidents</developerName>
+        <isPlaceholderDialog>false</isPlaceholderDialog>
         <label>No Incidents</label>
         <showInFooterMenu>false</showInFooterMenu>
     </botDialogs>
@@ -429,6 +437,7 @@ Case Number: {!Case.CaseNumber}</message>
             <type>Navigation</type>
         </botSteps>
         <developerName>Create_a_Case</developerName>
+        <isPlaceholderDialog>false</isPlaceholderDialog>
         <label>Create a Case</label>
         <showInFooterMenu>false</showInFooterMenu>
     </botDialogs>
@@ -487,6 +496,7 @@ Case Number: {!Case.CaseNumber}</message>
             <type>Wait</type>
         </botSteps>
         <developerName>Get_Contact</developerName>
+        <isPlaceholderDialog>false</isPlaceholderDialog>
         <label>Get Contact</label>
         <showInFooterMenu>false</showInFooterMenu>
     </botDialogs>
@@ -581,6 +591,7 @@ Case Number: {!Case.CaseNumber}</message>
             <type>Wait</type>
         </botSteps>
         <developerName>Get_Contact_by_Email</developerName>
+        <isPlaceholderDialog>false</isPlaceholderDialog>
         <label>Get Contact by Email</label>
         <showInFooterMenu>false</showInFooterMenu>
     </botDialogs>
@@ -590,6 +601,7 @@ Case Number: {!Case.CaseNumber}</message>
             <type>Wait</type>
         </botSteps>
         <developerName>Chat_with_an_Agent</developerName>
+        <isPlaceholderDialog>false</isPlaceholderDialog>
         <label>Chat with an Agent</label>
         <showInFooterMenu>false</showInFooterMenu>
     </botDialogs>

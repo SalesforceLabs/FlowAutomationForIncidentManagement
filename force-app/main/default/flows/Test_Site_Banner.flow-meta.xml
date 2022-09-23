@@ -290,7 +290,6 @@
         <connector>
             <targetReference>Create_BC</targetReference>
         </connector>
-        <filterLogic>and</filterLogic>
         <getFirstRecordOnly>false</getFirstRecordOnly>
         <object>BroadcastTopicNetwork</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>

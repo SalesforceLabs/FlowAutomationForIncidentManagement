@@ -132,6 +132,7 @@
             </inputParameters>
             <label>Set Closure Milestone</label>
             <requiresAsyncProcessing>false</requiresAsyncProcessing>
+            <stepSubtype>BackgroundStep</stepSubtype>
         </stageSteps>
     </orchestratedStages>
     <orchestratedStages>
@@ -189,6 +190,7 @@
             </inputParameters>
             <label>Flow - First Response</label>
             <requiresAsyncProcessing>false</requiresAsyncProcessing>
+            <stepSubtype>InteractiveStep</stepSubtype>
         </stageSteps>
         <stageSteps>
             <name>Update_First_Response_Milestone</name>
@@ -222,6 +224,7 @@
             </inputParameters>
             <label>Update First Response Milestone</label>
             <requiresAsyncProcessing>false</requiresAsyncProcessing>
+            <stepSubtype>BackgroundStep</stepSubtype>
         </stageSteps>
         <stageSteps>
             <name>Update_Status_to_Open</name>
@@ -255,6 +258,7 @@
             </inputParameters>
             <label>Update Status to Open</label>
             <requiresAsyncProcessing>false</requiresAsyncProcessing>
+            <stepSubtype>BackgroundStep</stepSubtype>
         </stageSteps>
     </orchestratedStages>
     <orchestratedStages>
@@ -312,6 +316,7 @@
             </inputParameters>
             <label>Flow - Notification</label>
             <requiresAsyncProcessing>false</requiresAsyncProcessing>
+            <stepSubtype>InteractiveStep</stepSubtype>
         </stageSteps>
         <stageSteps>
             <name>Update_Notification_Milestone</name>
@@ -345,6 +350,7 @@
             </inputParameters>
             <label>Update Notification Milestone</label>
             <requiresAsyncProcessing>false</requiresAsyncProcessing>
+            <stepSubtype>BackgroundStep</stepSubtype>
         </stageSteps>
         <stageSteps>
             <name>Update_Investigation_Milestone</name>
@@ -371,6 +377,7 @@
             </inputParameters>
             <label>Update Investigation Milestone</label>
             <requiresAsyncProcessing>false</requiresAsyncProcessing>
+            <stepSubtype>BackgroundStep</stepSubtype>
         </stageSteps>
     </orchestratedStages>
     <orchestratedStages>
@@ -428,6 +435,7 @@
             </inputParameters>
             <label>Flow - Qualification</label>
             <requiresAsyncProcessing>false</requiresAsyncProcessing>
+            <stepSubtype>InteractiveStep</stepSubtype>
         </stageSteps>
         <stageSteps>
             <name>Update_Qualification_Milestone</name>
@@ -461,6 +469,7 @@
             </inputParameters>
             <label>Update Qualification Milestone</label>
             <requiresAsyncProcessing>false</requiresAsyncProcessing>
+            <stepSubtype>BackgroundStep</stepSubtype>
         </stageSteps>
         <stageSteps>
             <name>Update_Status_to_In_Progress</name>
@@ -494,6 +503,7 @@
             </inputParameters>
             <label>Update Status to In Progress</label>
             <requiresAsyncProcessing>false</requiresAsyncProcessing>
+            <stepSubtype>BackgroundStep</stepSubtype>
         </stageSteps>
     </orchestratedStages>
     <orchestratedStages>
@@ -518,6 +528,7 @@
             </inputParameters>
             <label>Get Incident Status</label>
             <requiresAsyncProcessing>false</requiresAsyncProcessing>
+            <stepSubtype>BackgroundStep</stepSubtype>
         </stageSteps>
     </orchestratedStages>
     <orchestratedStages>
@@ -575,6 +586,7 @@
             </inputParameters>
             <label>Flow - Completion</label>
             <requiresAsyncProcessing>false</requiresAsyncProcessing>
+            <stepSubtype>InteractiveStep</stepSubtype>
         </stageSteps>
     </orchestratedStages>
     <processMetadataValues>
