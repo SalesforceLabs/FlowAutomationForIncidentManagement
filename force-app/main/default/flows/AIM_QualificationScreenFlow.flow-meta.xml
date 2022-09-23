@@ -982,7 +982,6 @@
         <queriedFields>FolderName</queriedFields>
         <queriedFields>DeveloperName</queriedFields>
         <queriedFields>Name</queriedFields>
-        <queriedFields>ReportTypeApiName</queriedFields>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordUpdates>
