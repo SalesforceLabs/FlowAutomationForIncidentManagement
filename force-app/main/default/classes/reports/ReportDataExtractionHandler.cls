@@ -45,7 +45,7 @@ public with sharing class ReportDataExtractionHandler {
         uniqueRecordIds.add((Id) row.getDataCells().get(0).getValue());
       } else {
         throw new AIMBaseException.AIMReportRetrievalException(
-          'Primary field is not present in the first column of the Report'
+          System.Label.AIM_Report_Retrieval_Exception
         );
       }
     }
@@ -74,7 +74,7 @@ public with sharing class ReportDataExtractionHandler {
         uniqueRecordIds.add((Id) groupingValue.getLabel());
       } else {
         throw new AIMBaseException.AIMReportRetrievalException(
-          'Invalid Grouping : Report need to be grouped only on Id'
+          System.Label.AIM_Report_Format_Exception
         );
       }
     }

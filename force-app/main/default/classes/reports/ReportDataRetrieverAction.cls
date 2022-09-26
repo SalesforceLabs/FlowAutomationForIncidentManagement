@@ -25,7 +25,7 @@ public with sharing class ReportDataRetrieverAction {
       String.isEmpty(developerNames.get(0))
     ) {
       throw new AIMBaseException.AIMInvalidInputException(
-        'Developer name of the Report cannot be null or empty'
+        System.Label.AIM_Report_Null_Exception
       );
     }
 

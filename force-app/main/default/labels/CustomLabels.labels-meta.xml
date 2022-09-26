@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>AIM_Matching_Logic_Invalid_Input_Exception</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Matching Logic Invalid Input Exception</shortDescription>
+        <value>Null or Empty input parameter passed.</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Report_Format_Exception</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Report Format Exception</shortDescription>
+        <value>Invalid Grouping : Report needs to be grouped only on Id</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Report_Null_Exception</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Report Null Exception</shortDescription>
+        <value>Developer name of the Report cannot be Null or Empty.</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Report_Retrieval_Exception</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Report Retrieval Exception</shortDescription>
+        <value>Primary field is not present in the first column of the Report</value>
+    </labels>
+</CustomLabels>
