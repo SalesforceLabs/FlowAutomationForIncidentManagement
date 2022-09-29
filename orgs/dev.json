@@ -9,7 +9,8 @@
     "Chatbot",
     "ServiceCloud",
     "ServiceUser",
-    "Sites"
+    "Sites",
+    "LiveMessage"
   ],
   "settings": {
     "lightningExperienceSettings": {
