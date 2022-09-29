@@ -133,7 +133,7 @@
     <assignments>
         <name>Assign_Fault_Vals</name>
         <label>Assign Fault Vals</label>
-        <locationX>1234</locationX>
+        <locationX>1498</locationX>
         <locationY>398</locationY>
         <assignmentItems>
             <assignToReference>errorText</assignToReference>
@@ -402,6 +402,10 @@
         <connector>
             <targetReference>AssignMEU_Vars</targetReference>
         </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Assign_Fault_Vals</targetReference>
+        </faultConnector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>ContactId</field>
@@ -480,7 +484,7 @@
     <screens>
         <name>Error_Screen</name>
         <label>Error Screen</label>
-        <locationX>1234</locationX>
+        <locationX>1498</locationX>
         <locationY>518</locationY>
         <allowBack>true</allowBack>
         <allowFinish>false</allowFinish>
