@@ -2,26 +2,27 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>55.0</apiVersion>
     <assignments>
-        <name>Assign_Output_Variables</name>
-        <label>Assign Output Variables</label>
-        <locationX>402</locationX>
-        <locationY>2126</locationY>
+        <name>Assign_Exception</name>
+        <label>Assign Error</label>
+        <locationX>1282</locationX>
+        <locationY>2342</locationY>
         <assignmentItems>
-            <assignToReference>IncidentStatus</assignToReference>
+            <assignToReference>errorText</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>Get_Incident.Status</elementReference>
+                <elementReference>$Flow.FaultMessage</elementReference>
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>screenCompleted</targetReference>
+            <isGoTo>true</isGoTo>
+            <targetReference>Error_Screen</targetReference>
         </connector>
     </assignments>
     <assignments>
         <name>Assign_Variables</name>
         <label>Assign Variables</label>
-        <locationX>402</locationX>
-        <locationY>638</locationY>
+        <locationX>930</locationX>
+        <locationY>878</locationY>
         <assignmentItems>
             <assignToReference>caseCount</assignToReference>
             <operator>AssignCount</operator>
@@ -37,10 +38,17 @@
             </value>
         </assignmentItems>
         <assignmentItems>
-            <assignToReference>IncidentStatus</assignToReference>
-            <operator>Assign</operator>
+            <assignToReference>contactCount</assignToReference>
+            <operator>AssignCount</operator>
             <value>
-                <elementReference>Get_Incident.Status</elementReference>
+                <elementReference>impactedContacts</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>accountCount</assignToReference>
+            <operator>AssignCount</operator>
+            <value>
+                <elementReference>impactedAccounts</elementReference>
             </value>
         </assignmentItems>
         <connector>
@@ -48,10 +56,26 @@
         </connector>
     </assignments>
     <assignments>
+        <name>Incident_Not_Found</name>
+        <label>Incident Not Found</label>
+        <locationX>50</locationX>
+        <locationY>278</locationY>
+        <assignmentItems>
+            <assignToReference>errorText</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Incident not found</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Error_Screen</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <name>Update_Incident_Status_to_Closed</name>
         <label>Update Incident Status to Closed</label>
-        <locationX>446</locationX>
-        <locationY>1790</locationY>
+        <locationX>842</locationX>
+        <locationY>2102</locationY>
         <assignmentItems>
             <assignToReference>Get_Incident.Status</assignToReference>
             <operator>Assign</operator>
@@ -59,31 +83,8 @@
                 <stringValue>Closed</stringValue>
             </value>
         </assignmentItems>
-        <assignmentItems>
-            <assignToReference>completionText</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue>Incident status updated to &quot;Closed&quot;.</stringValue>
-            </value>
-        </assignmentItems>
         <connector>
             <targetReference>Update_Incident</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Update_Incident_Status_to_Open</name>
-        <label>Update Incident Status to Open</label>
-        <locationX>50</locationX>
-        <locationY>998</locationY>
-        <assignmentItems>
-            <assignToReference>Get_Incident.Status</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue>Open</stringValue>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Assign_Output_Variables</targetReference>
         </connector>
     </assignments>
     <choices>
@@ -119,10 +120,35 @@
         </value>
     </choices>
     <decisions>
+        <name>Check_If_Incident_Is_Null</name>
+        <label>Check If Incident Is Null</label>
+        <locationX>490</locationX>
+        <locationY>158</locationY>
+        <defaultConnector>
+            <targetReference>Get_Incident</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Incident is Not Null</defaultConnectorLabel>
+        <rules>
+            <name>Incident_Is_Null</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>incidentId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Incident_Not_Found</targetReference>
+            </connector>
+            <label>Incident Is Null</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>decDelete_Cases</name>
         <label>Delete Cases?</label>
-        <locationX>446</locationX>
-        <locationY>1118</locationY>
+        <locationX>842</locationX>
+        <locationY>1358</locationY>
         <defaultConnector>
             <targetReference>decRemove_Assets</targetReference>
         </defaultConnector>
@@ -153,8 +179,8 @@
     <decisions>
         <name>decRemove_Assets</name>
         <label>Remove Assets?</label>
-        <locationX>446</locationX>
-        <locationY>1454</locationY>
+        <locationX>842</locationX>
+        <locationY>1730</locationY>
         <defaultConnector>
             <targetReference>Update_Incident_Status_to_Closed</targetReference>
         </defaultConnector>
@@ -185,9 +211,10 @@
     <decisions>
         <name>Valid_Incident</name>
         <label>Valid Incident?</label>
-        <locationX>402</locationX>
-        <locationY>878</locationY>
+        <locationX>930</locationX>
+        <locationY>1118</locationY>
         <defaultConnector>
+            <isGoTo>true</isGoTo>
             <targetReference>Error_Screen</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
@@ -202,7 +229,8 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Update_Incident_Status_to_Open</targetReference>
+                <isGoTo>true</isGoTo>
+                <targetReference>screenCompleted</targetReference>
             </connector>
             <label>Valid</label>
         </rules>
@@ -249,32 +277,44 @@
     <recordDeletes>
         <name>Delete_Cases</name>
         <label>Delete Cases</label>
-        <locationX>314</locationX>
-        <locationY>1238</locationY>
+        <locationX>578</locationX>
+        <locationY>1478</locationY>
         <connector>
             <targetReference>decRemove_Assets</targetReference>
         </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Assign_Exception</targetReference>
+        </faultConnector>
         <inputReference>Get_Related_Cases</inputReference>
     </recordDeletes>
     <recordDeletes>
         <name>Delete_Related_Assets</name>
         <label>Delete Related Assets</label>
-        <locationX>314</locationX>
-        <locationY>1574</locationY>
+        <locationX>578</locationX>
+        <locationY>1850</locationY>
         <connector>
             <targetReference>Update_Incident_Status_to_Closed</targetReference>
         </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Assign_Exception</targetReference>
+        </faultConnector>
         <inputReference>Get_Related_Assets</inputReference>
     </recordDeletes>
     <recordLookups>
         <name>Get_Incident</name>
         <label>Get Incident</label>
-        <locationX>402</locationX>
-        <locationY>158</locationY>
+        <locationX>930</locationX>
+        <locationY>278</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Get_Related_Assets</targetReference>
         </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Assign_Exception</targetReference>
+        </faultConnector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
@@ -290,12 +330,16 @@
     <recordLookups>
         <name>Get_Related_Assets</name>
         <label>Get Related Assets</label>
-        <locationX>402</locationX>
-        <locationY>278</locationY>
+        <locationX>930</locationX>
+        <locationY>398</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Get_Related_Cases</targetReference>
         </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Assign_Exception</targetReference>
+        </faultConnector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>IncidentId</field>
@@ -320,12 +364,16 @@
     <recordLookups>
         <name>Get_Related_Cases</name>
         <label>Get Related Cases</label>
-        <locationX>402</locationX>
-        <locationY>398</locationY>
+        <locationX>930</locationX>
+        <locationY>518</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Get_User</targetReference>
         </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Assign_Exception</targetReference>
+        </faultConnector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>RelatedIssueId</field>
@@ -343,12 +391,16 @@
     <recordLookups>
         <name>Get_User</name>
         <label>Get User</label>
-        <locationX>402</locationX>
-        <locationY>518</locationY>
+        <locationX>930</locationX>
+        <locationY>638</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Assign_Variables</targetReference>
+            <targetReference>Get_Impacted_Customers</targetReference>
         </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Assign_Exception</targetReference>
+        </faultConnector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
@@ -364,18 +416,21 @@
     <recordUpdates>
         <name>Update_Incident</name>
         <label>Update Incident</label>
-        <locationX>446</locationX>
-        <locationY>1910</locationY>
+        <locationX>842</locationX>
+        <locationY>2222</locationY>
         <connector>
-            <targetReference>Assign_Output_Variables</targetReference>
+            <targetReference>screenCompleted</targetReference>
         </connector>
+        <faultConnector>
+            <targetReference>Assign_Exception</targetReference>
+        </faultConnector>
         <inputReference>Get_Incident</inputReference>
     </recordUpdates>
     <screens>
         <name>Error_Screen</name>
         <label>Error Screen</label>
-        <locationX>754</locationX>
-        <locationY>998</locationY>
+        <locationX>50</locationX>
+        <locationY>398</locationY>
         <allowBack>true</allowBack>
         <allowFinish>false</allowFinish>
         <allowPause>false</allowPause>
@@ -390,8 +445,8 @@
     <screens>
         <name>Incident_Introduction</name>
         <label>Incident Introduction</label>
-        <locationX>402</locationX>
-        <locationY>758</locationY>
+        <locationX>930</locationX>
+        <locationY>998</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -405,7 +460,7 @@
         </fields>
         <fields>
             <name>p1FooterText</name>
-            <fieldText>&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;The incident was created by user: &lt;/span&gt;&lt;strong style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!Get_User.Name} &lt;/strong&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;at&lt;/span&gt;&lt;strong style=&quot;color: rgb(0, 0, 0);&quot;&gt; {!Get_Incident.CreatedDate}&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;It currently has the following records attached to it:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!caseCount}&lt;/strong&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt; case(s)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!assetCount}&lt;/strong&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt; asset(s)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 16px; color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);&quot;&gt;How would you like to proceed?&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;The incident was created by user: &lt;/span&gt;&lt;strong style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!Get_User.Name} &lt;/strong&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;at&lt;/span&gt;&lt;strong style=&quot;color: rgb(0, 0, 0);&quot;&gt; {!Get_Incident.CreatedDate}&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;It currently has the following records attached to it:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!caseCount}&lt;/strong&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt; case(s)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!assetCount}&lt;/strong&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt; asset(s)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!contactCount}&lt;/strong&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt; impacted contact(s)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!accountCount}&lt;/strong&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt; impacted account(s)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 16px; color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);&quot;&gt;How would you like to proceed?&lt;/span&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <fields>
@@ -423,8 +478,8 @@
     <screens>
         <name>Remove_Related_Items</name>
         <label>Remove Related Items</label>
-        <locationX>446</locationX>
-        <locationY>998</locationY>
+        <locationX>842</locationX>
+        <locationY>1238</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -456,8 +511,8 @@
     <screens>
         <name>screenCompleted</name>
         <label>Completed</label>
-        <locationX>402</locationX>
-        <locationY>2246</locationY>
+        <locationX>842</locationX>
+        <locationY>2342</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -489,20 +544,55 @@
         </fields>
         <fields>
             <name>p1HeadingText_0</name>
-            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 18px; color: rgb(0, 0, 0);&quot;&gt;First Response Flow Complete&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); font-size: 12px; color: rgb(0, 0, 0);&quot;&gt;{!completionText}&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 12px; color: rgb(0, 0, 0);&quot;&gt;Click &quot;Finish&quot; to submit.﻿&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 18px;&quot;&gt;First Response Flow Complete&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 12px;&quot;&gt;Click &quot;Finish&quot; to submit.﻿&lt;/span&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
     </screens>
     <start>
-        <locationX>276</locationX>
+        <locationX>364</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Get_Incident</targetReference>
+            <targetReference>Check_If_Incident_Is_Null</targetReference>
         </connector>
     </start>
     <status>Active</status>
+    <subflows>
+        <name>Get_Impacted_Customers</name>
+        <label>Get Impacted Customers</label>
+        <locationX>930</locationX>
+        <locationY>758</locationY>
+        <connector>
+            <targetReference>Assign_Variables</targetReference>
+        </connector>
+        <flowName>Retrieve_Impacted_Accounts_and_Contacts_Flow</flowName>
+        <inputAssignments>
+            <name>IncidentId</name>
+            <value>
+                <elementReference>incidentId</elementReference>
+            </value>
+        </inputAssignments>
+        <outputAssignments>
+            <assignToReference>impactedAccounts</assignToReference>
+            <name>AccountList</name>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>impactedContacts</assignToReference>
+            <name>ContactList</name>
+        </outputAssignments>
+    </subflows>
+    <variables>
+        <name>accountCount</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+        <value>
+            <numberValue>0.0</numberValue>
+        </value>
+    </variables>
     <variables>
         <name>assetCount</name>
         <dataType>Number</dataType>
@@ -526,11 +616,15 @@
         </value>
     </variables>
     <variables>
-        <name>completionText</name>
-        <dataType>String</dataType>
+        <name>contactCount</name>
+        <dataType>Number</dataType>
         <isCollection>false</isCollection>
         <isInput>false</isInput>
         <isOutput>false</isOutput>
+        <scale>0</scale>
+        <value>
+            <numberValue>0.0</numberValue>
+        </value>
     </variables>
     <variables>
         <name>errorText</name>
@@ -538,6 +632,22 @@
         <isCollection>false</isCollection>
         <isInput>false</isInput>
         <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>impactedAccounts</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Account</objectType>
+    </variables>
+    <variables>
+        <name>impactedContacts</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Contact</objectType>
     </variables>
     <variables>
         <name>incidentId</name>
