@@ -1,0 +1,107 @@
+<template>
+  <lightning-card>
+    <p slot="title">
+      <lightning-icon slot="media" icon-name="standard:location" size="small">
+      </lightning-icon>
+      <lightning-formatted-text
+        value={label.geoMapTitle}
+        class="slds-var-p-horizontal_small"
+      ></lightning-formatted-text>
+    </p>
+    <template if:true={errorMessage}>
+      <c-error-panel error-message={errorMessage}></c-error-panel>
+    </template>
+    <template if:false={errorMessage}>
+      <lightning-layout multiple-rows>
+        <template if:true={notificationMessage}>
+          <lightning-layout-item padding="around-small" flexibility="auto">
+            <c-info-panel
+              notification-message={notificationMessage}
+            ></c-info-panel>
+          </lightning-layout-item>
+        </template>
+        <template if:false={notificationMessage}>
+          <lightning-layout-item padding="around-small" flexibility="auto">
+            <lightning-combobox
+              data-name="product"
+              name="product"
+              label={label.geoMapFilterProduct}
+              value={productValue}
+              onchange={handleFilterChange}
+              options={productOptions}
+            >
+            </lightning-combobox>
+          </lightning-layout-item>
+          <lightning-layout-item padding="around-small" flexibility="auto">
+            <lightning-combobox
+              data-name="productFamily"
+              name="productFamily"
+              label={label.geoMapFilterProductFamily}
+              value={productFamilyValue}
+              onchange={handleFilterChange}
+              options={productFamilyOptions}
+            >
+            </lightning-combobox>
+          </lightning-layout-item>
+          <lightning-layout-item padding="around-small" flexibility="auto">
+            <lightning-combobox
+              data-name="status"
+              name="status"
+              label={label.geoMapFilterAssetStatus}
+              value={statusValue}
+              onchange={handleFilterChange}
+              options={statusOptions}
+            >
+            </lightning-combobox>
+          </lightning-layout-item>
+          <lightning-layout-item
+            padding="around-small"
+            flexibility="auto"
+            class="slds-align-bottom"
+          >
+            <lightning-input
+              type="toggle"
+              label={label.geoMapListViewToggle}
+              checked={showList}
+              onchange={handleListToggle}
+              message-toggle-active={label.geoMapListViewToggleActive}
+              message-toggle-inactive={label.geoMapListViewToggleInactive}
+            ></lightning-input>
+          </lightning-layout-item>
+        </template>
+      </lightning-layout>
+
+      <lightning-layout multiple-rows>
+        <lightning-layout-item
+          size="12"
+          small-device-size="12"
+          medium-device-size="12"
+          large-device-size="12"
+        >
+          <lightning-map
+            map-markers={mapMarkers}
+            markers-title={label.geoMapListTitle}
+            onmarkerselect={handleMarkerSelect}
+            list-view={listView}
+            selected-marker-value={selectedMarkerValue}
+          >
+          </lightning-map>
+        </lightning-layout-item>
+        <template if:true={selectedMarkerData}>
+          <lightning-layout-item
+            class="slds-var-p-top_x-small"
+            size="12"
+            small-device-size="12"
+            medium-device-size="12"
+            large-device-size="12"
+          >
+            <c-selected-map-picker
+              selected-marker-data={selectedMarkerData}
+              objects-info={objectsInfo}
+            ></c-selected-map-picker>
+          </lightning-layout-item>
+        </template>
+      </lightning-layout>
+    </template>
+  </lightning-card>
+</template>

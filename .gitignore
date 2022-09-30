@@ -41,4 +41,6 @@ test_results.xml
 .sfdx/
 .localdevserver/
 .pmdCache
+
 .sf
+.DS_Store
