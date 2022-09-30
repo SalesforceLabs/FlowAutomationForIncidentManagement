@@ -3,6 +3,43 @@
     <actionCalls>
         <name>Send_Message</name>
         <label>Send Message</label>
+        <locationX>1058</locationX>
+        <locationY>1814</locationY>
+        <actionName>liveMessageNotification</actionName>
+        <actionType>liveMessageNotification</actionType>
+        <connector>
+            <targetReference>Loop_Messaging_Users</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>contextRecordId</name>
+            <value>
+                <elementReference>incidentId</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>channelDeveloperName</name>
+            <value>
+                <elementReference>messagingChannel.DeveloperName</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>templateDeveloperName</name>
+            <value>
+                <elementReference>MessagingTemplate.DeveloperName</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recipientRecordId</name>
+            <value>
+                <elementReference>Loop_Messaging_Users.Id</elementReference>
+            </value>
+        </inputParameters>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <actionCalls>
+        <name>Send_SMS</name>
+        <label>Send SMS</label>
         <locationX>490</locationX>
         <locationY>878</locationY>
         <actionName>liveMessageNotification</actionName>
@@ -43,43 +80,6 @@
         </inputParameters>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </actionCalls>
-    <actionCalls>
-        <name>Send_Message_to_MEU</name>
-        <label>Send Message to MEU</label>
-        <locationX>1058</locationX>
-        <locationY>1814</locationY>
-        <actionName>liveMessageNotification</actionName>
-        <actionType>liveMessageNotification</actionType>
-        <connector>
-            <targetReference>Loop_MEUs</targetReference>
-        </connector>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
-        <inputParameters>
-            <name>contextRecordId</name>
-            <value>
-                <elementReference>incidentId</elementReference>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>channelDeveloperName</name>
-            <value>
-                <elementReference>messagingChannel.DeveloperName</elementReference>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>templateDeveloperName</name>
-            <value>
-                <elementReference>MessagingTemplate.DeveloperName</elementReference>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>recipientRecordId</name>
-            <value>
-                <elementReference>Loop_MEUs.Id</elementReference>
-            </value>
-        </inputParameters>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </actionCalls>
     <apiVersion>56.0</apiVersion>
     <assignments>
         <name>Add_ContactId</name>
@@ -98,19 +98,19 @@
         </connector>
     </assignments>
     <assignments>
-        <name>Assign_Count</name>
+        <name>Assign_Contact_Count</name>
         <label>Assign Count</label>
-        <locationX>970</locationX>
-        <locationY>1574</locationY>
+        <locationX>422</locationX>
+        <locationY>398</locationY>
         <assignmentItems>
             <assignToReference>contactCount</assignToReference>
-            <operator>Assign</operator>
+            <operator>AssignCount</operator>
             <value>
-                <elementReference>MEUCount</elementReference>
+                <elementReference>objContacts</elementReference>
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>Loop_MEUs</targetReference>
+            <targetReference>Select_Channel_and_Template</targetReference>
         </connector>
     </assignments>
     <assignments>
@@ -147,24 +147,8 @@
         </connector>
     </assignments>
     <assignments>
-        <name>Assign_Vars</name>
-        <label>Assign Vars</label>
-        <locationX>422</locationX>
-        <locationY>398</locationY>
-        <assignmentItems>
-            <assignToReference>contactCount</assignToReference>
-            <operator>AssignCount</operator>
-            <value>
-                <elementReference>objContacts</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Select_Channel_and_Template</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>AssignMEU_Vars</name>
-        <label>Assign MEU Vars</label>
+        <name>Assign_Messaging_User_Count</name>
+        <label>Assign Messaging User Count</label>
         <locationX>794</locationX>
         <locationY>1214</locationY>
         <assignmentItems>
@@ -175,7 +159,23 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>Confirm_MEU</targetReference>
+            <targetReference>Confirm_Send</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Update_Contact_Count</name>
+        <label>Update Contact Count</label>
+        <locationX>970</locationX>
+        <locationY>1574</locationY>
+        <assignmentItems>
+            <assignToReference>contactCount</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>MEUCount</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_Messaging_Users</targetReference>
         </connector>
     </assignments>
     <decisions>
@@ -184,11 +184,11 @@
         <locationX>794</locationX>
         <locationY>1454</locationY>
         <defaultConnector>
-            <targetReference>Assign_Count</targetReference>
+            <targetReference>Update_Contact_Count</targetReference>
         </defaultConnector>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <defaultConnectorLabel>Messaging Users Exist</defaultConnectorLabel>
         <rules>
-            <name>No_MEUs</name>
+            <name>No_Messaging_Users</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>MEUCount</leftValueReference>
@@ -201,7 +201,7 @@
                 <isGoTo>true</isGoTo>
                 <targetReference>Assign_Error</targetReference>
             </connector>
-            <label>No MEUs</label>
+            <label>No Messaging Users</label>
         </rules>
     </decisions>
     <decisions>
@@ -212,7 +212,7 @@
         <defaultConnector>
             <targetReference>Loop_Contacts_to_Get_MEUs</targetReference>
         </defaultConnector>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <defaultConnectorLabel>Messaging User Required</defaultConnectorLabel>
         <rules>
             <name>Invalid_Information_Supplied</name>
             <conditionLogic>or</conditionLogic>
@@ -277,7 +277,7 @@
         <collectionReference>objContacts</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
-            <targetReference>Send_Message</targetReference>
+            <targetReference>Send_SMS</targetReference>
         </nextValueConnector>
         <noMoreValuesConnector>
             <targetReference>Complete</targetReference>
@@ -285,7 +285,7 @@
     </loops>
     <loops>
         <name>Loop_Contacts_to_Get_MEUs</name>
-        <label>Loop Contacts to Get MEUs</label>
+        <label>Loop Contacts</label>
         <locationX>794</locationX>
         <locationY>758</locationY>
         <collectionReference>objContacts</collectionReference>
@@ -298,14 +298,14 @@
         </noMoreValuesConnector>
     </loops>
     <loops>
-        <name>Loop_MEUs</name>
-        <label>Loop MEUs</label>
+        <name>Loop_Messaging_Users</name>
+        <label>Loop Messaging Users</label>
         <locationX>970</locationX>
         <locationY>1694</locationY>
         <collectionReference>Get_MEUs</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
-            <targetReference>Send_Message_to_MEU</targetReference>
+            <targetReference>Send_Message</targetReference>
         </nextValueConnector>
         <noMoreValuesConnector>
             <targetReference>Complete</targetReference>
@@ -376,7 +376,7 @@
         <locationY>278</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Assign_Vars</targetReference>
+            <targetReference>Assign_Contact_Count</targetReference>
         </connector>
         <faultConnector>
             <targetReference>Assign_Fault_Vals</targetReference>
@@ -395,12 +395,12 @@
     </recordLookups>
     <recordLookups>
         <name>Get_MEUs</name>
-        <label>Get MEUs</label>
+        <label>Get Messaging Users</label>
         <locationX>794</locationX>
         <locationY>1094</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>AssignMEU_Vars</targetReference>
+            <targetReference>Assign_Messaging_User_Count</targetReference>
         </connector>
         <faultConnector>
             <isGoTo>true</isGoTo>
@@ -461,8 +461,8 @@
         <showHeader>true</showHeader>
     </screens>
     <screens>
-        <name>Confirm_MEU</name>
-        <label>Confirm MEU</label>
+        <name>Confirm_Send</name>
+        <label>Confirm Send</label>
         <locationX>794</locationX>
         <locationY>1334</locationY>
         <allowBack>true</allowBack>
