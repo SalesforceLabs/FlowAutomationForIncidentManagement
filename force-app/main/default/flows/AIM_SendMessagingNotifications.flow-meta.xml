@@ -343,7 +343,7 @@
             <isGoTo>true</isGoTo>
             <targetReference>Assign_Fault_Vals</targetReference>
         </faultConnector>
-        <filterLogic>or</filterLogic>
+        <filterLogic>(1 OR 2 OR 3) AND 4</filterLogic>
         <filters>
             <field>MessageType</field>
             <operator>EqualTo</operator>
@@ -363,6 +363,13 @@
             <operator>EqualTo</operator>
             <value>
                 <stringValue>WhatsApp</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>IsActive</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
             </value>
         </filters>
         <getFirstRecordOnly>false</getFirstRecordOnly>
@@ -412,6 +419,13 @@
             <operator>In</operator>
             <value>
                 <elementReference>contactIds</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>MessagingChannelId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>messagingChannel.Id</elementReference>
             </value>
         </filters>
         <getFirstRecordOnly>false</getFirstRecordOnly>
