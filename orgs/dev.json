@@ -30,6 +30,9 @@
     },
     "languageSettings": {
       "enableTranslationWorkbench": true
+    },
+    "liveMessageSettings": {
+      "enableLiveMessage": true
     }
     
   }
