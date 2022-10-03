@@ -35,6 +35,10 @@ public static void populateData() {
 
     for (Integer counter = 1; counter <= 10; counter++) {
       Product2 product = new Product2(Name = 'Test Product ' + counter);
+      if(counter <=5)
+      {
+        product.Family = 'None';
+      }
       products.add(product);
     }
     insert products;
@@ -46,8 +50,25 @@ public static void populateData() {
         ContactId = contact.Id,
         AccountId = contact.accountId,
         Latitude = 37 + Math.random(),
-        Longitude = 122 + Math.random()
+        Longitude = -122 + Math.random(),
+        product2Id = products.get(Math.mod(counter, 10)).Id
       );
+      if(counter <= 10)
+      {
+        asset.Status = 'Shipped';
+      }
+      else if(counter > 10 && counter <= 20)
+      {
+        asset.Status = 'Installed';
+      }
+      else if(counter > 20 && counter <= 30)
+      {
+        asset.Status = 'Registered';
+      }
+      else 
+      {
+        asset.Status = 'Purchased';
+      }
       assets.add(asset);
     }
     insert assets;

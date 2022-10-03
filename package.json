@@ -1,10 +1,17 @@
 {
-
   "scripts": {
     "prettier": "prettier --check \"force-app/**/*.{page,trigger,cls,html}\"",
-    "prettier:fix": "prettier --write \"force-app/**/*.{page,trigger,cls,html}\""
+    "prettier:fix": "prettier --write \"force-app/**/*.{page,trigger,cls,html}\"",
+    "test": "npm run test:unit",
+    "test:unit": "sfdx-lwc-jest",
+    "test:unit:watch": "sfdx-lwc-jest --watch",
+    "test:unit:debug": "sfdx-lwc-jest --debug",
+    "test:unit:coverage": "sfdx-lwc-jest --coverage",
+    "test:unit:coverage:verbose": "sfdx-lwc-jest --coverage --verbose"
   },
   "devDependencies": {
+    "@sa11y/jest": "^3.1.0",
+    "@salesforce/sfdx-lwc-jest": "^1.2.0",
     "prettier": "2.7.1",
     "prettier-plugin-apex": "1.10.0"
   }
