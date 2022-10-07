@@ -136,4 +136,108 @@
         <shortDescription>AIM Report Retrieval Exception</shortDescription>
         <value>Primary field is not present in the first column of the Report</value>
     </labels>
+    <labels>
+        <fullName>AIM_Flow_Click_To_Submit</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Flow Click To Submit</shortDescription>
+        <value>Click &quot;Finish&quot; to submit.</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_Error_Header</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Flow Error Header</shortDescription>
+        <value>An Error has Occurred</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_First_Response_Attached_Records</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Flow First Response Attached Records</shortDescription>
+        <value>It currently has the following records attached to it:</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_First_Response_Close_Value</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Flow First Response Close Value</shortDescription>
+        <value>Close incident</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_First_Response_Complete</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Flow First Response Complete</shortDescription>
+        <value>First Response Flow Complete</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_First_Response_Proceed</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Flow First Response Proceed</shortDescription>
+        <value>How would you like to proceed?</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_First_Response_Proceed_Value</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Flow First Response Proceed Value</shortDescription>
+        <value>Proceed to incident qualification</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_First_Response_Remove_Assets_Value</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Flow First Response Remove Assets Value</shortDescription>
+        <value>Remove related assets</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_First_Response_Remove_Cases_Value</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Flow First Response Remove Cases Value</shortDescription>
+        <value>Remove related cases</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_First_Response_Remove_Items</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Flow First Response Remove Items</shortDescription>
+        <value>Would you like to remove the incident&apos;s related items before closing the incident?</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_First_Response_User</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Flow First Response User</shortDescription>
+        <value>The incident was created by user:</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_Incident_Not_Found_Error</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Flow Incident Not Found  Error</shortDescription>
+        <value>Incident not found.</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_Click_Previous</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Flow Click Previous</shortDescription>
+        <value>Click Previous to go back.</value>
+    </labels>
 </CustomLabels>
