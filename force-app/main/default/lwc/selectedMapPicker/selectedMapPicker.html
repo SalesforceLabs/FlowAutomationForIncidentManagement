@@ -1,0 +1,168 @@
+<template>
+  <template if:true={selectedMarkerData}>
+    <lightning-card>
+      <h2 slot="title">
+        <lightning-icon icon-name="standard:asset_object"></lightning-icon>
+        <a
+          data-object="Asset"
+          onclick={handleRecordLinkClick}
+          class="slds-var-p-left_small"
+          >{selectedMarkerData.assetName}</a
+        >
+      </h2>
+
+      <lightning-layout
+        multiple-rows
+        class="slds-border_top slds-border_bottom"
+      >
+        <template if:true={selectedMarkerData.accountName}>
+          <lightning-layout-item padding="around-small" flexibility="auto">
+            <article class="slds-tile slds-media">
+              <div class="slds-media__figure">
+                <lightning-icon
+                  icon-name="standard:account"
+                  size="small"
+                ></lightning-icon>
+              </div>
+              <div class="slds-media__body">
+                <h3
+                  class="slds-truncate"
+                  title={selectedMarkerData.accountName}
+                >
+                  <a data-object="Account" onclick={handleRecordLinkClick}
+                    >{selectedMarkerData.accountName}</a
+                  >
+                </h3>
+                <div class="slds-tile__detail">
+                  <dl class="slds-list_inline slds-wrap">
+                    <dt
+                      class="slds-item_label slds-text-color_weak slds-truncate"
+                      title="First Label"
+                    ></dt>
+                    <dd
+                      class="slds-item_detail slds-text-color_weak slds-truncate"
+                      title="Description for first label"
+                    ></dd>
+                  </dl>
+                </div>
+              </div>
+            </article>
+          </lightning-layout-item>
+        </template>
+        <template if:true={selectedMarkerData.contactName}>
+          <lightning-layout-item padding="around-small" flexibility="auto">
+            <article class="slds-tile slds-media">
+              <div class="slds-media__figure">
+                <lightning-icon
+                  icon-name="standard:contact"
+                  size="small"
+                ></lightning-icon>
+              </div>
+              <div class="slds-media__body">
+                <h3
+                  class="slds-truncate"
+                  title={selectedMarkerData.contactName}
+                >
+                  <a data-object="Contact" onclick={handleRecordLinkClick}
+                    >{selectedMarkerData.contactName}</a
+                  >
+                </h3>
+                <div class="slds-tile__detail">
+                  <dl class="slds-list_inline slds-wrap">
+                    <dt
+                      class="slds-item_label slds-text-color_weak slds-truncate"
+                      title="First Label"
+                    ></dt>
+                    <dd
+                      class="slds-item_detail slds-text-color_weak slds-text-color_weak slds-truncate"
+                      title="Description for first label"
+                    ></dd>
+                  </dl>
+                </div>
+              </div>
+            </article>
+          </lightning-layout-item>
+        </template>
+        <template if:true={selectedMarkerData.productName}>
+          <lightning-layout-item padding="around-small" flexibility="auto">
+            <article class="slds-tile slds-media">
+              <div class="slds-media__figure">
+                <lightning-icon
+                  icon-name="standard:product"
+                  size="small"
+                ></lightning-icon>
+              </div>
+              <div class="slds-media__body">
+                <h3
+                  class="slds-truncate"
+                  title={selectedMarkerData.productName}
+                >
+                  <a data-object="Product" onclick={handleRecordLinkClick}
+                    >{selectedMarkerData.productName}</a
+                  >
+                </h3>
+                <div class="slds-tile__detail">
+                  <dl class="slds-list_inline slds-wrap">
+                    <dt
+                      class="slds-item_label slds-text-color_weak slds-truncate"
+                      title={objectsInfo.ProductFamilyLabel}
+                    >
+                      {objectsInfo.ProductFamilyLabel}
+                    </dt>
+                    <dd
+                      class="slds-item_detail slds-text-color_weak slds-truncate"
+                      title={selectedMarkerData.productFamily}
+                    >
+                      {selectedMarkerData.productFamily}
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+            </article>
+          </lightning-layout-item>
+        </template>
+        <template if:true={selectedMarkerData.incidentNumber}>
+          <lightning-layout-item padding="around-small" flexibility="auto">
+            <article class="slds-tile slds-media">
+              <div class="slds-media__figure">
+                <lightning-icon
+                  icon-name="standard:incident"
+                  size="small"
+                ></lightning-icon>
+              </div>
+              <div class="slds-media__body">
+                <h3
+                  class="slds-truncate"
+                  title={selectedMarkerData.incidentNumber}
+                >
+                  <a data-object="Incident" onclick={handleRecordLinkClick}
+                    >{selectedMarkerData.incidentNumber}</a
+                  >
+                </h3>
+                <div class="slds-tile__detail">
+                  <dl class="slds-list_inline slds-wrap">
+                    <dt
+                      class="slds-item_label slds-text-color_weak slds-truncate"
+                      title={objectsInfo.IncidentStatusLabel}
+                    >
+                      {objectsInfo.IncidentStatusLabel}
+                    </dt>
+                    <dd
+                      class="slds-item_detail slds-text-color_weak slds-truncate"
+                      title={selectedMarkerData.incidentStatus}
+                    >
+                      {selectedMarkerData.incidentStatus}
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+            </article>
+          </lightning-layout-item>
+        </template>
+      </lightning-layout>
+    </lightning-card>
+  </template>
+  <template if:false={selectedMarkerData}>
+    <lightning-spinner variant="brand"></lightning-spinner>
+  </template>
+</template>
