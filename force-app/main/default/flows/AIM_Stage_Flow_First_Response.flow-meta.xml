@@ -260,9 +260,9 @@
     </decisions>
     <description>An approval flow that will get pushed to the AIM first response queue upon incident creation.</description>
     <environments>Default</environments>
-    <interviewLabel>AIM - First Response Screen Flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <interviewLabel>AIM - Stage Flow: First Response {!$Flow.CurrentDateTime}</interviewLabel>
     <isTemplate>true</isTemplate>
-    <label>AIM - First Response Screen Flow</label>
+    <label>AIM - Stage Flow: First Response</label>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
