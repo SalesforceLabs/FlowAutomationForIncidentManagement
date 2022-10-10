@@ -1,140 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
     <labels>
-        <fullName>AIM_GeoMapTitle</fullName>
+        <fullName>AIM_Flow_Click_Previous</fullName>
         <categories>AIM</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>AIM GeoMap Title</shortDescription>
-        <value>Asset Map</value>
-    </labels>
-    <labels>
-        <fullName>AIM_GeoMap_Filter_AssetStatus</fullName>
-        <categories>AIM</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>AIM GeoMap Asset Status Filter</shortDescription>
-        <value>Asset Status</value>
-    </labels>
-    <labels>
-        <fullName>AIM_GeoMap_Filter_Product</fullName>
-        <categories>AIM</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>AIM GeoMap Product Filter</shortDescription>
-        <value>Product</value>
-    </labels>
-    <labels>
-        <fullName>AIM_GeoMap_Filter_ProductFamily</fullName>
-        <categories>AIM</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>AIM GeoMap Product Family Filter</shortDescription>
-        <value>Product Family</value>
-    </labels>
-    <labels>
-        <fullName>AIM_GeoMap_Filter_Value_All</fullName>
-        <categories>AIM</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>AIM GeoMap Filter Value All</shortDescription>
-        <value>All</value>
-    </labels>
-    <labels>
-        <fullName>AIM_GeoMap_ListView_Toggle</fullName>
-        <categories>AIM</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>AIM GeoMap ListView Toggle</shortDescription>
-        <value>Display Asset List</value>
-    </labels>
-    <labels>
-        <fullName>AIM_GeoMap_ListView_Toggle_Active</fullName>
-        <categories>AIM</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>AIM GeoMap ListView Toggle Active</shortDescription>
-        <value>Enabled</value>
-    </labels>
-    <labels>
-        <fullName>AIM_GeoMap_ListView_Toggle_Inactive</fullName>
-        <categories>AIM</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>AIM GeoMap ListView Toggle Inactive</shortDescription>
-        <value>Disabled</value>
-    </labels>
-    <labels>
-        <fullName>AIM_GeoMap_List_Title</fullName>
-        <categories>AIM</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>AIM GeoMap List Title</shortDescription>
-        <value>Asset List</value>
-    </labels>
-    <labels>
-        <fullName>AIM_GeoMap_Generic_Exception</fullName>
-        <categories>AIM</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>AIM GeoMap Generic Exception</shortDescription>
-        <value>An Error occurred. Please contact your system administrator.</value>
-    </labels>
-    <labels>
-        <fullName>AIM_GeoMap_No_Data</fullName>
-        <categories>AIM</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>AIM GeoMap No Data</shortDescription>
-        <value>There are no Assets on the Map.</value>
-    </labels>
-    <labels>
-        <fullName>AIM_GeoMap_Null_Exception</fullName>
-        <categories>AIM</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>AIM GeoMap Null Exception</shortDescription>
-        <value>Null or Empty input parameter passed. Please contact your system administrator.</value>
-    </labels>
-    <labels>
-        <fullName>AIM_GeoMap_Unsupported_Exception</fullName>
-        <categories>AIM</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>AIM GeoMap Unsupported Exception</shortDescription>
-        <value>Unsupported sObject type: ''{0}'' records passed as the input to the Map component. Ask your admin for help.</value>
-    </labels>
-    <labels>
-        <fullName>AIM_Matching_Logic_Invalid_Input_Exception</fullName>
-        <categories>AIM</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>AIM Matching Logic Invalid Input Exception</shortDescription>
-        <value>Null or Empty input parameter passed.</value>
-    </labels>
-    <labels>
-        <fullName>AIM_Report_Format_Exception</fullName>
-        <categories>AIM</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>AIM Report Format Exception</shortDescription>
-        <value>Invalid Grouping : Report needs to be grouped only on Id</value>
-    </labels>
-    <labels>
-        <fullName>AIM_Report_Null_Exception</fullName>
-        <categories>AIM</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>AIM Report Null Exception</shortDescription>
-        <value>Developer name of the Report cannot be Null or Empty.</value>
-    </labels>
-    <labels>
-        <fullName>AIM_Report_Retrieval_Exception</fullName>
-        <categories>AIM</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>AIM Report Retrieval Exception</shortDescription>
-        <value>Primary field is not present in the first column of the Report</value>
+        <shortDescription>AIM Flow Click Previous</shortDescription>
+        <value>Click Previous to go back.</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_Click_To_Submit</fullName>
@@ -233,11 +105,172 @@
         <value>Incident not found.</value>
     </labels>
     <labels>
-        <fullName>AIM_Flow_Click_Previous</fullName>
+        <fullName>AIM_Flow_SendCoreEmail_CompleteText</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM_Flow_SendCoreEmail_CompleteText</shortDescription>
+        <value>Broadcast Email Complete</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_SendCoreEmail_ConfirmText</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM_Flow_SendCoreEmail_ConfirmText</shortDescription>
+        <value>Confirm broadcast email?</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_SendCoreEmail_InvalidInfo</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM_Flow_SendCoreEmail_InvalidInfo</shortDescription>
+        <value>&lt;b&gt;Error: Unable to proceed&lt;/b&gt;
+
+Please ensure:
+1. A valid org wide address is selected.
+2. An email subject and body is provided.
+3. You have supplied a list of contacts to email.</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_SendCoreEmail_SendEmailTitle</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM_Flow_SendCoreEmail_SendEmailTitle</shortDescription>
+        <value>Send Incident Broadcast Email</value>
+    </labels>
+    <labels>
+        <fullName>AIM_GeoMapTitle</fullName>
         <categories>AIM</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>AIM Flow Click Previous</shortDescription>
-        <value>Click Previous to go back.</value>
+        <shortDescription>AIM GeoMap Title</shortDescription>
+        <value>Asset Map</value>
+    </labels>
+    <labels>
+        <fullName>AIM_GeoMap_Filter_AssetStatus</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM GeoMap Asset Status Filter</shortDescription>
+        <value>Asset Status</value>
+    </labels>
+    <labels>
+        <fullName>AIM_GeoMap_Filter_Product</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM GeoMap Product Filter</shortDescription>
+        <value>Product</value>
+    </labels>
+    <labels>
+        <fullName>AIM_GeoMap_Filter_ProductFamily</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM GeoMap Product Family Filter</shortDescription>
+        <value>Product Family</value>
+    </labels>
+    <labels>
+        <fullName>AIM_GeoMap_Filter_Value_All</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM GeoMap Filter Value All</shortDescription>
+        <value>All</value>
+    </labels>
+    <labels>
+        <fullName>AIM_GeoMap_Generic_Exception</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM GeoMap Generic Exception</shortDescription>
+        <value>An Error occurred. Please contact your system administrator.</value>
+    </labels>
+    <labels>
+        <fullName>AIM_GeoMap_ListView_Toggle</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM GeoMap ListView Toggle</shortDescription>
+        <value>Display Asset List</value>
+    </labels>
+    <labels>
+        <fullName>AIM_GeoMap_ListView_Toggle_Active</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM GeoMap ListView Toggle Active</shortDescription>
+        <value>Enabled</value>
+    </labels>
+    <labels>
+        <fullName>AIM_GeoMap_ListView_Toggle_Inactive</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM GeoMap ListView Toggle Inactive</shortDescription>
+        <value>Disabled</value>
+    </labels>
+    <labels>
+        <fullName>AIM_GeoMap_List_Title</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM GeoMap List Title</shortDescription>
+        <value>Asset List</value>
+    </labels>
+    <labels>
+        <fullName>AIM_GeoMap_No_Data</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM GeoMap No Data</shortDescription>
+        <value>There are no Assets on the Map.</value>
+    </labels>
+    <labels>
+        <fullName>AIM_GeoMap_Null_Exception</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM GeoMap Null Exception</shortDescription>
+        <value>Null or Empty input parameter passed. Please contact your system administrator.</value>
+    </labels>
+    <labels>
+        <fullName>AIM_GeoMap_Unsupported_Exception</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM GeoMap Unsupported Exception</shortDescription>
+        <value>Unsupported sObject type: &apos;&apos;{0}&apos;&apos; records passed as the input to the Map component. Ask your admin for help.</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Matching_Logic_Invalid_Input_Exception</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Matching Logic Invalid Input Exception</shortDescription>
+        <value>Null or Empty input parameter passed.</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Report_Format_Exception</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Report Format Exception</shortDescription>
+        <value>Invalid Grouping : Report needs to be grouped only on Id</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Report_Null_Exception</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Report Null Exception</shortDescription>
+        <value>Developer name of the Report cannot be Null or Empty.</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Report_Retrieval_Exception</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Report Retrieval Exception</shortDescription>
+        <value>Primary field is not present in the first column of the Report</value>
     </labels>
 </CustomLabels>
