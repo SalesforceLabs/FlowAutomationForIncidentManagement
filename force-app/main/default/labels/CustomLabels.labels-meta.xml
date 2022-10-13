@@ -137,6 +137,14 @@
         <value>Primary field is not present in the first column of the Report</value>
     </labels>
     <labels>
+        <fullName>AIM_Unsupported_sObject_recordId</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM_Unsupported sObject recordId</shortDescription>
+        <value>Unsupported sObject recordId passed. Please provide a valid CaseId or AssetId.</value>
+   </labels>
+   <labels>
         <fullName>AIM_Flow_Click_To_Submit</fullName>
         <categories>AIM</categories>
         <language>en_US</language>

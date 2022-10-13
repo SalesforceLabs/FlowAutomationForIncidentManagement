@@ -23,4 +23,5 @@ public with sharing class SObjectFieldAPINameConstants {
   public static final String PRODUCT_ID = 'Product2Id';
   public static final String PRODUCT_NAME = 'Name';
   public static final String PRODUCT_FAMILY = 'Family';
+  public static final String CASE_OBJECT = 'Case';
 }
