@@ -33,6 +33,24 @@ tasks:
             path: scripts/populateData.cls
             apex: populateData();
 
+    enable_knowledge_user:
+        description: populate project related data in the org
+        class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
+        options:
+            path: scripts/enableKnowledgeUser.cls
+            apex: enableKnowledgeUser();
+
     run_tests:
         options:
             required_org_code_coverage_percent: 80
+
+flows:
+    dev_org:
+        steps:
+            0.9:
+                task: enable_knowledge_user
+
+    qa_org:
+        steps:
+            0.9:
+                task: enable_knowledge_user
