@@ -21,6 +21,9 @@
       "enableKnowledge" : true,
       "enableLightningKnowledge":true
     },
+    "communitiesSettings": {
+      "enableNetworksEnabled": true
+    },
     "chatterSettings": {
       "enableChatter": true
     },
@@ -33,12 +36,17 @@
         "forceRelogin": false
       }
     },
+    "incidentMgmtSettings": {
+      "enableEmailBroadcastType": true
+    },
     "languageSettings": {
       "enableTranslationWorkbench": true
+    },
+    "botSettings" : {
+      "enableBots": true
     },
     "liveMessageSettings": {
       "enableLiveMessage": true
     }
-    
   }
 }
