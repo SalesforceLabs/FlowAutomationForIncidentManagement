@@ -1,1 +1,20 @@
-{"packageDirectories": [{"path": "force-app", "default": true}], "namespace": null, "sourceApiVersion": "56.0"}
+{
+    "packageDirectories": [
+        {
+            "path": "aim-base-pack",
+            "default": true
+        },
+        {
+            "path": "aim-slack-pack"
+        },
+        {
+            "path": "aim-messaging-pack"
+        },
+        {
+            "path": "aim-bot-pack"
+        }
+    ],
+    "namespace": null,
+    "sourceApiVersion": "56.0",
+    "pushPackageDirectoriesSequentially": true
+}
