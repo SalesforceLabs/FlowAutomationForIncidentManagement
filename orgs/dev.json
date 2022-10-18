@@ -4,6 +4,7 @@
   "instance":"gs0",
   "features": [
     "API",
+    "Knowledge",
     "Communities",
     "EnableSetPasswordInApi",
     "Chatbot",
@@ -14,6 +15,10 @@
   "settings": {
     "lightningExperienceSettings": {
       "enableS1DesktopEnabled": true
+    },
+    "knowledgeSettings":{
+      "enableKnowledge" : true,
+      "enableLightningKnowledge":true
     },
     "chatterSettings": {
       "enableChatter": true

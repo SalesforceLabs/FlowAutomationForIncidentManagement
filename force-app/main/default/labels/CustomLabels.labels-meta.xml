@@ -248,4 +248,12 @@
         <shortDescription>AIM Flow Click Previous</shortDescription>
         <value>Click Previous to go back.</value>
     </labels>
+    <labels>
+        <fullName>AIM_Flow_CreateKB_Complete</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Knowledge Article Created</shortDescription>
+        <value>Knowledge Article Created</value>
+    </labels>
 </CustomLabels>
