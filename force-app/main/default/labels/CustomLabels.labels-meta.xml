@@ -311,4 +311,64 @@
         <shortDescription>AIM Flow Select Messaging Template And Messaging Channel</shortDescription>
         <value>Select the Messaging Channel and Messaging Template to send</value>
     </labels>
+    <labels>
+        <fullName>AIM_Flow_Qualification_Complete</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Flow Qualification Complete</shortDescription>
+        <value>Qualification Flow Complete</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_Qualification_ConfirmRelate</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Flow Qualification ConfirmRelate</shortDescription>
+        <value>Click next to relate them to the incident. Otherwise, click previous.</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_Qualification_NoRecords</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Flow Qualification NoRecords</shortDescription>
+        <value>No records to add. Click previous and modify your selection</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_Qualification_RelatedAssetChoice</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Flow Qualification RelatedAssetChoice</shortDescription>
+        <value>Add related assets from a report</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_Qualification_RelatedCaseChoice</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Flow Qualification RelatedCaseChoice</shortDescription>
+        <value>Add related cases from a report</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_Qualification_SelectAssetReport</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Flow Qualification SelectAssetReport</shortDescription>
+        <value>Select a report that contains the list of assets you&apos;d like to relate to the Incident. Please ensure the report is a tabular report with AssetID in the first column.
+
+To create a new report, click &lt;a href=&quot;../../../o/Report/home&quot;&gt;here&lt;/a&gt;.</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_Qualification_SelectCaseReport</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Flow Qualification SelectCaseReport</shortDescription>
+        <value>Select a report that contains the list of cases you&apos;d like to relate to the Incident. Please ensure the report is a tabular report with CaseID in the first column.
+
+To create a new report, click &lt;a href=&quot;../../../o/Report/home&quot;&gt;here&lt;/a&gt;.</value>
+    </labels>
 </CustomLabels>

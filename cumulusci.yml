@@ -40,6 +40,13 @@ tasks:
             path: scripts/enableKnowledgeUser.cls
             apex: enableKnowledgeUser();
 
+    insertAIMCustomSettingRecords:
+        description: populate custom settings data for AIM
+        class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
+        options:
+            path: scripts/insertAIMCustomSettingRecords.cls
+            apex: insertAIMIncidentDetectorSetting();
+
     run_tests:
         options:
             required_org_code_coverage_percent: 80
@@ -47,10 +54,14 @@ tasks:
 flows:
     dev_org:
         steps:
-            0.9:
+            0:
                 task: enable_knowledge_user
+            5:
+                task: insertAIMCustomSettingRecords 
 
     qa_org:
         steps:
-            0.9:
+            0:
                 task: enable_knowledge_user
+            5:
+                task: insertAIMCustomSettingRecords
