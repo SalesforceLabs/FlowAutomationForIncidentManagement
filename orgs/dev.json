@@ -10,7 +10,8 @@
     "Chatbot",
     "ServiceCloud",
     "ServiceUser",
-    "Sites"
+    "Sites",
+    "LiveMessage"
   ],
   "settings": {
     "lightningExperienceSettings": {
@@ -34,6 +35,9 @@
     },
     "languageSettings": {
       "enableTranslationWorkbench": true
+    },
+    "liveMessageSettings": {
+      "enableLiveMessage": true
     }
     
   }
