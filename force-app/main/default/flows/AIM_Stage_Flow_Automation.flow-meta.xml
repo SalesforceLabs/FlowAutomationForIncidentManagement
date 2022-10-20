@@ -29,6 +29,10 @@
                 <booleanValue>true</booleanValue>
             </value>
         </assignmentItems>
+        <connector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Checklist_Selection</targetReference>
+        </connector>
     </assignments>
     <assignments>
         <name>Assign_Banner_Removed</name>
@@ -97,7 +101,7 @@
     <assignments>
         <name>Assign_Counts</name>
         <label>Assign Counts</label>
-        <locationX>1062</locationX>
+        <locationX>1150</locationX>
         <locationY>638</locationY>
         <assignmentItems>
             <assignToReference>contactCount</assignToReference>
@@ -134,8 +138,8 @@
     <assignments>
         <name>Assign_Emails_Sent</name>
         <label>Assign Emails Sent</label>
-        <locationX>1282</locationX>
-        <locationY>1118</locationY>
+        <locationX>1414</locationX>
+        <locationY>1574</locationY>
         <assignmentItems>
             <assignToReference>isEmailSent</assignToReference>
             <operator>Assign</operator>
@@ -168,7 +172,7 @@
     <assignments>
         <name>Assign_Messaging_Sent</name>
         <label>Assign Messaging Sent</label>
-        <locationX>1810</locationX>
+        <locationX>1986</locationX>
         <locationY>1118</locationY>
         <assignmentItems>
             <assignToReference>isMessagingSent</assignToReference>
@@ -185,7 +189,7 @@
     <assignments>
         <name>Assign_Slack_Sent</name>
         <label>Assign Slack Sent</label>
-        <locationX>1546</locationX>
+        <locationX>1722</locationX>
         <locationY>1118</locationY>
         <assignmentItems>
             <assignToReference>isSlackSent</assignToReference>
@@ -258,7 +262,7 @@
     <decisions>
         <name>Checklist_Selection</name>
         <label>Checklist Selection</label>
-        <locationX>1062</locationX>
+        <locationX>1150</locationX>
         <locationY>878</locationY>
         <defaultConnector>
             <targetReference>Complete</targetReference>
@@ -426,6 +430,31 @@
             <label>Messaging</label>
         </rules>
     </decisions>
+    <decisions>
+        <name>Did_Emails_Send</name>
+        <label>Did Emails Send?</label>
+        <locationX>1414</locationX>
+        <locationY>1118</locationY>
+        <defaultConnector>
+            <targetReference>Assign_Emails_Sent</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Nothing Sent</defaultConnectorLabel>
+        <rules>
+            <name>Emails_Sent_Populated</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>totalEmailSuccesses</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_Broadcast_Communication</targetReference>
+            </connector>
+            <label>Emails Sent</label>
+        </rules>
+    </decisions>
     <environments>Default</environments>
     <formulas>
         <name>isCompletedFlag</name>
@@ -482,6 +511,70 @@
         </value>
     </processMetadataValues>
     <processType>Flow</processType>
+    <recordCreates>
+        <name>Create_Broadcast_Communication</name>
+        <label>Create Broadcast Communication</label>
+        <locationX>1282</locationX>
+        <locationY>1238</locationY>
+        <connector>
+            <targetReference>Create_Broadcast_Communication_Audience</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Body</field>
+            <value>
+                <elementReference>emailBody</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>BroadcastType</field>
+            <value>
+                <stringValue>Email</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>RelatedRecordId</field>
+            <value>
+                <elementReference>incidentId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Subject</field>
+            <value>
+                <elementReference>emailSubject</elementReference>
+            </value>
+        </inputAssignments>
+        <object>BroadcastCommunication</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_Broadcast_Communication_Audience</name>
+        <label>Create Broadcast Communication Audience</label>
+        <locationX>1282</locationX>
+        <locationY>1358</locationY>
+        <connector>
+            <targetReference>Assign_Emails_Sent</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>BroadcastCommunicationId</field>
+            <value>
+                <elementReference>Create_Broadcast_Communication</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>BroadcastType</field>
+            <value>
+                <stringValue>Email</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Sent</stringValue>
+            </value>
+        </inputAssignments>
+        <object>BroadcastCommAudience</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
     <recordLookups>
         <name>Get_Active_Audiences</name>
         <label>Get Active Audiences</label>
@@ -520,7 +613,7 @@
     <recordLookups>
         <name>Get_Attached_Assets</name>
         <label>Get Attached Assets</label>
-        <locationX>1062</locationX>
+        <locationX>1150</locationX>
         <locationY>398</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -548,7 +641,7 @@
     <recordLookups>
         <name>Get_Attached_Cases</name>
         <label>Get Attached Cases</label>
-        <locationX>1062</locationX>
+        <locationX>1150</locationX>
         <locationY>278</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -590,7 +683,7 @@
     <recordLookups>
         <name>Get_Incident</name>
         <label>Get Incident</label>
-        <locationX>1062</locationX>
+        <locationX>1150</locationX>
         <locationY>158</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -621,7 +714,7 @@
     <screens>
         <name>Complete</name>
         <label>Complete</label>
-        <locationX>2074</locationX>
+        <locationX>2250</locationX>
         <locationY>998</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
@@ -688,7 +781,7 @@
     <screens>
         <name>Display_Completion_Checklist</name>
         <label>Display Completion Checklist</label>
-        <locationX>1062</locationX>
+        <locationX>1150</locationX>
         <locationY>758</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
@@ -705,7 +798,7 @@
             <name>Automation_Tasks_InProgress</name>
             <choiceReferences>choice_addBanner</choiceReferences>
             <dataType>String</dataType>
-            <fieldText>Automation Tasks</fieldText>
+            <fieldText>Notification Automation Tasks</fieldText>
             <fieldType>MultiSelectCheckboxes</fieldType>
             <isRequired>false</isRequired>
             <visibilityRule>
@@ -720,27 +813,12 @@
             </visibilityRule>
         </fields>
         <fields>
-            <name>completionchecklistlabel</name>
-            <fieldText>&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(68, 68, 68); font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;{!$Label.AIM_Flow_Completion_ChecklistTitle}&lt;/span&gt;&lt;/p&gt;</fieldText>
-            <fieldType>DisplayText</fieldType>
-            <visibilityRule>
-                <conditionLogic>and</conditionLogic>
-                <conditions>
-                    <leftValueReference>isCompletedFlag</leftValueReference>
-                    <operator>EqualTo</operator>
-                    <rightValue>
-                        <booleanValue>true</booleanValue>
-                    </rightValue>
-                </conditions>
-            </visibilityRule>
-        </fields>
-        <fields>
             <name>Automation_Tasks</name>
             <choiceReferences>choice_removeBanner</choiceReferences>
             <choiceReferences>choice_closeCases</choiceReferences>
             <choiceReferences>choice_KB</choiceReferences>
             <dataType>String</dataType>
-            <fieldText>Automation Tasks</fieldText>
+            <fieldText>Completion Automation Tasks</fieldText>
             <fieldType>MultiSelectCheckboxes</fieldType>
             <isRequired>false</isRequired>
             <visibilityRule>
@@ -768,7 +846,7 @@
         <showHeader>true</showHeader>
     </screens>
     <start>
-        <locationX>936</locationX>
+        <locationX>1024</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Get_Incident</targetReference>
@@ -811,7 +889,7 @@
     <subflows>
         <name>Get_Impacted_Accounts_and_Contacts</name>
         <label>Get Impacted Accounts and Contacts</label>
-        <locationX>1062</locationX>
+        <locationX>1150</locationX>
         <locationY>518</locationY>
         <connector>
             <targetReference>Assign_Counts</targetReference>
@@ -851,10 +929,10 @@
     <subflows>
         <name>REPLACE_WITH_CORE_SEND_EMAIL</name>
         <label>[REPLACE WITH CORE SEND EMAIL]</label>
-        <locationX>1282</locationX>
+        <locationX>1414</locationX>
         <locationY>998</locationY>
         <connector>
-            <targetReference>Assign_Emails_Sent</targetReference>
+            <targetReference>Did_Emails_Send</targetReference>
         </connector>
         <flowName>AIM_GetIncidentStatus</flowName>
         <inputAssignments>
@@ -868,7 +946,7 @@
     <subflows>
         <name>REPLACE_WITH_MESSAGING_SUBFLOW</name>
         <label>[[REPLACE WITH MESSAGING SUBFLOW]]</label>
-        <locationX>1810</locationX>
+        <locationX>1986</locationX>
         <locationY>998</locationY>
         <connector>
             <targetReference>Assign_Messaging_Sent</targetReference>
@@ -885,7 +963,7 @@
     <subflows>
         <name>REPLACE_WITH_SLACK_SUBFLOW</name>
         <label>[[REPLACE WITH SLACK SUBFLOW]]</label>
-        <locationX>1546</locationX>
+        <locationX>1722</locationX>
         <locationY>998</locationY>
         <connector>
             <targetReference>Assign_Slack_Sent</targetReference>
@@ -983,6 +1061,20 @@
         <objectType>Case</objectType>
     </variables>
     <variables>
+        <name>emailBody</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>emailSubject</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
         <name>incidentId</name>
         <dataType>String</dataType>
         <isCollection>false</isCollection>
@@ -1057,6 +1149,17 @@
         <isOutput>false</isOutput>
         <value>
             <booleanValue>false</booleanValue>
+        </value>
+    </variables>
+    <variables>
+        <name>totalEmailSuccesses</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+        <value>
+            <numberValue>0.0</numberValue>
         </value>
     </variables>
 </Flow>
