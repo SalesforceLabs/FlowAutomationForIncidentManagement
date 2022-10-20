@@ -1,11 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
     <labels>
-        <fullName>AIM_Flow_Qualification_RelatedCaseChoice</fullName>
+        <fullName>AIM_Flow_ChannelEmailLabel</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM_Flow_ChannelEmailLabel</shortDescription>
+        <value>Email</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_ChannelAddBannerLabel</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM_Flow_ChannelAddBannerLabel</shortDescription>
+        <value>Activate Site Banner</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_ChannelMessagingLabel</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM_Flow_ChannelMessagingLabel</shortDescription>
+        <value>Messaging</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_ChannelRemoveBannerLabel</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM_Flow_ChannelRemoveBannerLabel</shortDescription>
+        <value>Remove Site Banner</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_ChannelSlackLabel</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM_Flow_ChannelSlackLabel</shortDescription>
+        <value>Slack</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_Click_To_Submit</fullName>
         <categories>AIM</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>AIM Flow Qualification RelatedCaseChoice</shortDescription>
-        <value>Add related cases from a report</value>
+        <shortDescription>AIM Flow Click To Submit</shortDescription>
+        <value>Click &quot;Finish&quot; to submit.</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_CloseCases</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM_Flow_CloseCases</shortDescription>
+        <value>Close all attached cases</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_Completion_Complete</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM_Flow_Completion_Complete</shortDescription>
+        <value>Completion Flow Complete</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_CreateKB</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM_Flow_CreateKB</shortDescription>
+        <value>Create Knowledge Article from Incident</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_Notification_Complete</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM_Flow_Notification_Complete</shortDescription>
+        <value>Notification Flow Complete</value>
     </labels>
 </CustomLabels>
