@@ -13,6 +13,9 @@ orgs:
         dev:
             config_file: orgs/dev.json
             days: 14
+        beta:
+            config_file: orgs/beta.json
+            days: 30
 
 tasks:
     robot:
