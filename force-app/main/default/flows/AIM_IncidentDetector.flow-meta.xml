@@ -3,7 +3,7 @@
     <actionCalls>
         <name>Find_related_incident</name>
         <label>Find related incident</label>
-        <locationX>446</locationX>
+        <locationX>545</locationX>
         <locationY>575</locationY>
         <actionName>RelatedIncidentDetectorAction</actionName>
         <actionType>apex</actionType>
@@ -38,7 +38,7 @@
         <name>Get_CaseIds_from_Report</name>
         <label>Get CaseIds from Report</label>
         <locationX>710</locationX>
-        <locationY>935</locationY>
+        <locationY>1055</locationY>
         <actionName>ReportDataRetrieverAction</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -77,7 +77,7 @@
         <name>Assign_Case_Count</name>
         <label>Assign Case Count</label>
         <locationX>710</locationX>
-        <locationY>1055</locationY>
+        <locationY>1175</locationY>
         <assignmentItems>
             <assignToReference>caseIds</assignToReference>
             <operator>Add</operator>
@@ -172,32 +172,10 @@
         </rules>
     </decisions>
     <decisions>
-        <name>Check_AIM_Bypass_Custom_Setting</name>
-        <label>Check AIM Bypass Custom Setting</label>
-        <locationX>776</locationX>
-        <locationY>335</locationY>
-        <defaultConnectorLabel>Bypass the flow</defaultConnectorLabel>
-        <rules>
-            <name>Continue</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>BypassFlow</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Get_Existing_Incident_Match_Report</targetReference>
-            </connector>
-            <label>Continue</label>
-        </rules>
-    </decisions>
-    <decisions>
         <name>Does_Case_Count_Breach_Threshold</name>
         <label>Does Case Count Breach Threshold?</label>
         <locationX>710</locationX>
-        <locationY>1175</locationY>
+        <locationY>1295</locationY>
         <defaultConnectorLabel>Under Threshold</defaultConnectorLabel>
         <rules>
             <name>Over_Threshold</name>
@@ -216,9 +194,53 @@
         </rules>
     </decisions>
     <decisions>
+        <name>If_Report_Exist</name>
+        <label>If Report Exist?</label>
+        <locationX>957</locationX>
+        <locationY>455</locationY>
+        <defaultConnectorLabel>No Report Found</defaultConnectorLabel>
+        <rules>
+            <name>Report_Exist</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Existing_Incident_Match_Report</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Find_related_incident</targetReference>
+            </connector>
+            <label>Report Found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>If_Report_Exist_2</name>
+        <label>If Report Exist?</label>
+        <locationX>908</locationX>
+        <locationY>935</locationY>
+        <defaultConnectorLabel>No Report Found</defaultConnectorLabel>
+        <rules>
+            <name>Report_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_New_Incident_Detector_Report</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_CaseIds_from_Report</targetReference>
+            </connector>
+            <label>Report Found</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Related_Incident_Returned</name>
         <label>Related Incident Returned?</label>
-        <locationX>446</locationX>
+        <locationX>545</locationX>
         <locationY>695</locationY>
         <defaultConnector>
             <targetReference>Get_New_Incident_Detector_Report</targetReference>
@@ -247,11 +269,6 @@
 
 Either none or (at most) one of those outcomes may occur. This will be based on referenced reports, thresholds, and configurations the incident manager can set as part of a configuration.</description>
     <environments>Default</environments>
-    <formulas>
-        <name>BypassFlow</name>
-        <dataType>Boolean</dataType>
-        <expression>AND({!$Setup.AIMBypassFlows__c.Flow_Developer_Name__c} = &apos;AIM_IncidentDetector&apos;, {!$Setup.AIMBypassFlows__c.isActive__c})</expression>
-    </formulas>
     <formulas>
         <name>incidentDescription</name>
         <dataType>String</dataType>
@@ -310,7 +327,7 @@ Either none or (at most) one of those outcomes may occur. This will be based on 
         <name>Create_Incident</name>
         <label>Create Incident</label>
         <locationX>578</locationX>
-        <locationY>1295</locationY>
+        <locationY>1415</locationY>
         <assignRecordIdToReference>incidentId</assignRecordIdToReference>
         <connector>
             <isGoTo>true</isGoTo>
@@ -351,11 +368,11 @@ Either none or (at most) one of those outcomes may occur. This will be based on 
     <recordLookups>
         <name>Get_Existing_Incident_Match_Report</name>
         <label>Get Existing Incident Match Report</label>
-        <locationX>446</locationX>
-        <locationY>455</locationY>
+        <locationX>957</locationX>
+        <locationY>335</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Find_related_incident</targetReference>
+            <targetReference>If_Report_Exist</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -372,11 +389,11 @@ Either none or (at most) one of those outcomes may occur. This will be based on 
     <recordLookups>
         <name>Get_New_Incident_Detector_Report</name>
         <label>Get New Incident Detector Report</label>
-        <locationX>710</locationX>
+        <locationX>908</locationX>
         <locationY>815</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Get_CaseIds_from_Report</targetReference>
+            <targetReference>If_Report_Exist_2</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -391,10 +408,10 @@ Either none or (at most) one of those outcomes may occur. This will be based on 
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <start>
-        <locationX>650</locationX>
+        <locationX>831</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Check_AIM_Bypass_Custom_Setting</targetReference>
+            <targetReference>Get_Existing_Incident_Match_Report</targetReference>
         </connector>
         <object>Case</object>
         <recordTriggerType>Create</recordTriggerType>

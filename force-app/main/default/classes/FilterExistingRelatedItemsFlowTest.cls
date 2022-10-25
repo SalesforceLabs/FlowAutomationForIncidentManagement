@@ -13,12 +13,6 @@ private class FilterExistingRelatedItemsFlowTest {
    */
   @testSetup
   static void createTestData() {
-    insert new AIMBypassFlows__c(
-      isActive__c = false,
-      Flow_Developer_Name__c = 'AIM_IncidentDetector',
-      SetupOwnerId = UserInfo.getUserId()
-    );
-
     List<Case> cases = new List<Case>();
     List<Asset> assets = new List<Asset>();
     List<Incident> incidents = new List<Incident>();
