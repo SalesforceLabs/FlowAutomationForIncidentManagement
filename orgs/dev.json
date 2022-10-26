@@ -11,7 +11,8 @@
     "ServiceCloud",
     "ServiceUser",
     "Sites",
-    "LiveMessage"
+    "LiveMessage",
+    "SLACK"
   ],
   "settings": {
     "lightningExperienceSettings": {
@@ -47,6 +48,9 @@
     },
     "liveMessageSettings": {
       "enableLiveMessage": true
+    },
+    "platformSlackSettings" : {
+      "slackCapabilitiesEnabled": true
     }
   }
 }

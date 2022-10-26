@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>This action gets slack channel name from slack channel Id</description>
+        <name>getSlackChannelName</name>
+        <label>Get Slack Channel Name</label>
+        <locationX>50</locationX>
+        <locationY>638</locationY>
+        <actionName>slackGetConversationInfo</actionName>
+        <actionType>slackGetConversationInfo</actionType>
+        <connector>
+            <targetReference>confirmSlackMessageSend</targetReference>
+        </connector>
+        <flowTransactionModel>Automatic</flowTransactionModel>
+        <inputParameters>
+            <name>slackAppIdForToken</name>
+            <value>
+                <elementReference>slackAppId</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>slackConversationId</name>
+            <value>
+                <elementReference>slackConversationId</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>slackWorkspaceIdForToken</name>
+            <value>
+                <elementReference>slackWorkSpaceId</elementReference>
+            </value>
+        </inputParameters>
+        <outputParameters>
+            <assignToReference>slackConversationName</assignToReference>
+            <name>slackConversationName</name>
+        </outputParameters>
+    </actionCalls>
+    <actionCalls>
+        <description>This action sends the message to a selected slack channel</description>
+        <name>sendSlackMessage</name>
+        <label>Send Slack Message</label>
+        <locationX>50</locationX>
+        <locationY>878</locationY>
+        <actionName>slackPostMessage</actionName>
+        <actionType>slackPostMessage</actionType>
+        <connector>
+            <targetReference>slackTaskAssignment</targetReference>
+        </connector>
+        <flowTransactionModel>Automatic</flowTransactionModel>
+        <inputParameters>
+            <name>slackAppIdForToken</name>
+            <value>
+                <elementReference>slackAppId</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>slackConversationId</name>
+            <value>
+                <elementReference>slackConversationId</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>slackMessage</name>
+            <value>
+                <elementReference>messageBody</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>slackWorkspaceIdForToken</name>
+            <value>
+                <elementReference>slackWorkSpaceId</elementReference>
+            </value>
+        </inputParameters>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <apiVersion>56.0</apiVersion>
+    <assignments>
+        <description>Slack Task assignment to log the slack message action.</description>
+        <name>slackTaskAssignment</name>
+        <label>Slack Task Assignment</label>
+        <locationX>50</locationX>
+        <locationY>998</locationY>
+        <assignmentItems>
+            <assignToReference>task.Status</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Completed</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>task.Subject</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Slack Message sent to channel {!slackConversationName}</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>task.WhatId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>whatId</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>task.Description</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>messageBody</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>task.ActivityDate</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>createATaskRecord</targetReference>
+        </connector>
+    </assignments>
+    <choices>
+        <description>CRM Analytics App name</description>
+        <name>cRMAnalytics</name>
+        <choiceText>CRM Analytics</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>A02FTH353M0</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <description>Sales Cloud for Slack App Name</description>
+        <name>salesCloudForSlack</name>
+        <choiceText>Sales Cloud for Slack</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>A028VJ1KG3G</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <description>Salesforce for Slack App Name</description>
+        <name>salesforceForSlack</name>
+        <choiceText>&lt;span style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;Salesforce for Slack&lt;/span&gt;</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>A03269G3DNE</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <description>Service Cloud for Slack App Name</description>
+        <name>serviceCloudForSlack</name>
+        <choiceText>Service Cloud for Slack</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>A01RDL2NJAH</stringValue>
+        </value>
+    </choices>
+    <decisions>
+        <description>This decision checks whether a slack conversation is found or not.</description>
+        <name>slackConversationSelected</name>
+        <label>Slack Conversation Selected?</label>
+        <locationX>182</locationX>
+        <locationY>518</locationY>
+        <defaultConnector>
+            <targetReference>slackConversationNotFound</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Slack Conversation Not Found</defaultConnectorLabel>
+        <rules>
+            <name>slackConversationFound</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>slackConversationId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>getSlackChannelName</targetReference>
+            </connector>
+            <label>Slack Conversation Found</label>
+        </rules>
+    </decisions>
+    <description>This flow is a subflow which is used by an incident manager who wishes to send slack messages to a slack channel. It will allow the user to choose a workspace and a slack channel, write a message to send, and then send the message.</description>
+    <environments>Default</environments>
+    <interviewLabel>AIM - Send Slack Message {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>AIM - Send Slack Message</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordCreates>
+        <description>Creates a task record to log the slack message action.</description>
+        <name>createATaskRecord</name>
+        <label>Create a task record</label>
+        <locationX>50</locationX>
+        <locationY>1118</locationY>
+        <connector>
+            <targetReference>sendSlackMessageComplete</targetReference>
+        </connector>
+        <inputReference>task</inputReference>
+    </recordCreates>
+    <screens>
+        <name>confirmSlackMessageSend</name>
+        <label>Confirm Slack Message Send</label>
+        <locationX>50</locationX>
+        <locationY>758</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>sendSlackMessage</targetReference>
+        </connector>
+        <fields>
+            <name>slackMessageConfirm</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;{!$Label.AIM_Slack_Message_Send_Message} {!slackConversationName}&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>slackMessageText</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&quot;{!messageBody}&quot;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <nextOrFinishButtonLabel>Send Message</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>selectSlackApp</name>
+        <label>Select Slack App</label>
+        <locationX>182</locationX>
+        <locationY>158</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>selectSlackWorkspace</targetReference>
+        </connector>
+        <fields>
+            <name>slackAppId</name>
+            <choiceReferences>salesforceForSlack</choiceReferences>
+            <choiceReferences>salesCloudForSlack</choiceReferences>
+            <choiceReferences>serviceCloudForSlack</choiceReferences>
+            <choiceReferences>cRMAnalytics</choiceReferences>
+            <dataType>String</dataType>
+            <defaultSelectedChoiceReference>serviceCloudForSlack</defaultSelectedChoiceReference>
+            <fieldText>Select a Slack App</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>selectSlackWorkspace</name>
+        <label>Select Slack Workspace</label>
+        <locationX>182</locationX>
+        <locationY>278</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>slackMessageSend</targetReference>
+        </connector>
+        <fields>
+            <name>slackWorkspaceSelector</name>
+            <extensionName>force:slackWorkspaceSelector</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>appId</name>
+                <value>
+                    <elementReference>slackAppId</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </inputParameters>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <outputParameters>
+                <assignToReference>slackWorkSpaceId</assignToReference>
+                <name>selectedWorkspaceId</name>
+            </outputParameters>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>sendSlackMessageComplete</name>
+        <label>Send Slack Message Complete</label>
+        <locationX>50</locationX>
+        <locationY>1238</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>slackMessageSentText</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;{!$Label.AIM_Slack_Message_Sent_Successfully} {!slackConversationName}.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>slackConversationNotFound</name>
+        <label>Slack Conversation Not Found</label>
+        <locationX>314</locationX>
+        <locationY>638</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>false</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>Slack_Channel_Not_Found_Message</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;{!$Label.AIM_Slack_Conversation_Not_Found}&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>slackMessageSend</name>
+        <label>Slack Message Send</label>
+        <locationX>182</locationX>
+        <locationY>398</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>slackConversationSelected</targetReference>
+        </connector>
+        <fields>
+            <name>slackChannelSelector</name>
+            <extensionName>force:slackChannelSelector</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>appId</name>
+                <value>
+                    <elementReference>slackAppId</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>workspaceId</name>
+                <value>
+                    <elementReference>slackWorkSpaceId</elementReference>
+                </value>
+            </inputParameters>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <outputParameters>
+                <assignToReference>slackConversationId</assignToReference>
+                <name>selectedChannelId</name>
+            </outputParameters>
+        </fields>
+        <fields>
+            <name>messageBody</name>
+            <fieldText>Message Body</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>selectSlackApp</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>The Slack Conversation Id where the message has to be sent</description>
+        <name>slackConversationId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>The Slack Conversation Name where the message has to be sent</description>
+        <name>slackConversationName</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>slackMessageTaskText</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>Slack Message sent to channel</stringValue>
+        </value>
+    </variables>
+    <variables>
+        <name>slackWorkSpaceId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>task</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Task</objectType>
+    </variables>
+    <variables>
+        <description>This is an optional input and if specified, the flow will log an activity against that record.</description>
+        <name>whatId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

@@ -472,4 +472,28 @@ To create a new report, click &lt;a href=&quot;../../../o/Report/home&quot;&gt;h
         <shortDescription>AIM Generic Error</shortDescription>
         <value>An Error Occurred. Contact your administrator.</value>
     </labels>
+    <labels>
+        <fullName>AIM_Slack_Conversation_Not_Found</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Slack Conversation Not Found</shortDescription>
+        <value>Select a Slack channel.</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Slack_Message_Send_Message</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Slack Message Send Message</shortDescription>
+        <value>Click Send Message to send the following message to</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Slack_Message_Sent_Successfully</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Slack Message Sent Successfully</shortDescription>
+        <value>Message sent successfully to</value>
+    </labels>
 </CustomLabels>
