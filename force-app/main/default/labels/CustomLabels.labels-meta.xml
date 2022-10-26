@@ -372,6 +372,148 @@ To create a new report, click &lt;a href=&quot;../../../o/Report/home&quot;&gt;h
 To create a new report, click &lt;a href=&quot;../../../o/Report/home&quot;&gt;here&lt;/a&gt;.</value>
     </labels>
     <labels>
+        <fullName>AIM_Flow_ChannelEmailLabel</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM_Flow_ChannelEmailLabel</shortDescription>
+        <value>Email</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_ChannelAddBannerLabel</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM_Flow_ChannelAddBannerLabel</shortDescription>
+        <value>Activate Site Banner</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_ChannelMessagingLabel</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM_Flow_ChannelMessagingLabel</shortDescription>
+        <value>Messaging</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_ChannelRemoveBannerLabel</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM_Flow_ChannelRemoveBannerLabel</shortDescription>
+        <value>Remove Site Banner</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_ChannelSlackLabel</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM_Flow_ChannelSlackLabel</shortDescription>
+        <value>Slack</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_CloseCases</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM_Flow_CloseCases</shortDescription>
+        <value>Close all attached cases</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_Completion_Complete</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM_Flow_Completion_Complete</shortDescription>
+        <value>Completion Flow Complete</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_CreateKB</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM_Flow_CreateKB</shortDescription>
+        <value>Create Knowledge Article from Incident</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_Notification_Complete</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM_Flow_Notification_Complete</shortDescription>
+        <value>Notification Flow Complete</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_Cases_Closed</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Flow Cases Closed</shortDescription>
+        <value>Cases Closed</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_Emails_Sent</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Flow Emails Sent</shortDescription>
+        <value>Emails Sent</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_Knowledge_Article_Created</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Flow Knowledge Article Created</shortDescription>
+        <value>Knowledge Article Created</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_Messages_Sent</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Flow Messages Sent</shortDescription>
+        <value>Messages Sent</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_Site_Banner_Added</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Flow Site Banner Added</shortDescription>
+        <value>Site Banner Added</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_Site_Banner_Removed</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Flow Site Banner Removed</shortDescription>
+        <value>Site Banner Removed</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_Slack_Message_Sent</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Flow Slack Message Sent</shortDescription>
+        <value>Slack Message Sent</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_Placeholder_for_Messaging_Notifications</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Flow Messaging Notifications Placeholder</shortDescription>
+        <value>This is a placeholder. If you have installed Messaging Package please add the subflow and pass the appropriate parameters by replacing this screen component</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_Slack_Placeholder</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Flow Placeholder for Slack</shortDescription>
+        <value>This is a placeholder. If you have installed  slack package, please add the subflow and pass the appropriate parameters by replacing this screen component</value>
+    </labels>
+      <labels>
         <fullName>AIM_Flow_SendCoreEmail_ConfirmText</fullName>
         <categories>AIM</categories>
         <language>en_US</language>
@@ -472,7 +614,7 @@ To create a new report, click &lt;a href=&quot;../../../o/Report/home&quot;&gt;h
         <shortDescription>AIM Generic Error</shortDescription>
         <value>An Error Occurred. Contact your administrator.</value>
     </labels>
-    <labels>
+     <labels>
         <fullName>AIM_Slack_Conversation_Not_Found</fullName>
         <categories>AIM</categories>
         <language>en_US</language>
@@ -497,3 +639,4 @@ To create a new report, click &lt;a href=&quot;../../../o/Report/home&quot;&gt;h
         <value>Message sent successfully to</value>
     </labels>
 </CustomLabels>
+
