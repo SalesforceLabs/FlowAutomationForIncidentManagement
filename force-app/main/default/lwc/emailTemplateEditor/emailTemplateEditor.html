@@ -1,0 +1,87 @@
+<template>
+  <template if:true={errorMessage}>
+    <c-error-panel error-message={errorMessage}></c-error-panel>
+  </template>
+  <lightning-layout multiple-rows>
+    <lightning-layout-item size="12">
+      <lightning-combobox
+        data-name="folder"
+        name="folder"
+        label={label.selectFolder}
+        value={folderValue}
+        onchange={handleFolderChange}
+        options={folderOptions}
+        placeholder={label.selectFolder}
+      >
+      </lightning-combobox>
+    </lightning-layout-item>
+    <lightning-layout-item size="12">
+      <lightning-combobox
+        data-name="template"
+        name="template"
+        label={label.selectTemplate}
+        value={templateValue}
+        onchange={handleEmailTemplateChange}
+        options={templateOptions}
+        placeholder={label.selectTemplate}
+      >
+      </lightning-combobox>
+    </lightning-layout-item>
+    <lightning-layout-item size="12">
+      <lightning-combobox
+        data-name="sender"
+        name="sender"
+        label={label.selectSender}
+        value={orgWideEmailAddressId}
+        onchange={handleSenderChange}
+        options={senderEmailAddressesOptions}
+        placeholder={label.selectSender}
+      >
+      </lightning-combobox>
+    </lightning-layout-item>
+    <lightning-layout-item size="12">
+      <lightning-input
+        type="text"
+        label={label.subject}
+        placeholder={label.subject}
+        value={subject}
+        onchange={handleSubjectChange}
+      ></lightning-input>
+    </lightning-layout-item>
+    <lightning-layout-item size="12">
+      <lightning-input-rich-text
+        value={emailBody}
+        label={label.emailBody}
+        label-visible="true"
+        onchange={handleBodyChange}
+        formats={formats}
+      >
+      </lightning-input-rich-text>
+    </lightning-layout-item>
+    <lightning-layout-item size="12">
+      <lightning-layout multiple-rows>
+        <lightning-layout-item
+          class="slds-var-p-right_small"
+          flexibility="auto"
+        >
+          <lightning-input
+            type="email"
+            label={label.testEmail}
+            placeholder={label.testEmail}
+            data-name="testEmail"
+          ></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item
+          class="slds-var-p-right_small slds-align-bottom"
+          flexibility="auto"
+        >
+          <lightning-button
+            variant="base"
+            label={label.sendEmailTest}
+            onclick={handleSendTestEmail}
+          ></lightning-button>
+        </lightning-layout-item>
+      </lightning-layout>
+    </lightning-layout-item>
+  </lightning-layout>
+</template>

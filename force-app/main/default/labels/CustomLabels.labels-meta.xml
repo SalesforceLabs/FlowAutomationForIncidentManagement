@@ -371,4 +371,105 @@ To create a new report, click &lt;a href=&quot;../../../o/Report/home&quot;&gt;h
 
 To create a new report, click &lt;a href=&quot;../../../o/Report/home&quot;&gt;here&lt;/a&gt;.</value>
     </labels>
+    <labels>
+        <fullName>AIM_Flow_SendCoreEmail_ConfirmText</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM_Flow_SendCoreEmail_ConfirmText</shortDescription>
+        <value>Confirm broadcast email?</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_SendCoreEmail_InvalidInfo</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM_Flow_SendCoreEmail_InvalidInfo</shortDescription>
+        <value>&lt;b&gt;Error: Unable to proceed&lt;/b&gt;
+
+                Please ensure:
+                1. A valid org wide address is selected.
+                2. An email subject and body is provided.
+                3. You have supplied a list of contacts to email.</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_SendCoreEmail_CompleteText</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM_Flow_SendCoreEmail_CompleteText</shortDescription>
+        <value>Broadcast Email Complete</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_SendCoreEmail_SendEmailTitle</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM_Flow_SendCoreEmail_SendEmailTitle</shortDescription>
+        <value>Send Incident Broadcast Email</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Email_Editor_Email_Body</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Email Editor Email Body</shortDescription>
+        <value>Email Body</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Email_Editor_Select_Folder</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Email Editor Select Folder</shortDescription>
+        <value>Select Email Folder</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Email_Editor_Select_Sender</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Email Editor Select Sender</shortDescription>
+        <value>Select Sender Address</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Email_Editor_Select_Template</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Email Editor Select Template</shortDescription>
+        <value>Select Email Template</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Email_Editor_Send_Test_Email</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Email Editor Send Test Email</shortDescription>
+        <value>Send Test Email</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Email_Editor_Subject</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Email Editor Subject</shortDescription>
+        <value>Subject</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Email_Editor_Test_Email</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Email Editor Test Email</shortDescription>
+        <value>Test Email</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Generic_Error</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Generic Error</shortDescription>
+        <value>An Error Occurred. Contact your administrator.</value>
+    </labels>
 </CustomLabels>
