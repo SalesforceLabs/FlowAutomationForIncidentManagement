@@ -10,9 +10,11 @@ public with sharing class EmailTemplateEditorController {
    * @param subject (String): Test email subject
    * @param body (String): Test email body
    * @param whatId (String): Incident Id
+   *
+   * @return Test Email sent or failed
    */
   @AuraEnabled
-  public static void sendTestEmail(
+  public static boolean sendTestEmail(
     String emailAddress,
     String sender,
     String subject,
@@ -32,7 +34,15 @@ public with sharing class EmailTemplateEditorController {
     email.setWhatId(whatId);
     emails.add(email);
 
-    Messaging.sendEmail(emails);
+    List<Messaging.SendEmailResult> testEmailResults = Messaging.sendEmail(
+      emails
+    );
+    //There is only one email in the list
+    if (!testEmailResults.isEmpty() && testEmailResults.get(0).isSuccess()) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   /**

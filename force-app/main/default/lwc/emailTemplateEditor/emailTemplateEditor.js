@@ -9,7 +9,10 @@ import selectTemplate from "@salesforce/label/c.AIM_Email_Editor_Select_Template
 import sendEmailTest from "@salesforce/label/c.AIM_Email_Editor_Send_Test_Email";
 import subject from "@salesforce/label/c.AIM_Email_Editor_Subject";
 import testEmail from "@salesforce/label/c.AIM_Email_Editor_Test_Email";
+import testEmailSent from "@salesforce/label/c.AIM_Flow_Test_Email_Sent";
+import testEmailFailed from "@salesforce/label/c.AIM_Flow_Test_Email_Failed";
 import genericError from "@salesforce/label/c.AIM_Generic_Error";
+import { ShowToastEvent } from "lightning/platformShowToastEvent";
 
 export default class EmailTemplateEditor extends LightningElement {
   @api whatId;
@@ -126,6 +129,24 @@ export default class EmailTemplateEditor extends LightningElement {
     this.emailBody = event.detail.value;
   }
 
+  showSuccessToast() {
+    const evt = new ShowToastEvent({
+        title: testEmailSent,
+        variant: 'success',
+        mode: 'dismissable'
+    });
+    this.dispatchEvent(evt);
+  }
+
+  showErrorToast() {
+    const evt = new ShowToastEvent({
+        title: testEmailFailed,
+        variant: 'error',
+        mode: 'dismissable'
+    });
+    this.dispatchEvent(evt);
+  }
+
   handleSendTestEmail() {
     const recipient = this.template.querySelector(
       'lightning-input[data-name="testEmail"]'
@@ -138,7 +159,9 @@ export default class EmailTemplateEditor extends LightningElement {
         body: this.emailBody,
         whatId: this.whatId
       })
-        .then((result) => {})
+        .then((result) => {
+          result === true ? this.showSuccessToast() : this.showErrorToast();
+        })
         .catch((error) => {
           this.errorMessage = genericError;
           if (!Array.isArray(error) && !Array.isArray(error.body)) {
