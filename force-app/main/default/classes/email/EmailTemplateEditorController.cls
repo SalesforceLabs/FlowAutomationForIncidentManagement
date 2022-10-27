@@ -40,9 +40,8 @@ public with sharing class EmailTemplateEditorController {
     //There is only one email in the list
     if (!testEmailResults.isEmpty() && testEmailResults.get(0).isSuccess()) {
       return true;
-    } else {
-      return false;
     }
+    return false;
   }
 
   /**
