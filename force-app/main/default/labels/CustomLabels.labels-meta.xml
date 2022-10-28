@@ -460,6 +460,22 @@ To create a new report, click &lt;a href=&quot;../../../o/Report/home&quot;&gt;h
         <value>Emails Sent</value>
     </labels>
     <labels>
+        <fullName>AIM_Flow_Test_Email_Sent</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Flow Test Email Sent</shortDescription>
+        <value>Test Email Sent</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_Test_Email_Failed</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Flow Test Email Failed</shortDescription>
+        <value>Test Email Failed</value>
+    </labels>
+    <labels>
         <fullName>AIM_Flow_Knowledge_Article_Created</fullName>
         <categories>AIM</categories>
         <language>en_US</language>
@@ -639,4 +655,3 @@ To create a new report, click &lt;a href=&quot;../../../o/Report/home&quot;&gt;h
         <value>Message sent successfully to</value>
     </labels>
 </CustomLabels>
-
