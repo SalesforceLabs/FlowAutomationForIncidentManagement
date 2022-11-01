@@ -359,7 +359,7 @@
         <shortDescription>AIM Flow Qualification SelectAssetReport</shortDescription>
         <value>Select a report that contains the list of assets you&apos;d like to relate to the Incident. Please ensure the report is a tabular report with AssetID in the first column.
 
-To create a new report, click &lt;a href=&quot;../../../o/Report/home&quot;&gt;here&lt;/a&gt;.</value>
+To create a new report, click &lt;a href=&quot;/lightning/o/Report/home&quot;&gt;here&lt;/a&gt;.</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_Qualification_SelectCaseReport</fullName>
@@ -369,7 +369,7 @@ To create a new report, click &lt;a href=&quot;../../../o/Report/home&quot;&gt;h
         <shortDescription>AIM Flow Qualification SelectCaseReport</shortDescription>
         <value>Select a report that contains the list of cases you&apos;d like to relate to the Incident. Please ensure the report is a tabular report with CaseID in the first column.
 
-To create a new report, click &lt;a href=&quot;../../../o/Report/home&quot;&gt;here&lt;/a&gt;.</value>
+To create a new report, click &lt;a href=&quot;/lightning/o/Report/home&quot;&gt;here&lt;/a&gt;.</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_ChannelEmailLabel</fullName>
@@ -529,7 +529,7 @@ To create a new report, click &lt;a href=&quot;../../../o/Report/home&quot;&gt;h
         <shortDescription>AIM Flow Placeholder for Slack</shortDescription>
         <value>This is a placeholder. If you have installed  slack package, please add the subflow and pass the appropriate parameters by replacing this screen component</value>
     </labels>
-      <labels>
+    <labels>
         <fullName>AIM_Flow_SendCoreEmail_ConfirmText</fullName>
         <categories>AIM</categories>
         <language>en_US</language>
@@ -630,7 +630,7 @@ To create a new report, click &lt;a href=&quot;../../../o/Report/home&quot;&gt;h
         <shortDescription>AIM Generic Error</shortDescription>
         <value>An Error Occurred. Contact your administrator.</value>
     </labels>
-     <labels>
+    <labels>
         <fullName>AIM_Slack_Conversation_Not_Found</fullName>
         <categories>AIM</categories>
         <language>en_US</language>
@@ -653,5 +653,13 @@ To create a new report, click &lt;a href=&quot;../../../o/Report/home&quot;&gt;h
         <protected>true</protected>
         <shortDescription>AIM Slack Message Sent Successfully</shortDescription>
         <value>Message sent successfully to</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Email_Editor_Test_Email_Empty</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Email Editor Test Email Empty</shortDescription>
+        <value>The Test Email Address can not be empty.</value>
     </labels>
 </CustomLabels>

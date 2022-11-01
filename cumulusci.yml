@@ -13,6 +13,9 @@ orgs:
         dev:
             config_file: orgs/dev.json
             days: 14
+        beta:
+            config_file: orgs/beta.json
+            days: 30
 
 tasks:
     robot:
@@ -40,17 +43,29 @@ tasks:
             path: scripts/enableKnowledgeUser.cls
             apex: enableKnowledgeUser();
 
+    add_Users_To_Queues:
+        description: add current user to queues
+        class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
+        options:
+            path: scripts/addUsersToQueues.cls
+            apex: addUsersToQueues();
+
     run_tests:
         options:
             required_org_code_coverage_percent: 80
 
 flows:
-    dev_org:
+    config_dev:
         steps:
-            0.9:
-                task: enable_knowledge_user
+            1.1:
+                task: add_Users_To_Queues
+    
+    config_qa:
+        steps:
+            1.1:
+                task: add_Users_To_Queues
 
-    qa_org:
+    dependencies:
         steps:
-            0.9:
+            3:
                 task: enable_knowledge_user

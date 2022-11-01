@@ -11,6 +11,7 @@ import subject from "@salesforce/label/c.AIM_Email_Editor_Subject";
 import testEmail from "@salesforce/label/c.AIM_Email_Editor_Test_Email";
 import testEmailSent from "@salesforce/label/c.AIM_Flow_Test_Email_Sent";
 import testEmailFailed from "@salesforce/label/c.AIM_Flow_Test_Email_Failed";
+import testEmailEmpty from "@salesforce/label/c.AIM_Email_Editor_Test_Email_Empty";
 import genericError from "@salesforce/label/c.AIM_Generic_Error";
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
 
@@ -26,6 +27,7 @@ export default class EmailTemplateEditor extends LightningElement {
   @track senderEmailAddressesOptions;
   folderValue;
   errorMessage;
+  isButtonDisabled = false;
   formats = [
     "font",
     "size",
@@ -146,14 +148,23 @@ export default class EmailTemplateEditor extends LightningElement {
     });
     this.dispatchEvent(evt);
   }
+  
+  handleTestEmailBlur(event) {
+    let recipientCmp = this.template.querySelector(
+      'lightning-input[data-name="testEmail"]'
+    );
+    recipientCmp.setCustomValidity('');
+    recipientCmp.reportValidity();
+  }
 
   handleSendTestEmail() {
-    const recipient = this.template.querySelector(
+    let recipientCmp = this.template.querySelector(
       'lightning-input[data-name="testEmail"]'
-    ).value;
-    if (recipient) {
+    );
+    if (recipientCmp.value && recipientCmp.checkValidity()) {
+      this.isButtonDisabled = true;
       sendTestEmail({
-        emailAddress: recipient,
+        emailAddress: recipientCmp.value,
         sender: this.orgWideEmailAddressId,
         subject: this.subject,
         body: this.emailBody,
@@ -161,13 +172,19 @@ export default class EmailTemplateEditor extends LightningElement {
       })
         .then((result) => {
           result === true ? this.showSuccessToast() : this.showErrorToast();
+          this.isButtonDisabled = false;
         })
         .catch((error) => {
           this.errorMessage = genericError;
           if (!Array.isArray(error) && !Array.isArray(error.body)) {
             this.errorMessage = error.body.message;
           }
+          this.isButtonDisabled = false;
         });
     }
+    else if(!recipientCmp.value) {
+      recipientCmp.setCustomValidity(testEmailEmpty);
+    }
+    recipientCmp.reportValidity();
   }
 }

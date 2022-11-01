@@ -5,7 +5,7 @@
         <name>Send_Emails</name>
         <label>Send Emails</label>
         <locationX>50</locationX>
-        <locationY>878</locationY>
+        <locationY>758</locationY>
         <actionName>AIM_SendEmailAction</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -152,41 +152,6 @@
         </value>
     </processMetadataValues>
     <processType>Flow</processType>
-    <recordCreates>
-        <name>Create_Broadcast_Communication</name>
-        <label>Create Broadcast Communication</label>
-        <locationX>50</locationX>
-        <locationY>758</locationY>
-        <connector>
-            <targetReference>Send_Emails</targetReference>
-        </connector>
-        <inputAssignments>
-            <field>Body</field>
-            <value>
-                <elementReference>emailBody</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>BroadcastType</field>
-            <value>
-                <stringValue>Email</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>RelatedRecordId</field>
-            <value>
-                <elementReference>incidentId</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Subject</field>
-            <value>
-                <elementReference>emailSubject</elementReference>
-            </value>
-        </inputAssignments>
-        <object>BroadcastCommunication</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordCreates>
     <recordLookups>
         <name>Get_Incident</name>
         <label>Get Incident</label>
@@ -217,11 +182,11 @@
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
         <connector>
-            <targetReference>Create_Broadcast_Communication</targetReference>
+            <targetReference>Send_Emails</targetReference>
         </connector>
         <fields>
             <name>confirmtext</name>
-            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;{!$Label.AIM_Flow_SendCoreEmail_ConfirmText}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;{!emailCount}&lt;/strong&gt; emails to send&lt;/p&gt;&lt;p&gt;Subject: &lt;strong&gt;{!emailSubject}&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Body:&lt;/p&gt;&lt;p&gt;{!emailBody}&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;{!$Label.AIM_Flow_SendCoreEmail_ConfirmText}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;{!emailCount}&lt;/strong&gt; emails to send&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Subject: &lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;span class=&quot;ql-cursor&quot;&gt;﻿&lt;/span&gt;{!emailSubject}&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Body:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;{!emailBody}&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <nextOrFinishButtonLabel>Send Emails</nextOrFinishButtonLabel>
@@ -248,7 +213,7 @@
         <name>Send_Email_Complete</name>
         <label>Send Email Complete</label>
         <locationX>50</locationX>
-        <locationY>998</locationY>
+        <locationY>878</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -292,6 +257,16 @@
             <name>failuretext</name>
             <fieldText>&lt;p&gt;Errors:&lt;/p&gt;&lt;p&gt;{!failureMessages}&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <visibilityRule>
+                <conditionLogic>and</conditionLogic>
+                <conditions>
+                    <leftValueReference>totalFailures</leftValueReference>
+                    <operator>GreaterThan</operator>
+                    <rightValue>
+                        <numberValue>0.0</numberValue>
+                    </rightValue>
+                </conditions>
+            </visibilityRule>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
@@ -381,7 +356,7 @@
         <dataType>String</dataType>
         <isCollection>false</isCollection>
         <isInput>false</isInput>
-        <isOutput>false</isOutput>
+        <isOutput>true</isOutput>
     </variables>
     <variables>
         <name>emailCount</name>
@@ -399,7 +374,7 @@
         <dataType>String</dataType>
         <isCollection>false</isCollection>
         <isInput>false</isInput>
-        <isOutput>false</isOutput>
+        <isOutput>true</isOutput>
     </variables>
     <variables>
         <name>emailTemplateId</name>
