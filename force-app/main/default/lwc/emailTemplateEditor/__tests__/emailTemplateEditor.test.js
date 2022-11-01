@@ -183,6 +183,10 @@ describe("c-email-template-editor", () => {
       'lightning-input[data-name="testEmail"]'
     ).value = "test@aim.example.com";
 
+    element.shadowRoot.querySelector(
+      'lightning-input[data-name="testEmail"]'
+    ).checkValidity = jest.fn().mockReturnValue(true);
+
     const buttons = element.shadowRoot.querySelectorAll("lightning-button");
 
     buttons[0].dispatchEvent(new CustomEvent("click"));

@@ -145,7 +145,7 @@
         <name>Assign_Emails_Sent</name>
         <label>Assign Emails Sent</label>
         <locationX>1414</locationX>
-        <locationY>1574</locationY>
+        <locationY>1454</locationY>
         <assignmentItems>
             <assignToReference>isEmailSent</assignToReference>
             <operator>Assign</operator>
@@ -532,7 +532,7 @@
         <locationX>1282</locationX>
         <locationY>1238</locationY>
         <connector>
-            <targetReference>Create_Broadcast_Communication_Audience</targetReference>
+            <targetReference>Assign_Emails_Sent</targetReference>
         </connector>
         <inputAssignments>
             <field>Body</field>
@@ -559,35 +559,6 @@
             </value>
         </inputAssignments>
         <object>BroadcastCommunication</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordCreates>
-    <recordCreates>
-        <name>Create_Broadcast_Communication_Audience</name>
-        <label>Create Broadcast Communication Audience</label>
-        <locationX>1282</locationX>
-        <locationY>1358</locationY>
-        <connector>
-            <targetReference>Assign_Emails_Sent</targetReference>
-        </connector>
-        <inputAssignments>
-            <field>BroadcastCommunicationId</field>
-            <value>
-                <elementReference>Create_Broadcast_Communication</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>BroadcastType</field>
-            <value>
-                <stringValue>Email</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Status</field>
-            <value>
-                <stringValue>Sent</stringValue>
-            </value>
-        </inputAssignments>
-        <object>BroadcastCommAudience</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordCreates>
     <recordLookups>
@@ -820,7 +791,7 @@
             <name>Automation_Tasks_InProgress</name>
             <choiceReferences>choice_addBanner</choiceReferences>
             <dataType>String</dataType>
-            <fieldText>Notification Automation Tasks</fieldText>
+            <fieldText>Broadcast the Incident</fieldText>
             <fieldType>MultiSelectCheckboxes</fieldType>
             <isRequired>false</isRequired>
             <visibilityRule>
@@ -840,7 +811,7 @@
             <choiceReferences>choice_closeCases</choiceReferences>
             <choiceReferences>choice_KB</choiceReferences>
             <dataType>String</dataType>
-            <fieldText>Completion Automation Tasks</fieldText>
+            <fieldText>Incident Completion Tasks</fieldText>
             <fieldType>MultiSelectCheckboxes</fieldType>
             <isRequired>false</isRequired>
             <visibilityRule>
@@ -860,7 +831,6 @@
             <choiceReferences>choice_slack</choiceReferences>
             <choiceReferences>choice_messaging</choiceReferences>
             <dataType>String</dataType>
-            <fieldText>Send Broadcast Communication</fieldText>
             <fieldType>MultiSelectCheckboxes</fieldType>
             <isRequired>false</isRequired>
         </fields>
@@ -1014,7 +984,18 @@
                 <elementReference>incidentId</elementReference>
             </value>
         </inputAssignments>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
+        <outputAssignments>
+            <assignToReference>emailBody</assignToReference>
+            <name>emailBody</name>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>emailSubject</assignToReference>
+            <name>emailSubject</name>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>totalEmailSuccesses</assignToReference>
+            <name>totalSuccesses</name>
+        </outputAssignments>
     </subflows>
     <variables>
         <name>accountCount</name>

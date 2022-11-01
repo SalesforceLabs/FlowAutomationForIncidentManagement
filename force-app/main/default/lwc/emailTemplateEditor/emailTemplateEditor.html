@@ -69,15 +69,12 @@
             label={label.testEmail}
             placeholder={label.testEmail}
             data-name="testEmail"
+            onblur={handleTestEmailBlur}
           ></lightning-input>
-        </lightning-layout-item>
-        <lightning-layout-item
-          class="slds-var-p-right_small slds-align-bottom"
-          flexibility="auto"
-        >
           <lightning-button
             variant="base"
             label={label.sendEmailTest}
+            disabled={isButtonDisabled}
             onclick={handleSendTestEmail}
           ></lightning-button>
         </lightning-layout-item>
