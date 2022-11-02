@@ -7,4 +7,7 @@ if [ ! -d "$PMDFILENAME" ]; then
   unzip $PMDFILENAME.zip
   rm $PMDFILENAME.zip
 fi
-$PMDFILENAME/bin/run.sh pmd -d force-app -R ruleSet.xml
+$PMDFILENAME/bin/run.sh pmd -d aim-base -R ruleSet.xml
+$PMDFILENAME/bin/run.sh pmd -d aim-bot -R ruleSet.xml
+$PMDFILENAME/bin/run.sh pmd -d aim-messaging -R ruleSet.xml
+$PMDFILENAME/bin/run.sh pmd -d aim-slack -R ruleSet.xml

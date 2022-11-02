@@ -257,61 +257,6 @@
         <value>Knowledge Article Created</value>
     </labels>
     <labels>
-        <fullName>AIM_Flow_Click_Send_Messages</fullName>
-        <categories>AIM</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>AIM Flow Click Send Messages</shortDescription>
-        <value>Click &quot;Send Message(s)&quot; to continue</value>
-    </labels>
-    <labels>
-        <fullName>AIM_Flow_Contacts_Notification_Message</fullName>
-        <categories>AIM</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>AIM Flow Contacts Notification Message</shortDescription>
-        <value>contacts will be notified via Messaging</value>
-    </labels>
-    <labels>
-        <fullName>AIM_Flow_No_Contacts_Error_Message</fullName>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>AIM Flow No Contacts Error Message</shortDescription>
-        <value>No Contacts selected to send message</value>
-    </labels>
-    <labels>
-        <fullName>AIM_Flow_Notifications_Sent_Message</fullName>
-        <categories>AIM</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>AIM Flow Notifications Sent Message</shortDescription>
-        <value>Messaging Notifications sent</value>
-    </labels>
-    <labels>
-        <fullName>AIM_Flow_Outbound_Message</fullName>
-        <categories>AIM</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>AIM Flow Outbound Message Text</shortDescription>
-        <value>Outbound Message</value>
-    </labels>
-    <labels>
-        <fullName>AIM_Flow_Outbound_Messages_Requirement</fullName>
-        <categories>AIM</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>AIM Flow Outbound Messages Requirement</shortDescription>
-        <value>The selected messaging channel requires contacts to be opted in before outbound messages can be sent</value>
-    </labels>
-    <labels>
-        <fullName>AIM_Flow_Select_Messaging_Template_And_Messaging_Channel</fullName>
-        <categories>AIM</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>AIM Flow Select Messaging Template And Messaging Channel</shortDescription>
-        <value>Select the Messaging Channel and Messaging Template to send</value>
-    </labels>
-    <labels>
         <fullName>AIM_Flow_Qualification_Complete</fullName>
         <categories>AIM</categories>
         <language>en_US</language>
@@ -629,30 +574,6 @@ To create a new report, click &lt;a href=&quot;/lightning/o/Report/home&quot;&gt
         <protected>true</protected>
         <shortDescription>AIM Generic Error</shortDescription>
         <value>An Error Occurred. Contact your administrator.</value>
-    </labels>
-    <labels>
-        <fullName>AIM_Slack_Conversation_Not_Found</fullName>
-        <categories>AIM</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>AIM Slack Conversation Not Found</shortDescription>
-        <value>Select a Slack channel.</value>
-    </labels>
-    <labels>
-        <fullName>AIM_Slack_Message_Send_Message</fullName>
-        <categories>AIM</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>AIM Slack Message Send Message</shortDescription>
-        <value>Click Send Message to send the following message to</value>
-    </labels>
-    <labels>
-        <fullName>AIM_Slack_Message_Sent_Successfully</fullName>
-        <categories>AIM</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>AIM Slack Message Sent Successfully</shortDescription>
-        <value>Message sent successfully to</value>
     </labels>
     <labels>
         <fullName>AIM_Email_Editor_Test_Email_Empty</fullName>

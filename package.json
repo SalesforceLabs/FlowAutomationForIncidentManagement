@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "prettier": "prettier --check \"force-app/**/*.{page,trigger,cls,html}\"",
-    "prettier:fix": "prettier --write \"force-app/**/*.{page,trigger,cls,html}\"",
+    "prettier": "prettier --check \"aim-*/**/*.{page,trigger,cls,html}\"",
+    "prettier:fix": "prettier --write \"aim-*/**/*.{page,trigger,cls,html}\"",
     "test": "npm run test:unit",
     "test:unit": "sfdx-lwc-jest",
     "test:unit:watch": "sfdx-lwc-jest --watch",
