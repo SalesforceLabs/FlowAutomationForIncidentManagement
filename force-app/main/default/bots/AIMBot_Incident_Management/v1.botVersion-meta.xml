@@ -208,7 +208,7 @@
     <botDialogs>
         <botSteps>
             <botMessages>
-                <message>We&apos;re experiencing an ongoing incident...</message>
+                <message>There&apos;s an ongoing incident that seems related to your issue.</message>
                 <messageIdentifier>9e3da046-62d9-4bc9-88c3-bf1b1aaa8cd8</messageIdentifier>
             </botMessages>
             <stepIdentifier>78f3cfc7-dd21-447c-acea-19d0a7e1091f</stepIdentifier>
@@ -226,15 +226,15 @@
             <botVariableOperation>
                 <askCollectIfSet>true</askCollectIfSet>
                 <botMessages>
-                    <message>Is your request related to this incident?</message>
+                    <message>Is your issue related to this incident?</message>
                     <messageIdentifier>e6d4f9d6-ef97-4463-8f21-97698bf7e05e</messageIdentifier>
                 </botMessages>
                 <botQuickReplyOptions>
-                    <literalValue>Yes</literalValue>
+                    <literalValue>Yes.</literalValue>
                     <quickReplyOptionIdentifier>54dcdf86-49da-4582-8ada-8281cc0763f2</quickReplyOptionIdentifier>
                 </botQuickReplyOptions>
                 <botQuickReplyOptions>
-                    <literalValue>No. Something else.</literalValue>
+                    <literalValue>No - something else.</literalValue>
                     <quickReplyOptionIdentifier>46b1576c-8014-46fa-8a19-fe339e7d31c5</quickReplyOptionIdentifier>
                 </botQuickReplyOptions>
                 <botVariableOperands>
@@ -267,9 +267,9 @@
                         <targetType>ConversationVariable</targetType>
                     </botVariableOperands>
                     <type>Unset</type>
-                    <variableOperationIdentifier>a833d9c8-09ef-4633-981a-43474a226468</variableOperationIdentifier>
+                    <variableOperationIdentifier>98059805-49e8-4468-b470-09160d6b2349</variableOperationIdentifier>
                 </botVariableOperation>
-                <stepIdentifier>51cfc985-145b-4e5d-8d54-d6ad12e21f2f</stepIdentifier>
+                <stepIdentifier>4f2cf7ea-4ddb-4289-ac0d-b2f8417b6fd5</stepIdentifier>
                 <type>VariableOperation</type>
             </botSteps>
             <botSteps>
@@ -279,7 +279,7 @@
                     </botNavigationLinks>
                     <type>Redirect</type>
                 </botNavigation>
-                <stepIdentifier>7be0ced5-aa95-474f-8db9-2a5800fa889e</stepIdentifier>
+                <stepIdentifier>6c575d86-8b92-4b05-aa32-9de462ed442d</stepIdentifier>
                 <type>Navigation</type>
             </botSteps>
             <stepIdentifier>7b4d067f-1276-4b7a-9e7e-f3170319d253</stepIdentifier>
@@ -289,15 +289,15 @@
             <botVariableOperation>
                 <askCollectIfSet>true</askCollectIfSet>
                 <botMessages>
-                    <message>Would you like to open a case related to this incident?</message>
+                    <message>Would you like to open a case for this issue?</message>
                     <messageIdentifier>b80ca36b-7290-47d7-9220-f6a764001779</messageIdentifier>
                 </botMessages>
                 <botQuickReplyOptions>
-                    <literalValue>Yes</literalValue>
+                    <literalValue>Yes.</literalValue>
                     <quickReplyOptionIdentifier>53d0145d-c56b-49ea-bde6-69b3612813cf</quickReplyOptionIdentifier>
                 </botQuickReplyOptions>
                 <botQuickReplyOptions>
-                    <literalValue>No Thanks</literalValue>
+                    <literalValue>No, not at this time.</literalValue>
                     <quickReplyOptionIdentifier>353f3a7e-0c49-4f4a-b745-b59c224d73f3</quickReplyOptionIdentifier>
                 </botQuickReplyOptions>
                 <botVariableOperands>
@@ -330,7 +330,7 @@
                     </botNavigationLinks>
                     <type>Call</type>
                 </botNavigation>
-                <stepIdentifier>f25d56b3-9974-40a8-ad31-e1620f6456c6</stepIdentifier>
+                <stepIdentifier>f29cef34-b95a-47fd-b46d-05883ff756c6</stepIdentifier>
                 <type>Navigation</type>
             </botSteps>
             <stepIdentifier>9af9187f-0dce-45ef-8af6-e4a23ee979ed</stepIdentifier>
@@ -360,8 +360,8 @@
             </botStepConditions>
             <botSteps>
                 <botMessages>
-                    <message>You already created a case.
-Number: {!Case.CaseNumber}
+                    <message>You&apos;ve already created a case.
+Number: {!Case. CaseNumber}
 Subject: {!Case.Subject}
 Status: {!Case.Status}</message>
                     <messageIdentifier>5e21d1fe-4ee5-48c8-8214-49db2f2bce02</messageIdentifier>
@@ -376,7 +376,7 @@ Status: {!Case.Status}</message>
                     </botNavigationLinks>
                     <type>Redirect</type>
                 </botNavigation>
-                <stepIdentifier>c43ade67-83ef-47ae-b0fe-5142ef8e25f5</stepIdentifier>
+                <stepIdentifier>3a97dc08-3bab-4fc2-aae3-e17020540c41</stepIdentifier>
                 <type>Navigation</type>
             </botSteps>
             <stepIdentifier>87971114-f028-47b4-a7b0-415b97d5e49b</stepIdentifier>
@@ -386,7 +386,7 @@ Status: {!Case.Status}</message>
             <botVariableOperation>
                 <askCollectIfSet>true</askCollectIfSet>
                 <botMessages>
-                    <message>Ok. In a few sentences, please describe your issue.</message>
+                    <message>OK. In a few sentences, please describe your issue.</message>
                     <messageIdentifier>9afe11bc-d35b-4481-b1d9-cb1b56d1f4d3</messageIdentifier>
                 </botMessages>
                 <botVariableOperands>
@@ -417,7 +417,7 @@ Status: {!Case.Status}</message>
                     </botNavigationLinks>
                     <type>Call</type>
                 </botNavigation>
-                <stepIdentifier>7225210a-a07a-4fa4-8887-fdd46ed66633</stepIdentifier>
+                <stepIdentifier>68ff61d5-160b-4900-88ee-fa48dfc6ce84</stepIdentifier>
                 <type>Navigation</type>
             </botSteps>
             <stepIdentifier>7d3b5f91-8679-4b8c-bfc8-c0d81d36fccd</stepIdentifier>
@@ -483,7 +483,7 @@ Status: {!Case.Status}</message>
                     </invocationMappings>
                 </botInvocation>
                 <type>Set</type>
-                <variableOperationIdentifier>799562eb-420c-4ef3-92a5-94ced8283b1c</variableOperationIdentifier>
+                <variableOperationIdentifier>ca725334-5a8d-4ed3-ac9a-dcfdce5e4859</variableOperationIdentifier>
             </botVariableOperation>
             <stepIdentifier>3680e4fd-e2ed-442f-93fe-ca097f608492</stepIdentifier>
             <type>VariableOperation</type>
@@ -491,7 +491,7 @@ Status: {!Case.Status}</message>
         <botSteps>
             <botMessages>
                 <message>Your case has been created.
-Number: {!Case.CaseNumber}
+Number: {!Case. CaseNumber}
 Subject: {!Case.Subject}
 Status: {!Case.Status}</message>
                 <messageIdentifier>2ada5718-267e-44fc-b88f-32514084498e</messageIdentifier>
@@ -511,7 +511,7 @@ Status: {!Case.Status}</message>
     <botDialogs>
         <botSteps>
             <botMessages>
-                <message>I’d like to collect your contact information so one of our agents can follow up with you.</message>
+                <message>I&apos;ll need your contact info in case one of our agents needs to follow up with you.</message>
                 <messageIdentifier>7118d255-3ed8-4dc0-b47e-88f3dca5c28e</messageIdentifier>
             </botMessages>
             <stepIdentifier>c7ad6cc5-7279-425e-86c6-b48b088d11a8</stepIdentifier>
@@ -565,7 +565,7 @@ Status: {!Case.Status}</message>
             <botVariableOperation>
                 <askCollectIfSet>false</askCollectIfSet>
                 <botMessages>
-                    <message>What’s your email address?</message>
+                    <message>What&apos;s your email address?</message>
                     <messageIdentifier>a911ef47-b094-478c-93c0-f010ba9d2a1a</messageIdentifier>
                 </botMessages>
                 <botVariableOperands>
