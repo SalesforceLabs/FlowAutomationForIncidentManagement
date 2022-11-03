@@ -38,7 +38,8 @@
       }
     },
     "incidentMgmtSettings": {
-      "enableEmailBroadcastType": true    
+      "enableEmailBroadcastType": true,
+      "enableSiteBannerBroadcastType": true 
     },
     "languageSettings": {
       "enableTranslationWorkbench": true

@@ -1,8 +1,11 @@
 {
     "packageDirectories": [
         {
-            "path": "aim-base", 
-            "default": true
+            "path": "aim-base",
+            "default": true,
+            "package": "AIM Base",
+            "versionName": "ver 1.0",
+            "versionNumber": "1.0.0.NEXT"
         },
         {
             "path": "aim-messaging",
@@ -19,5 +22,8 @@
     ],
     "namespace": "",
     "sfdcLoginUrl": "https://login.salesforce.com",
-    "sourceApiVersion": "56.0"
+    "sourceApiVersion": "56.0",
+    "packageAliases": {
+        "AIM Base": "0HoEE00000000Uf0AI"
+    }
 }

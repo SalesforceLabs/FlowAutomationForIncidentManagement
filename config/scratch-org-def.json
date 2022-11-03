@@ -1,0 +1,56 @@
+{
+    "orgName": "Salesforce",
+    "sourceOrg": "00DB0000000OKo4",
+    "features": [
+        "API",
+        "Knowledge",
+        "Communities",
+        "EnableSetPasswordInApi",
+        "Chatbot",
+        "ServiceCloud",
+        "ServiceUser",
+        "Sites",
+        "LiveMessage",
+        "SLACK"
+    ],
+    "settings": {
+        "lightningExperienceSettings": {
+        "enableS1DesktopEnabled": true
+        },
+        "knowledgeSettings":{
+        "enableKnowledge" : true,
+        "enableLightningKnowledge":true
+        },
+        "communitiesSettings": {
+        "enableNetworksEnabled": true
+        },
+        "chatterSettings": {
+        "enableChatter": true
+        },
+        "userManagementSettings": {
+        "enableNewProfileUI": true
+        },
+        "securitySettings": {
+        "enableAdminLoginAsAnyUser": true,
+        "sessionSettings": {
+            "forceRelogin": false
+        }
+        },
+        "incidentMgmtSettings": {
+        "enableEmailBroadcastType": true,
+        "enableSiteBannerBroadcastType": true   
+        },
+        "languageSettings": {
+        "enableTranslationWorkbench": true
+        },
+        "botSettings" : {
+        "enableBots": true
+        },
+        "liveMessageSettings": {
+        "enableLiveMessage": true
+        },
+        "platformSlackSettings" : {
+        "slackCapabilitiesEnabled": true
+        }
+    }
+}
