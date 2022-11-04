@@ -551,7 +551,7 @@
         </connector>
         <fields>
             <name>caseaddconfirm_0</name>
-            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong style=&quot;font-size: 18px;&quot;&gt;{!AssetCount} &lt;/strong&gt;asset(s) will be related to the incident from report &lt;strong style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;&quot;{!selectedReport.Name}&quot;&lt;/strong&gt;.&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;{!$Label.AIM_Flow_Qualification_ConfirmRelate}&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 12px; background-color: transparent; color: rgb(0, 0, 0);&quot;&gt;Select next to add&lt;/span&gt;&lt;span style=&quot;font-size: 12pt; background-color: transparent; color: rgb(0, 0, 0); font-family: &amp;quot;Arial Narrow&amp;quot;, sans-serif;&quot;&gt; &lt;/span&gt;&lt;strong style=&quot;font-size: 18px;&quot;&gt;{!AssetCount} &lt;/strong&gt;&lt;span style=&quot;background-color: transparent; color: rgb(0, 0, 0); font-size: 12px;&quot;&gt;assets from the&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: rgb(0, 0, 0); font-family: &amp;quot;Arial Narrow&amp;quot;, sans-serif; font-size: 12pt;&quot;&gt; &quot;&lt;/span&gt;&lt;strong style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;{!selectedReport.Name}&quot; &lt;/strong&gt;&lt;span style=&quot;background-color: transparent; color: rgb(0, 0, 0); font-size: 12px;&quot;&gt;report to the incident. To add assets from a different report, go back and make your selection.&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: rgb(0, 0, 0); font-family: &amp;quot;Arial Narrow&amp;quot;, sans-serif; font-size: 12pt;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;{!$Label.AIM_Flow_Qualification_ConfirmRelate}&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <showFooter>true</showFooter>
@@ -570,7 +570,7 @@
         </connector>
         <fields>
             <name>caseaddconfirm</name>
-            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong style=&quot;font-size: 18px;&quot;&gt;{!caseCount} &lt;/strong&gt;case(s) will be related to the incident from report &lt;strong style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;&quot;{!selectedReport.Name}&quot;&lt;/strong&gt;.&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;{!$Label.AIM_Flow_Qualification_ConfirmRelate}&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 12px; background-color: transparent; color: rgb(0, 0, 0);&quot;&gt;Select next to add &lt;/span&gt;&lt;strong style=&quot;font-size: 18px;&quot;&gt;{!caseCount} &lt;/strong&gt;cases &lt;strong style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;&quot;{!selectedReport.Name}&quot; &lt;/strong&gt;&lt;span style=&quot;background-color: transparent; color: rgb(0, 0, 0); font-size: 12px;&quot;&gt;from the report to the incident. To add cases from a different report, go back and make your selection.&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;{!$Label.AIM_Flow_Qualification_ConfirmRelate}&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <showFooter>true</showFooter>
@@ -637,7 +637,7 @@
         </connector>
         <fields>
             <name>summarytext</name>
-            <fieldText>&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;{!Get_Incident.Subject}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Status: {!Get_Incident.Status}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Total related cases: &lt;strong&gt;{!relatedCaseCount}&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Total related assets: &lt;strong&gt;{!relatedAssets}&lt;/strong&gt;&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;{!Get_Incident.Subject}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Status: {!Get_Incident.Status}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;Known related &lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: rgb(0, 0, 0); font-size: 12px;&quot;&gt;cases: &lt;/span&gt;&lt;strong&gt;{!relatedCaseCount}&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Known related assets: &lt;strong&gt;{!relatedAssets}&lt;/strong&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <fields>
@@ -645,7 +645,7 @@
             <choiceReferences>choice_relatedCases</choiceReferences>
             <choiceReferences>choice_relatedAssets</choiceReferences>
             <dataType>String</dataType>
-            <fieldText>What would you like to do?</fieldText>
+            <fieldText>What would you like to do with this incident?</fieldText>
             <fieldType>MultiSelectCheckboxes</fieldType>
             <isRequired>false</isRequired>
         </fields>

@@ -754,7 +754,7 @@
         </fields>
         <fields>
             <name>completeText_completion</name>
-            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;{!$Label.AIM_Flow_Completion_Complete}&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 10px;&quot;&gt;{!$Label.AIM_Flow_Click_To_Submit}&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;{!$Label.AIM_Flow_Site_Banner_Removed}&lt;strong&gt;: {!isBannerRemoved}&lt;/strong&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;{!$Label.AIM_Flow_Cases_Closed}: &lt;strong&gt;{!isCasesUpdated}&lt;/strong&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;{!$Label.AIM_Flow_Knowledge_Article_Created}: &lt;strong&gt;{!isKnowledgeCreated}&lt;/strong&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;{!$Label.AIM_Flow_Emails_Sent}: &lt;strong&gt;{!isEmailSent}&lt;/strong&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;{!$Label.AIM_Flow_Slack_Message_Sent}: &lt;strong&gt;{!isSlackSent}&lt;/strong&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;{!$Label.AIM_Flow_Messages_Sent}: &lt;strong&gt;{!isMessagingSent}&lt;/strong&gt;&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;{!$Label.AIM_Flow_Completion_Complete}&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;{!$Label.AIM_Flow_Site_Banner_Removed}&lt;strong&gt;: {!isBannerRemoved}&lt;/strong&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;{!$Label.AIM_Flow_Cases_Closed}: &lt;strong&gt;{!isCasesUpdated}&lt;/strong&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;{!$Label.AIM_Flow_Knowledge_Article_Created}: &lt;strong&gt;{!isKnowledgeCreated}&lt;/strong&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;{!$Label.AIM_Flow_Emails_Sent}: &lt;strong&gt;{!isEmailSent}&lt;/strong&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;{!$Label.AIM_Flow_Slack_Message_Sent}: &lt;strong&gt;{!isSlackSent}&lt;/strong&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;{!$Label.AIM_Flow_Messages_Sent}: &lt;strong&gt;{!isMessagingSent}&lt;/strong&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
             <visibilityRule>
                 <conditionLogic>and</conditionLogic>
@@ -784,14 +784,14 @@
         </connector>
         <fields>
             <name>completionDisplay</name>
-            <fieldText>&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;{!Get_Incident.Subject}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);&quot;&gt;{!caseCount} &lt;/strong&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);&quot;&gt;impacted cases&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);&quot;&gt;{!assetCount} &lt;/strong&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);&quot;&gt;impacted assets&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!contactCount} &lt;/strong&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;impacted contacts&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);&quot;&gt;{!accountCount} &lt;/strong&gt;&lt;span style=&quot;color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);&quot;&gt;impacted accounts&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;font-size: 12px; background-color: transparent; color: rgb(0, 0, 0);&quot;&gt;Items affected by &lt;/span&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;{!Get_Incident.Subject}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);&quot;&gt;{!caseCount}&lt;/strong&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);&quot;&gt; cases&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);&quot;&gt;{!assetCount}&lt;/strong&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);&quot;&gt; assets&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!contactCount}&lt;/strong&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt; contacts&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);&quot;&gt;{!accountCount}&lt;/strong&gt;&lt;span style=&quot;color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);&quot;&gt; accounts&lt;/span&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <fields>
             <name>Automation_Tasks_InProgress</name>
             <choiceReferences>choice_addBanner</choiceReferences>
             <dataType>String</dataType>
-            <fieldText>Broadcast the Incident</fieldText>
+            <fieldText>Select how to update customers about the incident.</fieldText>
             <fieldType>MultiSelectCheckboxes</fieldType>
             <isRequired>false</isRequired>
             <visibilityRule>
@@ -811,7 +811,7 @@
             <choiceReferences>choice_closeCases</choiceReferences>
             <choiceReferences>choice_KB</choiceReferences>
             <dataType>String</dataType>
-            <fieldText>Incident Completion Tasks</fieldText>
+            <fieldText>Incident Resolution Tasks</fieldText>
             <fieldType>MultiSelectCheckboxes</fieldType>
             <isRequired>false</isRequired>
             <visibilityRule>
