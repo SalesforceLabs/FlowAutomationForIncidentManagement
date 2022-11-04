@@ -78,7 +78,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM GeoMap Generic Exception</shortDescription>
-        <value>An Error occurred. Please contact your system administrator.</value>
+        <value>Something went wrong. Ask your admin for help</value>
     </labels>
     <labels>
         <fullName>AIM_GeoMap_No_Data</fullName>
@@ -86,7 +86,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM GeoMap No Data</shortDescription>
-        <value>There are no Assets on the Map.</value>
+        <value>No assets to display. Try another data set.</value>
     </labels>
     <labels>
         <fullName>AIM_GeoMap_Null_Exception</fullName>
@@ -94,7 +94,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM GeoMap Null Exception</shortDescription>
-        <value>Null or Empty input parameter passed. Please contact your system administrator.</value>
+        <value>A Null or empty value was passed as input to the Asset Map. Null or empty values are not supported. Ask your admin for help.</value>
     </labels>
     <labels>
         <fullName>AIM_GeoMap_Unsupported_Exception</fullName>
@@ -102,7 +102,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM GeoMap Unsupported Exception</shortDescription>
-        <value>Unsupported sObject type: ''{0}'' records passed as the input to the Map component. Ask your admin for help.</value>
+        <value>An unsupported sObject type “{0}&apos;&apos; record was passed as input to the Asset Map.  Ask your admin for help.</value>
     </labels>
     <labels>
         <fullName>AIM_Matching_Logic_Invalid_Input_Exception</fullName>
