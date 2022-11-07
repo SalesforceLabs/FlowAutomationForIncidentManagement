@@ -110,7 +110,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Matching Logic Invalid Input Exception</shortDescription>
-        <value>Null or Empty input parameter passed.</value>
+        <value>We couldn’t  retrieve a list of duplicate incidents because of a Null or Empty input.  Check the input parameters and try again.</value>
     </labels>
     <labels>
         <fullName>AIM_Report_Format_Exception</fullName>
@@ -150,7 +150,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow Click To Submit</shortDescription>
-        <value>Click &quot;Finish&quot; to submit.</value>
+        <value>Select finish to submit the completed flow.</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_Error_Header</fullName>
@@ -158,7 +158,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow Error Header</shortDescription>
-        <value>An Error has Occurred</value>
+        <value>Something went wrong.</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_First_Response_Attached_Records</fullName>
@@ -166,7 +166,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow First Response Attached Records</shortDescription>
-        <value>It currently has the following records attached to it:</value>
+        <value>Attached records:</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_First_Response_Close_Value</fullName>
@@ -174,7 +174,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow First Response Close Value</shortDescription>
-        <value>Close incident</value>
+        <value>Close the incident</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_First_Response_Complete</fullName>
@@ -198,7 +198,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow First Response Proceed Value</shortDescription>
-        <value>Proceed to incident qualification</value>
+        <value>Go to the incident qualification flow</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_First_Response_Remove_Assets_Value</fullName>
@@ -222,7 +222,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow First Response Remove Items</shortDescription>
-        <value>Would you like to remove the incident&apos;s related items before closing the incident?</value>
+        <value>Related items:</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_First_Response_User</fullName>
@@ -230,7 +230,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow First Response User</shortDescription>
-        <value>The incident was created by user:</value>
+        <value>Incident created by</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_Incident_Not_Found_Error</fullName>
@@ -246,7 +246,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow Click Previous</shortDescription>
-        <value>Click Previous to go back.</value>
+        <value>Click previous to go back</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_CreateKB_Complete</fullName>
