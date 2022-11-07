@@ -186,7 +186,7 @@
         </connector>
         <fields>
             <name>confirmtext</name>
-            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;{!$Label.AIM_Flow_SendCoreEmail_ConfirmText}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;{!emailCount}&lt;/strong&gt; emails to send&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Subject: &lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;span class=&quot;ql-cursor&quot;&gt;﻿&lt;/span&gt;{!emailSubject}&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Body:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;{!emailBody}&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;{!$Label.AIM_Flow_SendCoreEmail_ConfirmText}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;background-color: transparent; color: rgb(0, 0, 0); font-family: &amp;quot;Arial Narrow&amp;quot;, sans-serif; font-size: 12pt;&quot;&gt;Emails to send: &lt;/span&gt;&lt;strong&gt;{!emailCount}&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;background-color: transparent; color: rgb(0, 0, 0); font-size: 12px;&quot;&gt;Email Subject&lt;/strong&gt;&lt;strong&gt;: &lt;/strong&gt;&lt;/p&gt;&lt;p&gt;﻿{!emailSubject}&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;background-color: transparent; color: rgb(0, 0, 0); font-size: 12px;&quot;&gt;Email Body&lt;/strong&gt;&lt;strong&gt;:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;{!emailBody}&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <nextOrFinishButtonLabel>Send Emails</nextOrFinishButtonLabel>
