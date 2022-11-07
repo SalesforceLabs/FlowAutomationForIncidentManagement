@@ -66,6 +66,7 @@ public with sharing class SimilarIncidentsDetectorAction {
     @InvocableVariable(
       label='Input Incident Id'
       description='Id of the  incident for which match will happen'
+      required='true'
     )
     public Id incidentId;
   }

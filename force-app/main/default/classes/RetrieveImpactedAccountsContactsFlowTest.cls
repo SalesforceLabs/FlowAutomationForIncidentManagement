@@ -2,7 +2,7 @@
  *  @description Test Class for RetrieveImpactedAccountsAndContacts Flow
  */
 @isTest
-private class RetrieveImpactedAccountsAndContactsTest {
+private class RetrieveImpactedAccountsContactsFlowTest {
   @testSetup
   static void populateData() {
     List<Account> accounts = new List<Account>();
