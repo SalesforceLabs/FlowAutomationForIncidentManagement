@@ -150,7 +150,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow Click To Submit</shortDescription>
-        <value>Select finish to submit the completed flow.</value>
+        <value>Select finish to submit the flow.</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_Error_Header</fullName>
@@ -334,7 +334,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow Qualification NoRecords</shortDescription>
-        <value>No records to add. Click previous and modify your selection</value>
+        <value>We couldn’t find any records for the selected Report. Go back and make a different selection.</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_Qualification_RelatedAssetChoice</fullName>
@@ -342,7 +342,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow Qualification RelatedAssetChoice</shortDescription>
-        <value>Add related assets from a report</value>
+        <value>Add related assets</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_Qualification_RelatedCaseChoice</fullName>
@@ -350,7 +350,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow Qualification RelatedCaseChoice</shortDescription>
-        <value>Add related cases from a report</value>
+        <value>Add related cases</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_Qualification_SelectAssetReport</fullName>
@@ -358,7 +358,8 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow Qualification SelectAssetReport</shortDescription>
-        <value>Select a report that contains the list of assets you&apos;d like to relate to the Incident. Please ensure the report is a tabular report with AssetID in the first column.
+        <value>Asset qualification report
+Add assets from the selected report to the incident. The selected report must be tabular with AssetID in the first column.
 
 To create a new report, click &lt;a href=&quot;/lightning/o/Report/home&quot;&gt;here&lt;/a&gt;.</value>
     </labels>
@@ -368,7 +369,7 @@ To create a new report, click &lt;a href=&quot;/lightning/o/Report/home&quot;&gt
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow Qualification SelectCaseReport</shortDescription>
-        <value>Select a report that contains the list of cases you&apos;d like to relate to the Incident. Please ensure the report is a tabular report with CaseID in the first column.
+        <value>Add cases from the selected report to the incident. The selected report must be tabular, with CaseID in the first column.
 
 To create a new report, click &lt;a href=&quot;/lightning/o/Report/home&quot;&gt;here&lt;/a&gt;.</value>
     </labels>
