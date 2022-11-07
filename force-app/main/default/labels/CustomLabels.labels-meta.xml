@@ -406,7 +406,7 @@ Messaging</value>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM_Flow_ChannelRemoveBannerLabel</shortDescription>
-        <value>Remove Site Banner</value>
+        <value>Remove the site banner</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_ChannelSlackLabel</fullName>
@@ -446,7 +446,7 @@ Messaging</value>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM_Flow_Notification_Complete</shortDescription>
-        <value>Notification Flow Complete</value>
+        <value>Your notification flow is complete</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_Cases_Closed</fullName>
@@ -462,7 +462,7 @@ Messaging</value>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow Emails Sent</shortDescription>
-        <value>Emails Sent</value>
+        <value>Email sent</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_Test_Email_Sent</fullName>
@@ -494,7 +494,7 @@ Messaging</value>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow Messages Sent</shortDescription>
-        <value>Messages Sent</value>
+        <value>Messaging app message sent</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_Site_Banner_Added</fullName>
@@ -502,7 +502,7 @@ Messaging</value>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow Site Banner Added</shortDescription>
-        <value>Site Banner Added</value>
+        <value>Site banner added</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_Site_Banner_Removed</fullName>
@@ -518,21 +518,21 @@ Messaging</value>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow Slack Message Sent</shortDescription>
-        <value>Slack Message Sent</value>
+        <value>Slack message sent</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_Placeholder_for_Messaging_Notifications</fullName>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow Messaging Notifications Placeholder</shortDescription>
-        <value>This is a placeholder. If you have installed Messaging Package please add the subflow and pass the appropriate parameters by replacing this screen component</value>
+        <value>No Work Guide instructions available. To show Work Guide for Messaging notifications, install the Automated Incident Management for Messaging package and add the Send Messaging Notification Subflow to the Incident Orchestration. Help Me Add the Subflow</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_Slack_Placeholder</fullName>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow Placeholder for Slack</shortDescription>
-        <value>This is a placeholder. If you have installed  slack package, please add the subflow and pass the appropriate parameters by replacing this screen component</value>
+        <value>No Work Guide instructions available. To show Work Guide for Slack notifications, install the Automated Incident Management for Slack package and add the Send Slack Notification Subflow to the Incident Orchestration. Help Me Add the Subflow</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_SendCoreEmail_ConfirmText</fullName>
