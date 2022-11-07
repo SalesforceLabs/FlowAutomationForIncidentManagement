@@ -387,7 +387,10 @@ To create a new report, click &lt;a href=&quot;/lightning/o/Report/home&quot;&gt
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM_Flow_ChannelAddBannerLabel</shortDescription>
-        <value>Activate Site Banner</value>
+        <value>Site Banner
+Email
+Slack
+Messaging</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_ChannelMessagingLabel</fullName>
@@ -467,7 +470,7 @@ To create a new report, click &lt;a href=&quot;/lightning/o/Report/home&quot;&gt
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow Test Email Sent</shortDescription>
-        <value>Test Email Sent</value>
+        <value>Test Email Sent.</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_Test_Email_Failed</fullName>
@@ -475,7 +478,7 @@ To create a new report, click &lt;a href=&quot;/lightning/o/Report/home&quot;&gt
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow Test Email Failed</shortDescription>
-        <value>Test Email Failed</value>
+        <value>We couldn’t send the test email. Ask your Salesforce admin for help.</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_Knowledge_Article_Created</fullName>
@@ -537,7 +540,7 @@ To create a new report, click &lt;a href=&quot;/lightning/o/Report/home&quot;&gt
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM_Flow_SendCoreEmail_ConfirmText</shortDescription>
-        <value>Confirm broadcast email?</value>
+        <value>Review and send the email or go back and make changes.</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_SendCoreEmail_InvalidInfo</fullName>
@@ -545,12 +548,7 @@ To create a new report, click &lt;a href=&quot;/lightning/o/Report/home&quot;&gt
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM_Flow_SendCoreEmail_InvalidInfo</shortDescription>
-        <value>&lt;b&gt;Error: Unable to proceed&lt;/b&gt;
-
-                Please ensure:
-                1. A valid org wide address is selected.
-                2. An email subject and body is provided.
-                3. You have supplied a list of contacts to email.</value>
+        <value>We’re unable to send the email. Check that the sender address is valid, the email subject or body is filled, and there is a list of contacts associated with the email.</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_SendCoreEmail_CompleteText</fullName>
@@ -582,7 +580,7 @@ To create a new report, click &lt;a href=&quot;/lightning/o/Report/home&quot;&gt
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Email Editor Select Folder</shortDescription>
-        <value>Select Email Folder</value>
+        <value>Select an Email Folder</value>
     </labels>
     <labels>
         <fullName>AIM_Email_Editor_Select_Sender</fullName>
@@ -590,7 +588,7 @@ To create a new report, click &lt;a href=&quot;/lightning/o/Report/home&quot;&gt
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Email Editor Select Sender</shortDescription>
-        <value>Select Sender Address</value>
+        <value>Select a Sender Address</value>
     </labels>
     <labels>
         <fullName>AIM_Email_Editor_Select_Template</fullName>
@@ -598,7 +596,7 @@ To create a new report, click &lt;a href=&quot;/lightning/o/Report/home&quot;&gt
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Email Editor Select Template</shortDescription>
-        <value>Select Email Template</value>
+        <value>Select an Email Template</value>
     </labels>
     <labels>
         <fullName>AIM_Email_Editor_Send_Test_Email</fullName>
@@ -614,7 +612,7 @@ To create a new report, click &lt;a href=&quot;/lightning/o/Report/home&quot;&gt
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Email Editor Subject</shortDescription>
-        <value>Subject</value>
+        <value>Email Subject</value>
     </labels>
     <labels>
         <fullName>AIM_Email_Editor_Test_Email</fullName>
@@ -622,7 +620,7 @@ To create a new report, click &lt;a href=&quot;/lightning/o/Report/home&quot;&gt
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Email Editor Test Email</shortDescription>
-        <value>Test Email</value>
+        <value>Test Email Address</value>
     </labels>
     <labels>
         <fullName>AIM_Generic_Error</fullName>
@@ -662,6 +660,6 @@ To create a new report, click &lt;a href=&quot;/lightning/o/Report/home&quot;&gt
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Email Editor Test Email Empty</shortDescription>
-        <value>The Test Email Address can not be empty.</value>
+        <value>Complete the Test Email Address field.</value>
     </labels>
 </CustomLabels>
