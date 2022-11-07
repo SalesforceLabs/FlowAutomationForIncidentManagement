@@ -118,7 +118,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Report Format Exception</shortDescription>
-        <value>Invalid Grouping : Report needs to be grouped only on Id</value>
+        <value>We couldn’t run the report because of an invalid grouping format. The report must be grouped on the Id only. Fix the grouping format or ask your admin for help.</value>
     </labels>
     <labels>
         <fullName>AIM_Report_Null_Exception</fullName>
@@ -126,7 +126,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Report Null Exception</shortDescription>
-        <value>Developer name of the Report cannot be Null or Empty.</value>
+        <value>We couldn’t run the report because the Developer name value passed as input was empty or contained a Null value. Check the Developer name contains a valid value and try again.</value>
     </labels>
     <labels>
         <fullName>AIM_Report_Retrieval_Exception</fullName>
