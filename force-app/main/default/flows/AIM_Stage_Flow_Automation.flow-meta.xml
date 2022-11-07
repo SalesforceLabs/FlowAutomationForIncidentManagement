@@ -784,14 +784,14 @@
         </connector>
         <fields>
             <name>completionDisplay</name>
-            <fieldText>&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;{!Get_Incident.Subject}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);&quot;&gt;{!caseCount} &lt;/strong&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);&quot;&gt;impacted cases&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);&quot;&gt;{!assetCount} &lt;/strong&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);&quot;&gt;impacted assets&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!contactCount} &lt;/strong&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;impacted contacts&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);&quot;&gt;{!accountCount} &lt;/strong&gt;&lt;span style=&quot;color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);&quot;&gt;impacted accounts&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;{!Get_Incident.Subject}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);&quot;&gt;{!caseCount}&lt;/strong&gt;&lt;span style=&quot;color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);&quot;&gt; cases&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);&quot;&gt;{!assetCount}&lt;/strong&gt;&lt;span style=&quot;color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);&quot;&gt; assets&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!contactCount}&lt;/strong&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt; contacts&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);&quot;&gt;{!accountCount}&lt;/strong&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);&quot;&gt; accounts&lt;/span&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <fields>
             <name>Automation_Tasks_InProgress</name>
             <choiceReferences>choice_addBanner</choiceReferences>
             <dataType>String</dataType>
-            <fieldText>Broadcast the Incident</fieldText>
+            <fieldText>Select how to update customers about the incident.</fieldText>
             <fieldType>MultiSelectCheckboxes</fieldType>
             <isRequired>false</isRequired>
             <visibilityRule>
