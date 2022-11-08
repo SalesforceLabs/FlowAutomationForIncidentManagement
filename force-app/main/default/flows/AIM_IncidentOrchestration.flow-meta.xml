@@ -198,7 +198,7 @@
     </orchestratedStages>
     <orchestratedStages>
         <name>FirstResponseStage</name>
-        <label>First Response</label>
+        <label>First Response Stage</label>
         <locationX>50</locationX>
         <locationY>551</locationY>
         <connector>
@@ -206,15 +206,15 @@
             <targetReference>Refresh_Incident_Status</targetReference>
         </connector>
         <exitActionInputParameters>
-            <name>isCheckEquality</name>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </exitActionInputParameters>
-        <exitActionInputParameters>
             <name>incidentId</name>
             <value>
                 <elementReference>$Record.Id</elementReference>
+            </value>
+        </exitActionInputParameters>
+        <exitActionInputParameters>
+            <name>isCheckEquality</name>
+            <value>
+                <booleanValue>false</booleanValue>
             </value>
         </exitActionInputParameters>
         <exitActionInputParameters>
@@ -249,7 +249,7 @@
                     <elementReference>$Record.Id</elementReference>
                 </value>
             </inputParameters>
-            <label>Flow - First Response</label>
+            <label>First Response Flow</label>
             <requiresAsyncProcessing>false</requiresAsyncProcessing>
             <stepSubtype>InteractiveStep</stepSubtype>
         </stageSteps>
@@ -494,7 +494,7 @@
                     <elementReference>$Record.Id</elementReference>
                 </value>
             </inputParameters>
-            <label>Flow - Qualification</label>
+            <label>Qualification Flow</label>
             <requiresAsyncProcessing>false</requiresAsyncProcessing>
             <stepSubtype>InteractiveStep</stepSubtype>
         </stageSteps>
@@ -645,7 +645,7 @@
                     <elementReference>$Record.Id</elementReference>
                 </value>
             </inputParameters>
-            <label>Flow - Completion</label>
+            <label>Completion Flow</label>
             <requiresAsyncProcessing>false</requiresAsyncProcessing>
             <stepSubtype>InteractiveStep</stepSubtype>
         </stageSteps>
@@ -713,5 +713,5 @@
         <recordTriggerType>Create</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
 </Flow>

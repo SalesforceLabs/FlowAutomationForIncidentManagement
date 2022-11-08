@@ -302,7 +302,7 @@
             <targetReference>Get_Incident</targetReference>
         </connector>
     </start>
-    <status>Active</status>
+    <status>Obsolete</status>
     <variables>
         <name>incidentId</name>
         <dataType>String</dataType>
