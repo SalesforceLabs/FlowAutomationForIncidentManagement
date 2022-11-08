@@ -766,7 +766,7 @@
             <targetReference>Get_Incident</targetReference>
         </connector>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
     <subflows>
         <name>Filter_Existing_Assets</name>
         <label>Filter Existing Assets</label>
