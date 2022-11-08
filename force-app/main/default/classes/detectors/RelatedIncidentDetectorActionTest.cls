@@ -2,7 +2,7 @@
  *  @description Test Class for  RelatedIncidentDetectorAction
  */
 @isTest
-public class RelatedIncidentDetectorActionTest {
+private class RelatedIncidentDetectorActionTest {
   @testSetup
   static void populateData() {
     List<Account> accounts = new List<Account>();
@@ -504,7 +504,7 @@ public class RelatedIncidentDetectorActionTest {
    * @param apexActionInput (RelatedIncidentDetectorAction.FlowInput): Apex wrapper to receive flow inputs
    * @return List<Id>: list containing a single related Incident Id if present
    */
-  public static List<Id> runDetector(
+  static List<Id> runDetector(
     RelatedIncidentDetectorAction.FlowInput apexActionInput
   ) {
     List<RelatedIncidentDetectorAction.FlowInput> flowInputs = new List<RelatedIncidentDetectorAction.FlowInput>();

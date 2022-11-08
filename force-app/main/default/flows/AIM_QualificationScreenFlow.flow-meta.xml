@@ -10,6 +10,9 @@
         <connector>
             <targetReference>Filter_Existing_Assets</targetReference>
         </connector>
+        <faultConnector>
+            <targetReference>assignError</targetReference>
+        </faultConnector>
         <flowTransactionModel>Automatic</flowTransactionModel>
         <inputParameters>
             <name>developerNames</name>
@@ -32,6 +35,10 @@
         <connector>
             <targetReference>Filter_Existing_Attached_Cases</targetReference>
         </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>assignError</targetReference>
+        </faultConnector>
         <flowTransactionModel>Automatic</flowTransactionModel>
         <inputParameters>
             <name>developerNames</name>
@@ -147,7 +154,7 @@
     <assignments>
         <name>Assign_Counts</name>
         <label>Assign Counts</label>
-        <locationX>380</locationX>
+        <locationX>512</locationX>
         <locationY>638</locationY>
         <assignmentItems>
             <assignToReference>relatedCaseCount</assignToReference>
@@ -165,6 +172,22 @@
         </assignmentItems>
         <connector>
             <targetReference>Qualification_Selection</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>assignError</name>
+        <label>Assign Error</label>
+        <locationX>578</locationX>
+        <locationY>2726</locationY>
+        <assignmentItems>
+            <assignToReference>errorText</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.FaultMessage</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>errorScreen</targetReference>
         </connector>
     </assignments>
     <choices>
@@ -252,7 +275,7 @@
     <decisions>
         <name>Find_Similar_Assets_Selected</name>
         <label>Find Similar Assets Selected?</label>
-        <locationX>380</locationX>
+        <locationX>512</locationX>
         <locationY>2366</locationY>
         <defaultConnector>
             <targetReference>CompleteScreen</targetReference>
@@ -277,7 +300,7 @@
     <decisions>
         <name>Find_Similar_Cases_Selected</name>
         <label>Find Similar Cases Selected?</label>
-        <locationX>380</locationX>
+        <locationX>512</locationX>
         <locationY>878</locationY>
         <defaultConnector>
             <targetReference>Find_Similar_Assets_Selected</targetReference>
@@ -374,7 +397,7 @@
     <recordLookups>
         <name>Get_Incident</name>
         <label>Get Incident</label>
-        <locationX>380</locationX>
+        <locationX>512</locationX>
         <locationY>158</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -395,7 +418,7 @@
     <recordLookups>
         <name>Get_Related_Assets</name>
         <label>Get Related Assets</label>
-        <locationX>380</locationX>
+        <locationX>512</locationX>
         <locationY>398</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -416,7 +439,7 @@
     <recordLookups>
         <name>Get_RelatedCases</name>
         <label>Get Related Cases</label>
-        <locationX>380</locationX>
+        <locationX>512</locationX>
         <locationY>278</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -437,7 +460,7 @@
     <recordLookups>
         <name>Get_Reports</name>
         <label>Get Reports</label>
-        <locationX>380</locationX>
+        <locationX>512</locationX>
         <locationY>518</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -476,7 +499,7 @@
     <screens>
         <name>CompleteScreen</name>
         <label>Complete</label>
-        <locationX>380</locationX>
+        <locationX>512</locationX>
         <locationY>3854</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
@@ -554,6 +577,22 @@
         <showHeader>true</showHeader>
     </screens>
     <screens>
+        <name>errorScreen</name>
+        <label>Error Screen</label>
+        <locationX>578</locationX>
+        <locationY>2846</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>false</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>displayErrorText</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong style=&quot;font-size: 14px;&quot;&gt;{!$Label.AIM_Flow_Error_Header}&lt;/strong&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 14px; color: rgb(0, 0, 0);&quot;&gt;{!errorText}&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt;{!$Label.AIM_Flow_Click_Previous}&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
         <name>No_records_found_asset</name>
         <label>No records found</label>
         <locationX>314</locationX>
@@ -588,7 +627,7 @@
     <screens>
         <name>Qualification_Selection</name>
         <label>Qualification Selection</label>
-        <locationX>380</locationX>
+        <locationX>512</locationX>
         <locationY>758</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
@@ -760,7 +799,7 @@
         <showHeader>true</showHeader>
     </screens>
     <start>
-        <locationX>254</locationX>
+        <locationX>386</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Get_Incident</targetReference>
@@ -870,6 +909,13 @@
         <isInput>false</isInput>
         <isOutput>false</isOutput>
         <objectType>CaseRelatedIssue</objectType>
+    </variables>
+    <variables>
+        <name>errorText</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
     </variables>
     <variables>
         <name>incidentId</name>
