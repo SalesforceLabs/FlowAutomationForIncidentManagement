@@ -452,7 +452,7 @@
         </fields>
         <fields>
             <name>p1FooterText_0</name>
-            <fieldText>&lt;p&gt;{!$Label.AIM_Flow_First_Response_Attached_Records}&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!caseCount}&lt;/strong&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt; case(s)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!assetCount}&lt;/strong&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt; asset(s)&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;&lt;strong style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!caseCount}&lt;/strong&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt; cases&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!assetCount}&lt;/strong&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt; assets&lt;/span&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <fields>
@@ -486,7 +486,7 @@
         </fields>
         <fields>
             <name>p1FooterText</name>
-            <fieldText>&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!$Label.AIM_Flow_First_Response_User}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!Get_User.Name}&lt;/strong&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt; on &lt;/span&gt;&lt;strong style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!Get_Incident.CreatedDate}&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;{!$Label.AIM_Flow_First_Response_Attached_Records}&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!caseCount}&lt;/strong&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt; case(s)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!assetCount}&lt;/strong&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt; asset(s)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!contactCount}&lt;/strong&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt; impacted contact(s)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!accountCount}&lt;/strong&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt; impacted account(s)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;{!$Label.AIM_Flow_First_Response_Proceed}&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!$Label.AIM_Flow_First_Response_User}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!Get_User.Name} &lt;/strong&gt;&lt;span style=&quot;color: rgb(0, 0, 0); background-color: transparent; font-family: &amp;quot;Arial Narrow&amp;quot;, sans-serif; font-size: 12pt;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: rgb(0, 0, 0); background-color: transparent; font-size: 12px;&quot;&gt;on &lt;/span&gt;&lt;strong style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!Get_Incident.CreatedDate}&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!caseCount}&lt;/strong&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt; cases&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!assetCount}&lt;/strong&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt; assets&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!contactCount}&lt;/strong&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt; contacts&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!accountCount}&lt;/strong&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt; accounts&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;{!$Label.AIM_Flow_First_Response_Proceed}&lt;/span&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <fields>
@@ -565,7 +565,7 @@
             <targetReference>Check_If_Incident_Is_Null</targetReference>
         </connector>
     </start>
-    <status>Obsolete</status>
+    <status>Active</status>
     <subflows>
         <name>Get_Impacted_Customers</name>
         <label>Get Impacted Customers</label>
