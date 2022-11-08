@@ -565,7 +565,7 @@
             <targetReference>Check_If_Incident_Is_Null</targetReference>
         </connector>
     </start>
-    <status>Draft</status>
+    <status>Obsolete</status>
     <subflows>
         <name>Get_Impacted_Customers</name>
         <label>Get Impacted Customers</label>

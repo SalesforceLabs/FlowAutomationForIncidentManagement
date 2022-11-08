@@ -186,7 +186,7 @@
         </connector>
         <fields>
             <name>confirmtext</name>
-            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;{!$Label.AIM_Flow_SendCoreEmail_ConfirmText}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;background-color: transparent; color: rgb(0, 0, 0); font-family: &amp;quot;Arial Narrow&amp;quot;, sans-serif; font-size: 12pt;&quot;&gt;Emails to send: &lt;/span&gt;&lt;strong&gt;{!emailCount}&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;background-color: transparent; color: rgb(0, 0, 0); font-size: 12px;&quot;&gt;Email Subject&lt;/strong&gt;&lt;strong&gt;: &lt;/strong&gt;&lt;/p&gt;&lt;p&gt;﻿{!emailSubject}&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;background-color: transparent; color: rgb(0, 0, 0); font-size: 12px;&quot;&gt;Email Body&lt;/strong&gt;&lt;strong&gt;:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;{!emailBody}&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;{!$Label.AIM_Flow_SendCoreEmail_ConfirmText}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 12px; color: rgb(0, 0, 0); background-color: transparent;&quot;&gt;Emails to send&lt;/span&gt;&lt;span style=&quot;font-size: 12pt; font-family: &amp;quot;Arial Narrow&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent;&quot;&gt;: &lt;/span&gt;&lt;strong&gt;{!emailCount}&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-size: 12px; color: rgb(0, 0, 0); background-color: transparent;&quot;&gt;Email Subject&lt;/strong&gt;&lt;strong&gt;: &lt;/strong&gt;&lt;/p&gt;&lt;p&gt;{!emailSubject}&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-size: 12px; color: rgb(0, 0, 0); background-color: transparent;&quot;&gt;Email Body&lt;/strong&gt;&lt;strong&gt;:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;{!emailBody}&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <nextOrFinishButtonLabel>Send Emails</nextOrFinishButtonLabel>
@@ -250,7 +250,7 @@
         </fields>
         <fields>
             <name>EmailSummaryText</name>
-            <fieldText>&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;Total Emails Successfully Sent: &lt;/span&gt;&lt;strong style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!totalSuccesses}&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;Total Email Failures: &lt;/span&gt;&lt;strong style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!totalFailures}&lt;/strong&gt;&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0); background-color: transparent; font-size: 12px;&quot;&gt;Sent Emails&lt;/span&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;: &lt;/span&gt;&lt;strong style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!totalSuccesses}&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0); background-color: transparent; font-size: 12px;&quot;&gt;Unsent Emails&lt;/span&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;: &lt;/span&gt;&lt;strong style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!totalFailures}&lt;/strong&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <fields>
@@ -342,7 +342,7 @@
             <targetReference>Get_Incident</targetReference>
         </connector>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
     <variables>
         <name>contacts</name>
         <dataType>SObject</dataType>
