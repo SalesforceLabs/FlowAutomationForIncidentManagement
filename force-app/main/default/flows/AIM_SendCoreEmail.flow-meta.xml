@@ -250,7 +250,7 @@
         </fields>
         <fields>
             <name>EmailSummaryText</name>
-            <fieldText>&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;Total Emails Successfully Sent: &lt;/span&gt;&lt;strong style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!totalSuccesses}&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;Total Email Failures: &lt;/span&gt;&lt;strong style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!totalFailures}&lt;/strong&gt;&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0); background-color: transparent; font-size: 12px;&quot;&gt;Sent Emails&lt;/span&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;: &lt;/span&gt;&lt;strong style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!totalSuccesses}&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0); background-color: transparent; font-size: 12px;&quot;&gt;Unsent Emails&lt;/span&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;: &lt;/span&gt;&lt;strong style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!totalFailures}&lt;/strong&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <fields>
@@ -342,7 +342,7 @@
             <targetReference>Get_Incident</targetReference>
         </connector>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
     <variables>
         <name>contacts</name>
         <dataType>SObject</dataType>
