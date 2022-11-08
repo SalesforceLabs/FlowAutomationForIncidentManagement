@@ -40,32 +40,32 @@ public with sharing class SimilarIncidentsDetectorAction {
   public class FlowInput {
     @InvocableVariable(
       label='Product Match criteria '
-      description='Incidents will be matched on products if this is set as true'
+      description='For a list of all open incidents where the incident’s related item’s assets match the productId of any of the input incident’s related item’s assets, set the Product Match criteria to True.'
     )
     public boolean isProductMatchEnabled;
     @InvocableVariable(
       label='Asset Match criteria'
-      description='Incidents will be matched on assets if this is set as true'
+      description='For a list of all open incidents that match any AssetID, set the Asset Match criteria to True.'
     )
     public boolean isAssetMatchEnabled;
     @InvocableVariable(
       label='Case Match criteria'
-      description='Incidents will be matched on cases if this is set as true'
+      description='For a list of all open incidents where the incident’s case related issue’s caseIds match any of the input incident’s case related issue’s caseIds, set the Case Match criteria as True.'
     )
     public boolean isCaseMatchEnabled;
     @InvocableVariable(
       label='Attribute Match criteria'
-      description='Incidents will be matched on attributes if this is set as true'
+      description='For a list of open incidents where the incident’s type, category, and subcategory match any of the input incident’s type, category, and subcategory, set the Attribute Match criteria as TrueAll attributes must match.'
     )
     public boolean isAttributesMatchEnabled;
     @InvocableVariable(
       label='Asset proximity distance criteria'
-      description='Incidents will be matched on asset proximity distance if it has a positive value'
+      description='For a list of open incidents where the incident’s related item’s assets are within Match_Asset_Proximity miles of any of the input incident’s related item’s assets, set the Asset Proximity Match criteria as  True.'
     )
     public Double assetProximityDistance;
     @InvocableVariable(
       label='Input Incident Id'
-      description='Id of the  incident for which match will happen'
+      description='The incident Id where a match can occur.'
     )
     public Id incidentId;
   }
