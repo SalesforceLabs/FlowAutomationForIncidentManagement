@@ -3,27 +3,39 @@
         {
             "path": "aim-base",
             "default": true,
-            "package": "AIM Base",
+            "package": "AIM",
             "versionName": "ver 1.0",
             "versionNumber": "1.0.0.NEXT"
         },
         {
             "path": "aim-messaging",
-            "default": false
+            "default": false,
+            "package": "AIM for Messaging",
+            "versionName": "ver 1.0",
+            "versionNumber": "1.0.0.NEXT"
         },
         {
             "path": "aim-bot",
-            "default": false
+            "default": false,
+            "package": "Einstein Bot for AIM",
+            "versionName": "ver 1.0",
+            "versionNumber": "1.0.0.NEXT"
         },
         {
             "path": "aim-slack",
-            "default": false
+            "default": false,
+            "package": "AIM for Slack",
+            "versionName": "ver 1.0",
+            "versionNumber": "1.0.0.NEXT"
         }
     ],
     "namespace": "",
     "sfdcLoginUrl": "https://login.salesforce.com",
     "sourceApiVersion": "56.0",
     "packageAliases": {
-        "AIM Base": "0HoEE00000000Uf0AI"
+        "AIM": "0HoEE00000000b70AA",
+        "AIM for Messaging": "0HoEE00000000cj0AA",
+        "AIM for Slack": "0HoEE00000000eL0AQ",
+        "Einstein Bot for AIM": "0HoEE00000000fx0AA"
     }
 }

@@ -38,6 +38,7 @@
       }
     },
     "incidentMgmtSettings": {
+      "enableIncidentMgmt": true,
       "enableEmailBroadcastType": true,
       "enableSiteBannerBroadcastType": true 
     },
