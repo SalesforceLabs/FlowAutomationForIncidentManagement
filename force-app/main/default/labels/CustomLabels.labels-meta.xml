@@ -254,7 +254,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Knowledge Article Created</shortDescription>
-        <value>Knowledge Article Created</value>
+        <value>Your knowledge article was created</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_Click_Send_Messages</fullName>
@@ -359,6 +359,7 @@
         <protected>true</protected>
         <shortDescription>AIM Flow Qualification SelectAssetReport</shortDescription>
         <value>Asset qualification report
+
 Add assets from the selected report to the incident. The selected report must be tabular with AssetID in the first column.
 
 To create a new report, click &lt;a href=&quot;/lightning/o/Report/home&quot;&gt;here&lt;/a&gt;.</value>
@@ -369,7 +370,9 @@ To create a new report, click &lt;a href=&quot;/lightning/o/Report/home&quot;&gt
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow Qualification SelectCaseReport</shortDescription>
-        <value>Add cases from the selected report to the incident. The selected report must be tabular, with CaseID in the first column.
+        <value>Case Qualification Report
+
+Add cases from the selected report to the incident. The selected report must be tabular, with CaseID in the first column.
 
 To create a new report, click &lt;a href=&quot;/lightning/o/Report/home&quot;&gt;here&lt;/a&gt;.</value>
     </labels>
@@ -379,7 +382,7 @@ To create a new report, click &lt;a href=&quot;/lightning/o/Report/home&quot;&gt
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM_Flow_ChannelEmailLabel</shortDescription>
-        <value>Email</value>
+        <value>Send an email</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_ChannelAddBannerLabel</fullName>
@@ -398,7 +401,7 @@ Messaging</value>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM_Flow_ChannelMessagingLabel</shortDescription>
-        <value>Messaging</value>
+        <value>Send a message in a messaging app</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_ChannelRemoveBannerLabel</fullName>
@@ -414,7 +417,7 @@ Messaging</value>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM_Flow_ChannelSlackLabel</shortDescription>
-        <value>Slack</value>
+        <value>Send a Slack message</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_CloseCases</fullName>
@@ -422,7 +425,7 @@ Messaging</value>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM_Flow_CloseCases</shortDescription>
-        <value>Close all attached cases</value>
+        <value>Close attached cases</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_Completion_Complete</fullName>
@@ -430,7 +433,7 @@ Messaging</value>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM_Flow_Completion_Complete</shortDescription>
-        <value>Completion Flow Complete</value>
+        <value>Your incident is resolved</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_CreateKB</fullName>
@@ -438,7 +441,7 @@ Messaging</value>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM_Flow_CreateKB</shortDescription>
-        <value>Create Knowledge Article from Incident</value>
+        <value>Create a knowledge article about the incident</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_Notification_Complete</fullName>
@@ -454,7 +457,7 @@ Messaging</value>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow Cases Closed</shortDescription>
-        <value>Cases Closed</value>
+        <value>Attached cases closed</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_Emails_Sent</fullName>
@@ -486,7 +489,7 @@ Messaging</value>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow Knowledge Article Created</shortDescription>
-        <value>Knowledge Article Created</value>
+        <value>Knowledge article created</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_Messages_Sent</fullName>
@@ -510,7 +513,7 @@ Messaging</value>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow Site Banner Removed</shortDescription>
-        <value>Site Banner Removed</value>
+        <value>Site banner removed</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_Slack_Message_Sent</fullName>
