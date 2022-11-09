@@ -650,16 +650,16 @@
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
-        <backButtonLabel>Previous</backButtonLabel>
+        <backButtonLabel>Go back</backButtonLabel>
         <connector>
             <targetReference>Check_if_the_Users_count_is_greater_than_zero</targetReference>
         </connector>
         <fields>
             <name>notificationConfirmationText</name>
-            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;{!$Label.AIM_Flow_Outbound_Messages_Requirement}&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong style=&quot;font-family: var(--lwc-fontFamily,-apple-system, BlinkMacSystemFont, &amp;quot;Segoe UI&amp;quot;, Roboto, Helvetica, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;); font-size: 16px;&quot;&gt;{!messagingUsersCount} &lt;/strong&gt;&lt;span style=&quot;font-size: 12px; color: rgb(0, 0, 0); background-color: transparent;&quot;&gt;of the&lt;/span&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt; &lt;/span&gt;&lt;strong style=&quot;font-size: 16px; font-family: var(--lwc-fontFamily,-apple-system, BlinkMacSystemFont, &amp;quot;Segoe UI&amp;quot;, Roboto, Helvetica, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;);&quot;&gt;{!contactsCount}&lt;/strong&gt;&lt;span style=&quot;font-size: var(--lwc-fontSize3,0.8125rem); font-family: var(--lwc-fontFamily,-apple-system, BlinkMacSystemFont, &amp;quot;Segoe UI&amp;quot;, Roboto, Helvetica, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;);&quot;&gt; &lt;/span&gt;&lt;span style=&quot;font-size: 12px; color: rgb(0, 0, 0); background-color: transparent;&quot;&gt;contacts has opted in.&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;{!$Label.AIM_Flow_Outbound_Messages_Requirement}&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong style=&quot;font-family: var(--lwc-fontFamily,-apple-system, BlinkMacSystemFont, &amp;quot;Segoe UI&amp;quot;, Roboto, Helvetica, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;); font-size: 16px;&quot;&gt;{!messagingUsersCount} &lt;/strong&gt;&lt;strong style=&quot;font-family: var(--lwc-fontFamily,-apple-system, BlinkMacSystemFont, &amp;quot;Segoe UI&amp;quot;, Roboto, Helvetica, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;); font-size: 12px;&quot;&gt;contacts are opted in out of the&lt;/strong&gt;&lt;span style=&quot;font-family: var(--lwc-fontFamily,-apple-system, BlinkMacSystemFont, &amp;quot;Segoe UI&amp;quot;, Roboto, Helvetica, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;); font-size: 12px;&quot;&gt; &lt;/span&gt;&lt;strong style=&quot;font-family: var(--lwc-fontFamily,-apple-system, BlinkMacSystemFont, &amp;quot;Segoe UI&amp;quot;, Roboto, Helvetica, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;); font-size: 16px;&quot;&gt;{!contactsCount}&lt;/strong&gt;&lt;span style=&quot;font-family: var(--lwc-fontFamily,-apple-system, BlinkMacSystemFont, &amp;quot;Segoe UI&amp;quot;, Roboto, Helvetica, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;); font-size: var(--lwc-fontSize3,0.8125rem);&quot;&gt; contacts&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;that you&apos;ve selected to notify.&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;Therefore we can message only the {!messagingUsersCount} that have opted in.{!$Label.AIM_Flow_Click_Send_Messages}&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
-        <nextOrFinishButtonLabel>Send Messages</nextOrFinishButtonLabel>
+        <nextOrFinishButtonLabel>Send Message(s)</nextOrFinishButtonLabel>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
     </screens>
@@ -690,13 +690,13 @@
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
-        <backButtonLabel>Previous</backButtonLabel>
+        <backButtonLabel>Go back</backButtonLabel>
         <connector>
             <targetReference>Check_if_the_Information_is_valid</targetReference>
         </connector>
         <fields>
             <name>selectionText</name>
-            <fieldText>&lt;p&gt;{!$Label.AIM_Flow_Select_Messaging_Template_And_Messaging_Channel} &lt;strong style=&quot;background-color: rgb(255, 255, 255); font-size: 12px; color: rgb(68, 68, 68);&quot;&gt;{!contactsCount}&lt;/strong&gt;&lt;strong style=&quot;background-color: rgb(255, 255, 255); font-size: 16px; color: rgb(68, 68, 68);&quot;&gt; &lt;/strong&gt;&lt;span style=&quot;background-color: transparent; font-size: 12px; color: rgb(0, 0, 0);&quot;&gt;contacts.&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68); font-size: 16px;&quot;&gt;{!contactsCount}&lt;/strong&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt; {!$Label.AIM_Flow_Contacts_Notification_Message}&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;{!$Label.AIM_Flow_Select_Messaging_Template_And_Messaging_Channel}&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <fields>
@@ -710,7 +710,7 @@
             <inputParameters>
                 <name>label</name>
                 <value>
-                    <stringValue>Messaging Channel</stringValue>
+                    <stringValue>Select a Messaging Channel</stringValue>
                 </value>
             </inputParameters>
             <inputParameters>
@@ -767,7 +767,7 @@
             <inputParameters>
                 <name>label</name>
                 <value>
-                    <stringValue>Messaging Template</stringValue>
+                    <stringValue>Select a Template Message</stringValue>
                 </value>
             </inputParameters>
             <inputParameters>
@@ -813,7 +813,7 @@
                 <name>firstSelectedRow</name>
             </outputParameters>
         </fields>
-        <nextOrFinishButtonLabel>Next</nextOrFinishButtonLabel>
+        <nextOrFinishButtonLabel>Send Message(s)</nextOrFinishButtonLabel>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
     </screens>

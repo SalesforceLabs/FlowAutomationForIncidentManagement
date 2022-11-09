@@ -198,7 +198,7 @@
     </orchestratedStages>
     <orchestratedStages>
         <name>FirstResponseStage</name>
-        <label>First Response Stage</label>
+        <label>First Response</label>
         <locationX>50</locationX>
         <locationY>551</locationY>
         <connector>
@@ -206,15 +206,15 @@
             <targetReference>Refresh_Incident_Status</targetReference>
         </connector>
         <exitActionInputParameters>
-            <name>incidentId</name>
-            <value>
-                <elementReference>$Record.Id</elementReference>
-            </value>
-        </exitActionInputParameters>
-        <exitActionInputParameters>
             <name>isCheckEquality</name>
             <value>
                 <booleanValue>false</booleanValue>
+            </value>
+        </exitActionInputParameters>
+        <exitActionInputParameters>
+            <name>incidentId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
             </value>
         </exitActionInputParameters>
         <exitActionInputParameters>
@@ -249,7 +249,7 @@
                     <elementReference>$Record.Id</elementReference>
                 </value>
             </inputParameters>
-            <label>First Response Flow</label>
+            <label>Flow - First Response</label>
             <requiresAsyncProcessing>false</requiresAsyncProcessing>
             <stepSubtype>InteractiveStep</stepSubtype>
         </stageSteps>
@@ -324,7 +324,7 @@
     </orchestratedStages>
     <orchestratedStages>
         <name>NotificationInProgressStage</name>
-        <label>Notification Stage</label>
+        <label>Notification / In Progress Stage</label>
         <locationX>578</locationX>
         <locationY>551</locationY>
         <connector>
@@ -332,15 +332,15 @@
             <targetReference>Refresh_Incident_Status</targetReference>
         </connector>
         <exitActionInputParameters>
-            <name>incidentId</name>
-            <value>
-                <elementReference>$Record.Id</elementReference>
-            </value>
-        </exitActionInputParameters>
-        <exitActionInputParameters>
             <name>isCheckEquality</name>
             <value>
                 <booleanValue>false</booleanValue>
+            </value>
+        </exitActionInputParameters>
+        <exitActionInputParameters>
+            <name>incidentId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
             </value>
         </exitActionInputParameters>
         <exitActionInputParameters>
@@ -375,7 +375,7 @@
                     <elementReference>$Record.Id</elementReference>
                 </value>
             </inputParameters>
-            <label>Notification Flow</label>
+            <label>Flow - Notification</label>
             <requiresAsyncProcessing>false</requiresAsyncProcessing>
             <stepSubtype>InteractiveStep</stepSubtype>
         </stageSteps>
@@ -494,7 +494,7 @@
                     <elementReference>$Record.Id</elementReference>
                 </value>
             </inputParameters>
-            <label>Qualification Flow</label>
+            <label>Flow - Qualification</label>
             <requiresAsyncProcessing>false</requiresAsyncProcessing>
             <stepSubtype>InteractiveStep</stepSubtype>
         </stageSteps>
@@ -645,7 +645,7 @@
                     <elementReference>$Record.Id</elementReference>
                 </value>
             </inputParameters>
-            <label>Completion Flow</label>
+            <label>Flow - Completion</label>
             <requiresAsyncProcessing>false</requiresAsyncProcessing>
             <stepSubtype>InteractiveStep</stepSubtype>
         </stageSteps>
