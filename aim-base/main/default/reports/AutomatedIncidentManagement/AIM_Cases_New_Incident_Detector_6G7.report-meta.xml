@@ -12,27 +12,17 @@
     <columns>
         <field>CREATED_DATE</field>
     </columns>
-    <columns>
-        <field>AGE</field>
-    </columns>
-    <columns>
-        <field>OPEN</field>
-    </columns>
-    <columns>
-        <field>CLOSED</field>
-    </columns>
     <filter>
         <criteriaItems>
-            <column>CLOSED</column>
+            <column>CREATED_DATE</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>0</value>
+            <value>TODAY</value>
         </criteriaItems>
-        <language>en_US</language>
     </filter>
     <format>Tabular</format>
-    <name>AIM - Cases Existing Incident Match</name>
+    <name>AIM - Cases New Incident Detector</name>
     <params>
         <name>units</name>
         <value>h</value>
