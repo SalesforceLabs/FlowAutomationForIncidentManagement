@@ -1,95 +1,134 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionCalls>
-        <name>Find_related_incident</name>
-        <label>Find related incident</label>
-        <locationX>545</locationX>
+        <description>Get Id of Case Records to avoid looping in the Flow</description>
+        <name>Get_Case_Ids</name>
+        <label>Get Case Ids</label>
+        <locationX>809</locationX>
         <locationY>575</locationY>
-        <actionName>RelatedIncidentDetectorAction</actionName>
+        <actionName>AIMExtractStringsFromRecordsAction</actionName>
         <actionType>apex</actionType>
         <connector>
-            <targetReference>Related_Incident_Returned</targetReference>
+            <targetReference>Get_Case_Related_Issues</targetReference>
         </connector>
+        <dataTypeMappings>
+            <typeName>T__collection</typeName>
+            <typeValue>Case</typeValue>
+        </dataTypeMappings>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
-            <name>isAssetMatchEnabled</name>
+            <name>fieldName</name>
+            <value>
+                <stringValue>Id</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>collection</name>
+            <value>
+                <elementReference>Get_Similar_Cases</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>shouldRemoveDuplicates</name>
             <value>
                 <booleanValue>true</booleanValue>
             </value>
         </inputParameters>
-        <inputParameters>
-            <name>reportId</name>
-            <value>
-                <elementReference>Get_Existing_Incident_Match_Report.Id</elementReference>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>caseOrAssetId</name>
-            <value>
-                <elementReference>$Record.Id</elementReference>
-            </value>
-        </inputParameters>
         <outputParameters>
-            <assignToReference>incidentId</assignToReference>
-            <name>output</name>
+            <assignToReference>caseIds</assignToReference>
+            <name>values</name>
         </outputParameters>
     </actionCalls>
     <actionCalls>
-        <name>Get_CaseIds_from_Report</name>
-        <label>Get CaseIds from Report</label>
-        <locationX>710</locationX>
-        <locationY>1055</locationY>
-        <actionName>ReportDataRetrieverAction</actionName>
+        <description>Get Ids of Incidents from Case Related Issue records.</description>
+        <name>Get_Incident_Ids</name>
+        <label>Get Incident Ids</label>
+        <locationX>248</locationX>
+        <locationY>935</locationY>
+        <actionName>AIMExtractStringsFromRecordsAction</actionName>
         <actionType>apex</actionType>
         <connector>
-            <targetReference>Assign_Case_Count</targetReference>
+            <targetReference>Get_Open_Incidents</targetReference>
+        </connector>
+        <dataTypeMappings>
+            <typeName>T__collection</typeName>
+            <typeValue>CaseRelatedIssue</typeValue>
+        </dataTypeMappings>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>fieldName</name>
+            <value>
+                <stringValue>RelatedIssueId</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>collection</name>
+            <value>
+                <elementReference>Get_Case_Related_Issues</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>shouldRemoveDuplicates</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <outputParameters>
+            <assignToReference>incidentIds</assignToReference>
+            <name>values</name>
+        </outputParameters>
+    </actionCalls>
+    <actionCalls>
+        <description>Flow bulkification can populate the same Id collection for each created record causing duplicate record creation. This action removes such duplicates.</description>
+        <name>Remove_duplicate_Case_Id_collection</name>
+        <label>Remove duplicate Case Id collection</label>
+        <locationX>446</locationX>
+        <locationY>1295</locationY>
+        <actionName>AIMDedupStringCollectionsAction</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Get_Filtered_Similar_Cases</targetReference>
         </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
-            <name>developerNames</name>
+            <name>collection</name>
             <value>
-                <elementReference>Get_New_Incident_Detector_Report.DeveloperName</elementReference>
+                <elementReference>caseIds</elementReference>
             </value>
         </inputParameters>
         <outputParameters>
             <assignToReference>caseIds</assignToReference>
-            <name>output</name>
+            <name>filteredCollection</name>
         </outputParameters>
     </actionCalls>
     <apiVersion>56.0</apiVersion>
     <assignments>
-        <name>Add_Case_to_Case_Collection</name>
-        <label>Add Case to Case Collection</label>
-        <locationX>182</locationX>
-        <locationY>815</locationY>
+        <description>Add the newly created Case to the Cases Collection.</description>
+        <name>Add_Case_to_Collection</name>
+        <label>Add Case to Collection</label>
+        <locationX>50</locationX>
+        <locationY>1295</locationY>
         <assignmentItems>
-            <assignToReference>caseIds</assignToReference>
+            <assignToReference>Get_Filtered_Similar_Cases</assignToReference>
             <operator>Add</operator>
             <value>
-                <elementReference>$Record.Id</elementReference>
+                <elementReference>$Record</elementReference>
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>Filter_already_related_cases</targetReference>
+            <targetReference>Loop_Cases</targetReference>
         </connector>
     </assignments>
     <assignments>
         <name>Assign_Case_Count</name>
         <label>Assign Case Count</label>
-        <locationX>710</locationX>
-        <locationY>1175</locationY>
-        <assignmentItems>
-            <assignToReference>caseIds</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>$Record.Id</elementReference>
-            </value>
-        </assignmentItems>
+        <locationX>446</locationX>
+        <locationY>1535</locationY>
         <assignmentItems>
             <assignToReference>caseCount</assignToReference>
             <operator>AssignCount</operator>
             <value>
-                <elementReference>caseIds</elementReference>
+                <elementReference>Get_Filtered_Similar_Cases</elementReference>
             </value>
         </assignmentItems>
         <connector>
@@ -97,31 +136,15 @@
         </connector>
     </assignments>
     <assignments>
-        <name>Assign_Case_Count_2</name>
-        <label>Assign Case Count</label>
-        <locationX>182</locationX>
-        <locationY>1055</locationY>
-        <assignmentItems>
-            <assignToReference>caseCount</assignToReference>
-            <operator>AssignCount</operator>
-            <value>
-                <elementReference>caseIds</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Cases_to_add_decision</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
         <name>Set_Case_Related_Issues</name>
         <label>Set Case Related Issues</label>
-        <locationX>138</locationX>
-        <locationY>1415</locationY>
+        <locationX>336</locationX>
+        <locationY>2327</locationY>
         <assignmentItems>
             <assignToReference>caseRelatedIssue.CaseId</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>Loop_CaseIds</elementReference>
+                <elementReference>Loop_Cases.Id</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -146,106 +169,79 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>Loop_CaseIds</targetReference>
+            <targetReference>Loop_Cases</targetReference>
         </connector>
     </assignments>
+    <collectionProcessors>
+        <description>To avoid hitting Flow limits, filter only the first 800 Cases that are needed to be attached to the new Incident.</description>
+        <name>Limit_the_Cases_To_Attach</name>
+        <elementSubtype>SortCollectionProcessor</elementSubtype>
+        <label>Limit the Cases To Attach</label>
+        <locationX>314</locationX>
+        <locationY>1895</locationY>
+        <collectionProcessorType>SortCollectionProcessor</collectionProcessorType>
+        <collectionReference>Get_Filtered_Similar_Cases</collectionReference>
+        <connector>
+            <targetReference>Loop_Cases</targetReference>
+        </connector>
+        <limit>800</limit>
+        <sortOptions>
+            <doesPutEmptyStringAndNullFirst>false</doesPutEmptyStringAndNullFirst>
+            <sortField>CreatedDate</sortField>
+            <sortOrder>Asc</sortOrder>
+        </sortOptions>
+    </collectionProcessors>
+    <constants>
+        <description>Set the Case count threshold to create an Incident when the actual Case count breaches this value.</description>
+        <name>caseCountThreshold</name>
+        <dataType>Number</dataType>
+        <value>
+            <numberValue>10.0</numberValue>
+        </value>
+    </constants>
+    <constants>
+        <description>Relative past duration(in minutes) for detecting Incident</description>
+        <name>relativeDetectionDuration</name>
+        <dataType>Number</dataType>
+        <value>
+            <numberValue>600.0</numberValue>
+        </value>
+    </constants>
     <decisions>
-        <name>Cases_to_add_decision</name>
-        <label>Cases to add?</label>
-        <locationX>182</locationX>
-        <locationY>1175</locationY>
-        <defaultConnectorLabel>No cases to add</defaultConnectorLabel>
-        <rules>
-            <name>Cases_to_add</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>caseCount</leftValueReference>
-                <operator>GreaterThan</operator>
-                <rightValue>
-                    <numberValue>0.0</numberValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Loop_CaseIds</targetReference>
-            </connector>
-            <label>Cases to add</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>Does_Case_Count_Breach_Threshold</name>
-        <label>Does Case Count Breach Threshold?</label>
-        <locationX>710</locationX>
-        <locationY>1295</locationY>
-        <defaultConnectorLabel>Under Threshold</defaultConnectorLabel>
-        <rules>
-            <name>Over_Threshold</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>caseCount</leftValueReference>
-                <operator>GreaterThanOrEqualTo</operator>
-                <rightValue>
-                    <elementReference>CaseCountThreshold</elementReference>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Create_Incident</targetReference>
-            </connector>
-            <label>Over Threshold - Create Incident</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>If_Report_Exist</name>
-        <label>If Report Exist?</label>
-        <locationX>957</locationX>
-        <locationY>455</locationY>
-        <defaultConnectorLabel>No Report Found</defaultConnectorLabel>
-        <rules>
-            <name>Report_Exist</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>Get_Existing_Incident_Match_Report</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Find_related_incident</targetReference>
-            </connector>
-            <label>Report Found</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>If_Report_Exist_2</name>
-        <label>If Report Exist?</label>
-        <locationX>908</locationX>
-        <locationY>935</locationY>
-        <defaultConnectorLabel>No Report Found</defaultConnectorLabel>
-        <rules>
-            <name>Report_Found</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>Get_New_Incident_Detector_Report</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Get_CaseIds_from_Report</targetReference>
-            </connector>
-            <label>Report Found</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>Related_Incident_Returned</name>
-        <label>Related Incident Returned?</label>
-        <locationX>545</locationX>
-        <locationY>695</locationY>
+        <name>Are_Related_Incidents_Found</name>
+        <label>Are Related Incidents Found?</label>
+        <locationX>809</locationX>
+        <locationY>815</locationY>
         <defaultConnector>
-            <targetReference>Get_New_Incident_Detector_Report</targetReference>
+            <isGoTo>true</isGoTo>
+            <targetReference>Remove_duplicate_Case_Id_collection</targetReference>
         </defaultConnector>
-        <defaultConnectorLabel>No incident returned - Check for new Incident</defaultConnectorLabel>
+        <defaultConnectorLabel>Related Incidents Not Found</defaultConnectorLabel>
+        <rules>
+            <name>Related_Incidents_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Case_Related_Issues</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Incident_Ids</targetReference>
+            </connector>
+            <label>Related Incidents Found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Are_Related_Open_Incident_Found</name>
+        <label>Are Related Open Incident Found?</label>
+        <locationX>248</locationX>
+        <locationY>1175</locationY>
+        <defaultConnector>
+            <targetReference>Remove_duplicate_Case_Id_collection</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Open Incident Found - Check for new Incident</defaultConnectorLabel>
         <rules>
             <name>Incident_returned</name>
             <conditionLogic>and</conditionLogic>
@@ -257,9 +253,53 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Add_Case_to_Case_Collection</targetReference>
+                <targetReference>Add_Case_to_Collection</targetReference>
             </connector>
-            <label>Incident returned - Attach to Incident</label>
+            <label>Open Incident Found - Attach to Incident</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Are_Similar_Cases_Found</name>
+        <label>Are Similar Cases Found?</label>
+        <locationX>1353</locationX>
+        <locationY>455</locationY>
+        <defaultConnectorLabel>Similar Cases Not Found</defaultConnectorLabel>
+        <rules>
+            <name>Similar_Cases_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Similar_Cases</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Case_Ids</targetReference>
+            </connector>
+            <label>Similar Cases Found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Does_Case_Count_Breach_Threshold</name>
+        <label>Does Case Count Breach Threshold?</label>
+        <locationX>446</locationX>
+        <locationY>1655</locationY>
+        <defaultConnectorLabel>Under Threshold</defaultConnectorLabel>
+        <rules>
+            <name>Over_Threshold</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>caseCount</leftValueReference>
+                <operator>GreaterThanOrEqualTo</operator>
+                <rightValue>
+                    <elementReference>caseCountThreshold</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_Incident</targetReference>
+            </connector>
+            <label>Over Threshold - Create Incident</label>
         </rules>
     </decisions>
     <description>This component is a record-triggered flow that executes on the creation of a case. Its purpose is to evaluate if the newly created case should either:
@@ -267,13 +307,19 @@
 1. Be attached to an existing ongoing incident.
 2. Used to create a new incident.
 
-Either none or (at most) one of those outcomes may occur. This will be based on referenced reports, thresholds, and configurations the incident manager can set as part of a configuration.</description>
+Either none or (at most) one of those outcomes may occur. This will be based on thresholds, and configurations the incident manager can set as part of a configuration.</description>
     <environments>Default</environments>
+    <formulas>
+        <description>Start time to check for similar Cases that were created time after this time.</description>
+        <name>detectionStartTime</name>
+        <dataType>DateTime</dataType>
+        <expression>NOW()-({!relativeDetectionDuration}/1440)</expression>
+    </formulas>
     <formulas>
         <name>incidentDescription</name>
         <dataType>String</dataType>
-        <expression>&quot;Incident automatically created by AIM detector.&quot; &amp; BR() &amp;
-&quot;Case threshold breached on report &apos;&quot; &amp; {!Get_Existing_Incident_Match_Report.Name} &amp; &quot;&apos; of &quot; &amp; TEXT({!CaseCountThreshold}) &amp; &quot; cases.&quot;</expression>
+        <expression>&quot;Incident automatically created by the AIM detector.&quot; &amp; BR() &amp;
+&quot;Case threshold of &apos;&quot; &amp; TEXT({!caseCountThreshold}) &amp; &quot;&apos;  similar cases breached.&quot;</expression>
     </formulas>
     <formulas>
         <name>incidentSubject</name>
@@ -284,11 +330,11 @@ Either none or (at most) one of those outcomes may occur. This will be based on 
     <isTemplate>true</isTemplate>
     <label>AIM - Incident Detector</label>
     <loops>
-        <name>Loop_CaseIds</name>
-        <label>Loop CaseIds</label>
-        <locationX>50</locationX>
-        <locationY>1295</locationY>
-        <collectionReference>caseIds</collectionReference>
+        <name>Loop_Cases</name>
+        <label>Loop Cases</label>
+        <locationX>248</locationX>
+        <locationY>2207</locationY>
+        <collectionReference>Get_Filtered_Similar_Cases</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
             <targetReference>Set_Case_Related_Issues</targetReference>
@@ -319,19 +365,18 @@ Either none or (at most) one of those outcomes may occur. This will be based on 
     <recordCreates>
         <name>Create_Case_Related_Issues</name>
         <label>Create Case Related Issues</label>
-        <locationX>50</locationX>
-        <locationY>1631</locationY>
+        <locationX>248</locationX>
+        <locationY>2543</locationY>
         <inputReference>caseRelatedIssues</inputReference>
     </recordCreates>
     <recordCreates>
         <name>Create_Incident</name>
         <label>Create Incident</label>
-        <locationX>578</locationX>
-        <locationY>1415</locationY>
+        <locationX>314</locationX>
+        <locationY>1775</locationY>
         <assignRecordIdToReference>incidentId</assignRecordIdToReference>
         <connector>
-            <isGoTo>true</isGoTo>
-            <targetReference>Filter_already_related_cases</targetReference>
+            <targetReference>Limit_the_Cases_To_Attach</targetReference>
         </connector>
         <inputAssignments>
             <field>Description</field>
@@ -366,84 +411,166 @@ Either none or (at most) one of those outcomes may occur. This will be based on 
         <object>Incident</object>
     </recordCreates>
     <recordLookups>
-        <name>Get_Existing_Incident_Match_Report</name>
-        <label>Get Existing Incident Match Report</label>
-        <locationX>957</locationX>
-        <locationY>335</locationY>
+        <description>Get Case Related Issues records that have matching field values for the related Case record.</description>
+        <name>Get_Case_Related_Issues</name>
+        <label>Get Case Related Issues</label>
+        <locationX>809</locationX>
+        <locationY>695</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>If_Report_Exist</targetReference>
+            <targetReference>Are_Related_Incidents_Found</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
-            <field>Name</field>
+            <field>RelatedEntityType</field>
             <operator>EqualTo</operator>
             <value>
-                <elementReference>reportName_ExistingIncidentMatch</elementReference>
+                <stringValue>Incident</stringValue>
             </value>
         </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>Report</object>
+        <filters>
+            <field>CaseId</field>
+            <operator>In</operator>
+            <value>
+                <elementReference>caseIds</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>CaseRelatedIssue</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>RelatedIssueId</queriedFields>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
-        <name>Get_New_Incident_Detector_Report</name>
-        <label>Get New Incident Detector Report</label>
-        <locationX>908</locationX>
-        <locationY>815</locationY>
+        <name>Get_Filtered_Similar_Cases</name>
+        <label>Get Filtered Similar Cases</label>
+        <locationX>446</locationX>
+        <locationY>1415</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>If_Report_Exist_2</targetReference>
+            <targetReference>Assign_Case_Count</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
-            <field>Name</field>
-            <operator>EqualTo</operator>
+            <field>Id</field>
+            <operator>In</operator>
             <value>
-                <elementReference>reportName_NewIncidentDetector</elementReference>
+                <elementReference>caseIds</elementReference>
             </value>
         </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>Report</object>
+        <filters>
+            <field>CreatedDate</field>
+            <operator>GreaterThanOrEqualTo</operator>
+            <value>
+                <elementReference>detectionStartTime</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Case</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>CreatedDate</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Open_Incidents</name>
+        <label>Get Open Incidents</label>
+        <locationX>248</locationX>
+        <locationY>1055</locationY>
+        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Are_Related_Open_Incident_Found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>In</operator>
+            <value>
+                <elementReference>incidentIds</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Status</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Completed</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Status</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Closed</stringValue>
+            </value>
+        </filters>
+        <object>Incident</object>
+        <outputAssignments>
+            <assignToReference>incidentId</assignToReference>
+            <field>Id</field>
+        </outputAssignments>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Similar_Cases</name>
+        <label>Get Similar Cases</label>
+        <locationX>1353</locationX>
+        <locationY>335</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Are_Similar_Cases_Found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Reason</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Reason</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Type</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Type</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Reason</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Type</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>IsClosed</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Case</object>
+        <queriedFields>Id</queriedFields>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <start>
-        <locationX>831</locationX>
+        <locationX>1227</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Get_Existing_Incident_Match_Report</targetReference>
+            <targetReference>Get_Similar_Cases</targetReference>
         </connector>
         <object>Case</object>
         <recordTriggerType>Create</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>
-    <subflows>
-        <name>Filter_already_related_cases</name>
-        <label>Filter already related cases</label>
-        <locationX>182</locationX>
-        <locationY>935</locationY>
-        <connector>
-            <targetReference>Assign_Case_Count_2</targetReference>
-        </connector>
-        <flowName>AIM_FilterExistingIncidentRelatedItems</flowName>
-        <inputAssignments>
-            <name>caseIds</name>
-            <value>
-                <elementReference>caseIds</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <name>incidentId</name>
-            <value>
-                <elementReference>incidentId</elementReference>
-            </value>
-        </inputAssignments>
-        <outputAssignments>
-            <assignToReference>caseIds</assignToReference>
-            <name>caseIds</name>
-        </outputAssignments>
-    </subflows>
     <variables>
         <name>caseCount</name>
         <dataType>Number</dataType>
@@ -453,17 +580,6 @@ Either none or (at most) one of those outcomes may occur. This will be based on 
         <scale>0</scale>
         <value>
             <numberValue>0.0</numberValue>
-        </value>
-    </variables>
-    <variables>
-        <name>CaseCountThreshold</name>
-        <dataType>Number</dataType>
-        <isCollection>false</isCollection>
-        <isInput>true</isInput>
-        <isOutput>false</isOutput>
-        <scale>0</scale>
-        <value>
-            <numberValue>10.0</numberValue>
         </value>
     </variables>
     <variables>
@@ -490,6 +606,14 @@ Either none or (at most) one of those outcomes may occur. This will be based on 
         <objectType>CaseRelatedIssue</objectType>
     </variables>
     <variables>
+        <name>currentItem_Get_Filtered_Similar_Cases2</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Case</objectType>
+    </variables>
+    <variables>
         <name>incidentId</name>
         <dataType>String</dataType>
         <isCollection>false</isCollection>
@@ -497,23 +621,11 @@ Either none or (at most) one of those outcomes may occur. This will be based on 
         <isOutput>true</isOutput>
     </variables>
     <variables>
-        <name>reportName_ExistingIncidentMatch</name>
+        <description>Ids of Incident from existing Case Related Issue</description>
+        <name>incidentIds</name>
         <dataType>String</dataType>
-        <isCollection>false</isCollection>
-        <isInput>true</isInput>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
         <isOutput>false</isOutput>
-        <value>
-            <stringValue>AIM - Cases Existing Incident Match</stringValue>
-        </value>
-    </variables>
-    <variables>
-        <name>reportName_NewIncidentDetector</name>
-        <dataType>String</dataType>
-        <isCollection>false</isCollection>
-        <isInput>true</isInput>
-        <isOutput>false</isOutput>
-        <value>
-            <stringValue>AIM - Cases New Incident Detector</stringValue>
-        </value>
     </variables>
 </Flow>

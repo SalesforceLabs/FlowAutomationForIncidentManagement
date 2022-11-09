@@ -26,9 +26,8 @@ jobs:
       - name: install cci
         run: pipx install https://github.com/SFDO-Tooling/CumulusCI/archive/refs/tags/v3.64.0.tar.gz
 
-      # Installing pre-release to avoid api version issue during pre release development
       - name: install lwc-jest
-        run: npm install @salesforce/sfdx-lwc-jest@prerelease --save-dev
+        run: npm install @salesforce/sfdx-lwc-jest --save-dev
 
       - name: install sa11y
         run: npm install -D @sa11y/jest
