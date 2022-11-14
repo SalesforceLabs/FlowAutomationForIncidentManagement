@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>56.0</apiVersion>
+    <assignments>
+        <name>Assign_Knowledge_Prefill_Info</name>
+        <label>Assign Knowledge Prefill Info</label>
+        <locationX>176</locationX>
+        <locationY>758</locationY>
+        <assignmentItems>
+            <assignToReference>knowledgeArticle.Title</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Incident.Subject</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>knowledgeArticle.Summary</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>KnowledgeSummary</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>knowledgeArticle.UrlName</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>knowledgeURL</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Enter_Knowledge_Details</targetReference>
+        </connector>
+    </assignments>
     <description>This is a screen flow template that allows the user to quickly create a knowledge article from pre-filled Title/Summary fields from incident/problem/change request information.</description>
     <environments>Default</environments>
     <formulas>
@@ -37,6 +67,16 @@
         </value>
     </processMetadataValues>
     <processType>Flow</processType>
+    <recordCreates>
+        <name>Create_Knowledge_Article</name>
+        <label>Create Knowledge Article</label>
+        <locationX>176</locationX>
+        <locationY>998</locationY>
+        <connector>
+            <targetReference>Refresh_Knowledge_Article</targetReference>
+        </connector>
+        <inputReference>knowledgeArticle</inputReference>
+    </recordCreates>
     <recordLookups>
         <name>Get_Change_Request</name>
         <label>Get Change Request</label>
@@ -44,7 +84,7 @@
         <locationY>638</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Complete</targetReference>
+            <targetReference>Assign_Knowledge_Prefill_Info</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -142,11 +182,32 @@
         <object>ProblemIncident</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
+    <recordLookups>
+        <name>Refresh_Knowledge_Article</name>
+        <label>Refresh Knowledge Article</label>
+        <locationX>176</locationX>
+        <locationY>1118</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Complete</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>knowledgeArticle.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Knowledge__kav</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
     <screens>
         <name>Complete</name>
         <label>Complete</label>
         <locationX>176</locationX>
-        <locationY>758</locationY>
+        <locationY>1238</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -184,6 +245,56 @@
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
     </screens>
+    <screens>
+        <name>Enter_Knowledge_Details</name>
+        <label>Enter Knowledge Details</label>
+        <locationX>176</locationX>
+        <locationY>878</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Create_Knowledge_Article</targetReference>
+        </connector>
+        <fields>
+            <fieldType>ObjectProvided</fieldType>
+            <isRequired>false</isRequired>
+            <objectFieldReference>knowledgeArticle.Title</objectFieldReference>
+        </fields>
+        <fields>
+            <fieldType>ObjectProvided</fieldType>
+            <isRequired>false</isRequired>
+            <objectFieldReference>knowledgeArticle.Summary</objectFieldReference>
+        </fields>
+        <fields>
+            <fieldType>ObjectProvided</fieldType>
+            <isRequired>false</isRequired>
+            <objectFieldReference>knowledgeArticle.Language</objectFieldReference>
+        </fields>
+        <fields>
+            <fieldType>ObjectProvided</fieldType>
+            <isRequired>false</isRequired>
+            <objectFieldReference>knowledgeArticle.UrlName</objectFieldReference>
+        </fields>
+        <fields>
+            <fieldType>ObjectProvided</fieldType>
+            <isRequired>false</isRequired>
+            <objectFieldReference>knowledgeArticle.IsVisibleInCsp</objectFieldReference>
+        </fields>
+        <fields>
+            <fieldType>ObjectProvided</fieldType>
+            <isRequired>false</isRequired>
+            <objectFieldReference>knowledgeArticle.IsVisibleInPrm</objectFieldReference>
+        </fields>
+        <fields>
+            <fieldType>ObjectProvided</fieldType>
+            <isRequired>false</isRequired>
+            <objectFieldReference>knowledgeArticle.IsVisibleInPkb</objectFieldReference>
+        </fields>
+        <nextOrFinishButtonLabel>Create Article</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
     <start>
         <locationX>50</locationX>
         <locationY>0</locationY>
@@ -198,5 +309,13 @@
         <isCollection>false</isCollection>
         <isInput>true</isInput>
         <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>knowledgeArticle</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Knowledge__kav</objectType>
     </variables>
 </Flow>

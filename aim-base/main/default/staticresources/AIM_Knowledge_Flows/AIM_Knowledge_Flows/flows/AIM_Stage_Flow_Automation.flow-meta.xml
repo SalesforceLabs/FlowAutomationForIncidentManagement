@@ -159,6 +159,24 @@
         </connector>
     </assignments>
     <assignments>
+        <description>Make isKnowledgeArctilce created Boolean variable as True</description>
+        <name>Assign_Knowledge_Created</name>
+        <label>Assign Knowledge Article Created</label>
+        <locationX>1018</locationX>
+        <locationY>1118</locationY>
+        <assignmentItems>
+            <assignToReference>isKnowledgeCreated</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Checklist_Selection</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <description>Make isMessagingSent Boolean variable as True</description>
         <name>Assign_Messaging_Sent</name>
         <label>Assign Messaging  Notification Sent</label>
@@ -350,6 +368,9 @@
                     <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
+            <connector>
+                <targetReference>Create_Knowledge_Article</targetReference>
+            </connector>
             <label>Knowledge</label>
         </rules>
         <rules>
@@ -880,6 +901,24 @@
                 <elementReference>incidentId</elementReference>
             </value>
         </inputAssignments>
+    </subflows>
+    <subflows>
+        <description>Create Knowledge Article</description>
+        <name>Create_Knowledge_Article</name>
+        <label>Create Knowledge Article</label>
+        <locationX>1018</locationX>
+        <locationY>998</locationY>
+        <connector>
+            <targetReference>Assign_Knowledge_Created</targetReference>
+        </connector>
+        <flowName>AIM_CreateKnowledgeArticle</flowName>
+        <inputAssignments>
+            <name>incidentId</name>
+            <value>
+                <elementReference>incidentId</elementReference>
+            </value>
+        </inputAssignments>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
     </subflows>
     <subflows>
         <description>Get the list of Accounts and Contacts impacted by the Incident</description>

@@ -55,4 +55,12 @@
         <shortDescription>AIM Flow Select Messaging Template And Messaging Channel</shortDescription>
         <value>Select the Messaging Channel and Messaging Template to send</value>
     </labels>
+    <labels>
+        <fullName>AIM_Flow_Error_Header_Messaging</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Flow Error Header For Messaging</shortDescription>
+        <value>An Error has Occurred</value>
+    </labels>
 </CustomLabels>
