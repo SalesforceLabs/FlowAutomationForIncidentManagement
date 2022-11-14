@@ -1,70 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <actionCalls>
-        <description>Apex action call for sending emails</description>
-        <name>Send_Emails</name>
-        <label>Send Emails</label>
-        <locationX>50</locationX>
-        <locationY>758</locationY>
-        <actionName>AIM_SendEmailAction</actionName>
-        <actionType>apex</actionType>
-        <connector>
-            <targetReference>Send_Email_Complete</targetReference>
-        </connector>
-        <flowTransactionModel>Automatic</flowTransactionModel>
-        <inputParameters>
-            <name>contacts</name>
-            <value>
-                <elementReference>contacts</elementReference>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>body</name>
-            <value>
-                <elementReference>emailBody</elementReference>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>subject</name>
-            <value>
-                <elementReference>emailSubject</elementReference>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>orgWideEmailAddressId</name>
-            <value>
-                <elementReference>orgWideEmailAddressId</elementReference>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>shouldSaveAsActivity</name>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>whatId</name>
-            <value>
-                <elementReference>incidentId</elementReference>
-            </value>
-        </inputParameters>
-        <outputParameters>
-            <assignToReference>failureIds</assignToReference>
-            <name>failedContactIds</name>
-        </outputParameters>
-        <outputParameters>
-            <assignToReference>failureMessages</assignToReference>
-            <name>failureMessages</name>
-        </outputParameters>
-        <outputParameters>
-            <assignToReference>totalFailures</assignToReference>
-            <name>totalFailedEmails</name>
-        </outputParameters>
-        <outputParameters>
-            <assignToReference>totalSuccesses</assignToReference>
-            <name>totalSuccessEmails</name>
-        </outputParameters>
-    </actionCalls>
     <apiVersion>56.0</apiVersion>
     <assignments>
         <name>Assign_Email_Count</name>
@@ -182,7 +117,7 @@
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
         <connector>
-            <targetReference>Send_Emails</targetReference>
+            <targetReference>Send_Email_Complete</targetReference>
         </connector>
         <fields>
             <name>confirmtext</name>

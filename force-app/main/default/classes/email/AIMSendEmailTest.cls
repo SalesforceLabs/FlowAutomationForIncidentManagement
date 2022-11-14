@@ -1,8 +1,8 @@
 /**
- * AIM_SendEmailTest: Test Class for Email Editor and Send Email functionality
+ * AIMSendEmailTest: Test Class for Email Editor and Send Email functionality
  */
 @isTest
-private with sharing class AIM_SendEmailTest {
+private with sharing class AIMSendEmailTest {
   @TestSetup
   static void createData() {
     Contact contact = new Contact(
@@ -42,8 +42,8 @@ private with sharing class AIM_SendEmailTest {
     Incident incident = [SELECT Id FROM Incident LIMIT 1];
 
     Test.startTest();
-    List<AIM_SendEmailAction.SendEmailRequest> sendEmailRequests = new List<AIM_SendEmailAction.SendEmailRequest>();
-    AIM_SendEmailAction.SendEmailRequest sendEmailRequest = new AIM_SendEmailAction.SendEmailRequest();
+    List<AIMSendEmailAction.SendEmailRequest> sendEmailRequests = new List<AIMSendEmailAction.SendEmailRequest>();
+    AIMSendEmailAction.SendEmailRequest sendEmailRequest = new AIMSendEmailAction.SendEmailRequest();
     sendEmailRequest.contacts = new List<Contact>{ contact };
     List<OrgWideEmailAddress> orgWideEmailAddresses = [
       SELECT Id
@@ -57,9 +57,9 @@ private with sharing class AIM_SendEmailTest {
     sendEmailRequest.subject = 'Test Subject';
     sendEmailRequest.body = 'Test Body';
     sendEmailRequest.whatId = incident.Id;
-    sendEmailRequest.shouldSaveAsActivity = true;
+    sendEmailRequest.saveAsActivityMethod = 2;
     sendEmailRequests.add(sendEmailRequest);
-    List<AIM_SendEmailAction.SendEmailResult> sendEmailResults = AIM_SendEmailAction.sendEmail(
+    List<AIMSendEmailAction.SendEmailResult> sendEmailResults = AIMSendEmailAction.sendEmail(
       sendEmailRequests
     );
     Integer successEmail = sendEmailResults.get(0).totalSuccessEmails;
@@ -80,8 +80,8 @@ private with sharing class AIM_SendEmailTest {
     Incident incident = [SELECT Id FROM Incident LIMIT 1];
 
     Test.startTest();
-    List<AIM_SendEmailAction.SendEmailRequest> sendEmailRequests = new List<AIM_SendEmailAction.SendEmailRequest>();
-    AIM_SendEmailAction.SendEmailRequest sendEmailRequest = new AIM_SendEmailAction.SendEmailRequest();
+    List<AIMSendEmailAction.SendEmailRequest> sendEmailRequests = new List<AIMSendEmailAction.SendEmailRequest>();
+    AIMSendEmailAction.SendEmailRequest sendEmailRequest = new AIMSendEmailAction.SendEmailRequest();
     sendEmailRequest.contacts = new List<Contact>{ contact };
     List<OrgWideEmailAddress> orgWideEmailAddresses = [
       SELECT Id
@@ -95,9 +95,9 @@ private with sharing class AIM_SendEmailTest {
     sendEmailRequest.subject = 'Test Subject';
     sendEmailRequest.body = 'Test Body';
     sendEmailRequest.whatId = incident.Id;
-    sendEmailRequest.shouldSaveAsActivity = true;
+    sendEmailRequest.saveAsActivityMethod = 2;
     sendEmailRequests.add(sendEmailRequest);
-    List<AIM_SendEmailAction.SendEmailResult> sendEmailResults = AIM_SendEmailAction.sendEmail(
+    List<AIMSendEmailAction.SendEmailResult> sendEmailResults = AIMSendEmailAction.sendEmail(
       sendEmailRequests
     );
     Integer failedEmail = sendEmailResults.get(0).totalFailedEmails;
