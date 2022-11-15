@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>AIM_Flow_Click_Send_Messages</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Flow Click Send Messages</shortDescription>
+        <value>Click &quot;Send Message(s)&quot; to continue</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_Contacts_Notification_Message</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Flow Contacts Notification Message</shortDescription>
+        <value>contacts will be notified via Messaging</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_No_Contacts_Error_Message</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Flow No Contacts Error Message</shortDescription>
+        <value>No Contacts selected to send message</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_Notifications_Sent_Message</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Flow Notifications Sent Message</shortDescription>
+        <value>Messaging Notifications sent</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_Outbound_Message</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Flow Outbound Message Text</shortDescription>
+        <value>Outbound Message</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_Outbound_Messages_Requirement</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Flow Outbound Messages Requirement</shortDescription>
+        <value>The selected messaging channel requires contacts to be opted in before outbound messages can be sent</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_Select_Messaging_Template_And_Messaging_Channel</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Flow Select Messaging Template And Messaging Channel</shortDescription>
+        <value>Select the Messaging Channel and Messaging Template to send</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Flow_Error_Header_Messaging</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Flow Error Header For Messaging</shortDescription>
+        <value>An Error has Occurred</value>
+    </labels>
+</CustomLabels>

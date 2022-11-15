@@ -78,7 +78,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM GeoMap Generic Exception</shortDescription>
-        <value>Something went wrong. Ask your admin for help</value>
+        <value>An Error occurred. Please contact your system administrator.</value>
     </labels>
     <labels>
         <fullName>AIM_GeoMap_No_Data</fullName>
@@ -86,7 +86,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM GeoMap No Data</shortDescription>
-        <value>No assets to display. Try another data set.</value>
+        <value>There are no Assets on the Map.</value>
     </labels>
     <labels>
         <fullName>AIM_GeoMap_Null_Exception</fullName>
@@ -94,7 +94,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM GeoMap Null Exception</shortDescription>
-        <value>A Null or empty value was passed as input to the Asset Map. Null or empty values are not supported. Ask your admin for help.</value>
+        <value>Null or Empty input parameter passed. Please contact your system administrator.</value>
     </labels>
     <labels>
         <fullName>AIM_GeoMap_Unsupported_Exception</fullName>
@@ -102,7 +102,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM GeoMap Unsupported Exception</shortDescription>
-        <value>An unsupported sObject type “{0}&apos;&apos; record was passed as input to the Asset Map.  Ask your admin for help.</value>
+        <value>Unsupported sObject type: ''{0}'' records passed as the input to the Map component. Ask your admin for help.</value>
     </labels>
     <labels>
         <fullName>AIM_Matching_Logic_Invalid_Input_Exception</fullName>
@@ -110,7 +110,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Matching Logic Invalid Input Exception</shortDescription>
-        <value>We couldn’t  retrieve a list of duplicate incidents because of a Null or Empty input.  Check the input parameters and try again.</value>
+        <value>Null or Empty input parameter passed.</value>
     </labels>
     <labels>
         <fullName>AIM_Report_Format_Exception</fullName>
@@ -118,7 +118,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Report Format Exception</shortDescription>
-        <value>We couldn’t run the report because of an invalid grouping format. The report must be grouped on the Id only. Fix the grouping format or ask your admin for help.</value>
+        <value>Invalid Grouping : Report needs to be grouped only on Id</value>
     </labels>
     <labels>
         <fullName>AIM_Report_Null_Exception</fullName>
@@ -126,7 +126,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Report Null Exception</shortDescription>
-        <value>We couldn’t run the report because the Developer name value passed as input was empty or contained a Null value. Check the Developer name contains a valid value and try again.</value>
+        <value>Developer name of the Report cannot be Null or Empty.</value>
     </labels>
     <labels>
         <fullName>AIM_Report_Retrieval_Exception</fullName>
@@ -150,7 +150,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow Click To Submit</shortDescription>
-        <value>Select finish to submit the flow.</value>
+        <value>Click &quot;Finish&quot; to submit.</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_Error_Header</fullName>
@@ -158,7 +158,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow Error Header</shortDescription>
-        <value>Something went wrong.</value>
+        <value>An Error has Occurred</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_First_Response_Attached_Records</fullName>
@@ -166,7 +166,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow First Response Attached Records</shortDescription>
-        <value>Attached records:</value>
+        <value>It currently has the following records attached to it:</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_First_Response_Close_Value</fullName>
@@ -174,7 +174,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow First Response Close Value</shortDescription>
-        <value>Close the incident</value>
+        <value>Close incident</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_First_Response_Complete</fullName>
@@ -198,7 +198,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow First Response Proceed Value</shortDescription>
-        <value>Go to the incident qualification flow</value>
+        <value>Proceed to incident qualification</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_First_Response_Remove_Assets_Value</fullName>
@@ -222,7 +222,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow First Response Remove Items</shortDescription>
-        <value>Related items:</value>
+        <value>Would you like to remove the incident&apos;s related items before closing the incident?</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_First_Response_User</fullName>
@@ -230,7 +230,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow First Response User</shortDescription>
-        <value>Incident created by</value>
+        <value>The incident was created by user:</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_Incident_Not_Found_Error</fullName>
@@ -246,7 +246,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow Click Previous</shortDescription>
-        <value>Click previous to go back</value>
+        <value>Click Previous to go back.</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_CreateKB_Complete</fullName>
@@ -254,63 +254,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Knowledge Article Created</shortDescription>
-        <value>Your knowledge article was created</value>
-    </labels>
-    <labels>
-        <fullName>AIM_Flow_Click_Send_Messages</fullName>
-        <categories>AIM</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>AIM Flow Click Send Messages</shortDescription>
-        <value>Click &quot;Send Message(s)&quot; to continue</value>
-    </labels>
-    <labels>
-        <fullName>AIM_Flow_Contacts_Notification_Message</fullName>
-        <categories>AIM</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>AIM Flow Contacts Notification Message</shortDescription>
-        <value>contacts will be notified via Messaging</value>
-    </labels>
-    <labels>
-        <fullName>AIM_Flow_No_Contacts_Error_Message</fullName>
-        <categories>AIM</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>AIM Flow No Contacts Error Message</shortDescription>
-        <value>Select contacts..</value>
-    </labels>
-    <labels>
-        <fullName>AIM_Flow_Notifications_Sent_Message</fullName>
-        <categories>AIM</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>AIM Flow Notifications Sent Message</shortDescription>
-        <value>Messaging Notifications sent</value>
-    </labels>
-    <labels>
-        <fullName>AIM_Flow_Outbound_Message</fullName>
-        <categories>AIM</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>AIM Flow Outbound Message Text</shortDescription>
-        <value>Outbound Message</value>
-    </labels>
-    <labels>
-        <fullName>AIM_Flow_Outbound_Messages_Requirement</fullName>
-        <categories>AIM</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>AIM Flow Outbound Messages Requirement</shortDescription>
-        <value>The selected messaging channel requires contacts to opt in to receive messages.</value>
-    </labels>
-    <labels>
-        <fullName>AIM_Flow_Select_Messaging_Template_And_Messaging_Channel</fullName>
-        <categories>AIM</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>AIM Flow Select Messaging Template And Messaging Channel</shortDescription>
-        <value>Select a messaging channel and template to notify</value>
+        <value>Knowledge Article Created</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_Qualification_Complete</fullName>
@@ -334,7 +278,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow Qualification NoRecords</shortDescription>
-        <value>We couldn’t find any records for the selected Report. Go back and make a different selection.</value>
+        <value>No records to add. Click previous and modify your selection</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_Qualification_RelatedAssetChoice</fullName>
@@ -342,7 +286,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow Qualification RelatedAssetChoice</shortDescription>
-        <value>Add related assets</value>
+        <value>Add related assets from a report</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_Qualification_RelatedCaseChoice</fullName>
@@ -350,7 +294,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow Qualification RelatedCaseChoice</shortDescription>
-        <value>Add related cases</value>
+        <value>Add related cases from a report</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_Qualification_SelectAssetReport</fullName>
@@ -358,9 +302,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow Qualification SelectAssetReport</shortDescription>
-        <value>Asset qualification report
-
-Add assets from the selected report to the incident. The selected report must be tabular with AssetID in the first column.
+        <value>Select a report that contains the list of assets you&apos;d like to relate to the Incident. Please ensure the report is a tabular report with AssetID in the first column.
 
 To create a new report, click &lt;a href=&quot;/lightning/o/Report/home&quot;&gt;here&lt;/a&gt;.</value>
     </labels>
@@ -370,9 +312,7 @@ To create a new report, click &lt;a href=&quot;/lightning/o/Report/home&quot;&gt
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow Qualification SelectCaseReport</shortDescription>
-        <value>Case Qualification Report
-
-Add cases from the selected report to the incident. The selected report must be tabular, with CaseID in the first column.
+        <value>Select a report that contains the list of cases you&apos;d like to relate to the Incident. Please ensure the report is a tabular report with CaseID in the first column.
 
 To create a new report, click &lt;a href=&quot;/lightning/o/Report/home&quot;&gt;here&lt;/a&gt;.</value>
     </labels>
@@ -382,7 +322,7 @@ To create a new report, click &lt;a href=&quot;/lightning/o/Report/home&quot;&gt
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM_Flow_ChannelEmailLabel</shortDescription>
-        <value>Send an email</value>
+        <value>Email</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_ChannelAddBannerLabel</fullName>
@@ -390,10 +330,7 @@ To create a new report, click &lt;a href=&quot;/lightning/o/Report/home&quot;&gt
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM_Flow_ChannelAddBannerLabel</shortDescription>
-        <value>Site Banner
-Email
-Slack
-Messaging</value>
+        <value>Activate Site Banner</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_ChannelMessagingLabel</fullName>
@@ -401,7 +338,7 @@ Messaging</value>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM_Flow_ChannelMessagingLabel</shortDescription>
-        <value>Send a message in a messaging app</value>
+        <value>Messaging</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_ChannelRemoveBannerLabel</fullName>
@@ -409,7 +346,7 @@ Messaging</value>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM_Flow_ChannelRemoveBannerLabel</shortDescription>
-        <value>Remove the site banner</value>
+        <value>Remove Site Banner</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_ChannelSlackLabel</fullName>
@@ -417,7 +354,7 @@ Messaging</value>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM_Flow_ChannelSlackLabel</shortDescription>
-        <value>Send a Slack message</value>
+        <value>Slack</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_CloseCases</fullName>
@@ -425,7 +362,7 @@ Messaging</value>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM_Flow_CloseCases</shortDescription>
-        <value>Close attached cases</value>
+        <value>Close all attached cases</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_Completion_Complete</fullName>
@@ -433,7 +370,7 @@ Messaging</value>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM_Flow_Completion_Complete</shortDescription>
-        <value>Your incident is resolved</value>
+        <value>Completion Flow Complete</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_CreateKB</fullName>
@@ -441,7 +378,7 @@ Messaging</value>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM_Flow_CreateKB</shortDescription>
-        <value>Create a knowledge article about the incident</value>
+        <value>Create Knowledge Article from Incident</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_Notification_Complete</fullName>
@@ -449,7 +386,7 @@ Messaging</value>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM_Flow_Notification_Complete</shortDescription>
-        <value>Your notification flow is complete</value>
+        <value>Notification Flow Complete</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_Cases_Closed</fullName>
@@ -457,7 +394,7 @@ Messaging</value>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow Cases Closed</shortDescription>
-        <value>Attached cases closed</value>
+        <value>Cases Closed</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_Emails_Sent</fullName>
@@ -465,7 +402,7 @@ Messaging</value>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow Emails Sent</shortDescription>
-        <value>Email sent</value>
+        <value>Emails Sent</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_Test_Email_Sent</fullName>
@@ -473,7 +410,7 @@ Messaging</value>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow Test Email Sent</shortDescription>
-        <value>Test Email Sent.</value>
+        <value>Test Email Sent</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_Test_Email_Failed</fullName>
@@ -481,7 +418,7 @@ Messaging</value>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow Test Email Failed</shortDescription>
-        <value>We couldn’t send the test email. Ask your Salesforce admin for help.</value>
+        <value>Test Email Failed</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_Knowledge_Article_Created</fullName>
@@ -489,7 +426,7 @@ Messaging</value>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow Knowledge Article Created</shortDescription>
-        <value>Knowledge article created</value>
+        <value>Knowledge Article Created</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_Messages_Sent</fullName>
@@ -497,7 +434,7 @@ Messaging</value>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow Messages Sent</shortDescription>
-        <value>Messaging app message sent</value>
+        <value>Messages Sent</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_Site_Banner_Added</fullName>
@@ -505,7 +442,7 @@ Messaging</value>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow Site Banner Added</shortDescription>
-        <value>Site banner added</value>
+        <value>Site Banner Added</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_Site_Banner_Removed</fullName>
@@ -513,7 +450,7 @@ Messaging</value>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow Site Banner Removed</shortDescription>
-        <value>Site banner removed</value>
+        <value>Site Banner Removed</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_Slack_Message_Sent</fullName>
@@ -521,21 +458,21 @@ Messaging</value>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow Slack Message Sent</shortDescription>
-        <value>Slack message sent</value>
+        <value>Slack Message Sent</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_Placeholder_for_Messaging_Notifications</fullName>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow Messaging Notifications Placeholder</shortDescription>
-        <value>No Work Guide instructions available. To show Work Guide for Messaging notifications, install the Automated Incident Management for Messaging package and add the Send Messaging Notification Subflow to the Incident Orchestration. Help Me Add the Subflow</value>
+        <value>This is a placeholder. If you have installed Messaging Package please add the subflow and pass the appropriate parameters by replacing this screen component</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_Slack_Placeholder</fullName>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow Placeholder for Slack</shortDescription>
-        <value>No Work Guide instructions available. To show Work Guide for Slack notifications, install the Automated Incident Management for Slack package and add the Send Slack Notification Subflow to the Incident Orchestration. Help Me Add the Subflow</value>
+        <value>This is a placeholder. If you have installed  slack package, please add the subflow and pass the appropriate parameters by replacing this screen component</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_SendCoreEmail_ConfirmText</fullName>
@@ -543,7 +480,7 @@ Messaging</value>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM_Flow_SendCoreEmail_ConfirmText</shortDescription>
-        <value>Review and send the email or go back and make changes.</value>
+        <value>Confirm broadcast email?</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_SendCoreEmail_InvalidInfo</fullName>
@@ -551,7 +488,12 @@ Messaging</value>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM_Flow_SendCoreEmail_InvalidInfo</shortDescription>
-        <value>We’re unable to send the email. Check that the sender address is valid, the email subject or body is filled, and there is a list of contacts associated with the email.</value>
+        <value>&lt;b&gt;Error: Unable to proceed&lt;/b&gt;
+
+                Please ensure:
+                1. A valid org wide address is selected.
+                2. An email subject and body is provided.
+                3. You have supplied a list of contacts to email.</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_SendCoreEmail_CompleteText</fullName>
@@ -583,7 +525,7 @@ Messaging</value>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Email Editor Select Folder</shortDescription>
-        <value>Select an Email Folder</value>
+        <value>Select Email Folder</value>
     </labels>
     <labels>
         <fullName>AIM_Email_Editor_Select_Sender</fullName>
@@ -591,7 +533,7 @@ Messaging</value>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Email Editor Select Sender</shortDescription>
-        <value>Select a Sender Address</value>
+        <value>Select Sender Address</value>
     </labels>
     <labels>
         <fullName>AIM_Email_Editor_Select_Template</fullName>
@@ -599,7 +541,7 @@ Messaging</value>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Email Editor Select Template</shortDescription>
-        <value>Select an Email Template</value>
+        <value>Select Email Template</value>
     </labels>
     <labels>
         <fullName>AIM_Email_Editor_Send_Test_Email</fullName>
@@ -615,7 +557,7 @@ Messaging</value>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Email Editor Subject</shortDescription>
-        <value>Email Subject</value>
+        <value>Subject</value>
     </labels>
     <labels>
         <fullName>AIM_Email_Editor_Test_Email</fullName>
@@ -623,7 +565,7 @@ Messaging</value>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Email Editor Test Email</shortDescription>
-        <value>Test Email Address</value>
+        <value>Test Email</value>
     </labels>
     <labels>
         <fullName>AIM_Generic_Error</fullName>
@@ -634,35 +576,11 @@ Messaging</value>
         <value>An Error Occurred. Contact your administrator.</value>
     </labels>
     <labels>
-        <fullName>AIM_Slack_Conversation_Not_Found</fullName>
-        <categories>AIM</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>AIM Slack Conversation Not Found</shortDescription>
-        <value>Select a Slack channel.</value>
-    </labels>
-    <labels>
-        <fullName>AIM_Slack_Message_Send_Message</fullName>
-        <categories>AIM</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>AIM Slack Message Send Message</shortDescription>
-        <value>Click Send Message to send the following message to</value>
-    </labels>
-    <labels>
-        <fullName>AIM_Slack_Message_Sent_Successfully</fullName>
-        <categories>AIM</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>AIM Slack Message Sent Successfully</shortDescription>
-        <value>Message sent successfully to</value>
-    </labels>
-    <labels>
         <fullName>AIM_Email_Editor_Test_Email_Empty</fullName>
         <categories>AIM</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Email Editor Test Email Empty</shortDescription>
-        <value>Complete the Test Email Address field.</value>
+        <value>The Test Email Address can not be empty.</value>
     </labels>
 </CustomLabels>
