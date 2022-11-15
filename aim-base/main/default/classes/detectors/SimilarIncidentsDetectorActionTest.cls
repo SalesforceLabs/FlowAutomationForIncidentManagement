@@ -5,8 +5,8 @@
 public class SimilarIncidentsDetectorActionTest {
   @testSetup
   static void populateData() {
-    List<Account> accounts = new List<Account>();
-    List<Contact> contacts = new List<Contact>();
+    List<Account> accounts = TestFactory.getAccounts();
+    List<Contact> contacts = TestFactory.getContacts();
     List<Case> cases = new List<Case>();
     List<Asset> assets = new List<Asset>();
     List<Product2> products = TestFactory.getProducts();
@@ -14,27 +14,12 @@ public class SimilarIncidentsDetectorActionTest {
     List<IncidentRelatedItem> incidentRelatedItems = new List<IncidentRelatedItem>();
     List<CaseRelatedIssue> caseRelatedIssues = new List<CaseRelatedIssue>();
 
-    for (Integer counter = 0; counter < 20; counter++) {
-      Account account = new Account(Name = 'Test Account ' + counter);
-      accounts.add(account);
-    }
-    insert accounts;
-
-    for (Integer counter = 0; counter < 20; counter++) {
-      Contact contact = new Contact(
-        LastName = 'Test Contact ' + counter,
-        AccountId = accounts.get(Math.mod(counter, 20)).Id
-      );
-      contacts.add(contact);
-    }
-    insert contacts;
-
     for (Integer counter = 0; counter < 10; counter++) {
       Case caseRecord = new Case(
         Subject = 'Test Case ' + counter,
         Status = 'New',
         ContactId = contacts.get(counter).Id,
-        AccountId = contacts.get(counter).AccountId
+        AccountId = accounts.get(counter).Id
       );
       cases.add(caseRecord);
     }

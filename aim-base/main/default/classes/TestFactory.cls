@@ -4,6 +4,7 @@ public class TestFactory {
   static List<Account> accounts = new List<Account>();
   static List<Contact> contacts = new List<Contact>();
   static List<Product2> products = new List<Product2>();
+  static List<Case> cases = new List<Case>();
   public static List<Incident> getIncidents() {
     if (!incidents.isEmpty()) {
       return incidents;
@@ -47,7 +48,6 @@ public class TestFactory {
     }
     insert incidents;
 
-    
     return incidents;
   }
 
@@ -55,7 +55,7 @@ public class TestFactory {
     if (!accounts.isEmpty()) {
       return accounts;
     }
-    for (Integer counter = 0; counter < 5; counter++) {
+    for (Integer counter = 0; counter < 20; counter++) {
       Account account = new Account(Name = 'Test Account ' + counter);
       accounts.add(account);
     }
@@ -67,7 +67,7 @@ public class TestFactory {
     if (!contacts.isEmpty()) {
       return contacts;
     }
-    for (Integer counter = 0; counter < 5; counter++) {
+    for (Integer counter = 0; counter < 20; counter++) {
       Contact contact = new Contact(
         LastName = 'Test Contact ' + counter,
         AccountId = accounts.get(counter).Id
@@ -88,5 +88,20 @@ public class TestFactory {
     }
     insert products;
     return products;
+  }
+
+  public static List<Case> getCases() {
+    if (!cases.isEmpty()) {
+      return cases;
+    }
+    for (Integer counter = 0; counter <= 3; counter++) {
+      Case caseRecord = new Case(
+        Subject = 'Test Case ' + counter,
+        Status = 'New'
+      );
+      cases.add(caseRecord);
+    }
+    insert cases;
+    return cases;
   }
 }
