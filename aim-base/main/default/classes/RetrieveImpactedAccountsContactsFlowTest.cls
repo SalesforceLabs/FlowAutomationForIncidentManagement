@@ -18,7 +18,7 @@ private class RetrieveImpactedAccountsContactsFlowTest {
     List<Asset> allAssets = new List<Asset>();
     List<Asset> assetsWithAccount = new List<Asset>();
     List<Asset> assetswithContactAndAccount = new List<Asset>();
-    List<Incident> incidents = new List<Incident>();
+    List<Incident> incidents = TestFactory.getIncidents();
     List<IncidentRelatedItem> incidentRelatedItems = new List<IncidentRelatedItem>();
     List<CaseRelatedIssue> caseRelatedIssues = new List<CaseRelatedIssue>();
 
@@ -124,18 +124,6 @@ private class RetrieveImpactedAccountsContactsFlowTest {
     allAssets.addAll(assetswithContactAndAccount);
 
     insert allAssets;
-
-    //insert incidents
-    for (Integer counter = 0; counter < 7; counter++) {
-      Incident incident = new Incident(
-        Subject = 'Test Incident ' + counter,
-        Impact = 'High',
-        Urgency = 'High',
-        Priority = 'Critical'
-      );
-      incidents.add(incident);
-    }
-    insert incidents;
 
     // incident with only related cases
 

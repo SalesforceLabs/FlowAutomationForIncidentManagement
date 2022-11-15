@@ -9,8 +9,8 @@ public class SimilarIncidentsDetectorActionTest {
     List<Contact> contacts = new List<Contact>();
     List<Case> cases = new List<Case>();
     List<Asset> assets = new List<Asset>();
-    List<Product2> products = new List<Product2>();
-    List<Incident> incidents = new List<Incident>();
+    List<Product2> products = TestFactory.getProducts();
+    List<Incident> incidents = TestFactory.getIncidents();
     List<IncidentRelatedItem> incidentRelatedItems = new List<IncidentRelatedItem>();
     List<CaseRelatedIssue> caseRelatedIssues = new List<CaseRelatedIssue>();
 
@@ -40,12 +40,6 @@ public class SimilarIncidentsDetectorActionTest {
     }
 
     insert cases;
-
-    for (Integer counter = 0; counter < 10; counter++) {
-      Product2 product = new Product2(Name = 'Test Product ' + counter);
-      products.add(product);
-    }
-    insert products;
 
     for (Integer counter = 0; counter < 10; counter++) {
       Contact contact = contacts.get(counter);
@@ -86,43 +80,6 @@ public class SimilarIncidentsDetectorActionTest {
     assets.add(asset_12);
     insert assets;
 
-    for (Integer counter = 0; counter < 5; counter++) {
-      Incident incident = new Incident(
-        Subject = 'Test Incident ' + counter,
-        Impact = 'High',
-        Urgency = 'High',
-        Priority = 'Critical',
-        Category = 'C' + counter,
-        SubCategory = 'S' + counter,
-        Type = 'T' + counter
-      );
-      incidents.add(incident);
-    }
-    for (Integer counter = 5; counter < 8; counter++) {
-      Incident incident = new Incident(
-        Subject = 'Test Incident ' + counter,
-        Impact = 'High',
-        Urgency = 'High',
-        Priority = 'Critical',
-        Category = 'C0',
-        SubCategory = 'S0',
-        Type = 'T0'
-      );
-      incidents.add(incident);
-    }
-    for (Integer counter = 8; counter < 10; counter++) {
-      Incident incident = new Incident(
-        Subject = 'Test Incident ' + counter,
-        Impact = 'High',
-        Urgency = 'High',
-        Priority = 'Critical',
-        Category = 'C' + counter,
-        SubCategory = 'S' + counter,
-        Type = 'T' + counter
-      );
-      incidents.add(incident);
-    }
-    insert incidents;
     IncidentRelatedItem incidentRelatedItem_1 = new IncidentRelatedItem(
       IncidentId = incidents.get(7).Id,
       AssetId = asset_10.Id,

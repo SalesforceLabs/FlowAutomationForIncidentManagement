@@ -5,41 +5,20 @@
 private class RelatedIncidentDetectorActionTest {
   @testSetup
   static void populateData() {
-    List<Account> accounts = new List<Account>();
-    List<Contact> contacts = new List<Contact>();
+    List<Account> accounts = TestFactory.getAccounts();
+    List<Contact> contacts = TestFactory.getContacts();
     List<Case> cases = new List<Case>();
     List<Asset> assets = new List<Asset>();
-    List<Product2> products = new List<Product2>();
-    List<Incident> incidents = new List<Incident>();
+    List<Product2> products = TestFactory.getProducts();
+    List<Incident> incidents = TestFactory.getIncidents();
     List<IncidentRelatedItem> incidentRelatedItems = new List<IncidentRelatedItem>();
     List<CaseRelatedIssue> caseRelatedIssues = new List<CaseRelatedIssue>();
-
-    for (Integer counter = 0; counter < 5; counter++) {
-      Account account = new Account(Name = 'Test Account ' + counter);
-      accounts.add(account);
-    }
-    insert accounts;
-
-    for (Integer counter = 0; counter < 5; counter++) {
-      Contact contact = new Contact(
-        LastName = 'Test Contact ' + counter,
-        AccountId = accounts.get(counter).Id
-      );
-      contacts.add(contact);
-    }
-    insert contacts;
-
-    for (Integer counter = 0; counter < 6; counter++) {
-      Product2 product = new Product2(Name = 'Test Product ' + counter);
-      products.add(product);
-    }
-    insert products;
 
     for (Integer counter = 0; counter < 5; counter++) {
       Asset asset = new Asset(
         Name = 'Test Asset ' + counter,
         ContactId = contacts.get(counter).Id,
-        AccountId = contacts.get(counter).AccountId,
+        AccountId = Accounts.get(counter).Id,
         Product2Id = products.get(counter).Id
       );
       assets.add(asset);
@@ -145,21 +124,6 @@ private class RelatedIncidentDetectorActionTest {
     );
     cases.add(caseRecord_8);
     insert cases;
-
-    for (Integer counter = 0; counter < 5; counter++) {
-      Incident incident = new Incident(
-        Subject = 'Test Incident ' + counter,
-        Impact = 'High',
-        Urgency = 'High',
-        Priority = 'Critical',
-        Category = 'C' + counter,
-        SubCategory = 'S' + counter,
-        Type = 'T' + counter
-      );
-      incidents.add(incident);
-    }
-
-    insert incidents;
 
     IncidentRelatedItem incidentRelatedItem_1 = new IncidentRelatedItem(
       IncidentId = incidents.get(0).Id,

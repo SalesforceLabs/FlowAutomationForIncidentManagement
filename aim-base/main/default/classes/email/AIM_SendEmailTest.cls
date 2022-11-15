@@ -10,14 +10,6 @@ private with sharing class AIM_SendEmailTest {
       email = 'salesforce@aim.example.com'
     );
     insert contact;
-
-    Incident incident = new Incident(
-      Subject = 'Test Incident ',
-      Impact = 'High',
-      Urgency = 'High',
-      Priority = 'Critical'
-    );
-    insert incident;
   }
   /**
    * testEmailEditor: test method to retrieve email template data
@@ -39,7 +31,7 @@ private with sharing class AIM_SendEmailTest {
   static void testSendEmailSuccess() {
     Contact contact = [SELECT Id, Email FROM Contact LIMIT 1];
 
-    Incident incident = [SELECT Id FROM Incident LIMIT 1];
+    Incident incident = TestFactory.getIncidents()[0];
 
     Test.startTest();
     List<AIM_SendEmailAction.SendEmailRequest> sendEmailRequests = new List<AIM_SendEmailAction.SendEmailRequest>();
@@ -77,7 +69,7 @@ private with sharing class AIM_SendEmailTest {
     Contact contact = new Contact(LastName = 'Test Contact');
     insert contact;
 
-    Incident incident = [SELECT Id FROM Incident LIMIT 1];
+    Incident incident = TestFactory.getIncidents()[0];
 
     Test.startTest();
     List<AIM_SendEmailAction.SendEmailRequest> sendEmailRequests = new List<AIM_SendEmailAction.SendEmailRequest>();
@@ -110,7 +102,7 @@ private with sharing class AIM_SendEmailTest {
    */
   @isTest
   static void testSendDummyEmail() {
-    Incident incident = [SELECT Id FROM Incident LIMIT 1];
+    Incident incident = TestFactory.getIncidents()[0];
 
     List<OrgWideEmailAddress> orgWideEmailAddresses = [
       SELECT Id

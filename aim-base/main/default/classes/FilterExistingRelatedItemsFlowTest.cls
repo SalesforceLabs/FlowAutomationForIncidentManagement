@@ -19,8 +19,7 @@ private class FilterExistingRelatedItemsFlowTest {
     List<IncidentRelatedItem> incidentRelatedItems = new List<IncidentRelatedItem>();
     List<CaseRelatedIssue> caseRelatedIssues = new List<CaseRelatedIssue>();
 
-    Account account = new Account(Name = 'Test Account');
-    insert account;
+    Account account = TestFactory.getAccounts()[0];
 
     for (Integer counter = 0; counter <= 3; counter++) {
       Case caseRecord = new Case(
@@ -42,15 +41,9 @@ private class FilterExistingRelatedItemsFlowTest {
     insert assets;
 
     for (Integer counter = 0; counter <= 1; counter++) {
-      Incident incident = new Incident(
-        Subject = 'Test Incident ' + counter,
-        Impact = 'High',
-        Urgency = 'High',
-        Priority = 'Critical'
-      );
-      incidents.add(incident);
+      incidents.add(TestFactory.getIncidents()[0]);
+      incidents.add(TestFactory.getIncidents()[1]);
     }
-    insert incidents;
 
     for (Integer counter = 0; counter <= 1; counter++) {
       CaseRelatedIssue caseRelatedIssue = new CaseRelatedIssue(
