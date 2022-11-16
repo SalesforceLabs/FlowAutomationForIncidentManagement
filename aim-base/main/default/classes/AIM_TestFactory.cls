@@ -128,18 +128,59 @@ public with sharing class AIM_TestFactory {
   /**
    * createCases : create Case records
    * @param numberOfCases (integer): number of records to be created
+   * @param contacts (List<Contact>): List of Contacts
+   * @param accounts (List<Account>): List of Accounts
    * @return List<Case>: List of Cases
    */
-  public static List<Case> createCases(integer numberOfCases) {
+  public static List<Case> createCases(integer numberOfCases,List<Contact> contacts,List<Account> accounts) {
     List<Case> cases = new List<Case>();
     for (Integer counter = 0; counter < numberOfCases; counter++) {
       Case caseRecord = new Case(
         Subject = 'Test Case ' + counter,
         Status = 'New'
       );
+      if(contacts ==null || contacts.isEmpty()){
+        caseRecord.contactId = null;
+      }else{
+        caseRecord.contactId  = contacts.get(counter).Id;
+      }
+      if(accounts ==null || accounts.isEmpty()){
+        caseRecord.accountId = null;
+      }else{
+        caseRecord.accountId = accounts.get(counter).Id;
+      }
       cases.add(caseRecord);
     }
     insert cases;
     return cases;
+  }
+
+
+   /**
+   * createAssets : create Asset records
+   * @param numberOfAssets (integer): number of records to be created
+   * @param contacts (List<Contact>): List of Contacts
+   * @param products (List<Product2>): List of Products
+   * @return List<Case>: List of Cases
+   */
+  public static List<Asset> createAssets(integer numberOfAssets,List<Product2> products,List<Contact> contacts) {
+    List<Asset> assets = new List<Asset>();
+    for (Integer counter = 0; counter < numberOfAssets; counter++) {
+        Contact contact = contacts.get(counter);
+        Asset asset = new Asset(
+          Name = 'Test Asset ' + counter,
+          ContactId = contact.Id,
+          AccountId = contact.AccountId
+        );
+        if(products ==null || products.isEmpty()){
+            asset.Product2Id = null;
+        }else{
+            asset.Product2Id = products.get(counter).Id;
+        }
+       
+        assets.add(asset);
+      }
+    
+      return assets;
   }
 }

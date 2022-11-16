@@ -7,14 +7,14 @@ private class RetrieveImpactedAccountsContactsFlowTest {
   static void populateData() {
     List<Account> accounts = AIM_TestFactory.createAccounts(20);
     List<Contact> allContacts = new List<contact>();
-    List<Contact> contacts = new List<Contact>();
-    List<Contact> contactsWithAccount = new List<Contact>();
+    List<Contact> contacts = AIM_TestFactory.createContacts(10,null);
+    List<Contact> contactsWithAccount = new List<contact>();
     List<Case> allCases = new List<Case>();
-    List<Case> casesWithAccount = new List<Case>();
-    List<Case> casesWithContact = new List<Case>();
+    List<Case> casesWithAccount = AIM_TestFactory.createCases(5,null,accounts);
+    List<Case> casesWithContact = AIM_TestFactory.createCases(5,contacts,null);
     List<Case> casesWithSameContact = new List<Case>();
     List<Case> caseswithContactAndAccount = new List<Case>();
-    List<Case> caseswithNoContactAndNoAccount = new List<Case>();
+    List<Case> caseswithNoContactAndNoAccount = AIM_TestFactory.createCases(5,null,null);
     List<Asset> allAssets = new List<Asset>();
     List<Asset> assetsWithAccount = new List<Asset>();
     List<Asset> assetswithContactAndAccount = new List<Asset>();
@@ -22,12 +22,7 @@ private class RetrieveImpactedAccountsContactsFlowTest {
     List<IncidentRelatedItem> incidentRelatedItems = new List<IncidentRelatedItem>();
     List<CaseRelatedIssue> caseRelatedIssues = new List<CaseRelatedIssue>();
 
-    for (Integer counter = 0; counter < 10; counter++) {
-      Contact contact = new Contact(LastName = 'Test Contact ' + counter);
-      contacts.add(contact);
-    }
-    allContacts.addAll(contacts);
-
+    
     for (Integer counter = 10; counter < 20; counter++) {
       Contact contact = new Contact(
         LastName = 'Test Contact ' + counter,
@@ -38,7 +33,7 @@ private class RetrieveImpactedAccountsContactsFlowTest {
     allContacts.addAll(contactsWithAccount);
 
     insert allContacts;
-
+    
     // cases with both account and contact
     for (Integer counter = 0; counter < 5; counter++) {
       Case caseRecord = new Case(
@@ -52,39 +47,9 @@ private class RetrieveImpactedAccountsContactsFlowTest {
 
     allCases.addAll(caseswithContactAndAccount);
 
-    //cases with only contact
-    for (Integer counter = 0; counter < 5; counter++) {
-      Case caseRecord = new Case(
-        Subject = 'Test Case ' + counter,
-        Status = 'New',
-        ContactId = contacts.get(counter).Id
-      );
-      casesWithContact.add(caseRecord);
-    }
+   
 
-    allCases.addAll(casesWithContact);
-    //cases with only account
-    for (Integer counter = 0; counter < 5; counter++) {
-      Case caseRecord = new Case(
-        Subject = 'Test Case ' + counter,
-        Status = 'New',
-        AccountId = accounts.get(counter).Id
-      );
-      casesWithAccount.add(caseRecord);
-    }
-
-    allCases.addAll(casesWithAccount);
-
-    //cases with no account and no contact
-    for (Integer counter = 0; counter < 5; counter++) {
-      Case caseRecord = new Case(
-        Subject = 'Test Case ' + counter,
-        Status = 'New'
-      );
-      caseswithNoContactAndNoAccount.add(caseRecord);
-    }
-
-    allCases.addAll(caseswithNoContactAndNoAccount);
+   
 
     insert allCases;
 

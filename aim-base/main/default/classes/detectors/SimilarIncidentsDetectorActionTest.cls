@@ -7,23 +7,15 @@ public class SimilarIncidentsDetectorActionTest {
   static void populateData() {
     List<Account> accounts = AIM_TestFactory.createAccounts(10);
     List<Contact> contacts = AIM_TestFactory.createContacts(10, accounts);
-    List<Case> cases = AIM_TestFactory.createCases(10);
-    List<Asset> assets = new List<Asset>();
+    List<Case> cases = AIM_TestFactory.createCases(10,null,null);
     List<Product2> products = AIM_TestFactory.createProducts(10);
+    List<Asset> assets =AIM_TestFactory.createAssets(10,products,contacts);
     List<Incident> incidents = AIM_TestFactory.createIncidentsWithAttributes();
     List<IncidentRelatedItem> incidentRelatedItems = new List<IncidentRelatedItem>();
     List<CaseRelatedIssue> caseRelatedIssues = new List<CaseRelatedIssue>();
 
-    for (Integer counter = 0; counter < 10; counter++) {
-      Contact contact = contacts.get(counter);
-      Asset asset = new Asset(
-        Name = 'Test Asset ' + counter,
-        ContactId = contact.Id,
-        AccountId = contact.AccountId,
-        Product2Id = products.get(counter).Id
-      );
-      assets.add(asset);
-    }
+   
+    
     Asset asset_10 = new Asset(
       Name = 'Test Asset 10',
       ContactId = contacts.get(9).Id,
