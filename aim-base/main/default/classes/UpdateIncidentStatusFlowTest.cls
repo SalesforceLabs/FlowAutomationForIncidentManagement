@@ -7,7 +7,7 @@ private with sharing class UpdateIncidentStatusFlowTest /**
  */ {
   @isTest
   static void testIncidentStatusUpdate() {
-    Incident incident = TestFactory.createIncidents(1)[0];
+    Incident incident = AIM_TestFactory.createIncidents(1)[0];
     Test.startTest();
     Map<String, Object> inputs = new Map<String, Object>();
     inputs.put('incidentId', incident.Id);
@@ -36,7 +36,7 @@ private with sharing class UpdateIncidentStatusFlowTest /**
    */
   @isTest
   static void testNoIncidentStatusUpdate() {
-    Incident incident = TestFactory.createIncidents(1)[0];
+    Incident incident = AIM_TestFactory.createIncidents(1)[0];
 
     Test.startTest();
     Map<String, Object> inputs = new Map<String, Object>();

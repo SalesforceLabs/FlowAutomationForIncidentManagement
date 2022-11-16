@@ -5,12 +5,12 @@
 private class RelatedIncidentDetectorActionTest {
   @testSetup
   static void populateData() {
-    List<Account> accounts = TestFactory.createAccounts(10);
-    List<Contact> contacts = TestFactory.createContacts(10, accounts);
+    List<Account> accounts = AIM_TestFactory.createAccounts(10);
+    List<Contact> contacts = AIM_TestFactory.createContacts(10, accounts);
     List<Case> cases = new List<Case>();
     List<Asset> assets = new List<Asset>();
-    List<Product2> products = TestFactory.createProducts(10);
-    List<Incident> incidents = TestFactory.createIncidents(10);
+    List<Product2> products = AIM_TestFactory.createProducts(10);
+    List<Incident> incidents = AIM_TestFactory.createIncidents(10);
     List<IncidentRelatedItem> incidentRelatedItems = new List<IncidentRelatedItem>();
     List<CaseRelatedIssue> caseRelatedIssues = new List<CaseRelatedIssue>();
 

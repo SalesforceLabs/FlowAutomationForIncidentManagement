@@ -16,11 +16,11 @@ private with sharing class GeoMapControllerTest {
      * 1 incident will have 10 assets.
      * 1 incident without asset.
      */
-    List<Account> accounts = TestFactory.createAccounts(5);
-    List<Contact> contacts = TestFactory.createContacts(4, accounts);
+    List<Account> accounts = AIM_TestFactory.createAccounts(5);
+    List<Contact> contacts = AIM_TestFactory.createContacts(4, accounts);
     List<Product2> products = new List<Product2>();
     List<Asset> assets = new List<Asset>();
-    List<Incident> incidents = TestFactory.createIncidents(3);
+    List<Incident> incidents = AIM_TestFactory.createIncidents(3);
     List<IncidentRelatedItem> incidentRelatedItems = new List<IncidentRelatedItem>();
 
     /**

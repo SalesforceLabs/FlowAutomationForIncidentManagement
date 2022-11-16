@@ -31,7 +31,7 @@ private with sharing class AIM_SendEmailTest {
   static void testSendEmailSuccess() {
     Contact contact = [SELECT Id, Email FROM Contact LIMIT 1];
 
-    Incident incident = TestFactory.createIncidents(1)[0];
+    Incident incident = AIM_TestFactory.createIncidents(1)[0];
 
     Test.startTest();
     List<AIM_SendEmailAction.SendEmailRequest> sendEmailRequests = new List<AIM_SendEmailAction.SendEmailRequest>();
@@ -69,7 +69,7 @@ private with sharing class AIM_SendEmailTest {
     Contact contact = new Contact(LastName = 'Test Contact');
     insert contact;
 
-    Incident incident = TestFactory.createIncidents(1)[0];
+    Incident incident = AIM_TestFactory.createIncidents(1)[0];
 
     Test.startTest();
     List<AIM_SendEmailAction.SendEmailRequest> sendEmailRequests = new List<AIM_SendEmailAction.SendEmailRequest>();
@@ -102,7 +102,7 @@ private with sharing class AIM_SendEmailTest {
    */
   @isTest
   static void testSendDummyEmail() {
-    Incident incident = TestFactory.createIncidents(1)[0];
+    Incident incident = AIM_TestFactory.createIncidents(1)[0];
 
     List<OrgWideEmailAddress> orgWideEmailAddresses = [
       SELECT Id

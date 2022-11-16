@@ -8,7 +8,7 @@ private with sharing class UpdateMilestoneFlowTest {
    */
   @isTest
   static void testMilestoneStatus() {
-    Incident incident = TestFactory.createIncidents(1)[0];
+    Incident incident = AIM_TestFactory.createIncidents(1)[0];
     Test.startTest();
     Map<String, Object> inputs = new Map<String, Object>();
     inputs.put('incidentId', incident.Id);

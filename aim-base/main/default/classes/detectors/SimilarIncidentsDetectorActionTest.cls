@@ -5,12 +5,12 @@
 public class SimilarIncidentsDetectorActionTest {
   @testSetup
   static void populateData() {
-    List<Account> accounts = TestFactory.createAccounts(10);
-    List<Contact> contacts = TestFactory.createContacts(10, accounts);
-    List<Case> cases = TestFactory.createCases(10);
+    List<Account> accounts = AIM_TestFactory.createAccounts(10);
+    List<Contact> contacts = AIM_TestFactory.createContacts(10, accounts);
+    List<Case> cases = AIM_TestFactory.createCases(10);
     List<Asset> assets = new List<Asset>();
-    List<Product2> products = TestFactory.createProducts(10);
-    List<Incident> incidents = TestFactory.createIncidentsWithAttributes();
+    List<Product2> products = AIM_TestFactory.createProducts(10);
+    List<Incident> incidents = AIM_TestFactory.createIncidentsWithAttributes();
     List<IncidentRelatedItem> incidentRelatedItems = new List<IncidentRelatedItem>();
     List<CaseRelatedIssue> caseRelatedIssues = new List<CaseRelatedIssue>();
 

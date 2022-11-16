@@ -1,5 +1,6 @@
+
 @isTest
-public class TestFactory {
+public with sharing class AIM_TestFactory {
   public static List<Incident> createIncidents(integer numberOfIncidents) {
     List<Incident> incidents = new List<Incident>();
     for (Integer counter = 0; counter < numberOfIncidents; counter++) {
@@ -106,3 +107,4 @@ public class TestFactory {
     return cases;
   }
 }
+
