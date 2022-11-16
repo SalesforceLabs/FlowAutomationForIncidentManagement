@@ -13,13 +13,13 @@ private class FilterExistingRelatedItemsFlowTest {
    */
   @testSetup
   static void createTestData() {
-    List<Case> cases = TestFactory.getCases();
+    List<Case> cases = TestFactory.createCases(4);
     List<Asset> assets = new List<Asset>();
-    List<Incident> incidents = new List<Incident>();
+    List<Incident> incidents = TestFactory.createIncidents(2);
     List<IncidentRelatedItem> incidentRelatedItems = new List<IncidentRelatedItem>();
     List<CaseRelatedIssue> caseRelatedIssues = new List<CaseRelatedIssue>();
 
-    Account account = TestFactory.getAccounts()[0];
+    Account account = TestFactory.createAccounts(1)[0];
 
     for (Integer counter = 0; counter <= 2; counter++) {
       Asset asset = new Asset(
@@ -30,9 +30,6 @@ private class FilterExistingRelatedItemsFlowTest {
       assets.add(asset);
     }
     insert assets;
-
-    incidents.add(TestFactory.getIncidents()[0]);
-    incidents.add(TestFactory.getIncidents()[1]);
 
     for (Integer counter = 0; counter <= 1; counter++) {
       CaseRelatedIssue caseRelatedIssue = new CaseRelatedIssue(

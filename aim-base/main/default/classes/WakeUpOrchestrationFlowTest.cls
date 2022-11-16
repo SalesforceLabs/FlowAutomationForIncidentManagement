@@ -8,7 +8,7 @@ private class WakeUpOrchestrationFlowTest {
    */
   @isTest
   static void testWakeUpOrchestrationFlow() {
-    Incident incident = TestFactory.getIncidents()[0];
+    Incident incident = TestFactory.createIncidents(1)[0];
 
     Test.startTest();
     incident.Status = 'In Progress';

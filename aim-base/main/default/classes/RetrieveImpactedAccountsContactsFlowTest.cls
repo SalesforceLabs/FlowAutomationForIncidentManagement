@@ -5,7 +5,7 @@
 private class RetrieveImpactedAccountsContactsFlowTest {
   @testSetup
   static void populateData() {
-    List<Account> accounts = new List<Account>();
+    List<Account> accounts = TestFactory.createAccounts(20);
     List<Contact> allContacts = new List<contact>();
     List<Contact> contacts = new List<Contact>();
     List<Contact> contactsWithAccount = new List<Contact>();
@@ -18,15 +18,9 @@ private class RetrieveImpactedAccountsContactsFlowTest {
     List<Asset> allAssets = new List<Asset>();
     List<Asset> assetsWithAccount = new List<Asset>();
     List<Asset> assetswithContactAndAccount = new List<Asset>();
-    List<Incident> incidents = TestFactory.getIncidents();
+    List<Incident> incidents = TestFactory.createIncidents(7);
     List<IncidentRelatedItem> incidentRelatedItems = new List<IncidentRelatedItem>();
     List<CaseRelatedIssue> caseRelatedIssues = new List<CaseRelatedIssue>();
-
-    for (Integer counter = 0; counter < 20; counter++) {
-      Account account = new Account(Name = 'Test Account ' + counter);
-      accounts.add(account);
-    }
-    insert accounts;
 
     for (Integer counter = 0; counter < 10; counter++) {
       Contact contact = new Contact(LastName = 'Test Contact ' + counter);

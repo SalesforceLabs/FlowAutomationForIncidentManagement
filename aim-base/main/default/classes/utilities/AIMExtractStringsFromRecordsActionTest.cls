@@ -8,9 +8,7 @@ private with sharing class AIMExtractStringsFromRecordsActionTest {
    */
   @isTest
   static void retrieveIds() {
-    List<Incident> incidents = new List<incident>();
-    incidents.add(TestFactory.getIncidents()[0]);
-    incidents.add(TestFactory.getIncidents()[1]);
+    List<Incident> incidents = TestFactory.createIncidents(2);
 
     Test.startTest();
     List<AIMExtractStringsFromRecordsAction.FlowInput> flowInputs = new List<AIMExtractStringsFromRecordsAction.FlowInput>();

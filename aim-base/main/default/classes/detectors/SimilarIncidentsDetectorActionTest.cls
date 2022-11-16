@@ -5,26 +5,14 @@
 public class SimilarIncidentsDetectorActionTest {
   @testSetup
   static void populateData() {
-    List<Account> accounts = TestFactory.getAccounts();
-    List<Contact> contacts = TestFactory.getContacts();
-    List<Case> cases = new List<Case>();
+    List<Account> accounts = TestFactory.createAccounts(10);
+    List<Contact> contacts = TestFactory.createContacts(10, accounts);
+    List<Case> cases = TestFactory.createCases(10);
     List<Asset> assets = new List<Asset>();
-    List<Product2> products = TestFactory.getProducts();
-    List<Incident> incidents = TestFactory.getIncidents();
+    List<Product2> products = TestFactory.createProducts(10);
+    List<Incident> incidents = TestFactory.createIncidentsWithAttributes();
     List<IncidentRelatedItem> incidentRelatedItems = new List<IncidentRelatedItem>();
     List<CaseRelatedIssue> caseRelatedIssues = new List<CaseRelatedIssue>();
-
-    for (Integer counter = 0; counter < 10; counter++) {
-      Case caseRecord = new Case(
-        Subject = 'Test Case ' + counter,
-        Status = 'New',
-        ContactId = contacts.get(counter).Id,
-        AccountId = accounts.get(counter).Id
-      );
-      cases.add(caseRecord);
-    }
-
-    insert cases;
 
     for (Integer counter = 0; counter < 10; counter++) {
       Contact contact = contacts.get(counter);
@@ -38,8 +26,8 @@ public class SimilarIncidentsDetectorActionTest {
     }
     Asset asset_10 = new Asset(
       Name = 'Test Asset 10',
-      ContactId = contacts.get(10).Id,
-      AccountId = contacts.get(10).AccountId,
+      ContactId = contacts.get(9).Id,
+      AccountId = contacts.get(9).AccountId,
       Latitude = 37.7749295,
       Longitude = 77.22496,
       Product2Id = products.get(6).Id
@@ -47,8 +35,8 @@ public class SimilarIncidentsDetectorActionTest {
     assets.add(asset_10);
     Asset asset_11 = new Asset(
       Name = 'Test Asset 11',
-      ContactId = contacts.get(11).Id,
-      AccountId = contacts.get(11).AccountId,
+      ContactId = contacts.get(9).Id,
+      AccountId = contacts.get(9).AccountId,
       Latitude = 38.7749295,
       Longitude = 80.22496,
       Product2Id = products.get(7).Id
@@ -56,8 +44,8 @@ public class SimilarIncidentsDetectorActionTest {
     assets.add(asset_11);
     Asset asset_12 = new Asset(
       Name = 'Test Asset 12',
-      ContactId = contacts.get(12).Id,
-      AccountId = contacts.get(12).AccountId,
+      ContactId = contacts.get(9).Id,
+      AccountId = contacts.get(9).AccountId,
       Latitude = 43.7749295,
       Longitude = -122.22496,
       Product2Id = products.get(8).Id
