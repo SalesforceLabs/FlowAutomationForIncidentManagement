@@ -1,6 +1,13 @@
-
+/**
+ * AIM_TestFactory: Test Factory class generates data that can be used in all the test classes
+ */
 @isTest
 public with sharing class AIM_TestFactory {
+  /**
+   * createIncidents : create Incident records
+   * @param numberOfIncidents (integer): number of records to be created
+   * @return List<Incident>: List of Incidents
+   */
   public static List<Incident> createIncidents(integer numberOfIncidents) {
     List<Incident> incidents = new List<Incident>();
     for (Integer counter = 0; counter < numberOfIncidents; counter++) {
@@ -15,6 +22,12 @@ public with sharing class AIM_TestFactory {
     insert incidents;
     return incidents;
   }
+
+  /**
+   * createIncidentsWithAttributes : create Incident records with Category,Subcategory and Type fields
+   * @param numberOfIncidents (integer): number of records to be created
+   * @return List<Incident>: List of Incidents
+   */
   public static List<Incident> createIncidentsWithAttributes() {
     List<Incident> incidents = new List<Incident>();
     for (Integer counter = 0; counter < 5; counter++) {
@@ -47,9 +60,9 @@ public with sharing class AIM_TestFactory {
         Impact = 'High',
         Urgency = 'High',
         Priority = 'Critical',
-        Category = 'C' + counter,
-        SubCategory = 'S' + counter,
-        Type = 'T' + counter
+        Category = 'C1' + counter,
+        SubCategory = 'S1' + counter,
+        Type = 'T1' + counter
       );
       incidents.add(incident);
     }
@@ -58,6 +71,11 @@ public with sharing class AIM_TestFactory {
     return incidents;
   }
 
+  /**
+   * createAccounts : create Account records
+   * @param numberOfAccounts (integer): number of records to be created
+   * @return List<Account>: List of Accounts
+   */
   public static List<Account> createAccounts(integer numberOfAccounts) {
     List<Account> accounts = new List<Account>();
     for (Integer counter = 0; counter < numberOfAccounts; counter++) {
@@ -68,22 +86,36 @@ public with sharing class AIM_TestFactory {
     return accounts;
   }
 
+  /**
+   * createContacts : create Contact records
+   * @param numberOfContacts (integer): number of records to be created
+   * @param accounts (List<Account>):  List of Accounts
+   * @return List<Contact>: List of Contacts
+   */
   public static List<Contact> createContacts(
     integer numberOfContacts,
     List<Account> accounts
   ) {
     List<Contact> contacts = new List<Contact>();
     for (Integer counter = 0; counter < numberOfContacts; counter++) {
-      Contact contact = new Contact(
-        LastName = 'Test Contact ' + counter,
-        AccountId = accounts.get(counter).Id
-      );
+      Contact contact = new Contact();
+      contact.LastName = 'Test Contact ' + counter;
+      if (accounts == null || accounts.isEmpty()) {
+        contact.AccountId = null;
+      } else {
+        contact.AccountId = accounts.get(0).Id;
+      }
+
       contacts.add(contact);
     }
     insert contacts;
     return contacts;
   }
-
+  /**
+   * createProducts : create Product records
+   * @param numberOfProducts (integer): number of records to be created
+   * @return List<Product2>: List of Products
+   */
   public static List<Product2> createProducts(integer numberOfProducts) {
     List<Product2> products = new List<Product2>();
     for (Integer counter = 0; counter < numberOfProducts; counter++) {
@@ -93,7 +125,11 @@ public with sharing class AIM_TestFactory {
     insert products;
     return products;
   }
-
+  /**
+   * createCases : create Case records
+   * @param numberOfCases (integer): number of records to be created
+   * @return List<Case>: List of Cases
+   */
   public static List<Case> createCases(integer numberOfCases) {
     List<Case> cases = new List<Case>();
     for (Integer counter = 0; counter < numberOfCases; counter++) {
@@ -107,4 +143,3 @@ public with sharing class AIM_TestFactory {
     return cases;
   }
 }
-
