@@ -13,7 +13,7 @@ private class FilterExistingRelatedItemsFlowTest {
    */
   @testSetup
   static void createTestData() {
-    List<Case> cases = AIM_TestFactory.createCases(4,null,null);
+    List<Case> cases = AIM_TestFactory.createCases(4, null, null);
     List<Asset> assets = new List<Asset>();
     List<Incident> incidents = AIM_TestFactory.createIncidents(2);
     List<IncidentRelatedItem> incidentRelatedItems = new List<IncidentRelatedItem>();

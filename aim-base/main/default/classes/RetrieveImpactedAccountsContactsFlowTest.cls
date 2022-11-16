@@ -7,14 +7,26 @@ private class RetrieveImpactedAccountsContactsFlowTest {
   static void populateData() {
     List<Account> accounts = AIM_TestFactory.createAccounts(20);
     List<Contact> allContacts = new List<contact>();
-    List<Contact> contacts = AIM_TestFactory.createContacts(10,null);
+    List<Contact> contacts = AIM_TestFactory.createContacts(10, null);
     List<Contact> contactsWithAccount = new List<contact>();
     List<Case> allCases = new List<Case>();
-    List<Case> casesWithAccount = AIM_TestFactory.createCases(5,null,accounts);
-    List<Case> casesWithContact = AIM_TestFactory.createCases(5,contacts,null);
+    List<Case> casesWithAccount = AIM_TestFactory.createCases(
+      5,
+      null,
+      accounts
+    );
+    List<Case> casesWithContact = AIM_TestFactory.createCases(
+      5,
+      contacts,
+      null
+    );
     List<Case> casesWithSameContact = new List<Case>();
     List<Case> caseswithContactAndAccount = new List<Case>();
-    List<Case> caseswithNoContactAndNoAccount = AIM_TestFactory.createCases(5,null,null);
+    List<Case> caseswithNoContactAndNoAccount = AIM_TestFactory.createCases(
+      5,
+      null,
+      null
+    );
     List<Asset> allAssets = new List<Asset>();
     List<Asset> assetsWithAccount = new List<Asset>();
     List<Asset> assetswithContactAndAccount = new List<Asset>();
@@ -22,7 +34,6 @@ private class RetrieveImpactedAccountsContactsFlowTest {
     List<IncidentRelatedItem> incidentRelatedItems = new List<IncidentRelatedItem>();
     List<CaseRelatedIssue> caseRelatedIssues = new List<CaseRelatedIssue>();
 
-    
     for (Integer counter = 10; counter < 20; counter++) {
       Contact contact = new Contact(
         LastName = 'Test Contact ' + counter,
@@ -33,7 +44,7 @@ private class RetrieveImpactedAccountsContactsFlowTest {
     allContacts.addAll(contactsWithAccount);
 
     insert allContacts;
-    
+
     // cases with both account and contact
     for (Integer counter = 0; counter < 5; counter++) {
       Case caseRecord = new Case(
@@ -46,10 +57,6 @@ private class RetrieveImpactedAccountsContactsFlowTest {
     }
 
     allCases.addAll(caseswithContactAndAccount);
-
-   
-
-   
 
     insert allCases;
 
