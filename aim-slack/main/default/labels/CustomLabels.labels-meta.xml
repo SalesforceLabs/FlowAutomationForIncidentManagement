@@ -22,6 +22,6 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Slack Message Sent Successfully</shortDescription>
-        <value>Message sent successfully to</value>
+        <value>Message sent to</value>
     </labels>
 </CustomLabels>

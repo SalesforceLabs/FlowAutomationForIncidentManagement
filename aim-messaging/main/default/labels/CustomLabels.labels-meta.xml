@@ -18,10 +18,11 @@
     </labels>
     <labels>
         <fullName>AIM_Flow_No_Contacts_Error_Message</fullName>
+        <categories>AIM</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow No Contacts Error Message</shortDescription>
-        <value>No Contacts selected to send message</value>
+        <value>Select contacts..</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_Notifications_Sent_Message</fullName>
@@ -45,7 +46,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow Outbound Messages Requirement</shortDescription>
-        <value>The selected messaging channel requires contacts to be opted in before outbound messages can be sent</value>
+        <value>The selected messaging channel requires contacts to opt in to receive messages.</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_Select_Messaging_Template_And_Messaging_Channel</fullName>
@@ -53,7 +54,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Flow Select Messaging Template And Messaging Channel</shortDescription>
-        <value>Select the Messaging Channel and Messaging Template to send</value>
+        <value>Select a messaging channel and template to notify</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_Error_Header_Messaging</fullName>

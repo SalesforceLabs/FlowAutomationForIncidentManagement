@@ -184,7 +184,7 @@
     <description>This flow is a subflow which is used by an incident manager who wishes to send slack messages to a slack channel. It will allow the user to choose a workspace and a slack channel, write a message to send, and then send the message.</description>
     <environments>Default</environments>
     <interviewLabel>AIM - Send Slack Message {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>AIM - Send Slack Message</label>
+    <label>Send a Slack Message</label>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -259,7 +259,7 @@
             <choiceReferences>cRMAnalytics</choiceReferences>
             <dataType>String</dataType>
             <defaultSelectedChoiceReference>serviceCloudForSlack</defaultSelectedChoiceReference>
-            <fieldText>Select a Slack App</fieldText>
+            <fieldText>Slack App</fieldText>
             <fieldType>DropdownBox</fieldType>
             <isRequired>true</isRequired>
         </fields>
@@ -371,7 +371,7 @@
         </fields>
         <fields>
             <name>messageBody</name>
-            <fieldText>Message Body</fieldText>
+            <fieldText>Message</fieldText>
             <fieldType>LargeTextArea</fieldType>
             <isRequired>true</isRequired>
         </fields>

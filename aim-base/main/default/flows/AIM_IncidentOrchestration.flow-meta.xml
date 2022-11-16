@@ -115,7 +115,7 @@
     </decisions>
     <environments>Default</environments>
     <interviewLabel>AIM - Incident Orchestration {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>AIM - Incident Orchestration</label>
+    <label>Incident Orchestration</label>
     <orchestratedStages>
         <name>ClosureStage</name>
         <label>Closure Stage</label>
