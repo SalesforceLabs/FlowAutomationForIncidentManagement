@@ -16,33 +16,12 @@ private with sharing class GeoMapControllerTest {
      * 1 incident will have 10 assets.
      * 1 incident without asset.
      */
-    List<Account> accounts = new List<Account>();
-    List<Contact> contacts = new List<Contact>();
+    List<Account> accounts = AIMTestDataFactory.createAccounts(5);
+    List<Contact> contacts = AIMTestDataFactory.createContacts(4, accounts);
     List<Product2> products = new List<Product2>();
     List<Asset> assets = new List<Asset>();
-    List<Incident> incidents = new List<Incident>();
+    List<Incident> incidents = AIMTestDataFactory.createIncidents(3);
     List<IncidentRelatedItem> incidentRelatedItems = new List<IncidentRelatedItem>();
-
-    /**
-     * Create 5 accounts.
-     */
-    for (Integer counter = 1; counter <= 5; counter++) {
-      Account account = new Account(Name = 'Test Account ' + counter);
-      accounts.add(account);
-    }
-    insert accounts;
-
-    /**
-     * Create 4 contacts.
-     */
-    for (Integer counter = 1; counter <= 4; counter++) {
-      Contact contact = new Contact(
-        LastName = 'Test Contact ' + counter,
-        AccountId = accounts.get(counter - 1).Id
-      );
-      contacts.add(contact);
-    }
-    insert contacts;
 
     /**
      * Create 2 products. 1 has product family.
@@ -82,20 +61,6 @@ private with sharing class GeoMapControllerTest {
       }
     }
     insert assets;
-
-    /**
-     * Create 2 incidents
-     */
-    for (Integer counter = 1; counter <= 2; counter++) {
-      Incident incident = new Incident(
-        Subject = 'Test Incident ' + counter,
-        Impact = 'High',
-        Urgency = 'High',
-        Priority = 'Critical'
-      );
-      incidents.add(incident);
-    }
-    insert incidents;
 
     /**
      * Attach 10 assets to 1 incident. 1 incident will be without any asset.

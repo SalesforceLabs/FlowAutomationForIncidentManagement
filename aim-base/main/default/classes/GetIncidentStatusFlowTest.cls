@@ -8,14 +8,7 @@ private with sharing class GetIncidentStatusFlowTest {
    */
   @isTest
   static void testIncidentStatus() {
-    Incident incident = new Incident(
-      Subject = 'Test Incident',
-      Impact = 'High',
-      Urgency = 'High',
-      Priority = 'Critical',
-      Status = 'New'
-    );
-    insert incident;
+    Incident incident = AIMTestDataFactory.createIncidents(1)[0];
 
     Test.startTest();
     Map<String, Object> inputs = new Map<String, Object>();

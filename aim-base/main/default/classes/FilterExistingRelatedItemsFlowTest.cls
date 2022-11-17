@@ -13,23 +13,13 @@ private class FilterExistingRelatedItemsFlowTest {
    */
   @testSetup
   static void createTestData() {
-    List<Case> cases = new List<Case>();
+    List<Case> cases = AIMTestDataFactory.createCases(4, null, null, null);
     List<Asset> assets = new List<Asset>();
-    List<Incident> incidents = new List<Incident>();
+    List<Incident> incidents = AIMTestDataFactory.createIncidents(2);
     List<IncidentRelatedItem> incidentRelatedItems = new List<IncidentRelatedItem>();
     List<CaseRelatedIssue> caseRelatedIssues = new List<CaseRelatedIssue>();
 
-    Account account = new Account(Name = 'Test Account');
-    insert account;
-
-    for (Integer counter = 0; counter <= 3; counter++) {
-      Case caseRecord = new Case(
-        Subject = 'Test Case ' + counter,
-        Status = 'New'
-      );
-      cases.add(caseRecord);
-    }
-    insert cases;
+    Account account = AIMTestDataFactory.createAccounts(1)[0];
 
     for (Integer counter = 0; counter <= 2; counter++) {
       Asset asset = new Asset(
@@ -40,17 +30,6 @@ private class FilterExistingRelatedItemsFlowTest {
       assets.add(asset);
     }
     insert assets;
-
-    for (Integer counter = 0; counter <= 1; counter++) {
-      Incident incident = new Incident(
-        Subject = 'Test Incident ' + counter,
-        Impact = 'High',
-        Urgency = 'High',
-        Priority = 'Critical'
-      );
-      incidents.add(incident);
-    }
-    insert incidents;
 
     for (Integer counter = 0; counter <= 1; counter++) {
       CaseRelatedIssue caseRelatedIssue = new CaseRelatedIssue(

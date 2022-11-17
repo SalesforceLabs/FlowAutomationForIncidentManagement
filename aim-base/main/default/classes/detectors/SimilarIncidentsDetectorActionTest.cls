@@ -5,62 +5,24 @@
 public class SimilarIncidentsDetectorActionTest {
   @testSetup
   static void populateData() {
-    List<Account> accounts = new List<Account>();
-    List<Contact> contacts = new List<Contact>();
-    List<Case> cases = new List<Case>();
-    List<Asset> assets = new List<Asset>();
-    List<Product2> products = new List<Product2>();
-    List<Incident> incidents = new List<Incident>();
+    List<Account> accounts = AIMTestDataFactory.createAccounts(10);
+    List<Contact> contacts = AIMTestDataFactory.createContacts(10, accounts);
+    List<Case> cases = AIMTestDataFactory.createCases(10, null, null, null);
+    List<Product2> products = AIMTestDataFactory.createProducts(10);
+    List<Asset> assets = AIMTestDataFactory.createAssets(
+      10,
+      products,
+      contacts
+    );
+    List<Incident> incidents = AIMTestDataFactory.createIncidents(5);
+    List<Incident> incidentsWithAttributesMatch = new List<Incident>();
     List<IncidentRelatedItem> incidentRelatedItems = new List<IncidentRelatedItem>();
     List<CaseRelatedIssue> caseRelatedIssues = new List<CaseRelatedIssue>();
 
-    for (Integer counter = 0; counter < 20; counter++) {
-      Account account = new Account(Name = 'Test Account ' + counter);
-      accounts.add(account);
-    }
-    insert accounts;
-
-    for (Integer counter = 0; counter < 20; counter++) {
-      Contact contact = new Contact(
-        LastName = 'Test Contact ' + counter,
-        AccountId = accounts.get(Math.mod(counter, 20)).Id
-      );
-      contacts.add(contact);
-    }
-    insert contacts;
-
-    for (Integer counter = 0; counter < 10; counter++) {
-      Case caseRecord = new Case(
-        Subject = 'Test Case ' + counter,
-        Status = 'New',
-        ContactId = contacts.get(counter).Id,
-        AccountId = contacts.get(counter).AccountId
-      );
-      cases.add(caseRecord);
-    }
-
-    insert cases;
-
-    for (Integer counter = 0; counter < 10; counter++) {
-      Product2 product = new Product2(Name = 'Test Product ' + counter);
-      products.add(product);
-    }
-    insert products;
-
-    for (Integer counter = 0; counter < 10; counter++) {
-      Contact contact = contacts.get(counter);
-      Asset asset = new Asset(
-        Name = 'Test Asset ' + counter,
-        ContactId = contact.Id,
-        AccountId = contact.AccountId,
-        Product2Id = products.get(counter).Id
-      );
-      assets.add(asset);
-    }
     Asset asset_10 = new Asset(
       Name = 'Test Asset 10',
-      ContactId = contacts.get(10).Id,
-      AccountId = contacts.get(10).AccountId,
+      ContactId = contacts.get(9).Id,
+      AccountId = contacts.get(9).AccountId,
       Latitude = 37.7749295,
       Longitude = 77.22496,
       Product2Id = products.get(6).Id
@@ -68,8 +30,8 @@ public class SimilarIncidentsDetectorActionTest {
     assets.add(asset_10);
     Asset asset_11 = new Asset(
       Name = 'Test Asset 11',
-      ContactId = contacts.get(11).Id,
-      AccountId = contacts.get(11).AccountId,
+      ContactId = contacts.get(9).Id,
+      AccountId = contacts.get(9).AccountId,
       Latitude = 38.7749295,
       Longitude = 80.22496,
       Product2Id = products.get(7).Id
@@ -77,8 +39,8 @@ public class SimilarIncidentsDetectorActionTest {
     assets.add(asset_11);
     Asset asset_12 = new Asset(
       Name = 'Test Asset 12',
-      ContactId = contacts.get(12).Id,
-      AccountId = contacts.get(12).AccountId,
+      ContactId = contacts.get(9).Id,
+      AccountId = contacts.get(9).AccountId,
       Latitude = 43.7749295,
       Longitude = -122.22496,
       Product2Id = products.get(8).Id
@@ -86,18 +48,6 @@ public class SimilarIncidentsDetectorActionTest {
     assets.add(asset_12);
     insert assets;
 
-    for (Integer counter = 0; counter < 5; counter++) {
-      Incident incident = new Incident(
-        Subject = 'Test Incident ' + counter,
-        Impact = 'High',
-        Urgency = 'High',
-        Priority = 'Critical',
-        Category = 'C' + counter,
-        SubCategory = 'S' + counter,
-        Type = 'T' + counter
-      );
-      incidents.add(incident);
-    }
     for (Integer counter = 5; counter < 8; counter++) {
       Incident incident = new Incident(
         Subject = 'Test Incident ' + counter,
@@ -108,7 +58,7 @@ public class SimilarIncidentsDetectorActionTest {
         SubCategory = 'S0',
         Type = 'T0'
       );
-      incidents.add(incident);
+      incidentsWithAttributesMatch.add(incident);
     }
     for (Integer counter = 8; counter < 10; counter++) {
       Incident incident = new Incident(
@@ -116,13 +66,15 @@ public class SimilarIncidentsDetectorActionTest {
         Impact = 'High',
         Urgency = 'High',
         Priority = 'Critical',
-        Category = 'C' + counter,
-        SubCategory = 'S' + counter,
-        Type = 'T' + counter
+        Category = 'C1' + counter,
+        SubCategory = 'S1' + counter,
+        Type = 'T1' + counter
       );
-      incidents.add(incident);
+      incidentsWithAttributesMatch.add(incident);
     }
-    insert incidents;
+    insert incidentsWithAttributesMatch;
+    incidents.addAll(incidentsWithAttributesMatch);
+
     IncidentRelatedItem incidentRelatedItem_1 = new IncidentRelatedItem(
       IncidentId = incidents.get(7).Id,
       AssetId = asset_10.Id,
@@ -232,7 +184,7 @@ public class SimilarIncidentsDetectorActionTest {
       flowInputs
     );
     Test.stopTest();
-    System.AssertEquals(7, output.get(0).size());
+    System.AssertEquals(8, output.get(0).size());
   }
   /**
    * @description get similar Incidents based on Asset Proximity Match

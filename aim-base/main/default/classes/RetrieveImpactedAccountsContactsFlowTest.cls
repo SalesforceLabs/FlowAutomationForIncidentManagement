@@ -5,34 +5,37 @@
 private class RetrieveImpactedAccountsContactsFlowTest {
   @testSetup
   static void populateData() {
-    List<Account> accounts = new List<Account>();
+    List<Account> accounts = AIMTestDataFactory.createAccounts(20);
     List<Contact> allContacts = new List<contact>();
-    List<Contact> contacts = new List<Contact>();
-    List<Contact> contactsWithAccount = new List<Contact>();
+    List<Contact> contacts = AIMTestDataFactory.createContacts(10, null);
+    List<Contact> contactsWithAccount = new List<contact>();
     List<Case> allCases = new List<Case>();
-    List<Case> casesWithAccount = new List<Case>();
-    List<Case> casesWithContact = new List<Case>();
+    List<Case> casesWithAccount = AIMTestDataFactory.createCases(
+      5,
+      null,
+      accounts,
+      null
+    );
+    List<Case> casesWithContact = AIMTestDataFactory.createCases(
+      5,
+      contacts,
+      null,
+      null
+    );
     List<Case> casesWithSameContact = new List<Case>();
     List<Case> caseswithContactAndAccount = new List<Case>();
-    List<Case> caseswithNoContactAndNoAccount = new List<Case>();
+    List<Case> caseswithNoContactAndNoAccount = AIMTestDataFactory.createCases(
+      5,
+      null,
+      null,
+      null
+    );
     List<Asset> allAssets = new List<Asset>();
     List<Asset> assetsWithAccount = new List<Asset>();
     List<Asset> assetswithContactAndAccount = new List<Asset>();
-    List<Incident> incidents = new List<Incident>();
+    List<Incident> incidents = AIMTestDataFactory.createIncidents(7);
     List<IncidentRelatedItem> incidentRelatedItems = new List<IncidentRelatedItem>();
     List<CaseRelatedIssue> caseRelatedIssues = new List<CaseRelatedIssue>();
-
-    for (Integer counter = 0; counter < 20; counter++) {
-      Account account = new Account(Name = 'Test Account ' + counter);
-      accounts.add(account);
-    }
-    insert accounts;
-
-    for (Integer counter = 0; counter < 10; counter++) {
-      Contact contact = new Contact(LastName = 'Test Contact ' + counter);
-      contacts.add(contact);
-    }
-    allContacts.addAll(contacts);
 
     for (Integer counter = 10; counter < 20; counter++) {
       Contact contact = new Contact(
@@ -58,40 +61,6 @@ private class RetrieveImpactedAccountsContactsFlowTest {
 
     allCases.addAll(caseswithContactAndAccount);
 
-    //cases with only contact
-    for (Integer counter = 0; counter < 5; counter++) {
-      Case caseRecord = new Case(
-        Subject = 'Test Case ' + counter,
-        Status = 'New',
-        ContactId = contacts.get(counter).Id
-      );
-      casesWithContact.add(caseRecord);
-    }
-
-    allCases.addAll(casesWithContact);
-    //cases with only account
-    for (Integer counter = 0; counter < 5; counter++) {
-      Case caseRecord = new Case(
-        Subject = 'Test Case ' + counter,
-        Status = 'New',
-        AccountId = accounts.get(counter).Id
-      );
-      casesWithAccount.add(caseRecord);
-    }
-
-    allCases.addAll(casesWithAccount);
-
-    //cases with no account and no contact
-    for (Integer counter = 0; counter < 5; counter++) {
-      Case caseRecord = new Case(
-        Subject = 'Test Case ' + counter,
-        Status = 'New'
-      );
-      caseswithNoContactAndNoAccount.add(caseRecord);
-    }
-
-    allCases.addAll(caseswithNoContactAndNoAccount);
-
     insert allCases;
 
     //  asset with only account
@@ -99,9 +68,7 @@ private class RetrieveImpactedAccountsContactsFlowTest {
       Account account = accounts.get(counter);
       Asset asset = new Asset(
         Name = 'Test Asset ' + counter,
-        AccountId = account.Id,
-        Latitude = 37 + Math.random(),
-        Longitude = 122 + Math.random()
+        AccountId = account.Id
       );
       assetsWithAccount.add(asset);
     }
@@ -114,9 +81,7 @@ private class RetrieveImpactedAccountsContactsFlowTest {
       Asset asset = new Asset(
         Name = 'Test Asset ' + counter,
         ContactId = contact.Id,
-        AccountId = contact.AccountId,
-        Latitude = 37 + Math.random(),
-        Longitude = 122 + Math.random()
+        AccountId = contact.AccountId
       );
       assetswithContactAndAccount.add(asset);
     }
@@ -124,18 +89,6 @@ private class RetrieveImpactedAccountsContactsFlowTest {
     allAssets.addAll(assetswithContactAndAccount);
 
     insert allAssets;
-
-    //insert incidents
-    for (Integer counter = 0; counter < 7; counter++) {
-      Incident incident = new Incident(
-        Subject = 'Test Incident ' + counter,
-        Impact = 'High',
-        Urgency = 'High',
-        Priority = 'Critical'
-      );
-      incidents.add(incident);
-    }
-    insert incidents;
 
     // incident with only related cases
 

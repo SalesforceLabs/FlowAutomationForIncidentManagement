@@ -5,45 +5,16 @@
 private class RelatedIncidentDetectorActionTest {
   @testSetup
   static void populateData() {
-    List<Account> accounts = new List<Account>();
-    List<Contact> contacts = new List<Contact>();
+    List<Account> accounts = AIMTestDataFactory.createAccounts(10);
+    List<Contact> contacts = AIMTestDataFactory.createContacts(10, accounts);
+    List<Product2> products = AIMTestDataFactory.createProducts(10);
+    List<Asset> assets = AIMTestDataFactory.createAssets(5, products, contacts);
     List<Case> cases = new List<Case>();
-    List<Asset> assets = new List<Asset>();
-    List<Product2> products = new List<Product2>();
-    List<Incident> incidents = new List<Incident>();
+
+    List<Incident> incidents = AIMTestDataFactory.createIncidents(10);
     List<IncidentRelatedItem> incidentRelatedItems = new List<IncidentRelatedItem>();
     List<CaseRelatedIssue> caseRelatedIssues = new List<CaseRelatedIssue>();
 
-    for (Integer counter = 0; counter < 5; counter++) {
-      Account account = new Account(Name = 'Test Account ' + counter);
-      accounts.add(account);
-    }
-    insert accounts;
-
-    for (Integer counter = 0; counter < 5; counter++) {
-      Contact contact = new Contact(
-        LastName = 'Test Contact ' + counter,
-        AccountId = accounts.get(counter).Id
-      );
-      contacts.add(contact);
-    }
-    insert contacts;
-
-    for (Integer counter = 0; counter < 6; counter++) {
-      Product2 product = new Product2(Name = 'Test Product ' + counter);
-      products.add(product);
-    }
-    insert products;
-
-    for (Integer counter = 0; counter < 5; counter++) {
-      Asset asset = new Asset(
-        Name = 'Test Asset ' + counter,
-        ContactId = contacts.get(counter).Id,
-        AccountId = contacts.get(counter).AccountId,
-        Product2Id = products.get(counter).Id
-      );
-      assets.add(asset);
-    }
     // asset without product
     Asset asset_5 = new Asset(
       Name = 'Test Asset 5',
@@ -99,16 +70,6 @@ private class RelatedIncidentDetectorActionTest {
     assets.add(asset_10);
     insert assets;
 
-    for (Integer counter = 0; counter < 5; counter++) {
-      Case caseRecord = new Case(
-        Subject = 'Test Case ' + counter,
-        Status = 'New',
-        ContactId = contacts.get(counter).Id,
-        AccountId = contacts.get(counter).AccountId,
-        AssetId = assets.get(counter).Id
-      );
-      cases.add(caseRecord);
-    }
     Case caseRecord_5 = new Case(
       Subject = 'Test Case 5',
       Status = 'New',
@@ -145,21 +106,7 @@ private class RelatedIncidentDetectorActionTest {
     );
     cases.add(caseRecord_8);
     insert cases;
-
-    for (Integer counter = 0; counter < 5; counter++) {
-      Incident incident = new Incident(
-        Subject = 'Test Incident ' + counter,
-        Impact = 'High',
-        Urgency = 'High',
-        Priority = 'Critical',
-        Category = 'C' + counter,
-        SubCategory = 'S' + counter,
-        Type = 'T' + counter
-      );
-      incidents.add(incident);
-    }
-
-    insert incidents;
+    cases.addAll(AIMTestDataFactory.createCases(5, contacts, null, assets));
 
     IncidentRelatedItem incidentRelatedItem_1 = new IncidentRelatedItem(
       IncidentId = incidents.get(0).Id,
@@ -183,7 +130,7 @@ private class RelatedIncidentDetectorActionTest {
     incidentRelatedItems.add(incidentRelatedItem_3);
     CaseRelatedIssue caseRelatedIssue_1 = new CaseRelatedIssue(
       RelatedIssueId = incidents.get(1).Id,
-      CaseId = cases.get(1).Id,
+      CaseId = cases.get(5).Id,
       RelationshipType = 'Similar'
     );
     caseRelatedIssues.add(caseRelatedIssue_1);
@@ -377,22 +324,6 @@ private class RelatedIncidentDetectorActionTest {
         .Id
       )
     );
-  }
-
-  /*
-   *  @description get related incident if it is present for a case with product
-   */
-  @isTest
-  static void caseWithProductTest() {
-    RelatedIncidentDetectorAction.FlowInput apexActionInput = new RelatedIncidentDetectorAction.FlowInput();
-    apexActionInput.caseOrAssetId = [
-      SELECT Id
-      FROM Case
-      WHERE Subject = 'Test Case 2'
-    ]
-    .Id;
-    apexActionInput.isProductMatchEnabled = true;
-    System.AssertEquals(null, runDetector(apexActionInput).get(0));
   }
 
   /*
