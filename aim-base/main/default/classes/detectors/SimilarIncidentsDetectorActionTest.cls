@@ -2,7 +2,7 @@
  *  @description Test Class for  SimilarIncidentsDetectorAction
  */
 @isTest
-public class SimilarIncidentsDetectorActionTest {
+private with sharing class SimilarIncidentsDetectorActionTest {
   @testSetup
   static void populateData() {
     List<Account> accounts = AIMTestDataFactory.createAccounts(10);

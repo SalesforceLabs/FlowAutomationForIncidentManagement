@@ -310,10 +310,10 @@ public with sharing class AIMEmailUtility {
       FROM OrgWideEmailAddress
       WHERE Id = :orgWideEmailAddressId
     ];
-    emailRequest.setOrgWideEmailAddressId(orgWideEmailAddress.get(0)?.Id);
-    emailRequest.setOrgWideEmailAddress(orgWideEmailAddress.get(0)?.Address);
+    emailRequest.setOrgWideEmailAddressId(orgWideEmailAddress?.get(0)?.Id);
+    emailRequest.setOrgWideEmailAddress(orgWideEmailAddress?.get(0)?.Address);
     emailRequest.setOrgWideEmailAddressName(
-      orgWideEmailAddress.get(0)?.DisplayName
+      orgWideEmailAddress?.get(0)?.DisplayName
     );
   }
 

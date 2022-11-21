@@ -2,7 +2,7 @@
  * WakeUpOrchestrationFlowTest: Test class for AIM - Wake Up Orchestration flow
  */
 @isTest
-private class WakeUpOrchestrationFlowTest {
+private with sharing class WakeUpOrchestrationFlowTest {
   /**
    * testWakeUpOrchestrationFlow: tests the AIM - Wake Up Orchestration Flow on update of incident record
    */
