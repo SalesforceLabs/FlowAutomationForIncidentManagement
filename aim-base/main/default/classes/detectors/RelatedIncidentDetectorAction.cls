@@ -36,29 +36,29 @@ public with sharing class RelatedIncidentDetectorAction {
   public class FlowInput {
     @InvocableVariable(
       label='Input Case Or Asset Id'
-      description='Id of the case/asset for which match will happen to find the related incident if it is present'
+      description='The ID of the case or asset that is related to the incident.'
       required='true'
     )
     public Id caseOrAssetId;
 
     @InvocableVariable(
       label='Product Match criteria'
-      description='Case/Asset will be matched on products if this is set as true to find the related incident if it is present'
+      description='Find assets related to the incident based on a product.'
     )
     public boolean isProductMatchEnabled;
     @InvocableVariable(
       label='Asset Match criteria'
-      description='Case/Asset will be matched on assets if this is set as true to find the related incident if it is present'
+      description='Find assets that are related to the incident based on your criteria.'
     )
     public boolean isAssetMatchEnabled;
     @InvocableVariable(
       label='Asset proximity distance criteria'
-      description='Case/Asset will be matched on asset proximity distance if it has a positive value'
+      description='Find assets related to the incident based on the asset’s proximity to the incident.'
     )
     public Double assetProximityDistance;
     @InvocableVariable(
       label='Id of the Cases/Assets Report'
-      description='Case/Asset will be matched on records present in report to find the related incident if it is present'
+      description='Find assets related to the incident based on reports.'
     )
     public String reportId;
   }

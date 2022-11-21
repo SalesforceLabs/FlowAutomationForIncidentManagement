@@ -14,7 +14,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Slack Message Send Message</shortDescription>
-        <value>Click Send Message to send the following message to</value>
+        <value>send the message to</value>
     </labels>
     <labels>
         <fullName>AIM_Slack_Message_Sent_Successfully</fullName>
@@ -22,6 +22,6 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AIM Slack Message Sent Successfully</shortDescription>
-        <value>Message sent successfully to</value>
+        <value>Message sent to</value>
     </labels>
 </CustomLabels>

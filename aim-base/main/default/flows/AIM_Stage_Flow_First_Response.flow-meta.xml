@@ -462,7 +462,7 @@
             <dataType>String</dataType>
             <fieldText>Remove related items</fieldText>
             <fieldType>MultiSelectCheckboxes</fieldType>
-            <helpText>&lt;p&gt;&lt;span style=&quot;background-color: transparent; color: rgb(0, 0, 0); font-size: 12px;&quot;&gt;Customer Service Automated Incident Management automatically removes the related items that you select.&lt;/span&gt;&lt;/p&gt;</helpText>
+            <helpText>&lt;p&gt;&lt;span style=&quot;font-size: 12px; color: rgb(8, 7, 7); background-color: rgb(255, 255, 255);&quot;&gt;Flow Automation Pack for Incident Management&lt;/span&gt;&lt;span style=&quot;font-size: 12px; color: rgb(0, 0, 0); background-color: transparent;&quot;&gt; automatically removes the related items that you select.&lt;/span&gt;&lt;/p&gt;</helpText>
             <isRequired>false</isRequired>
         </fields>
         <showFooter>true</showFooter>
