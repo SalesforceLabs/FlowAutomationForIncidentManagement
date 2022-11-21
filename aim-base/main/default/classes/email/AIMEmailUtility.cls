@@ -145,7 +145,7 @@ public with sharing class AIMEmailUtility {
       ];
       if (sendEmailResult.isSuccess()) {
         request.setTotalSent(request.getTotalSent() + 1);
-        if (request.getSaveAsActivityMethod() != SaveAsActivityEnum.OFF) {
+        if (request.getSaveAsActivityMethod() == SaveAsActivityEnum.MANUAL) {
           tasks.add(createTaskForEmails(singleEmailMessage, request, true));
         }
       } else {
@@ -157,7 +157,12 @@ public with sharing class AIMEmailUtility {
     }
 
     if (!tasks.isEmpty()) {
-      insert tasks;
+      SObjectAccessDecision securityDecision = Security.stripInaccessible(
+        AccessType.CREATABLE,
+        tasks,
+        true
+      );
+      insert securityDecision.getRecords();
     }
   }
 
@@ -323,6 +328,7 @@ public with sharing class AIMEmailUtility {
    * @param emailRequest (AIMEmailRequest): Email Content
    */
   public static void createTrackingTask(AIMEmailRequest emailRequest) {
+    List<Task> tasks = new List<Task>();
     Task task = new Task();
     task.Subject = String.format(
       AIMConstants.TRACKING_TASK_SUBJECT,
@@ -338,9 +344,16 @@ public with sharing class AIMEmailUtility {
       }
     );
     task.WhatId = emailRequest.getWhatId();
-    insert task;
+    tasks.add(task);
+    SObjectAccessDecision securityDecision = Security.stripInaccessible(
+      AccessType.CREATABLE,
+      tasks,
+      true
+    );
+    tasks = (List<Task>) securityDecision.getRecords();
+    insert tasks;
 
-    emailRequest.setTrackingTaskId(task.Id);
+    emailRequest.setTrackingTaskId(tasks?.get(0)?.Id);
   }
 
   /**
@@ -349,10 +362,12 @@ public with sharing class AIMEmailUtility {
    * @param request (AIMEmailRequest): Email Content
    */
   public static void updateTrackingTask(AIMEmailRequest request) {
+    List<Task> tasks = new List<Task>();
     List<Task> trackingTasks = [
       SELECT Id, Status, Description
       FROM Task
       WHERE Id = :request.getTrackingTaskId()
+      WITH SECURITY_ENFORCED
       LIMIT 1
     ];
 
@@ -371,7 +386,13 @@ public with sharing class AIMEmailUtility {
         jobStatus,
         request
       );
-      update trackingTask;
+      tasks.add(trackingTask);
+      SObjectAccessDecision securityDecision = Security.stripInaccessible(
+        AccessType.UPDATABLE,
+        tasks,
+        true
+      );
+      update securityDecision.getRecords();
     }
   }
 
