@@ -13,10 +13,7 @@ private with sharing class AIMSendEmailTest {
   @isTest
   static void testEmailEditor() {
     List<OrgWideEmailAddress> sendersAddresses = EmailTemplateEditorController.getSenderAddresses();
-    Assert.isTrue(
-      sendersAddresses.size() >= 0,
-      'OrgWideEmailAddress is needed'
-    );
+    Assert.isTrue(sendersAddresses.size() > 0, 'OrgWideEmailAddress is needed');
     EmailTemplateEditorController.getEmailTemplates();
   }
 

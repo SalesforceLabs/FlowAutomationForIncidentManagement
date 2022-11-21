@@ -350,10 +350,12 @@ public with sharing class AIMEmailUtility {
       tasks,
       true
     );
-    tasks = (List<Task>) securityDecision.getRecords();
-    insert tasks;
+    Database.SaveResult[] savedTasks = Database.insert(
+      securityDecision.getRecords(),
+      true
+    );
 
-    emailRequest.setTrackingTaskId(tasks?.get(0)?.Id);
+    emailRequest.setTrackingTaskId(savedTasks?.get(0)?.getId());
   }
 
   /**
