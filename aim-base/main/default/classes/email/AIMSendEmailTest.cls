@@ -40,6 +40,10 @@ private with sharing class AIMSendEmailTest {
     Integer successEmail = sendEmailResults.get(0).totalSuccessQueuedEmails;
     Test.stopTest();
     Assert.areEqual(1, successEmail, 'Email should be successfully sent');
+
+    // 1 Task for tracking job and 1 for tracking status of individual email
+    Integer taskCount = [SELECT COUNT() FROM TASK];
+    Assert.areEqual(2, taskCount, 'Tasks for emails not created');
   }
 
   /**
@@ -90,6 +94,10 @@ private with sharing class AIMSendEmailTest {
     Integer successEmail = sendEmailResults.get(0).totalSuccessQueuedEmails;
     Test.stopTest();
     Assert.areEqual(6, successEmail, 'Email should be successfully queued');
+
+    // 1 Task for tracking job and 6 for tracking status of individual emails
+    Integer taskCount = [SELECT COUNT() FROM TASK];
+    Assert.areEqual(7, taskCount, 'Tasks for emails not created');
   }
 
   /**
