@@ -389,22 +389,6 @@ To create a new report, click &lt;a href=&quot;/lightning/o/Report/home&quot;&gt
         <value>Your notification flow is complete</value>
     </labels>
     <labels>
-        <fullName>AIM_Flow_Cases_Closed</fullName>
-        <categories>AIM</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>AIM Flow Cases Closed</shortDescription>
-        <value>Attached cases closed</value>
-    </labels>
-    <labels>
-        <fullName>AIM_Flow_Emails_Sent</fullName>
-        <categories>AIM</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>AIM Flow Emails Sent</shortDescription>
-        <value>Email sent</value>
-    </labels>
-    <labels>
         <fullName>AIM_Flow_Test_Email_Sent</fullName>
         <categories>AIM</categories>
         <language>en_US</language>
@@ -419,46 +403,6 @@ To create a new report, click &lt;a href=&quot;/lightning/o/Report/home&quot;&gt
         <protected>true</protected>
         <shortDescription>AIM Flow Test Email Failed</shortDescription>
         <value>We couldn’t send the test email. Ask your Salesforce admin for help.</value>
-    </labels>
-    <labels>
-        <fullName>AIM_Flow_Knowledge_Article_Created</fullName>
-        <categories>AIM</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>AIM Flow Knowledge Article Created</shortDescription>
-        <value>Knowledge article created</value>
-    </labels>
-    <labels>
-        <fullName>AIM_Flow_Messages_Sent</fullName>
-        <categories>AIM</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>AIM Flow Messages Sent</shortDescription>
-        <value>Messaging app message sent</value>
-    </labels>
-    <labels>
-        <fullName>AIM_Flow_Site_Banner_Added</fullName>
-        <categories>AIM</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>AIM Flow Site Banner Added</shortDescription>
-        <value>Site banner added</value>
-    </labels>
-    <labels>
-        <fullName>AIM_Flow_Site_Banner_Removed</fullName>
-        <categories>AIM</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>AIM Flow Site Banner Removed</shortDescription>
-        <value>Site banner removed</value>
-    </labels>
-    <labels>
-        <fullName>AIM_Flow_Slack_Message_Sent</fullName>
-        <categories>AIM</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>AIM Flow Slack Message Sent</shortDescription>
-        <value>Slack message sent</value>
     </labels>
     <labels>
         <fullName>AIM_Flow_Placeholder_for_Messaging_Notifications</fullName>

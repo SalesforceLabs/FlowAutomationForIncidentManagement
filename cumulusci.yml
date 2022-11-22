@@ -49,12 +49,6 @@ tasks:
         options:
             path: aim-base
 
-    deploy_aim_bot:
-        description: deploy components from aim-bot
-        class_path: cumulusci.tasks.salesforce.Deploy
-        options:
-            path: aim-bot
-
     deploy_aim_messaging:
         description: deploy components from aim-messaging
         class_path: cumulusci.tasks.salesforce.Deploy
@@ -85,12 +79,9 @@ flows:
                 task: deploy_aim_base
                 when: project_config.project__source_format == "sfdx" and org_config.scratch
             3.3:
-                task: deploy_aim_bot
-                when: project_config.project__source_format == "sfdx" and org_config.scratch
-            3.4:
                 task: deploy_aim_messaging
                 when: project_config.project__source_format == "sfdx" and org_config.scratch
-            3.5:
+            3.4:
                 task: deploy_aim_slack
                 when: project_config.project__source_format == "sfdx" and org_config.scratch
 

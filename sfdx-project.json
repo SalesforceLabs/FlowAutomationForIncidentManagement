@@ -9,10 +9,6 @@
             "default": false
         },
         {
-            "path": "aim-bot",
-            "default": false
-        },
-        {
             "path": "aim-slack",
             "default": false
         }
