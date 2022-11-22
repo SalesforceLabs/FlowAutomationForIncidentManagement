@@ -6,7 +6,7 @@
  * @version 56.0
  */
 @isTest
-private class FilterExistingRelatedItemsFlowTest {
+private with sharing class FilterExistingRelatedItemsFlowTest {
   /**
    * createTestData: Create Data for test execution
    *

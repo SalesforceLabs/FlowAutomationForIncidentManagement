@@ -2,7 +2,7 @@
  * IncidentDetectorFlowTest This is a test class to test AIM - Incident Detector Flow
  */
 @isTest
-private class IncidentDetectorFlowTest {
+private with sharing class IncidentDetectorFlowTest {
   /**
    * testIncidentDetectorFlowWithoutIncident To test the AIM - Incident Detector Flow without any incident record created.
    */

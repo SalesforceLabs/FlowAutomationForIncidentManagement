@@ -56,6 +56,8 @@ public with sharing class AIMTestDataFactory {
     for (Integer counter = 0; counter < numberOfContacts; counter++) {
       Contact contact = new Contact();
       contact.LastName = 'Test Contact ' + counter;
+      contact.Email = 'salesforce@aim.example.com';
+      contact.HasOptedOutOfEmail = false;
       if (accounts != null && !accounts.isEmpty()) {
         contact.AccountId = accounts.get(0).Id;
       }
@@ -141,5 +143,38 @@ public with sharing class AIMTestDataFactory {
     }
 
     return assets;
+  }
+
+  /**
+   * createSendEmailRequest method to create invocable apex action request
+   *
+   * @param contacts (List<Contact>): Recipient list
+   * @param incident (Incident): Incident record used as WhatId
+   * @param batchSize (Integer): batchSize
+   */
+  public static AIMSendEmailAction.SendEmailRequest createSendEmailRequest(
+    List<Contact> contacts,
+    Incident incident,
+    Integer batchSize
+  ) {
+    AIMSendEmailAction.SendEmailRequest sendEmailRequest = new AIMSendEmailAction.SendEmailRequest();
+    sendEmailRequest.contacts = new List<Contact>();
+    sendEmailRequest.contacts.addAll(contacts);
+    List<OrgWideEmailAddress> orgWideEmailAddresses = [
+      SELECT Id
+      FROM OrgWideEmailAddress
+      LIMIT 1
+    ];
+    sendEmailRequest.orgWideEmailAddressId = orgWideEmailAddresses.isEmpty()
+      ? null
+      : orgWideEmailAddresses.get(0).Id;
+    sendEmailRequest.templateId = null;
+    sendEmailRequest.subject = 'Test Subject';
+    sendEmailRequest.body = 'Test Body';
+    sendEmailRequest.whatId = incident.Id;
+    sendEmailRequest.saveAsActivityMethod = 2;
+    sendEmailRequest.batchSize = batchSize;
+
+    return sendEmailRequest;
   }
 }

@@ -955,7 +955,7 @@
         </outputAssignments>
         <outputAssignments>
             <assignToReference>totalEmailSuccesses</assignToReference>
-            <name>totalSuccesses</name>
+            <name>totalSuccessQueuedEmails</name>
         </outputAssignments>
     </subflows>
     <variables>

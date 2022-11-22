@@ -2,7 +2,7 @@
  * @description Retrieve related Incident Id
  */
 
-public class RelatedIncidentDetectorHandler {
+public with sharing class RelatedIncidentDetectorHandler {
   private static Id caseId;
   private static Id assetId;
   private static boolean isProductMatchEnabled;

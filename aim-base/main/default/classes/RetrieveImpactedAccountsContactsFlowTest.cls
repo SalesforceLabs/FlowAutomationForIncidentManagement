@@ -2,7 +2,7 @@
  *  @description Test Class for RetrieveImpactedAccountsAndContacts Flow
  */
 @isTest
-private class RetrieveImpactedAccountsContactsFlowTest {
+private with sharing class RetrieveImpactedAccountsContactsFlowTest {
   @testSetup
   static void populateData() {
     List<Account> accounts = AIMTestDataFactory.createAccounts(20);

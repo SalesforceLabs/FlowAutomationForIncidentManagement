@@ -2,7 +2,7 @@
  *  @description Test Class for  RelatedIncidentDetectorAction
  */
 @isTest
-private class RelatedIncidentDetectorActionTest {
+private with sharing class RelatedIncidentDetectorActionTest {
   @testSetup
   static void populateData() {
     List<Account> accounts = AIMTestDataFactory.createAccounts(10);
