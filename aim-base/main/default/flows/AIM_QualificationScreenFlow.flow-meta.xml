@@ -3,8 +3,8 @@
     <actionCalls>
         <name>Get_AssetIds_from_Report</name>
         <label>Get AssetIds from Report</label>
-        <locationX>182</locationX>
-        <locationY>2606</locationY>
+        <locationX>314</locationX>
+        <locationY>2642</locationY>
         <actionName>ReportDataRetrieverAction</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -28,7 +28,7 @@
     <actionCalls>
         <name>Get_CaseIds_from_Report</name>
         <label>Get CaseIds from Report</label>
-        <locationX>182</locationX>
+        <locationX>314</locationX>
         <locationY>1118</locationY>
         <actionName>ReportDataRetrieverAction</actionName>
         <actionType>apex</actionType>
@@ -56,7 +56,7 @@
         <name>Add_Incident_Related_Item</name>
         <label>Add Incident Related Item</label>
         <locationX>138</locationX>
-        <locationY>3326</locationY>
+        <locationY>3362</locationY>
         <assignmentItems>
             <assignToReference>IncidentRelatedItem.AssetId</assignToReference>
             <operator>Assign</operator>
@@ -122,8 +122,8 @@
     <assignments>
         <name>Assign_Asset_Count</name>
         <label>Assign Asset Count</label>
-        <locationX>182</locationX>
-        <locationY>2846</locationY>
+        <locationX>314</locationX>
+        <locationY>2882</locationY>
         <assignmentItems>
             <assignToReference>AssetCount</assignToReference>
             <operator>AssignCount</operator>
@@ -138,7 +138,7 @@
     <assignments>
         <name>Assign_Case_Count</name>
         <label>Assign Case Count</label>
-        <locationX>182</locationX>
+        <locationX>314</locationX>
         <locationY>1358</locationY>
         <assignmentItems>
             <assignToReference>caseCount</assignToReference>
@@ -154,7 +154,7 @@
     <assignments>
         <name>Assign_Counts</name>
         <label>Assign Counts</label>
-        <locationX>512</locationX>
+        <locationX>710</locationX>
         <locationY>638</locationY>
         <assignmentItems>
             <assignToReference>relatedCaseCount</assignToReference>
@@ -177,8 +177,8 @@
     <assignments>
         <name>assignError</name>
         <label>Assign Error</label>
-        <locationX>578</locationX>
-        <locationY>2726</locationY>
+        <locationX>842</locationX>
+        <locationY>2762</locationY>
         <assignmentItems>
             <assignToReference>errorText</assignToReference>
             <operator>Assign</operator>
@@ -225,8 +225,8 @@
     <decisions>
         <name>Assets_Found_0</name>
         <label>Assets Found?</label>
-        <locationX>182</locationX>
-        <locationY>2966</locationY>
+        <locationX>314</locationX>
+        <locationY>3002</locationY>
         <defaultConnector>
             <targetReference>No_records_found_asset</targetReference>
         </defaultConnector>
@@ -250,7 +250,7 @@
     <decisions>
         <name>Cases_Found</name>
         <label>Cases Found?</label>
-        <locationX>182</locationX>
+        <locationX>314</locationX>
         <locationY>1478</locationY>
         <defaultConnector>
             <targetReference>No_records_found_cases</targetReference>
@@ -275,8 +275,8 @@
     <decisions>
         <name>Find_Similar_Assets_Selected</name>
         <label>Find Similar Assets Selected?</label>
-        <locationX>512</locationX>
-        <locationY>2366</locationY>
+        <locationX>710</locationX>
+        <locationY>2402</locationY>
         <defaultConnector>
             <targetReference>CompleteScreen</targetReference>
         </defaultConnector>
@@ -300,7 +300,7 @@
     <decisions>
         <name>Find_Similar_Cases_Selected</name>
         <label>Find Similar Cases Selected?</label>
-        <locationX>512</locationX>
+        <locationX>710</locationX>
         <locationY>878</locationY>
         <defaultConnector>
             <targetReference>Find_Similar_Assets_Selected</targetReference>
@@ -331,7 +331,7 @@
         <name>Loop_Through_Assets</name>
         <label>Loop Through Assets</label>
         <locationX>50</locationX>
-        <locationY>3206</locationY>
+        <locationY>3242</locationY>
         <collectionReference>AssetstoAddIds</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -382,27 +382,39 @@
         <connector>
             <targetReference>Find_Similar_Assets_Selected</targetReference>
         </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>assignError</targetReference>
+        </faultConnector>
         <inputReference>CRIstoAdd</inputReference>
     </recordCreates>
     <recordCreates>
         <name>Create_Incident_Related_Items_0_0</name>
         <label>Create Incident Related Items</label>
         <locationX>50</locationX>
-        <locationY>3542</locationY>
+        <locationY>3578</locationY>
         <connector>
             <targetReference>CompleteScreen</targetReference>
         </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>assignError</targetReference>
+        </faultConnector>
         <inputReference>IRIsToAdd</inputReference>
     </recordCreates>
     <recordLookups>
         <name>Get_Incident</name>
         <label>Get Incident</label>
-        <locationX>512</locationX>
+        <locationX>710</locationX>
         <locationY>158</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Get_RelatedCases</targetReference>
         </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>assignError</targetReference>
+        </faultConnector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
@@ -418,12 +430,16 @@
     <recordLookups>
         <name>Get_Related_Assets</name>
         <label>Get Related Assets</label>
-        <locationX>512</locationX>
+        <locationX>710</locationX>
         <locationY>398</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Get_Reports</targetReference>
         </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>assignError</targetReference>
+        </faultConnector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>IncidentId</field>
@@ -439,12 +455,16 @@
     <recordLookups>
         <name>Get_RelatedCases</name>
         <label>Get Related Cases</label>
-        <locationX>512</locationX>
+        <locationX>710</locationX>
         <locationY>278</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Get_Related_Assets</targetReference>
         </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>assignError</targetReference>
+        </faultConnector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>RelatedIssueId</field>
@@ -460,12 +480,16 @@
     <recordLookups>
         <name>Get_Reports</name>
         <label>Get Reports</label>
-        <locationX>512</locationX>
+        <locationX>710</locationX>
         <locationY>518</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Assign_Counts</targetReference>
         </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>assignError</targetReference>
+        </faultConnector>
         <filterLogic>1 AND (2 OR 3)</filterLogic>
         <filters>
             <field>IsDeleted</field>
@@ -499,8 +523,8 @@
     <screens>
         <name>CompleteScreen</name>
         <label>Complete</label>
-        <locationX>512</locationX>
-        <locationY>3854</locationY>
+        <locationX>710</locationX>
+        <locationY>3926</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -542,7 +566,7 @@
         <name>Confirm_assets_to_add_0</name>
         <label>Confirm assets to add</label>
         <locationX>50</locationX>
-        <locationY>3086</locationY>
+        <locationY>3122</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -579,8 +603,8 @@
     <screens>
         <name>errorScreen</name>
         <label>Error Screen</label>
-        <locationX>578</locationX>
-        <locationY>2846</locationY>
+        <locationX>842</locationX>
+        <locationY>2882</locationY>
         <allowBack>true</allowBack>
         <allowFinish>false</allowFinish>
         <allowPause>false</allowPause>
@@ -595,8 +619,8 @@
     <screens>
         <name>No_records_found_asset</name>
         <label>No records found</label>
-        <locationX>314</locationX>
-        <locationY>3086</locationY>
+        <locationX>578</locationX>
+        <locationY>3122</locationY>
         <allowBack>true</allowBack>
         <allowFinish>false</allowFinish>
         <allowPause>false</allowPause>
@@ -611,7 +635,7 @@
     <screens>
         <name>No_records_found_cases</name>
         <label>No records found</label>
-        <locationX>314</locationX>
+        <locationX>578</locationX>
         <locationY>1598</locationY>
         <allowBack>true</allowBack>
         <allowFinish>false</allowFinish>
@@ -627,7 +651,7 @@
     <screens>
         <name>Qualification_Selection</name>
         <label>Qualification Selection</label>
-        <locationX>512</locationX>
+        <locationX>710</locationX>
         <locationY>758</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
@@ -655,8 +679,8 @@
     <screens>
         <name>Select_report_to_add_assets_from</name>
         <label>Select report to add Assets from</label>
-        <locationX>182</locationX>
-        <locationY>2486</locationY>
+        <locationX>314</locationX>
+        <locationY>2522</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -743,7 +767,7 @@
     <screens>
         <name>Select_report_to_add_cases_from</name>
         <label>Select report to add cases from</label>
-        <locationX>182</locationX>
+        <locationX>314</locationX>
         <locationY>998</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
@@ -835,7 +859,7 @@
         <showHeader>true</showHeader>
     </screens>
     <start>
-        <locationX>386</locationX>
+        <locationX>584</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Get_Incident</targetReference>
@@ -845,8 +869,8 @@
     <subflows>
         <name>Filter_Existing_Assets</name>
         <label>Filter Existing Assets</label>
-        <locationX>182</locationX>
-        <locationY>2726</locationY>
+        <locationX>314</locationX>
+        <locationY>2762</locationY>
         <connector>
             <targetReference>Assign_Asset_Count</targetReference>
         </connector>
@@ -871,7 +895,7 @@
     <subflows>
         <name>Filter_Existing_Attached_Cases</name>
         <label>Filter Existing Attached Cases</label>
-        <locationX>182</locationX>
+        <locationX>314</locationX>
         <locationY>1238</locationY>
         <connector>
             <targetReference>Assign_Case_Count</targetReference>
