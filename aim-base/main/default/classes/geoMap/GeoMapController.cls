@@ -29,6 +29,7 @@ public with sharing class GeoMapController {
    * @return List<GeoMapAsset>: Apex Type wrapper with Assets and related records data.
    *
    * @throws Class AIMBaseException.AIMInvalidInputException Input validation like null, empty.
+   * @throws Class AIMBaseException.AIMNoAccessException Exception for User access check.
    * @throws Class AIMBaseException Generic user-friendly exception.
    */
   @AuraEnabled(cacheable=true scope='global')
@@ -63,6 +64,8 @@ public with sharing class GeoMapController {
         ),
         noSuchElementException
       );
+    } catch (AIMBaseException.AIMNoAccessException aimNoAccessException) {
+      throw aimNoAccessException;
     } catch (Exception e) {
       throw new AIMBaseException(System.Label.AIM_GeoMap_Generic_Exception, e);
     }

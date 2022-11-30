@@ -524,4 +524,12 @@ To create a new report, click &lt;a href=&quot;/lightning/o/Report/home&quot;&gt
         <shortDescription>AIM Email Editor Test Email Empty</shortDescription>
         <value>Complete the Test Email Address field.</value>
     </labels>
+    <labels>
+        <fullName>AIM_GeoMap_NoAccess</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM GeoMap NoAccess</shortDescription>
+        <value>The User does not have access to {0} field on {1} object. Ask your admin for help.</value>
+    </labels>
 </CustomLabels>
