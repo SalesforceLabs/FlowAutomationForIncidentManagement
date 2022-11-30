@@ -43,22 +43,22 @@ public with sharing class RelatedIncidentDetectorAction {
 
     @InvocableVariable(
       label='Product Match criteria'
-      description='Find assets related to the incident based on a product.'
+      description='Enable this capability to find a related incident with cases and assets that meet the specified match criteria based on products'
     )
     public boolean isProductMatchEnabled;
     @InvocableVariable(
       label='Asset Match criteria'
-      description='Find assets that are related to the incident based on your criteria.'
+      description='Enable this capability to find a related incident with cases and assets that meet the specified match criteria.'
     )
     public boolean isAssetMatchEnabled;
     @InvocableVariable(
       label='Asset proximity distance criteria'
-      description='Find assets related to the incident based on the asset’s proximity to the incident.'
+      description='Find a related incident for cases and assets that meet the specified proximity distance.'
     )
     public Double assetProximityDistance;
     @InvocableVariable(
       label='Id of the Cases/Assets Report'
-      description='Find assets related to the incident based on reports.'
+      description='Find a related incident for cases and assets based on records in the specified report.'
     )
     public String reportId;
   }

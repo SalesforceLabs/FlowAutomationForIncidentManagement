@@ -15,11 +15,11 @@
             <operation>notEqual</operation>
             <value>Completed, Closed</value>
         </milestoneCriteriaFilterItems>
-        <milestoneName>Incident first response</milestoneName>
+        <milestoneName>AIM - Incident First Response</milestoneName>
         <minutesToComplete>30</minutesToComplete>
         <timeTriggers>
             <actions>
-                <name>Escalate_Incident</name>
+                <name>AIM_Escalate_Incident</name>
                 <type>FieldUpdate</type>
             </actions>
             <timeLength>0</timeLength>
@@ -33,11 +33,11 @@
             <operation>notEqual</operation>
             <value>Completed, Closed</value>
         </milestoneCriteriaFilterItems>
-        <milestoneName>Incident qualification</milestoneName>
+        <milestoneName>AIM - Incident Qualification</milestoneName>
         <minutesToComplete>60</minutesToComplete>
         <timeTriggers>
             <actions>
-                <name>Escalate_Incident</name>
+                <name>AIM_Escalate_Incident</name>
                 <type>FieldUpdate</type>
             </actions>
             <timeLength>0</timeLength>
@@ -51,11 +51,11 @@
             <operation>notEqual</operation>
             <value>Closed</value>
         </milestoneCriteriaFilterItems>
-        <milestoneName>Incident notification and deflection</milestoneName>
+        <milestoneName>AIM - Incident Notification And Deflection</milestoneName>
         <minutesToComplete>120</minutesToComplete>
         <timeTriggers>
             <actions>
-                <name>Escalate_Incident</name>
+                <name>AIM_Escalate_Incident</name>
                 <type>FieldUpdate</type>
             </actions>
             <timeLength>0</timeLength>
@@ -69,11 +69,11 @@
             <operation>notEqual</operation>
             <value>Completed, Closed</value>
         </milestoneCriteriaFilterItems>
-        <milestoneName>Incident investigation started</milestoneName>
+        <milestoneName>AIM - Incident Investigation Started</milestoneName>
         <minutesToComplete>240</minutesToComplete>
         <timeTriggers>
             <actions>
-                <name>Escalate_Incident</name>
+                <name>AIM_Escalate_Incident</name>
                 <type>FieldUpdate</type>
             </actions>
             <timeLength>0</timeLength>
@@ -82,11 +82,11 @@
         <useCriteriaStartTime>false</useCriteriaStartTime>
     </milestones>
     <milestones>
-        <milestoneName>Incident closed</milestoneName>
+        <milestoneName>AIM - Incident Closed</milestoneName>
         <minutesToComplete>480</minutesToComplete>
         <timeTriggers>
             <actions>
-                <name>Escalate_Incident</name>
+                <name>AIM_Escalate_Incident</name>
                 <type>FieldUpdate</type>
             </actions>
             <timeLength>0</timeLength>

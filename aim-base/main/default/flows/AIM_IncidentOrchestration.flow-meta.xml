@@ -128,21 +128,21 @@
             <actionType>stepBackground</actionType>
             <entryConditionLogic>and</entryConditionLogic>
             <inputParameters>
-                <name>markComplete</name>
-                <value>
-                    <booleanValue>true</booleanValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
                 <name>incidentId</name>
                 <value>
                     <elementReference>$Record.Id</elementReference>
                 </value>
             </inputParameters>
             <inputParameters>
+                <name>markComplete</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
                 <name>milestoneName</name>
                 <value>
-                    <stringValue>Incident closed</stringValue>
+                    <stringValue>AIM - Incident Closed</stringValue>
                 </value>
             </inputParameters>
             <label>Set Closure Milestone</label>
@@ -266,21 +266,21 @@
                 </rightValue>
             </entryConditions>
             <inputParameters>
-                <name>markComplete</name>
-                <value>
-                    <booleanValue>true</booleanValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
                 <name>incidentId</name>
                 <value>
                     <elementReference>$Record.Id</elementReference>
                 </value>
             </inputParameters>
             <inputParameters>
+                <name>markComplete</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
                 <name>milestoneName</name>
                 <value>
-                    <stringValue>Incident first response</stringValue>
+                    <stringValue>AIM - Incident First Response</stringValue>
                 </value>
             </inputParameters>
             <label>Update First Response Milestone</label>
@@ -392,21 +392,21 @@
                 </rightValue>
             </entryConditions>
             <inputParameters>
-                <name>markComplete</name>
-                <value>
-                    <booleanValue>true</booleanValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
                 <name>incidentId</name>
                 <value>
                     <elementReference>$Record.Id</elementReference>
                 </value>
             </inputParameters>
             <inputParameters>
+                <name>markComplete</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
                 <name>milestoneName</name>
                 <value>
-                    <stringValue>Incident notification and deflection</stringValue>
+                    <stringValue>AIM - Incident Notification And Deflection</stringValue>
                 </value>
             </inputParameters>
             <label>Update Notification Milestone</label>
@@ -511,21 +511,21 @@
                 </rightValue>
             </entryConditions>
             <inputParameters>
-                <name>markComplete</name>
-                <value>
-                    <booleanValue>true</booleanValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
                 <name>incidentId</name>
                 <value>
                     <elementReference>$Record.Id</elementReference>
                 </value>
             </inputParameters>
             <inputParameters>
+                <name>markComplete</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
                 <name>milestoneName</name>
                 <value>
-                    <stringValue>Incident qualification</stringValue>
+                    <stringValue>AIM - Incident Qualification</stringValue>
                 </value>
             </inputParameters>
             <label>Update Qualification Milestone</label>

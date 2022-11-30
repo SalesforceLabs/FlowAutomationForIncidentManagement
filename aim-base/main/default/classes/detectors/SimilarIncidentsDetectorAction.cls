@@ -40,27 +40,27 @@ public with sharing class SimilarIncidentsDetectorAction {
   public class FlowInput {
     @InvocableVariable(
       label='Product Match criteria '
-      description='For a list of all open incidents where the incident’s related item’s assets match the productId of any of the input incident’s related item’s assets, set the Product Match criteria to True.'
+      description='Enable this capability to find similar or duplicate incidents based on products.'
     )
     public boolean isProductMatchEnabled;
     @InvocableVariable(
       label='Asset Match criteria'
-      description='For a list of all open incidents that match any AssetID, set the Asset Match criteria to True.'
+      description='Enable this capability to find similar or duplicate incidents with assets that meet the specified match criteria.'
     )
     public boolean isAssetMatchEnabled;
     @InvocableVariable(
       label='Case Match criteria'
-      description='For a list of all open incidents where the incident’s case related issue’s caseIds match any of the input incident’s case related issue’s caseIds, set the Case Match criteria as True.'
+      description='Enable this capability to find similar or duplicate incidents with cases that match the specified criteria.'
     )
     public boolean isCaseMatchEnabled;
     @InvocableVariable(
       label='Attribute Match criteria'
-      description='For a list of open incidents where the incident’s type, category, and subcategory match any of the input incident’s type, category, and subcategory, set the Attribute Match criteria as TrueAll attributes must match.'
+      description='Enable this capability to find similar or duplicate incidents based on matching incident attributes. All attributes must match.'
     )
     public boolean isAttributesMatchEnabled;
     @InvocableVariable(
       label='Asset proximity distance criteria'
-      description='For a list of open incidents where the incident’s related item’s assets are within Match_Asset_Proximity miles of any of the input incident’s related item’s assets, set the Asset Proximity Match criteria as  True.'
+      description='Find similar or duplicate incidents  for assets that meet the specified proximity distance.'
     )
     public Double assetProximityDistance;
     @InvocableVariable(
