@@ -58,7 +58,7 @@
         <description>Assign Case Variables to Update</description>
         <name>Assign_Case_Vars_to_Update</name>
         <label>Assign Case Variables to Update</label>
-        <locationX>842</locationX>
+        <locationX>1370</locationX>
         <locationY>1118</locationY>
         <assignmentItems>
             <assignToReference>currentCase.Id</assignToReference>
@@ -88,7 +88,7 @@
     <assignments>
         <name>Assign_Cases_Updated</name>
         <label>Assign Cases Updated</label>
-        <locationX>754</locationX>
+        <locationX>1282</locationX>
         <locationY>1454</locationY>
         <assignmentItems>
             <assignToReference>isCasesUpdated</assignToReference>
@@ -106,7 +106,7 @@
         <description>Assign the count to the variables</description>
         <name>Assign_Counts</name>
         <label>Assign Counts</label>
-        <locationX>1150</locationX>
+        <locationX>1678</locationX>
         <locationY>638</locationY>
         <assignmentItems>
             <assignToReference>contactCount</assignToReference>
@@ -144,8 +144,8 @@
         <description>Make isEmailSent boolean variable as True</description>
         <name>Assign_Emails_Sent</name>
         <label>Assign Emails Sent</label>
-        <locationX>1414</locationX>
-        <locationY>1454</locationY>
+        <locationX>2338</locationX>
+        <locationY>1490</locationY>
         <assignmentItems>
             <assignToReference>isEmailSent</assignToReference>
             <operator>Assign</operator>
@@ -159,10 +159,9 @@
         </connector>
     </assignments>
     <assignments>
-        <description>Make isKnowledgeArctilce created Boolean variable as True</description>
         <name>Assign_Knowledge_Created</name>
         <label>Assign Knowledge Article Created</label>
-        <locationX>1018</locationX>
+        <locationX>1810</locationX>
         <locationY>1118</locationY>
         <assignmentItems>
             <assignToReference>isKnowledgeCreated</assignToReference>
@@ -180,7 +179,7 @@
         <description>Make isMessagingSent Boolean variable as True</description>
         <name>Assign_Messaging_Sent</name>
         <label>Assign Messaging  Notification Sent</label>
-        <locationX>1986</locationX>
+        <locationX>3042</locationX>
         <locationY>1118</locationY>
         <assignmentItems>
             <assignToReference>isMessagingSent</assignToReference>
@@ -198,7 +197,7 @@
         <description>Make isSlackMessageSent Boolean variable as True</description>
         <name>Assign_Slack_Sent</name>
         <label>Assign Slack Notification Sent</label>
-        <locationX>1722</locationX>
+        <locationX>2778</locationX>
         <locationY>1118</locationY>
         <assignmentItems>
             <assignToReference>isSlackSent</assignToReference>
@@ -210,6 +209,22 @@
         <connector>
             <isGoTo>true</isGoTo>
             <targetReference>Checklist_Selection</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>assignError</name>
+        <label>Assign Error</label>
+        <locationX>3570</locationX>
+        <locationY>518</locationY>
+        <assignmentItems>
+            <assignToReference>errorText</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.FaultMessage</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>errorScreen</targetReference>
         </connector>
     </assignments>
     <choices>
@@ -272,7 +287,7 @@
         <description>Depending on the Incident Manager&apos;s choice, take the corresponding action</description>
         <name>Checklist_Selection</name>
         <label>Checklist Selection</label>
-        <locationX>1150</locationX>
+        <locationX>1678</locationX>
         <locationY>878</locationY>
         <defaultConnector>
             <targetReference>Complete</targetReference>
@@ -444,7 +459,7 @@
         <description>Check if any Email is sent</description>
         <name>Did_Emails_Send</name>
         <label>Emails sent ?</label>
-        <locationX>1414</locationX>
+        <locationX>2338</locationX>
         <locationY>1118</locationY>
         <defaultConnector>
             <targetReference>Assign_Emails_Sent</targetReference>
@@ -495,7 +510,7 @@
     <loops>
         <name>Loop_Cases</name>
         <label>Loop Cases</label>
-        <locationX>754</locationX>
+        <locationX>1282</locationX>
         <locationY>998</locationY>
         <collectionReference>Get_Attached_Cases</collectionReference>
         <iterationOrder>Asc</iterationOrder>
@@ -529,11 +544,15 @@
         <description>Create Broadcast Communication records</description>
         <name>Create_Broadcast_Communication</name>
         <label>Create Broadcast Communication</label>
-        <locationX>1282</locationX>
+        <locationX>2074</locationX>
         <locationY>1238</locationY>
         <connector>
             <targetReference>Assign_Emails_Sent</targetReference>
         </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>assignError</targetReference>
+        </faultConnector>
         <inputAssignments>
             <field>Body</field>
             <value>
@@ -571,6 +590,10 @@
         <connector>
             <targetReference>Remove_Site_Banner</targetReference>
         </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>assignError</targetReference>
+        </faultConnector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Status</field>
@@ -601,12 +624,15 @@
         <description>Get all the Assets related to the Incident</description>
         <name>Get_Attached_Assets</name>
         <label>Get Attached Assets</label>
-        <locationX>1150</locationX>
+        <locationX>1678</locationX>
         <locationY>398</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Get_Impacted_Accounts_and_Contacts</targetReference>
         </connector>
+        <faultConnector>
+            <targetReference>assignError</targetReference>
+        </faultConnector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>IncidentId</field>
@@ -630,12 +656,16 @@
         <description>Get all the Cases attached to the Incident</description>
         <name>Get_Attached_Cases</name>
         <label>Get Attached Cases</label>
-        <locationX>1150</locationX>
+        <locationX>1678</locationX>
         <locationY>278</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Get_Attached_Assets</targetReference>
         </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>assignError</targetReference>
+        </faultConnector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>RelatedIssueId</field>
@@ -658,6 +688,10 @@
         <connector>
             <targetReference>Loop_Broadcast_Comms</targetReference>
         </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>assignError</targetReference>
+        </faultConnector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>RelatedRecordId</field>
@@ -674,12 +708,16 @@
         <description>Get the Incident Record</description>
         <name>Get_Incident</name>
         <label>Get Incident</label>
-        <locationX>1150</locationX>
+        <locationX>1678</locationX>
         <locationY>158</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Get_Attached_Cases</targetReference>
         </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>assignError</targetReference>
+        </faultConnector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
@@ -695,18 +733,22 @@
     <recordUpdates>
         <name>Update_Cases</name>
         <label>Update Cases</label>
-        <locationX>754</locationX>
+        <locationX>1282</locationX>
         <locationY>1334</locationY>
         <connector>
             <targetReference>Assign_Cases_Updated</targetReference>
         </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>assignError</targetReference>
+        </faultConnector>
         <inputReference>casesToUpdate</inputReference>
     </recordUpdates>
     <screens>
         <description>Screen displaying the completion stage</description>
         <name>Complete</name>
         <label>Complete</label>
-        <locationX>2250</locationX>
+        <locationX>3306</locationX>
         <locationY>998</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
@@ -774,7 +816,7 @@
         <description>Screen displaying the checklist of items to the Incident Manager</description>
         <name>Display_Completion_Checklist</name>
         <label>Display Completion Checklist</label>
-        <locationX>1150</locationX>
+        <locationX>1678</locationX>
         <locationY>758</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
@@ -838,10 +880,26 @@
         <showHeader>true</showHeader>
     </screens>
     <screens>
+        <name>errorScreen</name>
+        <label>Error Screen</label>
+        <locationX>3570</locationX>
+        <locationY>638</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>false</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>disperrorText</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong style=&quot;font-size: 14px;&quot;&gt;{!$Label.AIM_Flow_Error_Header}&lt;/strong&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 14px; color: rgb(0, 0, 0);&quot;&gt;{!errorText}&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt;{!$Label.AIM_Flow_Click_Previous}&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
         <description>This is a placeholder for Messaging Notifications.</description>
         <name>Messaging_Notifications_Placeholder</name>
         <label>Messaging Notifications Placeholder</label>
-        <locationX>1986</locationX>
+        <locationX>3042</locationX>
         <locationY>998</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
@@ -861,7 +919,7 @@
         <description>This is a placeholder for Slack Notifications.</description>
         <name>Slack_Placeholder</name>
         <label>Slack Placeholder</label>
-        <locationX>1722</locationX>
+        <locationX>2778</locationX>
         <locationY>998</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
@@ -878,7 +936,7 @@
         <showHeader>true</showHeader>
     </screens>
     <start>
-        <locationX>1024</locationX>
+        <locationX>1552</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Get_Incident</targetReference>
@@ -903,10 +961,9 @@
         </inputAssignments>
     </subflows>
     <subflows>
-        <description>Create Knowledge Article</description>
         <name>Create_Knowledge_Article</name>
         <label>Create Knowledge Article</label>
-        <locationX>1018</locationX>
+        <locationX>1810</locationX>
         <locationY>998</locationY>
         <connector>
             <targetReference>Assign_Knowledge_Created</targetReference>
@@ -924,7 +981,7 @@
         <description>Get the list of Accounts and Contacts impacted by the Incident</description>
         <name>Get_Impacted_Accounts_and_Contacts</name>
         <label>Get Impacted Accounts and Contacts</label>
-        <locationX>1150</locationX>
+        <locationX>1678</locationX>
         <locationY>518</locationY>
         <connector>
             <targetReference>Assign_Counts</targetReference>
@@ -966,7 +1023,7 @@
         <description>Subflow for sending Core Emails</description>
         <name>Subflow_for_sending_Core_Emails</name>
         <label>Subflow for sending Core Emails</label>
-        <locationX>1414</locationX>
+        <locationX>2338</locationX>
         <locationY>998</locationY>
         <connector>
             <targetReference>Did_Emails_Send</targetReference>
@@ -1092,6 +1149,13 @@
     </variables>
     <variables>
         <name>emailSubject</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>errorText</name>
         <dataType>String</dataType>
         <isCollection>false</isCollection>
         <isInput>false</isInput>
