@@ -2,6 +2,23 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>56.0</apiVersion>
     <assignments>
+        <description>Assign Error Message</description>
+        <name>Assign_Error_Message</name>
+        <label>Assign Error Message</label>
+        <locationX>2024</locationX>
+        <locationY>278</locationY>
+        <assignmentItems>
+            <assignToReference>errorText</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.FaultMessage</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Error_Screen</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <name>Assign_Knowledge_Prefill_Info</name>
         <label>Assign Knowledge Prefill Info</label>
         <locationX>176</locationX>
@@ -75,6 +92,10 @@
         <connector>
             <targetReference>Refresh_Knowledge_Article</targetReference>
         </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Assign_Error_Message</targetReference>
+        </faultConnector>
         <inputReference>knowledgeArticle</inputReference>
     </recordCreates>
     <recordLookups>
@@ -86,6 +107,10 @@
         <connector>
             <targetReference>Assign_Knowledge_Prefill_Info</targetReference>
         </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Assign_Error_Message</targetReference>
+        </faultConnector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
@@ -107,6 +132,10 @@
         <connector>
             <targetReference>Get_Change_Request</targetReference>
         </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Assign_Error_Message</targetReference>
+        </faultConnector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>RelatedIssueId</field>
@@ -128,6 +157,9 @@
         <connector>
             <targetReference>Get_Related_Problem_Incident</targetReference>
         </connector>
+        <faultConnector>
+            <targetReference>Assign_Error_Message</targetReference>
+        </faultConnector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
@@ -149,6 +181,10 @@
         <connector>
             <targetReference>Get_Change_Request_Related_Issue</targetReference>
         </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Assign_Error_Message</targetReference>
+        </faultConnector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
@@ -170,6 +206,10 @@
         <connector>
             <targetReference>Get_Problem</targetReference>
         </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Assign_Error_Message</targetReference>
+        </faultConnector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>IssueId</field>
@@ -191,6 +231,10 @@
         <connector>
             <targetReference>Complete</targetReference>
         </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Assign_Error_Message</targetReference>
+        </faultConnector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
@@ -295,6 +339,23 @@
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
     </screens>
+    <screens>
+        <description>Error Screen</description>
+        <name>Error_Screen</name>
+        <label>Error Screen</label>
+        <locationX>2024</locationX>
+        <locationY>398</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>errorMessageDisplayArea</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong style=&quot;color: rgb(240, 5, 5);&quot;&gt;{!$Label.AIM_Flow_Error_Header}&lt;/strong&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong style=&quot;color: rgb(5, 5, 5);&quot;&gt;{!errorText}&lt;/strong&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
     <start>
         <locationX>50</locationX>
         <locationY>0</locationY>
@@ -303,6 +364,14 @@
         </connector>
     </start>
     <status>Active</status>
+    <variables>
+        <description>variable to hold the error message</description>
+        <name>errorText</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
     <variables>
         <name>incidentId</name>
         <dataType>String</dataType>

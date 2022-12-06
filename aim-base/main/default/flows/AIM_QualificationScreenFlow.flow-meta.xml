@@ -4,7 +4,7 @@
         <name>Get_AssetIds_from_Report</name>
         <label>Get AssetIds from Report</label>
         <locationX>314</locationX>
-        <locationY>2642</locationY>
+        <locationY>2810</locationY>
         <actionName>ReportDataRetrieverAction</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -56,7 +56,7 @@
         <name>Add_Incident_Related_Item</name>
         <label>Add Incident Related Item</label>
         <locationX>138</locationX>
-        <locationY>3362</locationY>
+        <locationY>3530</locationY>
         <assignmentItems>
             <assignToReference>IncidentRelatedItem.AssetId</assignToReference>
             <operator>Assign</operator>
@@ -123,7 +123,7 @@
         <name>Assign_Asset_Count</name>
         <label>Assign Asset Count</label>
         <locationX>314</locationX>
-        <locationY>2882</locationY>
+        <locationY>3050</locationY>
         <assignmentItems>
             <assignToReference>AssetCount</assignToReference>
             <operator>AssignCount</operator>
@@ -175,10 +175,46 @@
         </connector>
     </assignments>
     <assignments>
+        <description>Assign Error Message</description>
+        <name>Assign_Error</name>
+        <label>Assign Error</label>
+        <locationX>314</locationX>
+        <locationY>3866</locationY>
+        <assignmentItems>
+            <assignToReference>errorText</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Label.AIM_Flow_Insert_Element_Error</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <isGoTo>true</isGoTo>
+            <targetReference>errorScreen</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Assign Error Message</description>
+        <name>Assign_Error_Message</name>
+        <label>Assign Error Message</label>
+        <locationX>314</locationX>
+        <locationY>2174</locationY>
+        <assignmentItems>
+            <assignToReference>errorText</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Label.AIM_Flow_Insert_Element_Error</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <isGoTo>true</isGoTo>
+            <targetReference>errorScreen</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <name>assignError</name>
         <label>Assign Error</label>
         <locationX>842</locationX>
-        <locationY>2762</locationY>
+        <locationY>2930</locationY>
         <assignmentItems>
             <assignToReference>errorText</assignToReference>
             <operator>Assign</operator>
@@ -226,7 +262,7 @@
         <name>Assets_Found_0</name>
         <label>Assets Found?</label>
         <locationX>314</locationX>
-        <locationY>3002</locationY>
+        <locationY>3170</locationY>
         <defaultConnector>
             <targetReference>No_records_found_asset</targetReference>
         </defaultConnector>
@@ -276,7 +312,7 @@
         <name>Find_Similar_Assets_Selected</name>
         <label>Find Similar Assets Selected?</label>
         <locationX>710</locationX>
-        <locationY>2402</locationY>
+        <locationY>2570</locationY>
         <defaultConnector>
             <targetReference>CompleteScreen</targetReference>
         </defaultConnector>
@@ -331,7 +367,7 @@
         <name>Loop_Through_Assets</name>
         <label>Loop Through Assets</label>
         <locationX>50</locationX>
-        <locationY>3242</locationY>
+        <locationY>3410</locationY>
         <collectionReference>AssetstoAddIds</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -383,8 +419,7 @@
             <targetReference>Find_Similar_Assets_Selected</targetReference>
         </connector>
         <faultConnector>
-            <isGoTo>true</isGoTo>
-            <targetReference>assignError</targetReference>
+            <targetReference>Assign_Error_Message</targetReference>
         </faultConnector>
         <inputReference>CRIstoAdd</inputReference>
     </recordCreates>
@@ -392,13 +427,12 @@
         <name>Create_Incident_Related_Items_0_0</name>
         <label>Create Incident Related Items</label>
         <locationX>50</locationX>
-        <locationY>3578</locationY>
+        <locationY>3746</locationY>
         <connector>
             <targetReference>CompleteScreen</targetReference>
         </connector>
         <faultConnector>
-            <isGoTo>true</isGoTo>
-            <targetReference>assignError</targetReference>
+            <targetReference>Assign_Error</targetReference>
         </faultConnector>
         <inputReference>IRIsToAdd</inputReference>
     </recordCreates>
@@ -524,7 +558,7 @@
         <name>CompleteScreen</name>
         <label>Complete</label>
         <locationX>710</locationX>
-        <locationY>3926</locationY>
+        <locationY>4262</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -566,7 +600,7 @@
         <name>Confirm_assets_to_add_0</name>
         <label>Confirm assets to add</label>
         <locationX>50</locationX>
-        <locationY>3122</locationY>
+        <locationY>3290</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -604,7 +638,7 @@
         <name>errorScreen</name>
         <label>Error Screen</label>
         <locationX>842</locationX>
-        <locationY>2882</locationY>
+        <locationY>3050</locationY>
         <allowBack>true</allowBack>
         <allowFinish>false</allowFinish>
         <allowPause>false</allowPause>
@@ -620,7 +654,7 @@
         <name>No_records_found_asset</name>
         <label>No records found</label>
         <locationX>578</locationX>
-        <locationY>3122</locationY>
+        <locationY>3290</locationY>
         <allowBack>true</allowBack>
         <allowFinish>false</allowFinish>
         <allowPause>false</allowPause>
@@ -680,7 +714,7 @@
         <name>Select_report_to_add_assets_from</name>
         <label>Select report to add Assets from</label>
         <locationX>314</locationX>
-        <locationY>2522</locationY>
+        <locationY>2690</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -870,7 +904,7 @@
         <name>Filter_Existing_Assets</name>
         <label>Filter Existing Assets</label>
         <locationX>314</locationX>
-        <locationY>2762</locationY>
+        <locationY>2930</locationY>
         <connector>
             <targetReference>Assign_Asset_Count</targetReference>
         </connector>

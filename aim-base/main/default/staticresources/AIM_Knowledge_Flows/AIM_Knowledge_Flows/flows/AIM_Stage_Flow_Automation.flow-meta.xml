@@ -833,7 +833,7 @@
             <name>Automation_Tasks_InProgress</name>
             <choiceReferences>choice_addBanner</choiceReferences>
             <dataType>String</dataType>
-            <fieldText>Select how to update customers about the incident.</fieldText>
+            <fieldText>Broadcast the Incident</fieldText>
             <fieldType>MultiSelectCheckboxes</fieldType>
             <isRequired>false</isRequired>
             <visibilityRule>
@@ -873,6 +873,7 @@
             <choiceReferences>choice_slack</choiceReferences>
             <choiceReferences>choice_messaging</choiceReferences>
             <dataType>String</dataType>
+            <fieldText>Select how to update customers about the incident.</fieldText>
             <fieldType>MultiSelectCheckboxes</fieldType>
             <isRequired>false</isRequired>
         </fields>

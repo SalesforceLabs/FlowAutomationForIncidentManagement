@@ -494,6 +494,7 @@
             <choiceReferences>proceed</choiceReferences>
             <choiceReferences>close</choiceReferences>
             <dataType>String</dataType>
+            <fieldText>How would you like to proceed ?</fieldText>
             <fieldType>RadioButtons</fieldType>
             <isRequired>true</isRequired>
         </fields>

@@ -532,4 +532,12 @@ To create a new report, click &lt;a href=&quot;/lightning/o/Report/home&quot;&gt
         <shortDescription>AIM GeoMap NoAccess</shortDescription>
         <value>The User does not have access to {0} field on {1} object. Ask your admin for help.</value>
     </labels>
+    <labels>
+        <fullName>AIM_Flow_Insert_Element_Error</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Flow Insert Element Error</shortDescription>
+        <value>We couldn’t add records from the selected report. Ask your admin for help.</value>
+    </labels>
 </CustomLabels>
