@@ -1,19 +1,27 @@
 {
   "orgName": "AIM - Dev Org",
   "edition": "Developer",
-  "instance":"gs0",
   "features": [
     "API",
+    "Knowledge",
     "Communities",
     "EnableSetPasswordInApi",
-    "Chatbot",
     "ServiceCloud",
     "ServiceUser",
-    "Sites"
+    "Sites",
+    "LiveMessage",
+    "SLACK"
   ],
   "settings": {
     "lightningExperienceSettings": {
       "enableS1DesktopEnabled": true
+    },
+    "knowledgeSettings":{
+      "enableKnowledge" : true,
+      "enableLightningKnowledge":true
+    },
+    "communitiesSettings": {
+      "enableNetworksEnabled": true
     },
     "chatterSettings": {
       "enableChatter": true
@@ -27,9 +35,17 @@
         "forceRelogin": false
       }
     },
+    "incidentMgmtSettings": {
+      "enableEmailBroadcastType": true    
+    },
     "languageSettings": {
       "enableTranslationWorkbench": true
+    },
+    "liveMessageSettings": {
+      "enableLiveMessage": true
+    },
+    "platformSlackSettings" : {
+      "slackCapabilitiesEnabled": true
     }
-    
   }
 }

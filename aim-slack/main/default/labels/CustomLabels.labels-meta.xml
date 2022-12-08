@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>AIM_Slack_Conversation_Not_Found</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Slack Conversation Not Found</shortDescription>
+        <value>Select a Slack channel.</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Slack_Message_Send_Message</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Slack Message Send Message</shortDescription>
+        <value>send the message to</value>
+    </labels>
+    <labels>
+        <fullName>AIM_Slack_Message_Sent_Successfully</fullName>
+        <categories>AIM</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AIM Slack Message Sent Successfully</shortDescription>
+        <value>Message sent to</value>
+    </labels>
+</CustomLabels>

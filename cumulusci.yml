@@ -3,10 +3,19 @@ project:
     name: AIM
     package:
         name: AIM
-        api_version: '55.0'
+        api_version: '56.0'
     git:
         default_branch: 'main'
     source_format: sfdx
+
+orgs:
+    scratch:
+        dev:
+            config_file: orgs/dev.json
+            days: 14
+        beta:
+            config_file: orgs/beta.json
+            days: 30
 
 tasks:
     robot:
@@ -19,7 +28,74 @@ tasks:
         options:
             path: robot/AIM/tests
             output: robot/AIM/doc/AIM_tests.html
+    
+    populate_data:
+        description: populate project related data in the org
+        class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
+        options:
+            path: scripts/populateData.cls
+            apex: populateData();
+
+    enable_knowledge_user:
+        description: populate project related data in the org
+        class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
+        options:
+            path: scripts/enableKnowledgeUser.cls
+            apex: enableKnowledgeUser();
+
+    deploy_aim_base:
+        description: deploy components from aim-base
+        class_path: cumulusci.tasks.salesforce.Deploy
+        options:
+            path: aim-base
+
+    deploy_aim_messaging:
+        description: deploy components from aim-messaging
+        class_path: cumulusci.tasks.salesforce.Deploy
+        options:
+            path: aim-messaging
+
+    deploy_aim_slack:
+        description: deploy components from aim-slack
+        class_path: cumulusci.tasks.salesforce.Deploy
+        options:
+            path: aim-slack
+
+    add_Users_To_Queues:
+        description: add current user to queues
+        class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
+        options:
+            path: scripts/addUsersToQueues.cls
+            apex: addUsersToQueues();
 
     run_tests:
         options:
             required_org_code_coverage_percent: 80
+
+flows:
+    deploy_unmanaged:
+        steps:
+            3.2:
+                task: deploy_aim_base
+                when: project_config.project__source_format == "sfdx" and org_config.scratch
+            3.3:
+                task: deploy_aim_messaging
+                when: project_config.project__source_format == "sfdx" and org_config.scratch
+            3.4:
+                task: deploy_aim_slack
+                when: project_config.project__source_format == "sfdx" and org_config.scratch
+
+    config_dev:
+        steps:
+            1.1:
+                task: add_Users_To_Queues
+    
+    config_qa:
+        steps:
+            1.1:
+                task: add_Users_To_Queues
+
+    dependencies:
+        steps:
+            3:
+                task: enable_knowledge_user

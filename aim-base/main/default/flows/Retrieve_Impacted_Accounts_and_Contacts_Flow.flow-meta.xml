@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <assignments>
+        <description>Get the AccountId of the Asset and add it to the AccountIdList</description>
+        <name>Add_the_AccountId_of_the_Asset_to_the_AccountIdList</name>
+        <label>Add the AccountId of the Asset to the AccountIdList</label>
+        <locationX>704</locationX>
+        <locationY>1646</locationY>
+        <assignmentItems>
+            <assignToReference>AccountIdList</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_over_Incident_Related_Items_Records.Asset.AccountId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Check_if_ContactId_is_present_for_Asset</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Get the AccountId of the Case and add it to the AccountIdList</description>
+        <name>Add_the_AccountId_of_the_Case_to_the_AccountIdList</name>
+        <label>Add the AccountId of the Case to the AccountIdList</label>
+        <locationX>704</locationX>
+        <locationY>638</locationY>
+        <assignmentItems>
+            <assignToReference>AccountIdList</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_Over_Case_Related_Issue_Records.Case.AccountId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Check_if_ContactId_is_present_for_Case</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Get the ContactId of the Asset and add it to the ContactIdList</description>
+        <name>Add_the_ContactId_of_the_Asset_to_the_ContactIdList</name>
+        <label>Add the ContactId of the Asset to the ContactIdList</label>
+        <locationX>704</locationX>
+        <locationY>1982</locationY>
+        <assignmentItems>
+            <assignToReference>ContactIdList</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_over_Incident_Related_Items_Records.Asset.ContactId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_over_Incident_Related_Items_Records</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Get the ContactId of the case and add it to the ContactIdList</description>
+        <name>Add_the_contactId_to_the_ContactIdList</name>
+        <label>Add the ContactId of the case to the ContactIdList</label>
+        <locationX>704</locationX>
+        <locationY>974</locationY>
+        <assignmentItems>
+            <assignToReference>ContactIdList</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_Over_Case_Related_Issue_Records.Case.ContactId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_Over_Case_Related_Issue_Records</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_Accounts_to_the_AccountList</name>
+        <label>Assign Accounts to the AccountList</label>
+        <locationX>528</locationX>
+        <locationY>2534</locationY>
+        <assignmentItems>
+            <assignToReference>AccountList</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Account_Records</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Check_if_ContactIdList_is_Null</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_Contacts_to_the_ContactList</name>
+        <label>Assign Contacts to the ContactList</label>
+        <locationX>528</locationX>
+        <locationY>2990</locationY>
+        <assignmentItems>
+            <assignToReference>ContactList</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Contact_Records</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <decisions>
+        <description>Check if AccountId is present for Asset</description>
+        <name>Check_if_AccountId_is_present_for_Asset</name>
+        <label>Check if AccountId is present for Asset</label>
+        <locationX>616</locationX>
+        <locationY>1526</locationY>
+        <defaultConnector>
+            <targetReference>Add_the_AccountId_of_the_Asset_to_the_AccountIdList</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>AccountId is present</defaultConnectorLabel>
+        <rules>
+            <name>AccountId_is_not_present_for_Asset</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Loop_over_Incident_Related_Items_Records.Asset.AccountId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_if_ContactId_is_present_for_Asset</targetReference>
+            </connector>
+            <label>AccountId is not present for Asset</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if AccountID is present for the Case</description>
+        <name>Check_if_AccountID_is_present_for_Case</name>
+        <label>Check if AccountID is present for Case</label>
+        <locationX>616</locationX>
+        <locationY>518</locationY>
+        <defaultConnector>
+            <targetReference>Add_the_AccountId_of_the_Case_to_the_AccountIdList</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>AccountId is present</defaultConnectorLabel>
+        <rules>
+            <name>AccountId_is_not_present_for_Case</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Loop_Over_Case_Related_Issue_Records.Case.AccountId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_if_ContactId_is_present_for_Case</targetReference>
+            </connector>
+            <label>AccountId is not present for Case</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if AccountIdList is Null</description>
+        <name>Check_if_AccountIdList_is_Null</name>
+        <label>Check if AccountIdList is Null</label>
+        <locationX>440</locationX>
+        <locationY>2294</locationY>
+        <defaultConnector>
+            <targetReference>Get_Account_Records</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>AccountIdList is not Null</defaultConnectorLabel>
+        <rules>
+            <name>AccountIdList_is_Null</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>AccountIdList</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_if_ContactIdList_is_Null</targetReference>
+            </connector>
+            <label>AccountIdList is Null</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if ContactId is present for Asset</description>
+        <name>Check_if_ContactId_is_present_for_Asset</name>
+        <label>Check if ContactId is present for Asset</label>
+        <locationX>616</locationX>
+        <locationY>1862</locationY>
+        <defaultConnector>
+            <targetReference>Add_the_ContactId_of_the_Asset_to_the_ContactIdList</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>ContactId is present</defaultConnectorLabel>
+        <rules>
+            <name>ContactId_is_not_present_for_Asset</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Loop_over_Incident_Related_Items_Records.Asset.ContactId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Loop_over_Incident_Related_Items_Records</targetReference>
+            </connector>
+            <label>ContactId is not present for Asset</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if ContactId is present for Case</description>
+        <name>Check_if_ContactId_is_present_for_Case</name>
+        <label>Check if ContactId is present for Case</label>
+        <locationX>616</locationX>
+        <locationY>854</locationY>
+        <defaultConnector>
+            <targetReference>Add_the_contactId_to_the_ContactIdList</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>ContactId is present</defaultConnectorLabel>
+        <rules>
+            <name>ContactId_is_not_present_for_Case</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Loop_Over_Case_Related_Issue_Records.Case.ContactId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Loop_Over_Case_Related_Issue_Records</targetReference>
+            </connector>
+            <label>ContactId is not present for Case</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if ContactIdList is Null</description>
+        <name>Check_if_ContactIdList_is_Null</name>
+        <label>Check if ContactIdList is Null</label>
+        <locationX>440</locationX>
+        <locationY>2750</locationY>
+        <defaultConnector>
+            <targetReference>Get_Contact_Records</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>ContactIdList is not Null</defaultConnectorLabel>
+        <rules>
+            <name>ContactIdList_is_Null</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ContactIdList</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>ContactIdList is Null</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if IncidentId is null</description>
+        <name>Check_if_IncidentId_is_null</name>
+        <label>Check if IncidentId is null</label>
+        <locationX>176</locationX>
+        <locationY>158</locationY>
+        <defaultConnector>
+            <targetReference>Get_Case_Related_Issue_Records</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>IncidentId is not null</defaultConnectorLabel>
+        <rules>
+            <name>IncidentId_is_null</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>IncidentId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>IncidentId is null</label>
+        </rules>
+    </decisions>
+    <description>Retrieve Impacted Accounts and Contacts Flow</description>
+    <environments>Default</environments>
+    <interviewLabel>Retrieve Impacted Accounts and Contacts Flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <isTemplate>true</isTemplate>
+    <label>Retrieve Impacted Accounts and Contacts Flow</label>
+    <loops>
+        <description>Iterate over all the Case Related Issue Records obtained from the previous step</description>
+        <name>Loop_Over_Case_Related_Issue_Records</name>
+        <label>Loop Over Case Related Issue Records</label>
+        <locationX>440</locationX>
+        <locationY>398</locationY>
+        <collectionReference>Get_Case_Related_Issue_Records</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Check_if_AccountID_is_present_for_Case</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Get_All_Incident_Related_Items_Records</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <description>Iterate over all Incident Related Items obtained from the previous step</description>
+        <name>Loop_over_Incident_Related_Items_Records</name>
+        <label>Loop over Incident Related Items Records</label>
+        <locationX>440</locationX>
+        <locationY>1406</locationY>
+        <collectionReference>Get_All_Incident_Related_Items_Records</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Check_if_AccountId_is_present_for_Asset</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Check_if_AccountIdList_is_Null</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Get Account Records</description>
+        <name>Get_Account_Records</name>
+        <label>Get Account Records</label>
+        <locationX>528</locationX>
+        <locationY>2414</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Assign_Accounts_to_the_AccountList</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>In</operator>
+            <value>
+                <elementReference>AccountIdList</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Account</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Retrieve all Incident Related Items records using &apos;Get Records&apos; flow element</description>
+        <name>Get_All_Incident_Related_Items_Records</name>
+        <label>Get All Incident Related Items Records</label>
+        <locationX>440</locationX>
+        <locationY>1286</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Loop_over_Incident_Related_Items_Records</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>IncidentId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>IncidentId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>IncidentRelatedItem</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Retrieving all the Case Related Issue records using &apos;Get Records&apos; flow element</description>
+        <name>Get_Case_Related_Issue_Records</name>
+        <label>Get All Case Related Issue Records</label>
+        <locationX>440</locationX>
+        <locationY>278</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Loop_Over_Case_Related_Issue_Records</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>RelatedIssueId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>IncidentId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>CaseRelatedIssue</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Contact_Records</name>
+        <label>Get Contact Records</label>
+        <locationX>528</locationX>
+        <locationY>2870</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Assign_Contacts_to_the_ContactList</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>In</operator>
+            <value>
+                <elementReference>ContactIdList</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Contact</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <runInMode>DefaultMode</runInMode>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_if_IncidentId_is_null</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>AccountIdList</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>AccountList</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Account</objectType>
+    </variables>
+    <variables>
+        <name>ContactIdList</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>ContactList</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Contact</objectType>
+    </variables>
+    <variables>
+        <name>IncidentId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

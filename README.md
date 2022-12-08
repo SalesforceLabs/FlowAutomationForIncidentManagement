@@ -1,12 +1,19 @@
-# Automated Incident Management (AIM)
-The Automated Incident Management(AIM) pack aims to deliver automation at each stage of Incident Management from detecting an Incident to the closure of an Incident. This is done by creating an automation layer on top of the Incident Management product(Service Cloud) using Salesforce platform products like Apex, Flows, Orchestrator, LWC, etc.
+# Flow Automation for Incident Management
+The Flow Automation for Incident Management pack aims to deliver automation at each stage of Incident Management from detecting an Incident to the closure of an Incident. This is done by creating an automation layer on top of the Incident Management product(Service Cloud) using Salesforce platform products like Apex, Flows, Orchestrator, LWC, etc.
+
+## AppExchange Listings
+* [Flow Automation for Incident Management](https://appexchange.salesforce.com/listingDetail?listingId=a0N4V00000J6AGlUAN)
+
+### Optional Packs
+* [Flow Automation for Incident Management with Messaging](https://appexchange.salesforce.com/listingDetail?listingId=a0N4V00000J6AH0UAN)
+* [Flow Automation for Incident Management with Slack](https://appexchange.salesforce.com/listingDetail?listingId=a0N4V00000J6AGvUAN)
 
 ## Set up
-For complete setup steps, please go through [this doc](https://salesforce.quip.com/2TIJAD8G5yNP).
-
-* Install [Salesforce CLI](https://developer.salesforce.com/tools/sfdxcli).
-* Install [CCI](https://cumulusci.readthedocs.io/en/latest/get_started.html#on-macos)
-* Add [Salesforce Extension](https://developer.salesforce.com/tools/vscode/) to your Visual Studio Code by going to(In VS Code application) Preference → Extension and searching for `Salesforce Extension Pack`
+Before development, install the below tools:
+* [Salesforce CLI](https://developer.salesforce.com/tools/sfdxcli).
+* [CCI](https://cumulusci.readthedocs.io/en/latest/get_started.html#on-macos)
+* [Visual Studio Code](https://code.visualstudio.com/)
+* [Salesforce Extension Pack](https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode)
 
 ## Developing in your dev scratch org.
 
@@ -18,20 +25,3 @@ For complete setup steps, please go through [this doc](https://salesforce.quip.c
 * Push the existing metadata to your dev org `cci flow run dev_org --org dev`
 * Open dev org `cci org browser dev`
 * Retrieve changes in your org cci task run retrieve_changes --org dev to your local repository.
-* run pmd `./pmdRunner.sh`
-* fix prettier `npm ci & npm run prettier:fix`
-
-## Common Commands
-* ```cci org remove dev``` remove scratch org
-* ```cci org scratch dev``` create scratch org config based on dev
-* ```cci org info dev``` create org if not exist, and show login info
-* ```cci flow run dev_org --org dev``` main dev flow
-* ```cci org browser dev``` open org
-* ```cci task run dx_push --org dev``` push local change under force-app to org
-* ```cci task run dx_pull --org dev``` pull changes on the org
-* ```cci task run run_tests --org dev``` run Apex tests
-* ```sfdx force:package:list```  show existing packages
-* ```sfdx force:package:version:list``` show existing versions
-* ```npm ci``` install node modules
-* ```npm run prettier:fix``` fix prettier
-* ```./pmdRunner.sh``` check PMD rule
