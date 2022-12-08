@@ -1,7 +1,6 @@
 {
   "orgName": "AIM - Beta Test Org",
   "edition": "Developer",
-  "instance":"gs0",
   "features": [
     "API",
     "Knowledge",
